@@ -1,134 +1,280 @@
 const db = require('./connection');
-const { User, Product, Category } = require('../models');
+const { User, Questionnaire, Category, Answer, Action, ActionAnswer } = require('../models');
 
 db.once('open', async () => {
   await Category.deleteMany();
 
   const categories = await Category.insertMany([
+    { name: 'Transportation' },
     { name: 'Food' },
-    { name: 'Household Supplies' },
-    { name: 'Electronics' },
-    { name: 'Books' },
-    { name: 'Toys' },
+    { name: 'Waste' },
+    { name: 'Housing' },
+    { name: 'Lifestyle' },
   ]);
 
   console.log('categories seeded');
 
-  await Product.deleteMany();
+  await Questionnaire.deleteMany();
 
-  const products = await Product.insertMany([
+  const questions = await Questionnaire.insertMany([
+    // Transportation
     {
-      name: 'Tin of Cookies',
-      description:
-        'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
-      image: 'cookie-tin.jpg',
+      text: 'I take public transit regularly to get to work/school.',
       category: categories[0]._id,
-      price: 2.99,
-      quantity: 500,
-    },
+      },
     {
-      name: 'Canned Coffee',
-      description:
-        'Praesent sed lacinia mauris. Nulla congue nibh magna, at feugiat nunc scelerisque quis. Donec iaculis rutrum vulputate. Suspendisse lectus sem, vulputate ac lectus sed, placerat consequat dui.',
-      image: 'canned-coffee.jpg',
+      text: 'I own a hybrid or electric car.',
       category: categories[0]._id,
-      price: 1.99,
-      quantity: 500,
     },
     {
-      name: 'Toilet Paper',
+      text: 'I ride my bike to get to a given destination as much as possible. ',
+      category: categories[0]._id,
+    },
+    {
+      text: 'When travelling, I take a train or bus instead of airplane if possible.',
+      category: categories[0]._id,
+    },
+    {
+      text: 'When possible, I walk to nearby locations instead of driving.',
+      category: categories[0]._id,
+    },
+    
+    //  Food 
+    {
+      text: 'I eat an entirely plant-based diet.',
+      category: categories[1]._id
+      },
+      {
+      text: 'I eat meat or seafood 1-2 days per week. ',
+      category: categories[1]._id
+      },
+      {
+      text: 'I eat locally sourced food as much as possible. ',
+      category: categories[1]._id
+      },
+      {
+      text: 'I grow more than 50% of my own food. ',
+      category: categories[1]._id
+      },
+      {
+      text: 'I rarely eat dairy products.',
+      category: categories[1]._id
+      },
+      {
+      text: 'I try to minimize my food waste. ',
+      category: categories[1]._id
+      },
+      {
+      text: 'More than 50% of my food comes from regenerative resources. ',
+      category: categories[1]._id
+      },
+      {
+      text: 'I eat seasonally as much as possible.',
       category: categories[1]._id,
-      description:
-        'Donec volutpat erat erat, sit amet gravida justo sodales in. Phasellus tempus euismod urna. Proin ultrices nisi ut ipsum congue, vitae porttitor libero suscipit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam lacinia a nisi non congue.',
-      image: 'toilet-paper.jpg',
-      price: 7.99,
-      quantity: 20,
-    },
-    {
-      name: 'Handmade Soap',
-      category: categories[1]._id,
-      description:
-        'Praesent placerat, odio vel euismod venenatis, lectus arcu laoreet felis, et fringilla sapien turpis vestibulum nisl.',
-      image: 'soap.jpg',
-      price: 3.99,
-      quantity: 50,
-    },
-    {
-      name: 'Set of Wooden Spoons',
-      category: categories[1]._id,
-      description:
-        'Vivamus ut turpis in purus pretium mollis. Donec turpis odio, semper vel interdum ut, vulputate at ex. Duis dignissim nisi vel tortor imperdiet finibus. Aenean aliquam sagittis rutrum.',
-      image: 'wooden-spoons.jpg',
-      price: 14.99,
-      quantity: 100,
-    },
-    {
-      name: 'Camera',
-      category: categories[2]._id,
-      description:
-        'Vestibulum risus metus, luctus non tortor quis, tincidunt consectetur ex. Nullam vitae lobortis ligula, ut sagittis massa. Curabitur consectetur, tellus at pulvinar venenatis, erat augue cursus erat, eu ullamcorper eros lectus ultrices ipsum. Integer rutrum, augue vitae auctor venenatis, turpis turpis elementum orci, at sagittis risus mi a leo.',
-      image: 'camera.jpg',
-      price: 399.99,
-      quantity: 30,
-    },
-    {
-      name: 'Tablet',
-      category: categories[2]._id,
-      description:
-        'In sodales, ipsum quis ultricies porttitor, tellus urna aliquam arcu, eget venenatis purus ligula ut nisi. Fusce ut felis dolor. Mauris justo ante, aliquet non tempus in, tempus ac lorem. Aliquam lacinia dolor eu sem eleifend ultrices. Etiam mattis metus metus. Sed ligula dui, placerat non turpis vitae, suscipit volutpat elit. Phasellus sagittis, diam elementum suscipit fringilla, libero mauris scelerisque ex, ac interdum diam erat non sapien.',
-      image: 'tablet.jpg',
-      price: 199.99,
-      quantity: 30,
-    },
-    {
-      name: 'Tales at Bedtime',
-      category: categories[3]._id,
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ornare diam quis eleifend rutrum. Aliquam nulla est, volutpat non enim nec, pharetra gravida augue. Donec vitae dictum neque. Pellentesque arcu lorem, fringilla non ligula ac, tristique bibendum erat. Ut a semper nibh. Quisque a mi et mi tempor ultricies. Maecenas eu ipsum eu enim hendrerit accumsan at euismod urna.',
-      image: 'bedtime-book.jpg',
-      price: 9.99,
-      quantity: 100,
-    },
-    {
-      name: 'Spinning Top',
+      },
+
+      // Waste
+      {
+        text: 'I recycle often.',
+        category: categories[2]._id
+      },
+      {
+        text: 'I compost most food and paper waste.',
+        category: categories[2]._id
+      },
+      {
+        text: 'I repurpose other people’s waste.',
+        category: categories[2]._id
+      },
+      {
+        text: 'I switched to e-billing and removed mail subscriptions.',
+        category: categories[2]._id
+      },
+      {
+        text: 'I use a fan instead of an air conditioner.',
+        category: categories[2]._id
+      },
+      {
+        text: 'I buy products with less packaging. ',
+        category: categories[2]._id
+      },
+      {
+        text: 'I avoid disposable or single-use products.',
+        category: categories[2]._id
+      },
+      {
+        text: 'I mean plan to avoid extra waste. ',
+        category: categories[2]._id
+      },
+
+      //  Housing
+      {
+        text: 'I use a smart thermostat in my home. ',
+        category: categories[3]._id
+      },
+      {
+        text: 'More than 75% of my home is powered by clean energy.',
+        category: categories[3]._id
+      },
+      {
+        text: 'I use LED lightbulbs in my home.',
+        category: categories[3]._id
+      },
+      {
+        text: 'I air-dry clothes instead of using a dryer.',
+        category: categories[3]._id
+      },
+      {
+        text: 'I turn lights off when not in use at home.',
+        category: categories[3]._id
+      },
+      {
+        text: 'I unplug all electronics not being used.',
+        category: categories[3]._id
+      },
+      {
+        text: 'I take short showers instead of baths.',
+        category: categories[3]._id
+      },
+      {
+        text: 'I have low flush toilets in my home.',
+        category: categories[3]._id
+      },
+      // Lifestyle
+      {
+        text: 'I buy new items once a month. ',
       category: categories[4]._id,
-      description:
-        'Ut vulputate hendrerit nibh, a placerat elit cursus interdum.',
-      image: 'spinning-top.jpg',
-      price: 1.99,
-      quantity: 1000,
-    },
-    {
-      name: 'Set of Plastic Horses',
+      },
+      {
+        text: 'I mostly second-hand shop. ',
       category: categories[4]._id,
-      description:
-        'Sed a mauris condimentum, elementum enim in, rhoncus dui. Phasellus lobortis leo odio, sit amet pharetra turpis porta quis.',
-      image: 'plastic-horses.jpg',
-      price: 2.99,
-      quantity: 1000,
-    },
-    {
-      name: 'Teddy Bear',
+      },
+      {
+        text: 'I use reusable water bottles and coffee cups daily. ',
       category: categories[4]._id,
-      description:
-        'Vestibulum et erat finibus erat suscipit vulputate sed vitae dui. Ut laoreet tellus sit amet justo bibendum ultrices. Donec vitae felis vestibulum, congue augue eu, finibus turpis.',
-      image: 'teddy-bear.jpg',
-      price: 7.99,
-      quantity: 100,
-    },
-    {
-      name: 'Alphabet Blocks',
+      },
+      {
+        text: 'I bring reusable bags to grocery stores.',
       category: categories[4]._id,
-      description:
-        'Morbi consectetur viverra urna, eu fringilla turpis faucibus sit amet. Suspendisse potenti. Donec at dui ac sapien eleifend hendrerit vel sit amet lectus.',
-      image: 'alphabet-blocks.jpg',
-      price: 9.99,
-      quantity: 600,
-    },
+      },
+      {
+        text: 'I purchase hygiene products packaged in biodegradable or compostable material.',
+      category: categories[4]._id,
+      },
+      {
+        text: 'I make homemade gifts for people. ',
+      category: categories[4]._id,
+      },
+      {
+        text: 'I donate used goods. ',
+      category: categories[4]._id,
+      },
+      {
+        text: 'I attend talks or events on sustainability. ',
+      category: categories[4]._id,
+      },
   ]);
 
-  console.log('products seeded');
+  console.log('questions seeded');
 
+
+
+
+  await Action.deleteMany();
+
+  const actions = await Action.insertMany([
+    
+    {
+      name: 'Carpool',
+      description : 'Carpool to work/school or any event with a friend',
+      category: categories[0]._id,
+    },
+    {
+      name: 'Public Transit',
+      description : 'Take public transit to work or school when possible',
+      category: categories[0]._id,
+    },
+    {
+      name: 'Bike',
+      description : 'Bike to a given destination instead of driving',
+      category: categories[0]._id,
+    },
+    {
+      name: 'Plant-based Diet',
+      description : 'Switch to a 100% plant-based diet on a give day of the week.',
+      category: categories[1]._id,
+    },
+    {
+      name: 'Compost',
+      description : 'Begin composting any food waste',
+      category: categories[1]._id,
+    },
+    {
+      name: 'Veggie Scraps',
+      description : 'Reuse veggie scraps and make broths or freeze for new recipes',
+      category: categories[1]._id,
+    } ,
+    {
+      name: 'Recycle',
+      description : 'Recycle products correctly, following your city/location guidelines',
+      category: categories[2]._id,
+    },
+    {
+      name: 'Water Bottle',
+      description : 'Use a refillable water bottle instead of plastic bottles',
+      category: categories[2]._id,
+    },
+    {
+      name: 'Reusable cups',
+      description : 'Bring a reusable cup to a coffee/tea shop to reduce waste',
+      category: categories[2]._id,
+    },
+    {
+      name: 'Shower',
+      description : 'Decrease shower time to 5 minutes, and switch from taking baths',
+      category: categories[3]._id,
+    },
+    {
+      name: 'Washer',
+      description : 'Wash clothing on cold cycle insead of hot',
+      category: categories[3]._id,
+    },
+    {
+      name: 'Air-dry',
+      description : 'Air-dry clothing after washing instead of usering the drying machine',
+      category: categories[3]._id,
+    },
+    {
+      name: 'Lighting',
+      description : 'Turn off lights when not in use',
+      category: categories[3]._id,
+    },
+    {
+      name: 'Unplug Electronics',
+      description : 'Unplug electronics when not in use.',
+      category: categories[3]._id,
+    },
+    {
+      name: 'Lighting',
+      description : 'Turn off lights when not in use',
+      category: categories[3]._id,
+    },
+    {
+      name: 'Used Items',
+      description : 'But mostly used stuff and shop at second-hand stpres',
+      category: categories[4]._id,
+    },
+    {
+      name: 'Towels and Napkins',
+      description : 'Switch from single use paper towels and napkins to cloth towels and handkerchief',
+      category: categories[4]._id,
+    }
+  ]);
+
+  console.log('action seeded');
+
+
+  // Seeds for Users
   await User.deleteMany();
 
   await User.create({
@@ -136,11 +282,19 @@ db.once('open', async () => {
     lastName: 'Washington',
     email: 'pamela@testmail.com',
     password: 'password12345',
-    orders: [
+    profileImage: 'insertimage.png',
+    answers: [
       {
-        products: [products[0]._id, products[0]._id, products[1]._id],
-      },
+        answer: 1,
+        questions: [Questionnaire[0]]
+      }
     ],
+    actionAnswer: [
+      {
+        mondayAnswer: 10,
+        action: [Action[0]]
+      }
+    ]
   });
 
   await User.create({
@@ -148,9 +302,26 @@ db.once('open', async () => {
     lastName: 'Holt',
     email: 'eholt@testmail.com',
     password: 'password12345',
+    profileImage: 'insertimage.png'
   });
 
   console.log('users seeded');
 
   process.exit();
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
