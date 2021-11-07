@@ -2,8 +2,11 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
-const Order = require('./Order');
+const Answer = require('./Answer');
+const ActionAnswer = require('./ActionAnswer');
 
+
+// Creating a user with the given information needed
 const userSchema = new Schema({
   firstName: {
     type: String,
@@ -25,7 +28,12 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  orders: [Order.schema],
+  profileImage: {
+    type: String,
+  },
+  // these are the answers from the questionnaire
+  answers: [Answer.schema],
+  actionAnswers: [ActionAnswer.schema],
 });
 
 // Set up pre-save middleware to create password
