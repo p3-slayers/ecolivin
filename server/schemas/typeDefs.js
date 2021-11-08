@@ -45,7 +45,7 @@ const typeDefs = gql`
       lastName: String!
       email: String!
       password: String!
-      profileImage: String!
+      profileImage: String
     ): Auth
     updateUser(
       firstName: String
@@ -59,4 +59,3 @@ const typeDefs = gql`
 `;
 
 module.exports = typeDefs;
-
