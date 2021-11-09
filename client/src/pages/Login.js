@@ -26,20 +26,21 @@ function Login(props) {
       });
       // isolate token from mutationResponse so it can be set to localStorage via Auth.login
       const token = mutationResponse.data.login.token;
+      // set the JWT to localStorage
       Auth.login(token);
 
       // isolate userData from the mutationResponse so it can be set to the global state
       const userData = { ...mutationResponse.data.login.user };
       console.log(mutationResponse);
       console.log(userData);
-      // dispatch the updated userData to the reducer
+      // dispatch the updated userData to the reducer and set the global state up with the user data
       dispatch({
         type: SET_USER_DATA,
         payload: userData,
       });
       console.log(state);
-      // history.push();
-      // Location.pathname = '/dashboard';
+
+      // render the dashboard page
       history.push('/dashboard');
     } catch (e) {
       console.log(e);
