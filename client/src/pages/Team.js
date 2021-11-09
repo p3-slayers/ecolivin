@@ -18,18 +18,12 @@ const Team = () => {
                 <div className="col">
                 <h3> {member.name} </h3>
                 <p> {member.bio} </p>
-                </div>
-                <div className="col">
-                <div className="row">
                 <a href={member.linkedin} target="_blank" rel="noreferrer">
-                    <FaLinkedinIn />
+                    <FaLinkedinIn size={36} />
                 </a>
-                </div>
-                <div className="row">
                 <a href={member.github} target="_blank" rel="noreferrer">
-                    <FaGithub />
+                    <FaGithub size={36} />
                 </a>
-                </div>
                 </div>
               </div>
               </div>
