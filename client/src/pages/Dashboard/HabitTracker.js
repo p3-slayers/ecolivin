@@ -3,10 +3,13 @@ import Sidebar from '../../components/Sidebar/index'
 
 const HabitTracker = () => {
   return (
-    <div className="container">
+    <div class="d-flex">
       {/* will inserts information/summary about the User */}
-      <Sidebar/>
-      <h1>HabitTracker PAGE</h1>
+     <Sidebar/>
+     <div class="p-2 flex-grow-1">
+        <h3>ht</h3>        
+
+        </div>
     </div>
   );
 };
