@@ -14,7 +14,7 @@ import About from './pages/About';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Nav from './components/Nav';
-import { StoreProvider } from './utils/GlobalState';
+import { UserProvider } from './utils/GlobalState';
 import Donate from './pages/Donate';
 import DashboardRoutes from './pages/Dashboard/DashboardRoutes';
 import PrivateRoute from './pages/PrivateRoutes';
@@ -42,8 +42,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div>
-          <StoreProvider>
+          {/* <UserProvider> */}
             <Nav />
             <Switch>
               <Route exact path="/" component={Home} />
@@ -54,9 +53,8 @@ function App() {
               <Route exact path="/about" component={About} />
               <PrivateRoute component={DashboardRoutes} />
             </Switch>
-          </StoreProvider>
-        </div>
-      </Router>
+          {/* </UserProvider> */}
+      </Router> 
     </ApolloProvider>
   );
 }
