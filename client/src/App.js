@@ -16,7 +16,8 @@ import Signup from './pages/Signup';
 import Nav from './components/Nav';
 import { StoreProvider } from './utils/GlobalState';
 import Donate from './pages/Donate';
-import Profile from './pages/Profile';
+import DashboardRoutes from './pages/Dashboard/DashboardRoutes';
+import PrivateRoute from './pages/PrivateRoutes';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -51,7 +52,7 @@ function App() {
               <Route exact path="/donate" component={Donate} />
               <Route exact path="/team" component={Team} />
               <Route exact path="/about" component={About} />
-              <Route exact path="/profile" component={Profile} />
+              <PrivateRoute component={DashboardRoutes} />
             </Switch>
           </StoreProvider>
         </div>

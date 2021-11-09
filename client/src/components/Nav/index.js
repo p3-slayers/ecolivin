@@ -2,13 +2,27 @@ import React from 'react';
 import Auth from '../../utils/auth';
 import { Link } from 'react-router-dom';
 
+
 function Nav() {
+
+  function homepageLink() {
+    if (Auth.loggedIn()) {
+      return (
+        <Link to="/dashboard">LOGO/Name</Link>
+      )
+    } else {
+      return (
+        <Link to="/">LOGO/Name</Link>
+      )
+    }
+  }
+
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
         <ul className="flex-row">
           <li className="mx-1">
-            <Link to="/profile">Profile</Link>
+            <Link to="/dashboard">Dashboard</Link>
           </li>
           <li className="mx-1">
             <Link to="/feed">Feed</Link>
@@ -53,7 +67,7 @@ function Nav() {
   return (
     <header className="flex-row px-1">
       <h1>
-        <Link to="/">LOGO/Name</Link>
+        {homepageLink()}
       </h1>
 
       <nav>{showNavigation()}</nav>

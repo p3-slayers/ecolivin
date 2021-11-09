@@ -1,12 +1,14 @@
 import React from 'react';
+import Sidebar from '../../components/Sidebar/index'
 
-const Profile = () => {
+const Account = () => {
   return (
     <div className="container">
       {/* will inserts information/summary about the User */}
-      <h1>PROFILE/ DASHBOARD PAGE</h1>
+      <Sidebar/>
+      <h1>Account PAGE</h1>
     </div>
   );
 };
 
-export default Profile;
+export default Account;
