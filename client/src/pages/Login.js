@@ -38,6 +38,10 @@ function Login(props) {
         type: SET_USER_DATA,
         payload: userData,
       });
+
+      // persist userData to localstorage to maintain state across sessions
+      localStorage.setItem('userData', JSON.stringify(userData));
+
       console.log(state);
 
       // render the dashboard page
