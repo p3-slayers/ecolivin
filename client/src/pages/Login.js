@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { LOGIN } from '../utils/mutations';
 import Auth from '../utils/auth';
 
-import { useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useGlobalUserContext } from '../utils/GlobalState';
 import { SET_USER_DATA } from '../utils/actions';
 
@@ -15,7 +15,8 @@ function Login(props) {
 
   // for setting global state
   const [state, dispatch] = useGlobalUserContext();
-  const Location = useLocation();
+
+  const history = useHistory();
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -25,6 +26,7 @@ function Login(props) {
       });
       // isolate token from mutationResponse so it can be set to localStorage via Auth.login
       const token = mutationResponse.data.login.token;
+      Auth.login(token);
 
       // isolate userData from the mutationResponse so it can be set to the global state
       const userData = { ...mutationResponse.data.login.user };
@@ -35,10 +37,10 @@ function Login(props) {
         type: SET_USER_DATA,
         payload: userData,
       });
-      Auth.login(token);
       console.log(state);
+      // history.push();
       // Location.pathname = '/dashboard';
-      // history.pushState({}, '', '/dashboard');
+      history.push('/dashboard');
     } catch (e) {
       console.log(e);
     }
@@ -84,9 +86,9 @@ function Login(props) {
           </div>
         ) : null}
         <div className="flex-row flex-end">
-          <Link to="/dashboard">
-            <button type="submit">Submit</button>
-          </Link>
+          {/* <Link to="/dashboard"> */}
+          <button type="submit">Submit</button>
+          {/* </Link> */}
         </div>
       </form>
     </div>
