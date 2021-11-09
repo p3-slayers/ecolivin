@@ -12,9 +12,13 @@ const Dashboard = () => {
   console.log(state);
   // useEffect(console.log(state), []);
   return (
-    <div>
-      <h1>Hello, {state.firstName}</h1>
+    <div class="d-flex">
+      {/* will inserts information/summary about the User */}
       <Sidebar />
+      <div class="p-2 flex-grow-1">
+        <h1>Hello, {state.firstName}</h1>
+        <h3>content</h3>
+      </div>
     </div>
   );
 };

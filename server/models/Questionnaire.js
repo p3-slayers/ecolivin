@@ -4,6 +4,10 @@ const { Schema } = mongoose;
 
 // questionnaire when an account is created or when a user wants to redo the questionnaire. Gives the text of the question and the category that the question belongs to
 const questionSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+  },
   text: {
     type: String,
     required: true,
