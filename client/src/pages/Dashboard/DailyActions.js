@@ -3,10 +3,13 @@ import Sidebar from '../../components/Sidebar/index'
 
 const DailyActions = () => {
   return (
-    <div className="container">
+    <div class="d-flex">
       {/* will inserts information/summary about the User */}
-      <Sidebar/>
-      <h1>DailyActions PAGE</h1>
+     <Sidebar/>
+     <div class="p-2 flex-grow-1">
+        <h3>da</h3>        
+
+        </div>
     </div>
   );
 };
