@@ -6,20 +6,16 @@ const typeDefs = gql`
     name: String
   }
 
-  type Product {
+  type Questionnaire {
     _id: ID
-    name: String
-    description: String
-    image: String
-    quantity: Int
-    price: Float
+    text: String
     category: Category
   }
 
-  type Order {
+  type Answer {
     _id: ID
-    purchaseDate: String
-    products: [Product]
+    answers: Int
+    questions: [Questionnaire]
   }
 
   type User {
@@ -27,7 +23,8 @@ const typeDefs = gql`
     firstName: String
     lastName: String
     email: String
-    orders: [Order]
+    profileImage: String
+    answers: [Answer]
   }
 
   type Auth {
@@ -37,10 +34,9 @@ const typeDefs = gql`
 
   type Query {
     categories: [Category]
-    products(category: ID, name: String): [Product]
-    product(_id: ID!): Product
+    questionnaire: [Questionnaire]
+    question(_id: ID!): Questionnaire
     user: User
-    order(_id: ID!): Order
   }
 
   type Mutation {
@@ -49,15 +45,15 @@ const typeDefs = gql`
       lastName: String!
       email: String!
       password: String!
+      profileImage: String
     ): Auth
-    addOrder(products: [ID]!): Order
     updateUser(
       firstName: String
       lastName: String
       email: String
       password: String
+      profileImage: String
     ): User
-    updateProduct(_id: ID!, quantity: Int!): Product
     login(email: String!, password: String!): Auth
   }
 `;

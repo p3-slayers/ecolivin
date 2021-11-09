@@ -1,12 +1,10 @@
-import React from "react";
-import ProductList from "../components/ProductList";
-import CategoryMenu from "../components/CategoryMenu";
+import React from 'react';
 
 const Home = () => {
   return (
     <div className="container">
-      <CategoryMenu />
-      <ProductList />
+      {/* will inserts information/summary about the website */}
+      <h1>HOME/ MAIN LANDING PAGE</h1>
     </div>
   );
 };

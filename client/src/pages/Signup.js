@@ -9,6 +9,7 @@ function Signup(props) {
   const [addUser] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (event) => {
+    console.log(`handleFormSubmit fired`);
     event.preventDefault();
     const mutationResponse = await addUser({
       variables: {
@@ -18,7 +19,9 @@ function Signup(props) {
         lastName: formState.lastName,
       },
     });
+    console.log(mutationResponse);
     const token = mutationResponse.data.addUser.token;
+    console.log(token);
     Auth.login(token);
   };
 
@@ -28,12 +31,11 @@ function Signup(props) {
       ...formState,
       [name]: value,
     });
+    console.log(formState);
   };
 
   return (
     <div className="container my-1">
-      <Link to="/login">← Go to Login</Link>
-
       <h2>Signup</h2>
       <form onSubmit={handleFormSubmit}>
         <div className="flex-row space-between my-2">
@@ -80,6 +82,7 @@ function Signup(props) {
           <button type="submit">Submit</button>
         </div>
       </form>
+      <Link to="/login">Already have an account?Go to Login!</Link>
     </div>
   );
 }

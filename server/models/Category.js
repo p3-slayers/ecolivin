@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
+// category for each of the questions
 const categorySchema = new Schema({
   name: {
     type: String,

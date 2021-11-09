@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb://localhost/sustainability',
+  process.env.MONGODB_URI || 'mongodb://localhost/sustainabilty',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
