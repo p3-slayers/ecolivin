@@ -1,13 +1,10 @@
-import React, { createContext, useContext } from "react";
-import { useProductReducer } from './reducers'
+import React, { createContext, useContext, useReducer } from 'react';
 
+// all this does is remove the need for us to pass a reducer function to the call in UserProvider
+import { reducer } from './reducers';
 
-// const StoreContext = createContext();
-// const { Provider } = StoreContext;
-
-const UserContext = createContext();
-const { Provider } = UserContext;
-
+const GlobalUserContext = createContext();
+// const { Provider } = UserContext;
 
 // const StoreProvider = ({ value = [], ...props }) => {
 //   const [state, dispatch] = useProductReducer({
@@ -16,21 +13,22 @@ const { Provider } = UserContext;
 //     currentCategory: '',
 //   });
 
-const UserProvider = () => {
-    const [state, dispatch] = useProductReducer({
-     user:{}
-    });
-  
-  return <Provider value={[state, dispatch]}/>;
+const useGlobalUserContext = () => useContext(GlobalUserContext);
+
+const GlobalUserState = {};
+
+const UserContextProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, GlobalUserState);
+
+  return (
+    <GlobalUserContext.Provider value={[state, dispatch]}>
+      {children}
+    </GlobalUserContext.Provider>
+  );
 };
 
 // const useStoreContext = () => {
 //   return useContext(StoreContext);
 // };
 
-const useUserContext = () => {
-  return useContext(UserContext);
-};
-
-
-export { UserProvider, useUserContext };
+export { UserContextProvider, useGlobalUserContext };

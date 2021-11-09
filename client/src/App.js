@@ -14,7 +14,7 @@ import About from './pages/About';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Nav from './components/Nav';
-import { UserProvider } from './utils/GlobalState';
+import { UserContextProvider } from './utils/GlobalState';
 import Donate from './pages/Donate';
 import DashboardRoutes from './pages/Dashboard/DashboardRoutes';
 import PrivateRoute from './pages/PrivateRoutes';
@@ -42,19 +42,19 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-          {/* <UserProvider> */}
-            <Nav />
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/signup" component={Signup} />
-              <Route exact path="/donate" component={Donate} />
-              <Route exact path="/team" component={Team} />
-              <Route exact path="/about" component={About} />
-              <PrivateRoute component={DashboardRoutes} />
-            </Switch>
-          {/* </UserProvider> */}
-      </Router> 
+        <UserContextProvider>
+          <Nav />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/donate" component={Donate} />
+            <Route exact path="/team" component={Team} />
+            <Route exact path="/about" component={About} />
+            <PrivateRoute component={DashboardRoutes} />
+          </Switch>
+        </UserContextProvider>
+      </Router>
     </ApolloProvider>
   );
 }
