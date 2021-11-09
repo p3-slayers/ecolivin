@@ -9,6 +9,9 @@ import Account from './Account';
 import HabitTracker from './HabitTracker';
 import DailyActions from './DailyActions';
 import Resources from './Resources';
+import BeginQuestionnaire from '../Questionnaire/BeginQuestionnaire';
+import Questionnaire from '../Questionnaire/Questionnaire';
+import Results from '../Questionnaire/Results';
 
 const DashboardRoutes = () => {
     return (
@@ -18,11 +21,14 @@ const DashboardRoutes = () => {
         <PrivateRoute exact path="/feed" component={Feed} />
         <PrivateRoute exact path="/challenges" component={Challenges} />
         <PrivateRoute exact path="/events" component={Events} />
-        <PrivateRoute exact path="/Account" component={Account} />
-        <PrivateRoute exact path="/Challenges" component={Challenges} />
-        <PrivateRoute exact path="/DailyActions" component={DailyActions} />
-        <PrivateRoute exact path="/HabitTracker" component={HabitTracker} />
-        <PrivateRoute exact path="/Resources" component={Resources} />
+        <PrivateRoute exact path="/account" component={Account} />
+        <PrivateRoute exact path="/challenges" component={Challenges} />
+        <PrivateRoute exact path="/dailyactions" component={DailyActions} />
+        <PrivateRoute exact path="/habittracker" component={HabitTracker} />
+        <PrivateRoute exact path="/resources" component={Resources} />
+        <PrivateRoute exact path="/beginquestionnaire" component={BeginQuestionnaire} />
+        <PrivateRoute exact path="/questionnaire" component={Questionnaire} />
+        <PrivateRoute exact path="/results" component={Results} />
         </Switch>
       </div>
     );

@@ -22,7 +22,7 @@ function Signup(props) {
     console.log(mutationResponse);
     const token = mutationResponse.data.addUser.token;
     console.log(token);
-    Auth.login(token);
+    Auth.loginAndGoToQuestionnaire(token);
   };
 
   const handleChange = (event) => {
