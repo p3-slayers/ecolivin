@@ -13,7 +13,7 @@ const Dashboard = () => {
   // useEffect(console.log(state), []);
   return (
     <div>
-      <h1>{state.firstName}</h1>
+      <h1>Hello, {state.firstName}</h1>
       <Sidebar />
     </div>
   );

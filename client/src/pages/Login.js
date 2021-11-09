@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { LOGIN } from '../utils/mutations';
 import Auth from '../utils/auth';
 
+import { useLocation } from 'react-router-dom';
 import { useGlobalUserContext } from '../utils/GlobalState';
 import { SET_USER_DATA } from '../utils/actions';
 
@@ -14,6 +15,7 @@ function Login(props) {
 
   // for setting global state
   const [state, dispatch] = useGlobalUserContext();
+  const Location = useLocation();
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -35,6 +37,8 @@ function Login(props) {
       });
       Auth.login(token);
       console.log(state);
+      // Location.pathname = '/dashboard';
+      // history.pushState({}, '', '/dashboard');
     } catch (e) {
       console.log(e);
     }
@@ -80,7 +84,9 @@ function Login(props) {
           </div>
         ) : null}
         <div className="flex-row flex-end">
-          <button type="submit">Submit</button>
+          <Link to="/dashboard">
+            <button type="submit">Submit</button>
+          </Link>
         </div>
       </form>
     </div>
