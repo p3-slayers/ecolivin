@@ -34,7 +34,7 @@ const resolvers = {
        return posts;  
       },
     
-    getPosts: async (parent, {postId} ) => {
+    getPost: async (parent, {postId} ) => {
       const post = await Post.findById(postId);
       if (post) {
         return post;

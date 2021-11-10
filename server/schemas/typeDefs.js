@@ -39,7 +39,7 @@ const typeDefs = gql`
   type Comment {
     id: ID
     date: String
-    username: User
+    user: User
     text: String!
   }
 
