@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
 import { useGlobalUserContext } from "../../utils/GlobalState";
-import { Nav, Navbar, NavbarBrand, NavLink, Spinner } from "react-bootstrap";
+import { Nav, Navbar, NavbarBrand, NavLink } from "react-bootstrap";
 import spinner from "../../assets/spinner.gif";
 import NavbarToggle from "react-bootstrap/esm/NavbarToggle";
 import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
@@ -24,10 +24,10 @@ function Navigation() {
     if (Auth.loggedIn()) {
       return (
         <Nav>
-          <NavLink href="/dashboard">Dashboard</NavLink>
-          <NavLink href="/feed">Feed</NavLink>
-          <NavLink href="/challenges">Challenges</NavLink>
-          <NavLink href="/events">Events</NavLink>
+          <NavLink as={Link} to="/dashboard">Dashboard</NavLink>
+          <NavLink as={Link} to="/feed">Feed</NavLink>
+          <NavLink as={Link} to="/challenges">Challenges</NavLink>
+          <NavLink as={Link} to="/events">Events</NavLink>
           {/* this is not using the Link component to logout or user and then refresh the application to the start */}
           <NavLink href="/" onClick={() => Auth.logout()}>
             Logout
@@ -37,11 +37,11 @@ function Navigation() {
     } else {
       return (
         <Nav>
-          <NavLink href="/">Home</NavLink>
-          <NavLink href="/about">About</NavLink>
-          <NavLink href="/team"> Team </NavLink>
-          <NavLink href="/donate">Donate</NavLink>
-          <NavLink href="/login">Login</NavLink>
+          <NavLink as={Link} to="/">Home</NavLink>
+          <NavLink as={Link} to="/about">About</NavLink>
+          <NavLink as={Link} to="/team"> Team </NavLink>
+          <NavLink as={Link} to="/donate">Donate</NavLink>
+          <NavLink as={Link} to="/login">Login</NavLink>
         </Nav>
       );
     }
