@@ -37,6 +37,7 @@ const typeDefs = gql`
     questionnaire: [Questionnaire]
     question(_id: ID!): Questionnaire
     user: User
+    singleUser: User
   }
 
   type Mutation {

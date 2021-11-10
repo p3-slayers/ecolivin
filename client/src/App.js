@@ -2,13 +2,13 @@ import React, { useEffect } from 'react';
 import auth from './utils/auth';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  createHttpLink,
+  // ApolloClient,
+  // InMemoryCache,
+  // ApolloProvider,
+  // createHttpLink,
   useQuery,
 } from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
+// import { setContext } from '@apollo/client/link/context';
 
 import Home from './pages/Home';
 import Team from './pages/Team';
@@ -24,19 +24,19 @@ import PrivateRoute from './pages/PrivateRoutes';
 import { useGlobalUserContext } from './utils/GlobalState';
 import { QUERY_SINGLE_USER } from './utils/queries';
 
-const httpLink = createHttpLink({
-  uri: '/graphql',
-});
+// const httpLink = createHttpLink({
+//   uri: '/graphql',
+// });
 
-const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('id_token');
-  return {
-    headers: {
-      ...headers,
-      authorization: token ? `Bearer ${token}` : '',
-    },
-  };
-});
+// const authLink = setContext((_, { headers }) => {
+//   const token = localStorage.getItem('id_token');
+//   return {
+//     headers: {
+//       ...headers,
+//       authorization: token ? `Bearer ${token}` : '',
+//     },
+//   };
+// });
 
 // hook for on load
 // if loggedIn(), if token exists, and session not expired =>
@@ -50,15 +50,15 @@ const authLink = setContext((_, { headers }) => {
 // remove token
 // clear localStorage userData entry.
 
-const client = new ApolloClient({
-  link: authLink.concat(httpLink),
-  cache: new InMemoryCache(),
-});
+// const client = new ApolloClient({
+//   link: authLink.concat(httpLink),
+//   cache: new InMemoryCache(),
+// });
 
 function App() {
   const [state, dispatch] = useGlobalUserContext();
 
-  const restoreState = () => {
+  const get_id = () => {
     try {
       let loggedIn = auth.loggedIn();
 
@@ -68,35 +68,36 @@ function App() {
         console.log(profile);
         let _id = profile.data._id;
         console.log(_id);
-        // const {loading, data} =  useQuery(QUERY_SINGLE_USER, {
-        //   variables: {_id: _id},
-        // });
-        // console.log(userData);
+        return _id;
       } else {
         console.log(`NOT logged in!`);
       }
     } catch (err) {
       console.log(err);
+      return false;
     }
   };
+  const { loading, data } = useQuery(QUERY_SINGLE_USER, {
+    variables: { _id: get_id() },
+  });
 
-  useEffect(restoreState, []);
+  console.log(data);
+
+  useEffect(() => {}, []);
 
   return (
-    <ApolloProvider client={client}>
-      <Router>
-        <Nav />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/signup" component={Signup} />
-          <Route exact path="/donate" component={Donate} />
-          <Route exact path="/team" component={Team} />
-          <Route exact path="/about" component={About} />
-          <PrivateRoute component={DashboardRoutes} />
-        </Switch>
-      </Router>
-    </ApolloProvider>
+    <Router>
+      <Nav />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/signup" component={Signup} />
+        <Route exact path="/donate" component={Donate} />
+        <Route exact path="/team" component={Team} />
+        <Route exact path="/about" component={About} />
+        <PrivateRoute component={DashboardRoutes} />
+      </Switch>
+    </Router>
   );
 }
 

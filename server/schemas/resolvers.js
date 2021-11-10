@@ -28,6 +28,14 @@ const resolvers = {
       }
       throw new AuthenticationError('Not logged in');
     },
+    singleUser: async (parent, args, context) => {
+      console.log(args);
+      // if (context.user) {
+      //   const user = await User.findById(context.user.id).populate();
+      //   return user;
+      // }
+      // throw new AuthenticationError('Not logged in');
+    },
     // order: async (parent, { id }, context) => {
     //   if (context.user) {
     //     const user = await User.findById(context.user.id).populate({

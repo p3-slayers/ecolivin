@@ -40,21 +40,20 @@ import { gql } from '@apollo/client';
 //   }
 // `;
 
-export const QUERY_USER = gql`
-  {
-    user {
+export const QUERY_SINGLE_USER = gql`
+  query singleUser($_id: ID!) {
+    user(_id: $_id) {
+      _id
       firstName
       lastName
-      orders {
-        _id
-        purchaseDate
-        products {
-          _id
-          name
-          description
-          price
-          quantity
-          image
+      email
+      profileImage
+      answers {
+        questions {
+          text
+          category {
+            name
+          }
         }
       }
     }
