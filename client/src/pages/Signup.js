@@ -4,9 +4,19 @@ import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
 
+import { useHistory } from 'react-router-dom';
+import { useGlobalUserContext } from '../utils/GlobalState';
+import { SET_USER_DATA } from '../utils/actions';
+
 function Signup(props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [addUser] = useMutation(ADD_USER);
+
+  // for setting global state
+  const [state, dispatch] = useGlobalUserContext();
+
+  // for redirecting page
+  const history = useHistory();
 
   const handleFormSubmit = async (event) => {
     console.log(`handleFormSubmit fired`);
@@ -19,10 +29,24 @@ function Signup(props) {
         lastName: formState.lastName,
       },
     });
-    console.log(mutationResponse);
+    // isolate token from mutationResponse so it can be set to localStorage via Auth.login
     const token = mutationResponse.data.addUser.token;
+    // set the JWT to localStorage
+    Auth.login(token);
+
+    // isolate userData from the mutationResponse so it can be set to the global state
+    const userData = { ...mutationResponse.data.addUser.user };
+    // dispatch the userData to the reducer and set the global state up with the user data
+    dispatch({
+      type: SET_USER_DATA,
+      payload: userData,
+    });
+
+    console.log(state);
     console.log(token);
-    Auth.loginAndGoToQuestionnaire(token);
+
+    // render the Questionnaire page
+    history.push('/beginquestionnaire');
   };
 
   const handleChange = (event) => {

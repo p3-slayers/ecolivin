@@ -1,19 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Auth from '../../utils/auth';
 import { Link } from 'react-router-dom';
-
-
+import { useGlobalUserContext } from '../../utils/GlobalState';
 function Nav() {
+  const [globalState, dispatch] = useGlobalUserContext();
+
+  const [state, setState] = useState(globalState);
 
   function homepageLink() {
     if (Auth.loggedIn()) {
-      return (
-        <Link to="/dashboard">LOGO/Name</Link>
-      )
+      return <Link to="/dashboard">LOGO/Name</Link>;
     } else {
-      return (
-        <Link to="/">LOGO/Name</Link>
-      )
+      return <Link to="/">LOGO/Name</Link>;
     }
   }
 
@@ -66,9 +64,7 @@ function Nav() {
 
   return (
     <header className="flex-row px-1">
-      <h1>
-        {homepageLink()}
-      </h1>
+      <h1>{homepageLink()}</h1>
 
       <nav>{showNavigation()}</nav>
     </header>
