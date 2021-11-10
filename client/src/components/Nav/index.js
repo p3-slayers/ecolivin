@@ -1,74 +1,62 @@
-import React, { useState } from 'react';
-import Auth from '../../utils/auth';
-import { Link } from 'react-router-dom';
-import { useGlobalUserContext } from '../../utils/GlobalState';
-function Nav() {
+import React, { useState } from "react";
+import Auth from "../../utils/auth";
+import { Link } from "react-router-dom";
+import { useGlobalUserContext } from "../../utils/GlobalState";
+import { Nav, Navbar, NavbarBrand, NavLink, Spinner } from "react-bootstrap";
+import spinner from "../../assets/spinner.gif";
+import NavbarToggle from "react-bootstrap/esm/NavbarToggle";
+import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
+
+function Navigation() {
   const [globalState, dispatch] = useGlobalUserContext();
 
   const [state, setState] = useState(globalState);
 
   function homepageLink() {
     if (Auth.loggedIn()) {
-      return <Link to="/dashboard">LOGO/Name</Link>;
+      return <Link to="/dashboard">ECOLivin</Link>;
     } else {
-      return <Link to="/">LOGO/Name</Link>;
+      return <Link to="/">ECOLivin</Link>;
     }
   }
 
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-        <ul className="flex-row">
-          <li className="mx-1">
-            <Link to="/dashboard">Dashboard</Link>
-          </li>
-          <li className="mx-1">
-            <Link to="/feed">Feed</Link>
-          </li>
-          <li className="mx-1">
-            <Link to="/challenges">Challenges</Link>
-          </li>
-          <li className="mx-1">
-            <Link to="/events">Events</Link>
-          </li>
-          <li className="mx-1">
-            {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-            <a href="/" onClick={() => Auth.logout()}>
-              Logout
-            </a>
-          </li>
-        </ul>
+        <Nav>
+          <NavLink href="/dashboard">Dashboard</NavLink>
+          <NavLink href="/feed">Feed</NavLink>
+          <NavLink href="/challenges">Challenges</NavLink>
+          <NavLink href="/events">Events</NavLink>
+          {/* this is not using the Link component to logout or user and then refresh the application to the start */}
+          <NavLink href="/" onClick={() => Auth.logout()}>
+            Logout
+          </NavLink>
+        </Nav>
       );
     } else {
       return (
-        <ul className="flex-row">
-          <li className="mx-1">
-            <Link to="/">Home</Link>
-          </li>
-          <li className="mx-1">
-            <Link to="/about">About</Link>
-          </li>
-          <li className="mx-1">
-            <Link to="/team">Team</Link>
-          </li>
-          <li className="mx-1">
-            <Link to="/donate">Donate</Link>
-          </li>
-          <li className="mx-1">
-            <Link to="/login">Login</Link>
-          </li>
-        </ul>
+        <Nav>
+          <NavLink href="/">Home</NavLink>
+          <NavLink href="/about">About</NavLink>
+          <NavLink href="/team"> Team </NavLink>
+          <NavLink href="/donate">Donate</NavLink>
+          <NavLink href="/login">Login</NavLink>
+        </Nav>
       );
     }
   }
 
   return (
-    <header className="flex-row px-1">
-      <h1>{homepageLink()}</h1>
-
-      <nav>{showNavigation()}</nav>
-    </header>
+    <Navbar bg="light" expand="lg">
+      <NavbarBrand>
+        <img src={spinner} height="32px" />
+        {homepageLink()}
+      </NavbarBrand>
+      <NavbarToggle />
+      <NavbarCollapse>{showNavigation()}</NavbarCollapse>
+    </Navbar>
   );
 }
 
-export default Nav;
+export default Navigation;
