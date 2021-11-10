@@ -59,10 +59,24 @@ const resolvers = {
   },
   Mutation: {
     addUser: async (parent, args) => {
-      console.log(args);
+      console.log(args, 'test');
+      // args includes all fields submitted from signup
       const user = await User.create(args);
-      const token = signToken(user);
-      return { token, user };
+
+      const userWithoutPassword = {
+        _id: user._id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        // answers: user.answers,
+        // actionAnswers: user.actionAnswers
+      };
+
+      console.log(userWithoutPassword);
+
+      const token = signToken(userWithoutPassword);
+
+      return { token, userWithoutPassword };
     },
     // addOrder: async (parent, { products }, context) => {
     //   console.log(context);
@@ -105,8 +119,21 @@ const resolvers = {
       if (!correctPw) {
         throw new AuthenticationError('Incorrect credentials');
       }
-      const token = signToken(user);
-      return { token, user };
+
+      const userWithoutPassword = {
+        _id: user._id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        // answers: user.answers,
+        // actionAnswers: user.actionAnswers
+      };
+
+      console.log(userWithoutPassword);
+
+      const token = signToken(userWithoutPassword);
+
+      return { token, user: userWithoutPassword };
     },
 
     createPost: async (parent, { text }, context) => {

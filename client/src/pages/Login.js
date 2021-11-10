@@ -4,9 +4,19 @@ import { Link } from 'react-router-dom';
 import { LOGIN } from '../utils/mutations';
 import Auth from '../utils/auth';
 
+import { useHistory } from 'react-router-dom';
+import { useGlobalUserContext } from '../utils/GlobalState';
+import { SET_USER_DATA } from '../utils/actions';
+
 function Login(props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
+
   const [login, { error }] = useMutation(LOGIN);
+
+  // for setting global state
+  const [state, dispatch] = useGlobalUserContext();
+
+  const history = useHistory();
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -14,8 +24,30 @@ function Login(props) {
       const mutationResponse = await login({
         variables: { email: formState.email, password: formState.password },
       });
+      // isolate token from mutationResponse so it can be set to localStorage via Auth.login
       const token = mutationResponse.data.login.token;
+      // set the JWT to localStorage
       Auth.login(token);
+
+      // isolate userData from the mutationResponse so it can be set to the global state
+      const userData = { ...mutationResponse.data.login.user };
+
+      console.log(mutationResponse);
+      console.log(userData);
+      // dispatch the updated userData to the reducer and set the global state up with the user data
+      dispatch({
+        type: SET_USER_DATA,
+        payload: userData,
+      });
+
+      // persist userData to localstorage to maintain state across sessions
+      console.log(userData);
+      // localStorage.setItem('userData', userData);
+
+      // console.log(state);
+
+      // render the dashboard page
+      history.push('/dashboard');
     } catch (e) {
       console.log(e);
     }
@@ -61,7 +93,9 @@ function Login(props) {
           </div>
         ) : null}
         <div className="flex-row flex-end">
+          {/* <Link to="/dashboard"> */}
           <button type="submit">Submit</button>
+          {/* </Link> */}
         </div>
       </form>
     </div>
