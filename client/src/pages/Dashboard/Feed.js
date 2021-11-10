@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const Feed = () => {
+const Feed = ( {useState}) => {
+  const [text, setText] = useState('');
   return (
     <div className="container">
       {/* will inserts information/summary about the User */}
