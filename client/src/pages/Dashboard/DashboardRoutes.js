@@ -12,10 +12,10 @@ import Resources from './Resources';
 import BeginQuestionnaire from '../Questionnaire/BeginQuestionnaire';
 import Questionnaire from '../Questionnaire/Questionnaire';
 import Results from '../Questionnaire/Results';
-
+import { Container } from 'react-bootstrap';
 const DashboardRoutes = () => {
     return (
-      <div className="container">
+      <Container style={{margin:'30px auto'}}>
         <Switch>
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
         <PrivateRoute exact path="/feed" component={Feed} />
@@ -30,7 +30,7 @@ const DashboardRoutes = () => {
         <PrivateRoute exact path="/questionnaire" component={Questionnaire} />
         <PrivateRoute exact path="/results" component={Results} />
         </Switch>
-      </div>
+      </Container>
     );
   };
   

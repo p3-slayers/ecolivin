@@ -37,6 +37,7 @@ const typeDefs = gql`
     questionnaire: [Questionnaire]
     question(_id: ID!): Questionnaire
     user: User
+    singleUser(id: ID!): User
   }
 
   type Mutation {
@@ -47,6 +48,7 @@ const typeDefs = gql`
       password: String!
       profileImage: String
     ): Auth
+
     updateUser(
       firstName: String
       lastName: String
@@ -54,6 +56,7 @@ const typeDefs = gql`
       password: String
       profileImage: String
     ): User
+
     login(email: String!, password: String!): Auth
   }
 `;
