@@ -23,6 +23,7 @@ import PrivateRoute from './pages/PrivateRoutes';
 // imports for restoring state on pageload
 import { useGlobalUserContext } from './utils/GlobalState';
 import { QUERY_SINGLE_USER } from './utils/queries';
+import { SET_USER_DATA } from './utils/actions';
 
 // const httpLink = createHttpLink({
 //   uri: '/graphql',
@@ -96,8 +97,13 @@ function App({ apolloClient }) {
           query: QUERY_SINGLE_USER,
           variables: { id: id },
         });
+        const userData = user.data.singleUser;
         console.log(user);
-        return user;
+        console.log(userData);
+        dispatch({
+          type: SET_USER_DATA,
+          payload: userData,
+        });
       } catch (err) {
         console.log(err);
       }
