@@ -21,15 +21,19 @@ const resolvers = {
     question: async (parent, { id }) =>
       Questionnaire.findById(id).populate('category'),
 
-    user: async (parent, args, context) => {
-      if (context.user) {
-        const user = await User.findById(context.user.id).populate();
-        return user;
-      }
-      throw new AuthenticationError('Not logged in');
-    },
-    singleUser: async (parent, args, context) => {
-      console.log(args);
+    // user: async (parent, args, context) => {
+    //   if (context.user) {
+    //     const user = await User.findById(context.user.id).populate();
+    //     return user;
+    //   }
+    //   throw new AuthenticationError('Not logged in');
+    // },
+
+    singleUser: async (parent, { id }) => {
+      console.log(id);
+      const user = await User.findById(id).populate('answers');
+      console.log(user);
+      return user;
       // if (context.user) {
       //   const user = await User.findById(context.user.id).populate();
       //   return user;

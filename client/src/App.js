@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import auth from './utils/auth';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import {
-  // ApolloClient,
+  ApolloClient,
   // InMemoryCache,
   // ApolloProvider,
   // createHttpLink,
@@ -55,10 +55,12 @@ import { QUERY_SINGLE_USER } from './utils/queries';
 //   cache: new InMemoryCache(),
 // });
 
-function App() {
+function App({ apolloClient }) {
+  console.log(apolloClient);
   const [state, dispatch] = useGlobalUserContext();
 
   const get_id = () => {
+    console.log(`get_id Fired!`);
     try {
       let loggedIn = auth.loggedIn();
 
@@ -77,13 +79,32 @@ function App() {
       return false;
     }
   };
-  const { loading, data } = useQuery(QUERY_SINGLE_USER, {
-    variables: { _id: get_id() },
+
+  // const { loading, data } = useQuery(QUERY_SINGLE_USER, {
+  //   variables: { id: loggedInUser },
+  // });
+
+  // console.log(data);
+
+  useEffect(() => {
+    let loggedInUserId = get_id();
+    console.log(loggedInUserId);
+    const queryUserData = async (id) => {
+      console.log(`queryUserData fired`);
+      try {
+        const user = await apolloClient.query({
+          query: QUERY_SINGLE_USER,
+          variables: { id: id },
+        });
+        console.log(user);
+        return user;
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    let userData = queryUserData(loggedInUserId);
+    console.log(userData);
   });
-
-  console.log(data);
-
-  useEffect(() => {}, []);
 
   return (
     <Router>

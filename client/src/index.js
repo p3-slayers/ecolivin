@@ -11,10 +11,24 @@ import {
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
-  useQuery,
 } from '@apollo/client';
+
 import { setContext } from '@apollo/client/link/context';
 
+// error handling stuff
+import { onError } from 'apollo-link-error';
+import { ApolloLink } from 'apollo-link';
+
+const errorLink = onError(({ graphQLErrors, networkError }) => {
+  if (graphQLErrors) {
+    console.log('graphQLErrors', graphQLErrors);
+  }
+  if (networkError) {
+    console.log('networkError', networkError);
+  }
+});
+
+// basic client setup
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
@@ -29,19 +43,21 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
+const link = ApolloLink.from([errorLink, authLink.concat(httpLink)]);
+
 const client = new ApolloClient({
-  link: authLink.concat(httpLink),
+  link,
   cache: new InMemoryCache(),
 });
 
 ReactDOM.render(
-  <React.StrictMode>
-    <ApolloProvider client={client}>
-      <UserContextProvider>
-        <App />
-      </UserContextProvider>
-    </ApolloProvider>
-  </React.StrictMode>,
+  // <React.StrictMode>
+  <ApolloProvider client={client}>
+    <UserContextProvider>
+      <App apolloClient={client} />
+    </UserContextProvider>
+  </ApolloProvider>,
+  // </React.StrictMode>,
   document.getElementById('root')
 );
 

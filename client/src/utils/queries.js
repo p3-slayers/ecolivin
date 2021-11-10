@@ -41,21 +41,12 @@ import { gql } from '@apollo/client';
 // `;
 
 export const QUERY_SINGLE_USER = gql`
-  query singleUser($_id: ID!) {
-    user(_id: $_id) {
+  query singleUser($id: ID!) {
+    singleUser(id: $id) {
       _id
       firstName
       lastName
       email
-      profileImage
-      answers {
-        questions {
-          text
-          category {
-            name
-          }
-        }
-      }
     }
   }
 `;
