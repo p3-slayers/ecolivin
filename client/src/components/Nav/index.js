@@ -13,12 +13,12 @@ function Navigation() {
 
   const [state, setState] = useState(globalState);
   const [expanded, setExpanded] = useState(false);
-
   function homepageLink() {
     if (Auth.loggedIn()) {
-      return <Link to="/dashboard">ECOLivin</Link>;
+      //ADD LINEHEIGHT when logo is picked
+      return <Link to="/dashboard" style={{textDecoration:'none'}}><span style={{color:'green'}}>ECO</span>Livin</Link>;
     } else {
-      return <Link to="/">ECOLivin</Link>;
+      return <Link to="/" style={{textDecoration:'none', color:'black', fontSize:"32px"}}> <span style={{color:'green', textDecoration:'none'}}>ECO</span>Livin</Link>;
     }
   }
 
