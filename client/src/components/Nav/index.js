@@ -3,6 +3,7 @@ import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
 import { useGlobalUserContext } from "../../utils/GlobalState";
 import { Nav, Navbar, NavbarBrand, NavLink } from "react-bootstrap";
+//replace the spinner w our logo 
 import spinner from "../../assets/spinner.gif";
 import NavbarToggle from "react-bootstrap/esm/NavbarToggle";
 import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
@@ -11,6 +12,7 @@ function Navigation() {
   const [globalState, dispatch] = useGlobalUserContext();
 
   const [state, setState] = useState(globalState);
+  const [expanded, setExpanded] = useState(false);
 
   function homepageLink() {
     if (Auth.loggedIn()) {
@@ -23,7 +25,7 @@ function Navigation() {
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-        <Nav>
+        <Nav onClick={() => setExpanded(false)}>
           <NavLink as={Link} to="/dashboard">Dashboard</NavLink>
           <NavLink as={Link} to="/feed">Feed</NavLink>
           <NavLink as={Link} to="/challenges">Challenges</NavLink>
@@ -36,8 +38,8 @@ function Navigation() {
       );
     } else {
       return (
-        <Nav>
-          <NavLink as={Link} to="/">Home</NavLink>
+        <Nav onClick={() => setExpanded(false)}>
+          <NavLink as={Link} to="/"> Home</NavLink>
           <NavLink as={Link} to="/about">About</NavLink>
           <NavLink as={Link} to="/team"> Team </NavLink>
           <NavLink as={Link} to="/donate">Donate</NavLink>
@@ -48,12 +50,12 @@ function Navigation() {
   }
 
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="light" expand="lg" expanded={expanded}>
       <NavbarBrand>
         <img src={spinner} height="32px" />
         {homepageLink()}
       </NavbarBrand>
-      <NavbarToggle />
+      <NavbarToggle onClick={() => setExpanded(expanded ? false : "expanded")} />
       <NavbarCollapse>{showNavigation()}</NavbarCollapse>
     </Navbar>
   );
