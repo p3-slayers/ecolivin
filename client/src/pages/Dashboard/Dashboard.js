@@ -16,7 +16,7 @@ const Dashboard = () => {
 
   //on the container that wraps around these pages add margin 30px auto
   return (
-    <div className="d-flex"  > 
+    <div className="d-flex" > 
       {/* will inserts information/summary about the User */}
       <Sidebar />
       <div className="p-2 flex-grow-1" style={{marginLeft:'30px'}}>
