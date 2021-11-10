@@ -2,8 +2,8 @@ import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 // import auth from '../../utils/auth';
 import Sidebar from '../../components/Sidebar/index';
-
 import { useGlobalUserContext } from '../../utils/GlobalState';
+import BarChart from '../../components/ChartJs';
 
 const Dashboard = () => {
   // console.log(auth.loggedIn())
@@ -12,6 +12,7 @@ const Dashboard = () => {
   console.log(state);
   // useEffect(console.log(state), []);
   return (
+    <>
     <div className="d-flex">
       {/* will inserts information/summary about the User */}
       <Sidebar />
@@ -20,6 +21,8 @@ const Dashboard = () => {
         <h3>content</h3>
       </div>
     </div>
+      <BarChart/>
+      </>
   );
 };
 
