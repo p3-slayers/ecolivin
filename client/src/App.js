@@ -6,6 +6,7 @@ import {
   InMemoryCache,
   ApolloProvider,
   createHttpLink,
+  useQuery,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
@@ -15,10 +16,13 @@ import About from './pages/About';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Nav from './components/Nav';
-import { UserContextProvider } from './utils/GlobalState';
 import Donate from './pages/Donate';
 import DashboardRoutes from './pages/Dashboard/DashboardRoutes';
 import PrivateRoute from './pages/PrivateRoutes';
+
+// imports for restoring state on pageload
+import { useGlobalUserContext } from './utils/GlobalState';
+import { QUERY_SINGLE_USER } from './utils/queries';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -52,27 +56,45 @@ const client = new ApolloClient({
 });
 
 function App() {
-  const checkJWT = () => {
-    let token = localStorage.getItem('id_token');
+  const [state, dispatch] = useGlobalUserContext();
+
+  const restoreState = () => {
+    try {
+      let loggedIn = auth.loggedIn();
+
+      if (loggedIn) {
+        console.log(`Logged in!`);
+        let profile = auth.getProfile();
+        console.log(profile);
+        let _id = profile.data._id;
+        console.log(_id);
+        // const {loading, data} =  useQuery(QUERY_SINGLE_USER, {
+        //   variables: {_id: _id},
+        // });
+        // console.log(userData);
+      } else {
+        console.log(`NOT logged in!`);
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
-  useEffect(checkJWT, []);
+  useEffect(restoreState, []);
 
   return (
     <ApolloProvider client={client}>
       <Router>
-        <UserContextProvider>
-          <Nav />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/signup" component={Signup} />
-            <Route exact path="/donate" component={Donate} />
-            <Route exact path="/team" component={Team} />
-            <Route exact path="/about" component={About} />
-            <PrivateRoute component={DashboardRoutes} />
-          </Switch>
-        </UserContextProvider>
+        <Nav />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/donate" component={Donate} />
+          <Route exact path="/team" component={Team} />
+          <Route exact path="/about" component={About} />
+          <PrivateRoute component={DashboardRoutes} />
+        </Switch>
       </Router>
     </ApolloProvider>
   );
