@@ -3,8 +3,8 @@ import { Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 // import auth from '../../utils/auth';
 import Sidebar from '../../components/Sidebar/index';
-
 import { useGlobalUserContext } from '../../utils/GlobalState';
+import BarChart from '../../components/ChartJs';
 
 const Dashboard = () => {
   // console.log(auth.loggedIn())
@@ -16,7 +16,10 @@ const Dashboard = () => {
 
   //on the container that wraps around these pages add margin 30px auto
   return (
-    <div className="d-flex" > 
+
+    <>
+    <div className="d-flex">
+
       {/* will inserts information/summary about the User */}
       <Sidebar />
       <div className="p-2 flex-grow-1" style={{marginLeft:'30px'}}>
@@ -25,6 +28,8 @@ const Dashboard = () => {
         <h1>Hello, {state.email}</h1>
       </div>
     </div>
+      <BarChart/>
+      </>
   );
 };
 
