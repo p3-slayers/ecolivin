@@ -60,3 +60,24 @@ export const QUERY_USER = gql`
     }
   }
 `;
+
+
+export const QUERY_ALL_POSTS = gql`
+  {
+    getPosts {
+      id
+      post
+      date
+      user
+      likes {
+        user
+      }
+      comments {
+        id
+        user
+        date
+        text
+      }
+    }
+  }
+`;

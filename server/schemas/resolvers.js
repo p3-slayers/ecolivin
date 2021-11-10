@@ -170,15 +170,12 @@ const resolvers = {
 
       const post = await Post.findById(postId);
       if (post) {
-        if (post.likes.find((like) => like.username === username)) {
+        if (post.likes.find((like) => like.user.id === user.id)) {
           // Post already likes, unlike it
-          post.likes = post.likes.filter((like) => like.username !== username);
+          post.likes = post.likes.filter((like) => like.user.id !== user.id);
         } else {
           // Not liked, like post
-          post.likes.push({
-            username,
-            createdAt: new Date().toISOString()
-          });
+          post.likes.push(user.id);
         }
 
         await post.save();
