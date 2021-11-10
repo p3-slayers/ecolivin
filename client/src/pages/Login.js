@@ -31,6 +31,7 @@ function Login(props) {
 
       // isolate userData from the mutationResponse so it can be set to the global state
       const userData = { ...mutationResponse.data.login.user };
+
       console.log(mutationResponse);
       console.log(userData);
       // dispatch the updated userData to the reducer and set the global state up with the user data
@@ -40,9 +41,10 @@ function Login(props) {
       });
 
       // persist userData to localstorage to maintain state across sessions
-      localStorage.setItem('userData', JSON.stringify(userData));
+      console.log(userData);
+      // localStorage.setItem('userData', userData);
 
-      console.log(state);
+      // console.log(state);
 
       // render the dashboard page
       history.push('/dashboard');

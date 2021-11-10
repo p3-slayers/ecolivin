@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import auth from './utils/auth';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import {
   ApolloClient,
@@ -33,12 +34,30 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
+// hook for on load
+// if loggedIn(), if token exists, and session not expired =>
+// query localStorage for userData,
+// set userData to global state
+// load history[history.length - 1]
+// else
+// load default landing page
+
+// If user logs out,
+// remove token
+// clear localStorage userData entry.
+
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
 function App() {
+  const checkJWT = () => {
+    let token = localStorage.getItem('id_token');
+  };
+
+  useEffect(checkJWT, []);
+
   return (
     <ApolloProvider client={client}>
       <Router>

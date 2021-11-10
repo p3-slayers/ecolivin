@@ -10,6 +10,7 @@ export const reducer = (state, action) => {
   switch (action.type) {
     case SET_USER_DATA: {
       const userData = action.payload;
+      console.log(userData);
       return userData;
     }
     // case UPDATE_PRODUCTS:
