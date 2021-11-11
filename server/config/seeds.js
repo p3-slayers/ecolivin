@@ -6,6 +6,7 @@ const {
   Answer,
   Action,
   ActionAnswer,
+  Post
 } = require('../models');
 
 db.once('open', async () => {
@@ -319,6 +320,9 @@ db.once('open', async () => {
 
   console.log('action seeded');
 
+
+
+
   // Seeds for Users
   await User.deleteMany();
 
@@ -352,5 +356,33 @@ db.once('open', async () => {
 
   console.log('users seeded');
 
+
+
+
+
+
+// seeds for comments
+
+// seeds for like
+
+
+  // seeds for posts
+  await Post.deleteMany();
+
+  const posts = await Post.insertMany([
+    {
+        post: "hello worlds",
+        date: "Wed Oct 05 2011 16:48:00 GMT+0200 (CEST)",
+        user: User[0],
+        comments: [],
+        likes: []
+    },
+  ]);
+
+  console.log('posts seeded');
+
+
+
   process.exit();
 });
+

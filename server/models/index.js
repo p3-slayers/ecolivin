@@ -4,5 +4,6 @@ const Category = require('./Category');
 const Answer = require('./Answer');
 const Action = require('./Action');
 const ActionAnswer = require('./ActionAnswer');
+const Post = require('./Post');
 
-module.exports = { User, Questionnaire, Category, Answer, Action, ActionAnswer };
+module.exports = { User, Questionnaire, Category, Answer, Action, ActionAnswer, Post };
