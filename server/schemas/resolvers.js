@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Questionnaire, Category, Order } = require('../models');
+const { User, Questionnaire, Category, Post } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -21,13 +21,39 @@ const resolvers = {
     question: async (parent, { id }) =>
       Questionnaire.findById(id).populate('category'),
 
-    user: async (parent, args, context) => {
-      if (context.user) {
-        const user = await User.findById(context.user.id).populate();
-        return user;
-      }
-      throw new AuthenticationError('Not logged in');
+    // user: async (parent, args, context) => {
+    //   if (context.user) {
+    //     const user = await User.findById(context.user.id).populate();
+    //     return user;
+    //   }
+    //   throw new AuthenticationError('Not logged in');
+    // },
+
+    singleUser: async (parent, { id }) => {
+      console.log(id);
+      const user = await User.findById(id).populate('answers');
+      console.log(user);
+      return user;
+      // if (context.user) {
+      //   const user = await User.findById(context.user.id).populate();
+      //   return user;
+      // }
+      // throw new AuthenticationError('Not logged in');
     },
+
+    getPosts: async () => { 
+      const posts = Post.find().sort({date: -1});
+       return posts;  
+      },
+    
+    getPost: async (parent, {postId} ) => {
+      const post = await Post.findById(postId);
+      if (post) {
+        return post;
+      } else {
+        throw new Error('Post not found');
+      }
+    }
     // order: async (parent, { id }, context) => {
     //   if (context.user) {
     //     const user = await User.findById(context.user.id).populate({
@@ -40,13 +66,29 @@ const resolvers = {
 
     //   throw new AuthenticationError('Not logged in');
     // },
+
+
   },
   Mutation: {
     addUser: async (parent, args) => {
-      console.log(args);
+      console.log(args, 'test');
+      // args includes all fields submitted from signup
       const user = await User.create(args);
-      const token = signToken(user);
-      return { token, user };
+
+      const userWithoutPassword = {
+        _id: user._id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        // answers: user.answers,
+        // actionAnswers: user.actionAnswers
+      };
+
+      console.log(userWithoutPassword);
+
+      const token = signToken(userWithoutPassword);
+
+      return { token, userWithoutPassword };
     },
     // addOrder: async (parent, { products }, context) => {
     //   console.log(context);
@@ -89,9 +131,69 @@ const resolvers = {
       if (!correctPw) {
         throw new AuthenticationError('Incorrect credentials');
       }
-      const token = signToken(user);
-      return { token, user };
+
+      const userWithoutPassword = {
+        _id: user._id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        // answers: user.answers,
+        // actionAnswers: user.actionAnswers
+      };
+
+      console.log(userWithoutPassword);
+
+      const token = signToken(userWithoutPassword);
+
+      return { token, user: userWithoutPassword };
     },
+
+    createPost: async (parent, { text }, context) => {
+      const user = checkAuth(context);
+      if (text.trim() === '') {
+        throw new Error('Post must not be empty');
+      }
+
+      const newPost = new Post({
+        text,
+        user: user.firstName + user.lastName,
+        date: new Date().toISOString()
+      });
+
+      const post = await newPost.save();
+      return post;
+    },
+    deletePost: async (parent, { postId }, context) => {
+      const user = checkAuth(context);
+      try {
+        const post = await Post.findById(postId);
+        if (user.id === post.user.id) {
+          await post.delete();
+          return 'Post deleted successfully';
+        } else {
+          throw new AuthenticationError('Action not allowed');
+        }
+      } catch (err) {
+        throw new Error(err);
+      }
+    },
+    likePost: async (parent, { postId }, context) => {
+      const user = checkAuth(context);
+
+      const post = await Post.findById(postId);
+      if (post) {
+        if (post.likes.find((like) => like.user.id === user.id)) {
+          // Post already likes, unlike it
+          post.likes = post.likes.filter((like) => like.user.id !== user.id);
+        } else {
+          // Not liked, like post
+          post.likes.push(user.id);
+        }
+
+        await post.save();
+        return post;
+      } else throw new UserInputError('Post not found');
+    }
   },
 };
 

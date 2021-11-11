@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Profile = () => {
+const Challenges = () => {
   return (
     <div className="container">
       {/* will inserts information/summary about the User */}
-      <h1>PROFILE/ DASHBOARD PAGE</h1>
+      <h1>Challenges PAGE</h1>
     </div>
   );
 };
 
-export default Profile;
+export default Challenges;

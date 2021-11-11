@@ -31,8 +31,17 @@ class AuthService {
     // Saves user token to localStorage
     localStorage.setItem('id_token', idToken);
 
-    window.location.assign('/');
+    window.location.assign('/dashboard');
   }
+
+  // as we are just rendering the next page rather than loading a new page, reworked this so that on form submit it uses the standard login method to set the JWT, and then renders the /beginquestionnaire page by using history.push() from the Signup.js formsubmit method
+
+  // loginAndGoToQuestionnaire(idToken) {
+  //   // Saves user token to localStorage
+  //   localStorage.setItem('id_token', idToken);
+
+  //   window.location.assign('/beginquestionnaire');
+  // }
 
   logout() {
     // Clear user token and profile data from localStorage
