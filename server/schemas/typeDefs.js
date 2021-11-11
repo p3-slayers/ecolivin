@@ -53,11 +53,21 @@ const typeDefs = gql`
     user: User
   }
 
+  type Result {
+    id: ID
+    waste: Float!
+    transportation: Float!
+    food: Float!
+    lifestyle: Float!
+    housing: Float!
+  }
+
   type Query {
     categories: [Category]
     questionnaire: [Questionnaire]
     question(_id: ID!): Questionnaire
     user: User
+    getResults: [Result]
     getPosts: [Post]
     getPost(postId: ID!): Post
     singleUser(id: ID!): User
@@ -79,6 +89,14 @@ const typeDefs = gql`
       password: String
       profileImage: String
     ): User
+
+    addResult(
+      waste: Float!
+      transportation: Float!
+      food: Float!
+      lifestyle: Float!
+      housing: Float!
+    ):Result
 
     login(email: String!, password: String!): Auth
     createPost(body: String!): Post!

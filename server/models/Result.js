@@ -3,29 +3,29 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const resultsSchema = new Schema({
-  Food: {
+  food: {
     type: Number,
     required: true
   },
-  Transportation: {
+  transportation: {
     type: Number,
     required: true
   },
-  Waste: {
+  waste: {
     type: Number,
     required: true
   },
-  Housing: {
+  housing: {
     type: Number,
     required: true
   },
-  Lifestyle: {
+  lifestyle: {
     type: Number,
     required: true
   },
 
 });
 
-const Results = mongoose.model('Answer', resultsSchema);
+const Result = mongoose.model('Result', resultsSchema);
 
-module.exports = Results;
+module.exports = Result;

@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Questionnaire, Category, Post } = require('../models');
+const { User, Questionnaire, Category, Post, Result } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -41,6 +41,11 @@ const resolvers = {
       // throw new AuthenticationError('Not logged in');
     },
 
+    getResults: async () => { 
+      const results = Result.find();
+      return results;  
+    },
+    
     getPosts: async () => { 
       const posts = Post.find().sort({date: -1});
        return posts;  
@@ -89,6 +94,15 @@ const resolvers = {
       const token = signToken(userWithoutPassword);
 
       return { token, userWithoutPassword };
+    },
+    addResult: async (parent, args) => {
+      console.log(args, 'test');
+      // args includes all fields submitted from signup
+      const result = await Result.create(args);
+
+      console.log(result);
+
+      return result;
     },
     // addOrder: async (parent, { products }, context) => {
     //   console.log(context);

@@ -71,3 +71,17 @@ export const QUERY_ALL_POSTS = gql`
     }
   }
 `;
+
+
+export const QUERY_ALL_RESULTS = gql`
+  {
+    getResults {
+      id
+      food
+      waste
+      transportation
+      lifestyle
+      housing
+    }
+  }
+`;
