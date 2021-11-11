@@ -9,14 +9,16 @@ import Account from './Account';
 import HabitTracker from './HabitTracker';
 import DailyActions from './DailyActions';
 import Resources from './Resources';
+import Messenger from '../Messenger';
+
 import BeginQuestionnaire from '../Questionnaire/BeginQuestionnaire';
 import Questionnaire from '../Questionnaire/Questionnaire';
 import Results from '../Questionnaire/Results';
 import { Container } from 'react-bootstrap';
 const DashboardRoutes = () => {
-    return (
-      <Container style={{margin:'30px auto'}}>
-        <Switch>
+  return (
+    <Container style={{ margin: '30px auto' }}>
+      <Switch>
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
         <PrivateRoute exact path="/feed" component={Feed} />
         <PrivateRoute exact path="/challenges" component={Challenges} />
@@ -26,12 +28,17 @@ const DashboardRoutes = () => {
         <PrivateRoute exact path="/dailyactions" component={DailyActions} />
         <PrivateRoute exact path="/habittracker" component={HabitTracker} />
         <PrivateRoute exact path="/resources" component={Resources} />
-        <PrivateRoute exact path="/beginquestionnaire" component={BeginQuestionnaire} />
+        <PrivateRoute
+          exact
+          path="/beginquestionnaire"
+          component={BeginQuestionnaire}
+        />
         <PrivateRoute exact path="/questionnaire" component={Questionnaire} />
         <PrivateRoute exact path="/results" component={Results} />
-        </Switch>
-      </Container>
-    );
-  };
-  
-  export default DashboardRoutes;
+        <PrivateRoute exact path="/messenger" component={Messenger} />
+      </Switch>
+    </Container>
+  );
+};
+
+export default DashboardRoutes;
