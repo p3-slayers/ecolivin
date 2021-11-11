@@ -60,6 +60,7 @@ const typeDefs = gql`
     user: User
     getPosts: [Post]
     getPost(postId: ID!): Post
+    singleUser(id: ID!): User
   }
 
   type Mutation {
@@ -70,6 +71,7 @@ const typeDefs = gql`
       password: String!
       profileImage: String
     ): Auth
+
     updateUser(
       firstName: String
       lastName: String
@@ -77,6 +79,7 @@ const typeDefs = gql`
       password: String
       profileImage: String
     ): User
+
     login(email: String!, password: String!): Auth
     createPost(body: String!): Post!
     deletePost(postId: ID!): String!
