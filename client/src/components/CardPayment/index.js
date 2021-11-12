@@ -5,6 +5,7 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import FormField from "../FormField";
 import { Container, Row } from "react-bootstrap";
 
+
 function Card() {
   const [checkoutError, setCheckoutError] = useState();
 
@@ -32,17 +33,26 @@ function Card() {
       },
     };
     // create payment intent on server
-    // const { clientSecret } = await fetch("/create-payment-intent", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     paymentMethodType: "card",
-    //     currency: "usd",
-    //   }),
-    // }).then((r) => r.json());
-    // alert("payment intent crerated");
+    const response = await fetch("http://localhost:3000/create-checkout-session", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        items: [
+          {
+            id: 1,
+            quantity: 2,
+          },
+          {
+            id: 2,
+            quantity: 1,
+          },
+        ],
+      }),
+    }).then((r) => r.json());
+
+    console.log(response)
 
     //destructuring the err and paymentMethod
     const { error, paymentMethod } = await stripe.createPaymentMethod({
@@ -51,6 +61,8 @@ function Card() {
       card: elements.getElement(CardElement),
       billing_details: billingDetails,
     });
+
+
 
     console.log("payment method:", paymentMethod);
     if (error) {
@@ -89,7 +101,7 @@ function Card() {
   };
   return (
     <>
-      <form id="paymentForm" onSubmit={handleSubmit}>
+      <form id="paymentForm" onSubmit={handleSubmit} >
         {/* <label htmlFor="card-element"></label> */}
         <Row>
           <PaymentForm>
