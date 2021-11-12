@@ -54,6 +54,9 @@ function Navigation() {
           <NavLink as={Link} to="/messenger">
             Messenger
           </NavLink>
+          <NavLink as={Link} to="/donate">
+            Donate
+          </NavLink>
           {/* this is not using the Link component to logout or user and then refresh the application to the start */}
           <NavLink href="/" onClick={() => Auth.logout()}>
             Logout
