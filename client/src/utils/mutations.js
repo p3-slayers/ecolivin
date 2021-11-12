@@ -58,5 +58,17 @@ export const ADD_USER = gql`
   }
 `;
 
+export const ADD_RESULT = gql`
+  mutation addResult($food: Float!, $transportation: Float!, $lifestyle: Float!, $waste: Float!, $housing: Float!) {
+    addResult(food: $food, waste: $waste, transportation: $transportation, lifestyle: $lifestyle, housing: $housing) {
+      food
+      waste
+      transportation
+      lifestyle
+      housing
+    }
+  }
+`;
+
 
 

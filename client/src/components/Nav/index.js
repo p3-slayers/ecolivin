@@ -66,21 +66,21 @@ function Navigation() {
     } else {
       return (
         <Nav onClick={() => setExpanded(false)}>
-          <NavLink as={Link} to="/">
+          <NavLink className="text-dark" as={Link} to="/">
             {' '}
             Home
           </NavLink>
-          <NavLink as={Link} to="/about">
+          <NavLink className="text-dark" as={Link} to="/about">
             About
           </NavLink>
-          <NavLink as={Link} to="/team">
+          <NavLink className="text-dark" as={Link} to="/team">
             {' '}
             Team{' '}
           </NavLink>
-          <NavLink as={Link} to="/donate">
+          <NavLink className="text-dark" as={Link} to="/donate">
             Donate
           </NavLink>
-          <NavLink as={Link} to="/login">
+          <NavLink className="text-dark" as={Link} to="/login">
             Login
           </NavLink>
         </Nav>
@@ -89,7 +89,11 @@ function Navigation() {
   }
 
   return (
-    <Navbar bg="light" expand="lg" expanded={expanded}>
+    <Navbar
+      style={{ backgroundColor: '#ECCCB6' }}
+      expand="lg"
+      expanded={expanded}
+    >
       <NavbarBrand>
         <img src={spinner} height="32px" />
         {homepageLink()}
@@ -97,7 +101,12 @@ function Navigation() {
       <NavbarToggle
         onClick={() => setExpanded(expanded ? false : 'expanded')}
       />
-      <NavbarCollapse>{showNavigation()}</NavbarCollapse>
+      <NavbarCollapse
+        className="justify-content-center"
+        style={{ paddingRight: '145px' }}
+      >
+        {showNavigation()}
+      </NavbarCollapse>
     </Navbar>
   );
 }

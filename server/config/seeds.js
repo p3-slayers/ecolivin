@@ -10,6 +10,7 @@ const {
   Contact,
   Conversation,
   Message,
+  Result
 } = require('../models');
 
 db.once('open', async () => {
@@ -374,6 +375,23 @@ db.once('open', async () => {
   ]);
 
   console.log('posts seeded');
+
+
+  // seeds for results
+  await Result.deleteMany();
+
+  const results = await Result.insertMany([
+    {
+      food: 100.0,
+      housing: 0.0,
+      transportation: 0.0,
+      waste: 1.1,
+      lifestyle: 1.2
+    },
+  ]);
+
+  console.log('results seeded');
+
 
   process.exit();
 });
