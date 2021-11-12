@@ -30,6 +30,7 @@ function Navigation() {
           <NavLink as={Link} to="/feed">Feed</NavLink>
           <NavLink as={Link} to="/challenges">Challenges</NavLink>
           <NavLink as={Link} to="/events">Events</NavLink>
+          <NavLink as={Link} to="/donate">Donate</NavLink>
           {/* this is not using the Link component to logout or user and then refresh the application to the start */}
           <NavLink href="/" onClick={() => Auth.logout()}>
             Logout
