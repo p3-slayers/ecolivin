@@ -9,7 +9,7 @@ import Account from './Account';
 import HabitTracker from './HabitTracker';
 import DailyActions from './DailyActions';
 import Resources from './Resources';
-import Messenger from '../Messenger';
+import Messenger from '../Messenger/Messenger';
 
 import BeginQuestionnaire from '../Questionnaire/BeginQuestionnaire';
 import Questionnaire from '../Questionnaire/Questionnaire';

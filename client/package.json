@@ -19,7 +19,8 @@
     "react-icons": "^4.3.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^4.0.2",
-    "react-step-builder": "^2.0.11"
+    "react-step-builder": "^2.0.11",
+    "socket.io-client": "^4.3.2"
   },
   "scripts": {
     "start": "react-scripts start",

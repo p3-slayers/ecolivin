@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 
-const Messenger = () => {
+export default function MsgDashboard() {
   return (
     <Form>
       <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -24,6 +24,4 @@ const Messenger = () => {
       </Button>
     </Form>
   );
-};
-
-export default Messenger;
+}
