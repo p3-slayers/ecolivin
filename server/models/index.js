@@ -5,5 +5,6 @@ const Answer = require('./Answer');
 const Action = require('./Action');
 const ActionAnswer = require('./ActionAnswer');
 const Post = require('./Post');
+const Result = require('./Result')
 
-module.exports = { User, Questionnaire, Category, Answer, Action, ActionAnswer, Post };
+module.exports = { User, Questionnaire, Category, Answer, Action, ActionAnswer, Post, Result };
