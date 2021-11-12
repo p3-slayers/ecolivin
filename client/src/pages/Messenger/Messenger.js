@@ -1,3 +1,5 @@
+// This file is equivalent to app.js in the example
+
 import MsgDashboard from './components/MsgDashboard';
 import { ContactsProvider } from './contexts/ContactsProvider';
 import { ConversationsProvider } from './contexts/ConversationsProvider';
@@ -11,6 +13,7 @@ const Messenger = () => {
 
   console.log(`STATE IS AS FOLLOWS`);
   console.log(state);
+  console.log(id);
   return (
     <SocketProvider id={id}>
       <ContactsProvider>
