@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "react-bootstrap";
-import { Bar, ChartProps } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 
 
 const food = localStorage.getItem('food');

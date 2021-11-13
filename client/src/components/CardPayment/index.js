@@ -3,7 +3,7 @@ import PaymentForm from "../PaymentForm";
 import { useState } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import FormField from "../FormField";
-import { Container, Row } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 
 
 function Card() {

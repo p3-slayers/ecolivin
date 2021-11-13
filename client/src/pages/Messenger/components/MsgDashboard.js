@@ -1,27 +1,16 @@
 import React from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { useConversationsContext } from '../contexts/ConversationsProvider';
+import OpenConversation from './OpenConversation';
+import Sidebar from './Sidebar';
 
-export default function MsgDashboard() {
+export default function Dashboard({ id }) {
+  const { selectedConversation } = useConversationsContext();
   return (
-    <Form>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" />
-        <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
-        </Form.Text>
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
-      </Form.Group>
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
-    </Form>
+    <div className="d-flex" style={{ height: '100vh' }}>
+      <Sidebar id={id} />
+      {/* if selectedConversation, render the <OpenConversation> */}
+      {selectedConversation && <OpenConversation />}
+    </div>
   );
 }
+

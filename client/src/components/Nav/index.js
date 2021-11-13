@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Auth from '../../utils/auth';
 import { Link } from 'react-router-dom';
-import { useGlobalUserContext } from '../../utils/GlobalState';
 import { Nav, Navbar, NavbarBrand, NavLink } from 'react-bootstrap';
 //replace the spinner w our logo
 import spinner from '../../assets/spinner.gif';
@@ -9,9 +8,6 @@ import NavbarToggle from 'react-bootstrap/esm/NavbarToggle';
 import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse';
 
 function Navigation() {
-  const [globalState, dispatch] = useGlobalUserContext();
-
-  const [state, setState] = useState(globalState);
   const [expanded, setExpanded] = useState(false);
   function homepageLink() {
     if (Auth.loggedIn()) {
@@ -91,7 +87,7 @@ function Navigation() {
   return (
     <Navbar style={{backgroundColor:"#DFD4D1"}} expand="lg" expanded={expanded}>
       <NavbarBrand>
-        <img src={spinner} height="32px" />
+        <img src={spinner} alt="logo spinner" height="32px" />
         {homepageLink()}
       </NavbarBrand>
       <NavbarToggle
