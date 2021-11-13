@@ -3,7 +3,36 @@ import PaymentForm from "../PaymentForm";
 import { useState } from "react";
 import { useStripe, useElements } from "@stripe/react-stripe-js";
 import FormField from "../FormField";
+import { Button, ButtonGroup } from "react-bootstrap";
+
 import { Container, Row } from "react-bootstrap";
+
+
+const donationData = [
+  {
+     amount:10,
+      'id':1
+  },
+  {
+      amount:20,
+      'id':2
+  },
+  {
+      amount:50,
+      'id':3
+  },
+  {
+      amount:100,
+      'id':4
+  },
+  {
+      amount:'Other',
+      'id':5
+  },
+  ];
+
+  var newArr= donationData.filter(item=> item.id !==5)
+  console.log(newArr)
 
 
 function Card() {
@@ -15,7 +44,7 @@ function Card() {
   // const handleCardDetailsChange = (e) => {
   //   e.error ? setCheckoutError(e.error.message) : setCheckoutError();
   // };
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e, donationAmt) => {
     e.preventDefault();
     console.log("submit payment method hit");
     //checks to see if stripe or elements were loaded from the two hooks
@@ -42,10 +71,6 @@ function Card() {
         items: [
           {
             id: 1,
-            quantity: 2,
-          },
-          {
-            id: 2,
             quantity: 1,
           },
         ],
@@ -94,19 +119,25 @@ function Card() {
   return (
     <>
       <form id="paymentForm" onSubmit={handleSubmit} >
-        {/* <label htmlFor="card-element"></label> */}
-        {/* <Row>
-          <PaymentForm>
-            <FormField />
-          </PaymentForm>
-        </Row> */}
+      <div>
+      <h2>Choose:</h2>
+      {newArr.map((item) => (
+      <ButtonGroup>
+            <Button
+              key={item.id}
+              value={item.amount}
+              onClick={handleSubmit}
+            >
+              ${item.amount}
+            </Button>
+      </ButtonGroup>
+      ))}
+        <input type='text' placeholder="$ Other Amount" >
+       </input>
+    </div>
+ 
         <div className="py-3">
-          {/* <CardElement
-            onChange={handleCardDetailsChange}
-            id="card-element"
-            options={cardElementOptions}
-          /> */}
-          {/* {checkoutError && <p style={{ color: "red" }}>{checkoutError}</p>} */}
+  
         </div>
         {/* disabled={!elements || !stripe} */}
         <button type="submit">

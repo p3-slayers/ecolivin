@@ -14,7 +14,7 @@ function Donate() {
         <h2>check </h2>
       </Container>
      <Container style={{flex:'0.5', border:'2px solid black', margin:'0 auto'}}>
-      <DonationAmount />
+      {/* <DonationAmount /> */}
       <Card/>
      </Container>
     </div>
