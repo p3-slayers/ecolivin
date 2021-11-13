@@ -21,6 +21,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "^4.0.2",
     "react-step-builder": "^2.0.11",
+    "socket.io-client": "^4.3.2",
     "stripe": "^8.188.0"
   },
   "scripts": {

@@ -93,7 +93,6 @@ function FinalStep(props) {
   return (
     <div>
       <h5>You are done. Please submit to calculate.</h5>
-      
       <form onSubmit={handleFormSubmit}>
         <p>submit the percentages</p>
         <div className="flex-row flex-end">
