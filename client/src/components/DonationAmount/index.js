@@ -1,32 +1,61 @@
-import {Button} from 'react-bootstrap'
-import React, {useState} from 'react';
+import { Button, ButtonGroup } from "react-bootstrap";
+import React, { useState } from "react";
 
-//
-function DonationAmount(){
-    const [selectedDonation, setSelectedDonation]= useState("")
-   
-     const handleDonationAmt=(e)=> {
-        setSelectedDonation(e.target.value)
-        console.log(e.target.value)
-    }
-    return (
-        <div>
-            <Button value='10' onClick={handleDonationAmt}>
-                $10
+const donationData = [
+    {
+       amount:10,
+        'id':1
+    },
+    {
+        amount:20,
+        'id':2
+    },
+    {
+        amount:50,
+        'id':3
+    },
+    {
+        amount:100,
+        'id':4
+    },
+    {
+        amount:'Other',
+        'id':5
+    },
+    ];
+
+    var newArr= donationData.filter(item=> item.id !==5)
+    console.log(newArr)
+
+
+function DonationAmount() {
+  const [selectedDonation, setSelectedDonation] = useState("");
+
+  const handleDonationAmt = (e) => {
+    setSelectedDonation(e.target.value);
+    console.log(e.target.value);
+  };
+
+  return (
+    <div>
+      <h2>Choose:</h2>
+      {newArr.map((item) => (
+      <ButtonGroup>
+            <Button
+              key={item.id}
+              value={item.amount}
+              onClick={
+              handleDonationAmt
+              }
+            >
+              ${item.amount}
             </Button>
-            <Button value='20'  onClick={handleDonationAmt}>
-                $20
-            </Button>
-            <Button value='50'  onClick={handleDonationAmt}>
-                $50
-            </Button>
-            <Button value='100'  onClick={handleDonationAmt}>
-                $100
-            </Button>
-            <input type='text' placeholder="$ Other Amount" onChange={handleDonationAmt}>
-            </input>
-        </div>
-    )
+      </ButtonGroup>
+      ))}
+        <input type='text' placeholder="$ Other Amount" onChange={handleDonationAmt}>
+       </input>
+    </div>
+  );
 }
 
- export default DonationAmount;
+export default DonationAmount;

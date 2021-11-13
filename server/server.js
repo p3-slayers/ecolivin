@@ -2,7 +2,10 @@ const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
 require("dotenv").config()
-const stripe= require('stripe')(process.env.STRIPE_SECRET_PRODUCTION)
+// const stripe= require('stripe')(process.env.STRIPE_SECRET_PRODUCTION)
+const stripe= require('stripe')('sk_test_51Juio4HFvBdcsgQ2bkq670LJtalK67uC0IJqe8vRGnBwu9jzaufRL5Z3CbynZsv14GTsAhmocZopBMeuCrLw20HT00G7Rzbp8L')
+
+// ('sk_test_51Juio4HFvBdcsgQ2bkq670LJtalK67uC0IJqe8vRGnBwu9jzaufRL5Z3CbynZsv14GTsAhmocZopBMeuCrLw20HT00G7Rzbp8L')
 
 const cors= require('cors')
 const { typeDefs, resolvers } = require('./schemas');
