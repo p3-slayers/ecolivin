@@ -7,6 +7,9 @@ const {
   Action,
   ActionAnswer,
   Post,
+  Contact,
+  Conversation,
+  Message,
   Result
 } = require('../models');
 
@@ -338,9 +341,6 @@ db.once('open', async () => {
 
   console.log('action seeded');
 
-
-
-
   // Seeds for Users
   await User.deleteMany();
 
@@ -375,15 +375,9 @@ db.once('open', async () => {
 
   console.log('users seeded');
 
+  // seeds for comments
 
-
-
-
-
-// seeds for comments
-
-// seeds for like
-
+  // seeds for like
 
   // seeds for posts
   await Post.deleteMany();
@@ -425,4 +419,3 @@ db.once('open', async () => {
 
   process.exit();
 });
-

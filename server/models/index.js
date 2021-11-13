@@ -7,4 +7,18 @@ const ActionAnswer = require('./ActionAnswer');
 const Post = require('./Post');
 const Result = require('./Result')
 
-module.exports = { User, Questionnaire, Category, Answer, Action, ActionAnswer, Post, Result };
+const { Contact, Conversation, Message } = require(`./messengerSchemas`);
+
+module.exports = {
+  User,
+  Questionnaire,
+  Category,
+  Answer,
+  Action,
+  ActionAnswer,
+  Post,
+  Contact,
+  Conversation,
+  Message,
+  Result
+};
