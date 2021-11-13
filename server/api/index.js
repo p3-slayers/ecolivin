@@ -14,16 +14,16 @@ const storeItems = new Map([
   try {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
-      line_items: req.body.items.map(({ id, quantity }) => {
-        const storeItem = storeItems.get(id);
-        console.log(storeItem,"strore itme")
+      line_items: req.body.items.map(({ id, quantity, price }) => {
+        // const storeItem = storeItems.get(id);
+        // console.log(storeItem,"strore itme")
         return {
           price_data: {
             currency: 'usd',
             product_data: {
-              name: storeItem.name,
+              name: 'Donation Amount'
             },
-            unit_amount: 1000,
+            unit_amount: price*100,
           },
           quantity: quantity,
         };
