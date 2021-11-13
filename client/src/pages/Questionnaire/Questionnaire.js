@@ -10,8 +10,31 @@ import FinalStep from "./FinalStep";
 import Button from 'react-bootstrap/Button';
 
 const Navigation = (props) => {
-    console.log({ props });
-    return (
+    console.log("myprop", { props });
+    function isFirst(current){
+      return current === 1;
+    }
+    function isLast(size, current) {
+      return size === current;
+    }
+
+    function showNavButtons(props){
+      if (isFirst(props.current)){
+        return (
+        <Button type="primary" onClick={props.next}>
+          Next
+        </Button>
+        );
+      }
+      if (isLast(props.size, props.current)){
+        return (
+          <Button type="primary" onClick={props.prev}>
+            Previous
+          </Button>
+        );
+      }
+
+      return (
         <div>
           <Button type="primary" onClick={props.prev} style={{ marginRight: 10 }}>
             Previous
@@ -19,6 +42,19 @@ const Navigation = (props) => {
           <Button type="primary" onClick={props.next}>
             Next
           </Button>
+        </div>
+      );
+    }
+
+    return (
+        <div>
+          {showNavButtons(props)}
+          {/* <Button type="primary" onClick={props.prev} style={{ marginRight: 10 }}>
+            Previous
+          </Button>
+          <Button type="primary" onClick={props.next}>
+            Next
+          </Button> */}
         </div>
     );
   };

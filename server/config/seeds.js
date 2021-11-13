@@ -347,13 +347,14 @@ db.once('open', async () => {
     ],
   });
 
-  await User.create({
+  const exampleUser = await User.create({
     firstName: 'Elijah',
     lastName: 'Holt',
     email: 'eholt@testmail.com',
     password: 'password12345',
     profileImage: 'insertimage.png',
   });
+  console.log(exampleUser);
 
   console.log('users seeded');
 
@@ -370,18 +371,37 @@ db.once('open', async () => {
   // seeds for posts
   await Post.deleteMany();
 
+
+  let queryArray = [];
+  queryArray.push(User.create([{ firstName: 'Elijah', lastName: 'Holt', email: 'eholt@testmail.com', password: 'password12345', profileImage: 'insertimage.png', }]));
+  
+  Promise.all(queryArray).then(([Users]) => {
+    console.log("shjkshdksj");
+  const p = [
+    {
+      post: "hello worlds",
+      date: "Wed Oct 05 2011 16:48:00 GMT+0200 (CEST)",
+      user: Users[0],
+      comments: [],
+      likes: []
+  },
+  ];
+  return Post.create(p);
+  }).catch(Error => {
+     console.log("Error: ", Error);
+  })
+
   const posts = await Post.insertMany([
     {
         post: "hello worlds",
         date: "Wed Oct 05 2011 16:48:00 GMT+0200 (CEST)",
-        user: User[0],
+        user: exampleUser,
         comments: [],
         likes: []
     },
   ]);
 
   console.log('posts seeded');
-
 
   // seeds for results
   await Result.deleteMany();

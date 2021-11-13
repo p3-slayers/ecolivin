@@ -13,6 +13,7 @@ import BeginQuestionnaire from '../Questionnaire/BeginQuestionnaire';
 import Questionnaire from '../Questionnaire/Questionnaire';
 import Results from '../Questionnaire/Results';
 import { Container } from 'react-bootstrap';
+
 const DashboardRoutes = () => {
     return (
       <Container style={{margin:'30px auto'}}>
@@ -29,6 +30,7 @@ const DashboardRoutes = () => {
         <PrivateRoute exact path="/beginquestionnaire" component={BeginQuestionnaire} />
         <PrivateRoute exact path="/questionnaire" component={Questionnaire} />
         <PrivateRoute exact path="/results" component={Results} />
+
         </Switch>
       </Container>
     );

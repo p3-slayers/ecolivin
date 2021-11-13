@@ -73,6 +73,33 @@ export const QUERY_ALL_POSTS = gql`
 `;
 
 
+export const getAllPosts = gql`
+query getAllPosts{
+  getPosts {
+      id
+      post
+      date
+      user{
+        firstName
+      }
+      likes {
+        user{
+        firstName
+      }
+      }
+      comments {
+        id
+        user{
+        firstName
+      }
+        date
+        text
+      }
+    }
+}
+`;
+
+
 export const QUERY_ALL_RESULTS = gql`
   {
     getResults {

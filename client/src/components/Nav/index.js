@@ -50,7 +50,7 @@ function Navigation() {
   }
 
   return (
-    <Navbar style={{backgroundColor:"#ECCCB6"}} expand="lg" expanded={expanded}>
+    <Navbar style={{backgroundColor:"#DFD4D1"}} expand="lg" expanded={expanded}>
       <NavbarBrand>
         <img src={spinner} height="32px" />
         {homepageLink()}
