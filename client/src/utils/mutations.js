@@ -72,12 +72,14 @@ export const ADD_RESULT = gql`
 
 export const UPDATE_USER = gql`
   mutation updateUser(
+    $id: ID!
     $firstName: String
     $lastName: String
     $email: String
     $password: String
   ) {
     updateUser(
+      id: $id
       firstName: $firstName
       lastName: $lastName
       email: $email
