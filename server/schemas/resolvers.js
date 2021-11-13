@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Questionnaire, Category, Post, Result } = require('../models');
+const { User, Questionnaire, Category, Post, Result, Action } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -39,6 +39,12 @@ const resolvers = {
       //   return user;
       // }
       // throw new AuthenticationError('Not logged in');
+    },
+
+    singleAction: async (parent, { actionId }) => {
+      console.log(actionId);
+      const action = await Action.findOne({actionId:actionId})
+      return action;
     },
 
     getResults: async () => { 
