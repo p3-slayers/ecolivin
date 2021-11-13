@@ -30,10 +30,6 @@ const Account = () => {
         lastName: formState.lastName,
       },
     });
-    // isolate token from mutationResponse so it can be set to localStorage via Auth.login
-    const token = mutationResponse.data.updateUser.token;
-    // set the JWT to localStorage
-    Auth.login(token);
 
     // isolate userData from the mutationResponse so it can be set to the global state
     const userData = { ...mutationResponse.data.updateUser.user };
@@ -44,7 +40,6 @@ const Account = () => {
     });
 
     console.log(state);
-    console.log(token);
 
     history.push('/dashboard');
   };
