@@ -52,7 +52,6 @@ function Card() {
         body: JSON.stringify({
           items: [
             {
-              id: 1,
               price: donationAmt,
               quantity: 1,
             },
