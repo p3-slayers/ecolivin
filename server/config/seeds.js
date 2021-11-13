@@ -230,91 +230,108 @@ db.once('open', async () => {
 
   const actions = await Action.insertMany([
     {
+      actionId: 't1',
       name: 'Carpool',
       description: 'Carpool to work/school or any event with a friend',
       category: categories[0]._id,
     },
     {
+      actionId: 't1',
       name: 'Public Transit',
       description: 'Take public transit to work or school when possible',
       category: categories[0]._id,
     },
     {
+      actionId: 't1',
       name: 'Bike',
       description: 'Bike to a given destination instead of driving',
       category: categories[0]._id,
     },
     {
+      actionId: 't1',
       name: 'Plant-based Diet',
       description:
         'Switch to a 100% plant-based diet on a give day of the week.',
       category: categories[1]._id,
     },
     {
+      actionId: 't1',
       name: 'Compost',
       description: 'Begin composting any food waste',
       category: categories[1]._id,
     },
     {
+      actionId: 't1',
       name: 'Veggie Scraps',
       description:
         'Reuse veggie scraps and make broths or freeze for new recipes',
       category: categories[1]._id,
     },
     {
+      actionId: 't1',
       name: 'Recycle',
       description:
         'Recycle products correctly, following your city/location guidelines',
       category: categories[2]._id,
     },
     {
+      actionId: 't1',
       name: 'Water Bottle',
       description: 'Use a refillable water bottle instead of plastic bottles',
       category: categories[2]._id,
     },
     {
+      actionId: 't1',
       name: 'Reusable cups',
       description: 'Bring a reusable cup to a coffee/tea shop to reduce waste',
       category: categories[2]._id,
     },
     {
+      actionId: 't1',
       name: 'Shower',
       description:
         'Decrease shower time to 5 minutes, and switch from taking baths',
       category: categories[3]._id,
     },
     {
+      actionId: 't1',
       name: 'Washer',
       description: 'Wash clothing on cold cycle insead of hot',
       category: categories[3]._id,
     },
     {
+      actionId: 't1',
       name: 'Air-dry',
       description:
         'Air-dry clothing after washing instead of usering the drying machine',
       category: categories[3]._id,
     },
     {
+      actionId: 't1',
       name: 'Lighting',
       description: 'Turn off lights when not in use',
       category: categories[3]._id,
     },
     {
+      actionId: 't1',
       name: 'Unplug Electronics',
       description: 'Unplug electronics when not in use.',
       category: categories[3]._id,
     },
     {
+      actionId: 't1',
       name: 'Lighting',
       description: 'Turn off lights when not in use',
       category: categories[3]._id,
     },
     {
+      actionId: 't1',
       name: 'Used Items',
       description: 'But mostly used stuff and shop at second-hand stpres',
       category: categories[4]._id,
     },
     {
+      actionId: 't1',
       name: 'Towels and Napkins',
       description:
         'Switch from single use paper towels and napkins to cloth towels and handkerchief',
@@ -327,7 +344,7 @@ db.once('open', async () => {
   // Seeds for Users
   await User.deleteMany();
 
-  await User.create({
+  const pamela = await User.create({
     firstName: 'Pamela',
     lastName: 'Washington',
     email: 'pamela@testmail.com',
@@ -347,13 +364,14 @@ db.once('open', async () => {
     ],
   });
 
-  await User.create({
+  const exampleUser = await User.create({
     firstName: 'Elijah',
     lastName: 'Holt',
     email: 'eholt@testmail.com',
     password: 'password12345',
     profileImage: 'insertimage.png',
   });
+  console.log(exampleUser);
 
   console.log('users seeded');
 
@@ -366,16 +384,22 @@ db.once('open', async () => {
 
   const posts = await Post.insertMany([
     {
-      post: 'hello worlds',
-      date: 'Wed Oct 05 2011 16:48:00 GMT+0200 (CEST)',
-      user: User[0],
-      comments: [],
-      likes: [],
+        post: "hello worlds",
+        date: + new Date(),
+        user: pamela._id,
+        comments: [],
+        likes: []
     },
+    {
+      post: "this is a second post ",
+      date: + new Date(),
+      user: pamela._id,
+      comments: [],
+      likes: []
+  },
   ]);
 
   console.log('posts seeded');
-
 
   // seeds for results
   await Result.deleteMany();
