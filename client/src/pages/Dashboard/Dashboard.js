@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Sidebar from '../../components/Sidebar/index';
 import { useGlobalUserContext } from '../../utils/GlobalState';
 import BarChart from '../../components/ChartJs';
+import Button from "@restart/ui/esm/Button";
 
 const Dashboard = () => {
   // console.log(auth.loggedIn())
@@ -14,21 +15,29 @@ const Dashboard = () => {
   // useEffect(console.log(state), []);
 
 
+
   //on the container that wraps around these pages add margin 30px auto
   return (
 
     <>
-    <div className="d-flex">
+    <div className="d-flex mt-5">
 
       {/* will inserts information/summary about the User */}
       <Sidebar />
       <div className="p-2 flex-grow-1" style={{marginLeft:'30px'}}>
         <h1>Hello, {state.firstName}</h1>
-        <h3>Profile page/ dashboard content</h3>    
-        <h1>Hello, {state.email}</h1>
+        {/* <h3>Profile page/ dashboard content</h3>    
+        <h1>Hello, {state.email}</h1> */}
+        <Button style={{ width: "50%"}}>
+              <Link
+                style={{ textDecoration: "none", color: "black" }}
+                to="/beginquestionnaire"
+              > Retake Questionnaire
+              </Link>
+            </Button>
+         <BarChart/>
       </div>
     </div>
-      <BarChart/>
       </>
   );
 };
