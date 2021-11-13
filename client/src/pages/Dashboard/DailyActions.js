@@ -10,7 +10,7 @@ import ActionCard from '../../components/actionCard/index'
 
 const DailyActions = () => {
   return (
-    <div className="d-flex">
+    <div className="d-flex mt-5">
       {/* will inserts information/summary about the User */}
       <Sidebar />
       <div className="p-2 flex-grow-1">
