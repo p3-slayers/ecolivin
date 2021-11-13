@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 
 //
 function DonationAmount(){
+    // eslint-disable-next-line no-unused-vars
     const [selectedDonation, setSelectedDonation]= useState("")
    
      const handleDonationAmt=(e)=> {

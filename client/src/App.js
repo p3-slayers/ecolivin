@@ -1,14 +1,6 @@
 import React, { useEffect } from 'react';
 import auth from './utils/auth';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import {
-  ApolloClient,
-  // InMemoryCache,
-  // ApolloProvider,
-  // createHttpLink,
-  useQuery,
-} from '@apollo/client';
-// import { setContext } from '@apollo/client/link/context';
 
 import Home from './pages/Home';
 import Team from './pages/Team';
@@ -22,42 +14,13 @@ import PrivateRoute from './pages/PrivateRoutes';
 
 // imports for restoring state on pageload
 import { useGlobalUserContext } from './utils/GlobalState';
+// eslint-disable-next-line no-unused-vars
 import { QUERY_SINGLE_USER, QUERY_SINGLE_ACTION } from './utils/queries';
 import { SET_USER_DATA } from './utils/actions';
 
-// const httpLink = createHttpLink({
-//   uri: '/graphql',
-// });
-
-// const authLink = setContext((_, { headers }) => {
-//   const token = localStorage.getItem('id_token');
-//   return {
-//     headers: {
-//       ...headers,
-//       authorization: token ? `Bearer ${token}` : '',
-//     },
-//   };
-// });
-
-// hook for on load
-// if loggedIn(), if token exists, and session not expired =>
-// query localStorage for userData,
-// set userData to global state
-// load history[history.length - 1]
-// else
-// load default landing page
-
-// If user logs out,
-// remove token
-// clear localStorage userData entry.
-
-// const client = new ApolloClient({
-//   link: authLink.concat(httpLink),
-//   cache: new InMemoryCache(),
-// });
-
 function App({ apolloClient }) {
   console.log(apolloClient);
+  // eslint-disable-next-line no-unused-vars
   const [state, dispatch] = useGlobalUserContext();
 
   const get_id = () => {
@@ -80,12 +43,6 @@ function App({ apolloClient }) {
       return false;
     }
   };
-
-  // const { loading, data } = useQuery(QUERY_SINGLE_USER, {
-  //   variables: { id: loggedInUser },
-  // });
-
-  // console.log(data);
 
   useEffect(() => {
     let loggedInUserId = get_id();
@@ -110,7 +67,8 @@ function App({ apolloClient }) {
     };
     let userData = queryUserData(loggedInUserId);
     console.log(userData);
-  });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Router>
