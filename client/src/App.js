@@ -22,7 +22,7 @@ import PrivateRoute from './pages/PrivateRoutes';
 
 // imports for restoring state on pageload
 import { useGlobalUserContext } from './utils/GlobalState';
-import { QUERY_SINGLE_USER } from './utils/queries';
+import { QUERY_SINGLE_USER, QUERY_SINGLE_ACTION } from './utils/queries';
 import { SET_USER_DATA } from './utils/actions';
 
 // const httpLink = createHttpLink({
