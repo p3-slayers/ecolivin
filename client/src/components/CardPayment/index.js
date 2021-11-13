@@ -18,15 +18,9 @@ const donationData = [
   {
     amount: 100,
     id: 4,
-  },
-  {
-    amount: "Other",
-    id: 5,
-  },
+  }
 ];
 
-var newArr = donationData.filter((item) => item.id !== 5);
-console.log(newArr);
 
 function Card() {
   const [selectedDonation, setSelectedDonation] = useState("");
@@ -38,7 +32,7 @@ function Card() {
 
   const stripe = useStripe();
   const elements = useElements();
-  console.log(stripe, elements)
+  // console.log(stripe, elements)
 
   const handleSubmit = async (donationAmt) => {
     console.log("submit payment method hit");
@@ -86,7 +80,7 @@ function Card() {
       <div id="paymentForm">
         <div>
           <h2>Choose:</h2>
-          {newArr.map((item) => (
+          {donationData.map((item) => (
             <ButtonGroup>
               <Button
                 key={item.id}
