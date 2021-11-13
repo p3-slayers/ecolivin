@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@700&display=swap');
+
 :root {
-  --primary: #232F3E;
-  --secondary: #F3A847;
-  --tertiary: #B12704;
+  --primary: #232f3e;
+  --secondary: #f3a847;
+  --tertiary: #b12704;
   --light: #fafafa;
   --dark: #272f32;
   --error: rgb(228, 46, 1);
@@ -91,7 +93,7 @@ button {
   font-size: 1rem;
   text-decoration: none;
   padding: 0.25rem 1rem;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   border: none;
   outline: none;
   cursor: pointer;
@@ -100,19 +102,19 @@ button {
 }
 
 button:hover {
-  opacity: .8;
+  opacity: 0.8;
 }
 
 button[disabled] {
   cursor: default;
-  opacity: .8;
+  opacity: 0.8;
 }
 
 img {
   max-width: 100%;
 }
 
-span[role="img"] {
+span[role='img'] {
   cursor: default;
 }
 
@@ -131,7 +133,7 @@ input {
 
 input:focus {
   border: 1px solid var(--secondary);
-  box-shadow: 0 0 .25rem rgba(0, 0, 0, .5);
+  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5);
 }
 
 .container {
@@ -194,11 +196,6 @@ input:focus {
   padding-bottom: var(--spacing-two);
 }
 
-.card {
-  width: 25%;
-  text-align: center;
-}
-
 .error-text {
   color: var(--error);
 }
@@ -207,4 +204,26 @@ input:focus {
   .card {
     width: 100%;
   }
+}
+
+.landing {
+  position: relative;
+  background: url('../src/assets/plants.png') no-repeat center center/cover;
+  height: 100vh;
+  opacity: 95%;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #703043;
+  border-color: #703043;
+}
+
+.btn-primary:hover {
+  background-color: #703043;
+  border-color: #703043;
+}
+
+.logo {
+  font-family: 'Kaisei Decol', serif;
 }

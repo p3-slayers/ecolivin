@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { UserContextProvider } from './utils/GlobalState';
+import './index.css';
 
 import {
   ApolloClient,
@@ -18,6 +18,11 @@ import { setContext } from '@apollo/client/link/context';
 // error handling stuff
 import { onError } from 'apollo-link-error';
 import { ApolloLink } from 'apollo-link';
+
+import {Elements} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
+
+const stripePromise = loadStripe(`pk_test_51Juio4HFvBdcsgQ2msTuIglnJndQImPISqkjd7s3eqJIl6co61ORc7JktEZCUKCXo4W67fVaIN3I66Mg4MU482Js00bEb5Hwlu`)
 
 const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors) {
@@ -54,7 +59,9 @@ ReactDOM.render(
   // <React.StrictMode>
   <ApolloProvider client={client}>
     <UserContextProvider>
+    <Elements stripe={stripePromise}>
       <App apolloClient={client} />
+      </Elements>
     </UserContextProvider>
   </ApolloProvider>,
   // </React.StrictMode>,

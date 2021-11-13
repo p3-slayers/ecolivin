@@ -1,4 +1,6 @@
 import React from 'react';
+import bag from '../assets/bag.jpg'; //change it to what you need
+import hands from '../assets/hands.jpg'; 
 
 function About() {
   return (
@@ -14,13 +16,13 @@ function About() {
             <p>Users will have access to a dashboard where they can view their current scores and a graph comparing their scores to the average scores of all other users. On the dashboard users will also be able to track personal goals that can be monitored and updated weekly as well as information on different areas of improvement based on each category.</p>
           </div>
           <div className="col">
-            <img alt="Personal Goals" src="https://via.placeholder.com/450x150" />
+            <img alt="Personal Goals" src={bag} style={{width:"90%"}}/>
           </div>
         </div>
 
         <div className="row">
           <div className="col">
-            <img alt="Social Network" src="https://via.placeholder.com/450x150" />
+            <img alt="Social Network" src={hands} style={{width:"80%"}}/>
           </div>
           <div className="col">
             <h2 className="text-center">Social Network</h2>

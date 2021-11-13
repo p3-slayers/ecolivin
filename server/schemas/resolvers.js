@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Questionnaire, Category, Post } = require('../models');
+const { User, Questionnaire, Category, Post, Result, Action } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -41,6 +41,17 @@ const resolvers = {
       // throw new AuthenticationError('Not logged in');
     },
 
+    singleAction: async (parent, { actionId }) => {
+      console.log(actionId);
+      const action = await Action.findOne({actionId:actionId})
+      return action;
+    },
+
+    getResults: async () => { 
+      const results = Result.find();
+      return results;  
+    },
+    
     getPosts: async () => { 
       const posts = Post.find().sort({date: -1});
        return posts;  
@@ -71,7 +82,7 @@ const resolvers = {
   },
   Mutation: {
     addUser: async (parent, args) => {
-      console.log(args, 'test');
+      console.log("AddUser", args, 'test');
       // args includes all fields submitted from signup
       const user = await User.create(args);
 
@@ -84,11 +95,20 @@ const resolvers = {
         // actionAnswers: user.actionAnswers
       };
 
-      console.log(userWithoutPassword);
+      console.log("UserWithoutPassword", userWithoutPassword);
 
       const token = signToken(userWithoutPassword);
+      console.log(token)
+      return { token, user: userWithoutPassword };
+    },
+    addResult: async (parent, args) => {
+      console.log(args, 'test');
+      // args includes all fields submitted from signup
+      const result = await Result.create(args);
 
-      return { token, userWithoutPassword };
+      console.log(result);
+
+      return result;
     },
     // addOrder: async (parent, { products }, context) => {
     //   console.log(context);

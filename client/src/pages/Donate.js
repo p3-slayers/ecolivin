@@ -1,12 +1,21 @@
 import React from 'react';
+import {Container} from 'react-bootstrap'
+import spinner from '../assets/spinner.gif'
+import Card from '../components/CardPayment';
+
 
 function Donate() {
   return (
     <>
-      <div className="container my-1">
-        {/* Using stripe for donate stuff */}
-        <h1>DONATE PAGE</h1>
-      </div>
+    <div style={{display:'flex'}}>
+      <Container style={{flex:'0.5', }}>
+        <img src={spinner} height="150px"></img>
+        <h2>check </h2>
+      </Container>
+     <Container style={{flex:'0.5', border:'2px solid black', margin:'0 auto'}}>
+      <Card/>
+     </Container>
+    </div>
     </>
   );
 }

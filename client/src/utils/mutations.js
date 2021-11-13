@@ -58,5 +58,41 @@ export const ADD_USER = gql`
   }
 `;
 
+export const ADD_RESULT = gql`
+  mutation addResult($food: Float!, $transportation: Float!, $lifestyle: Float!, $waste: Float!, $housing: Float!) {
+    addResult(food: $food, waste: $waste, transportation: $transportation, lifestyle: $lifestyle, housing: $housing) {
+      food
+      waste
+      transportation
+      lifestyle
+      housing
+    }
+  }
+`;
 
-
+export const UPDATE_USER = gql`
+  mutation updateUser(
+    $id: ID!
+    $firstName: String
+    $lastName: String
+    $email: String
+    $password: String
+  ) {
+    updateUser(
+      id: $id
+      firstName: $firstName
+      lastName: $lastName
+      email: $email
+      password: $password
+    ) {
+      token
+      user {
+        _id
+        firstName
+        lastName
+        email
+        profileImage
+      }
+    }
+  }
+`;
