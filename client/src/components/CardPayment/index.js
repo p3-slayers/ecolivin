@@ -5,8 +5,6 @@ import { useStripe, useElements } from "@stripe/react-stripe-js";
 import FormField from "../FormField";
 import { Button, ButtonGroup } from "react-bootstrap";
 
-import { Container, Row } from "react-bootstrap";
-
 
 const donationData = [
   {

@@ -82,7 +82,7 @@ const resolvers = {
   },
   Mutation: {
     addUser: async (parent, args) => {
-      console.log(args, 'test');
+      console.log("AddUser", args, 'test');
       // args includes all fields submitted from signup
       const user = await User.create(args);
 
@@ -95,11 +95,11 @@ const resolvers = {
         // actionAnswers: user.actionAnswers
       };
 
-      console.log(userWithoutPassword);
+      console.log("UserWithoutPassword", userWithoutPassword);
 
       const token = signToken(userWithoutPassword);
-
-      return { token, userWithoutPassword };
+      console.log(token)
+      return { token, user: userWithoutPassword };
     },
     addResult: async (parent, args) => {
       console.log(args, 'test');

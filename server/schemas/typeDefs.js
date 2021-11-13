@@ -92,6 +92,7 @@ const typeDefs = gql`
     ): Auth
 
     updateUser(
+      id: ID
       firstName: String
       lastName: String
       email: String
