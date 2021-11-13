@@ -327,7 +327,7 @@ db.once('open', async () => {
   // Seeds for Users
   await User.deleteMany();
 
-  await User.create({
+  const pamela = await User.create({
     firstName: 'Pamela',
     lastName: 'Washington',
     email: 'pamela@testmail.com',
@@ -371,34 +371,21 @@ db.once('open', async () => {
   // seeds for posts
   await Post.deleteMany();
 
-
-  let queryArray = [];
-  queryArray.push(User.create([{ firstName: 'Elijah', lastName: 'Holt', email: 'eholt@testmail.com', password: 'password12345', profileImage: 'insertimage.png', }]));
-  
-  Promise.all(queryArray).then(([Users]) => {
-    console.log("shjkshdksj");
-  const p = [
-    {
-      post: "hello worlds",
-      date: "Wed Oct 05 2011 16:48:00 GMT+0200 (CEST)",
-      user: Users[0],
-      comments: [],
-      likes: []
-  },
-  ];
-  return Post.create(p);
-  }).catch(Error => {
-     console.log("Error: ", Error);
-  })
-
   const posts = await Post.insertMany([
     {
         post: "hello worlds",
-        date: "Wed Oct 05 2011 16:48:00 GMT+0200 (CEST)",
-        user: exampleUser,
+        date: + new Date(),
+        user: pamela._id,
         comments: [],
         likes: []
     },
+    {
+      post: "this is a second post ",
+      date: + new Date(),
+      user: pamela._id,
+      comments: [],
+      likes: []
+  },
   ]);
 
   console.log('posts seeded');

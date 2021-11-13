@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
 
 import { QUERY_ALL_POSTS, getAllPosts } from '../../utils/queries';
+import PostCard from '../../components/postCard';
 
 const Feed = () => {
   const { loading, error, data } = useQuery(getAllPosts);
@@ -13,23 +14,13 @@ const Feed = () => {
       {/* will inserts about the post */}
       <h1 className="large text-primary">Posts</h1>
       
-      
       <div className="posts">
         {posts.map((post) => (
-        
-          <div className="post bg-white p-1 my-1">
-            
-            <div>
-            <p className="my-1">p {post.post}</p>
-            <p className="my-1">fname {post.user.firstName}</p>
-              <p className="post-date">Posted on {post.date}</p>
-            </div>
-          </div>
-
-
+          <PostCard post={post}/>
         ))}
       </div>
     </div>
+
   );
 };
 

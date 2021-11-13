@@ -10,7 +10,7 @@ const Dashboard = () => {
   // console.log(auth.loggedIn())
   // console.log(auth.getProfile().data.firstName)
   const [state, dispatch] = useGlobalUserContext();
-  console.log(state);
+  console.log("mystate", state);
   // useEffect(console.log(state), []);
 
 
