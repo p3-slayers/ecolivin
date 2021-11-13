@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 const Answer = require('./Answer');
 const ActionAnswer = require('./ActionAnswer');
 
+const { Conversation, Contact } = require('./messengerSchemas');
 
 // Creating a user with the given information needed
 const userSchema = new Schema({
@@ -31,6 +32,8 @@ const userSchema = new Schema({
   profileImage: {
     type: String,
   },
+  conversations: [Conversation.schema],
+  contacts: [Contact.schema],
   // these are the answers from the questionnaire
   answers: [Answer.schema],
   actionAnswers: [ActionAnswer.schema],
