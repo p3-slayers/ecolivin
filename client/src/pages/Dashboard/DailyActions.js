@@ -20,7 +20,6 @@ const DailyActions = () => {
         <Tabs defaultActiveKey="profile" className="mb-3">
           <Tab eventKey="home" title="Food">
             <Container>
-            
             <Row className="mb-4">            
               <Col md={4}>
                   <ActionCard actionId="f1" title="food action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
@@ -32,7 +31,6 @@ const DailyActions = () => {
                   <ActionCard actionId="f3" title="food action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
               </Col>
             </Row>
-
             <Row>            
               <Col md={4}>
                   <ActionCard actionId="f4" title="food action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
@@ -47,10 +45,9 @@ const DailyActions = () => {
 
             </Container>
           </Tab>
+
           <Tab eventKey="profile" title="Lifestyle">
           <Container>
-            
-
             <Row className="mb-4">            
               <Col md={4}>
                   <ActionCard actionId="l1" title="lifestyle action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
@@ -72,6 +69,94 @@ const DailyActions = () => {
               </Col>
               <Col md={4}>
                   <ActionCard actionId="l6" title="lifestyle action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+              </Col>
+            </Row>
+            </Container>
+          </Tab>
+          
+          <Tab eventKey="profile" title="Transportation">
+          <Container> 
+            <Row className="mb-4">            
+              <Col md={4}>
+                  <ActionCard actionId="t1" title="transportation action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+              </Col>
+              <Col md={4}>
+                  <ActionCard actionId="t2" title="transportation action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+              </Col>
+              <Col md={4}>
+                  <ActionCard actionId="t3" title="transportation action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+              </Col>
+            </Row>
+
+            <Row>            
+              <Col md={4}>
+                  <ActionCard actionId="t4" title="transportation action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+              </Col>
+              <Col md={4}>
+                  <ActionCard actionId="t5" title="transportation action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+              </Col>
+              <Col md={4}>
+                  <ActionCard actionId="t6" title="transportation action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+              </Col>
+            </Row>
+
+
+            </Container>
+          </Tab>
+          <Tab eventKey="profile" title="Waste">
+          <Container>
+            <Row className="mb-4">            
+              <Col md={4}>
+                  <ActionCard actionId="w1" title="waste action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+              </Col>
+              <Col md={4}>
+                  <ActionCard actionId="w2" title="waste action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+              </Col>
+              <Col md={4}>
+                  <ActionCard actionId="w3" title="waste action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+              </Col>
+            </Row>
+
+            <Row>            
+              <Col md={4}>
+                  <ActionCard actionId="w4" title="waste action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+              </Col>
+              <Col md={4}>
+                  <ActionCard actionId="w5" title="waste action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+              </Col>
+              <Col md={4}>
+                  <ActionCard actionId="w6" title="waste action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+              </Col>
+            </Row>
+
+
+            </Container>
+          </Tab>
+          <Tab eventKey="profile" title="Housing">
+          <Container>
+            
+
+            <Row className="mb-4">            
+              <Col md={4}>
+                  <ActionCard actionId="h1" title="housing action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+              </Col>
+              <Col md={4}>
+                  <ActionCard actionId="h2" title="housing action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+              </Col>
+              <Col md={4}>
+                  <ActionCard actionId="h3" title="housing action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+              </Col>
+            </Row>
+
+            <Row>            
+              <Col md={4}>
+                  <ActionCard actionId="h4" title="housing action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+              </Col>
+              <Col md={4}>
+                  <ActionCard actionId="h5" title="housing action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+              </Col>
+              <Col md={4}>
+                  <ActionCard actionId="h6" title="housing action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
               </Col>
             </Row>
 
