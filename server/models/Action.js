@@ -4,6 +4,10 @@ const { Schema } = mongoose;
 
 // answers to the questions, will give a number so that we can calculate the total score
 const actionsSchema = new Schema({
+    actionId: {
+        type: String,
+        trim: true
+    },
     name: {
         type: String,
         required: true,

@@ -62,6 +62,14 @@ const typeDefs = gql`
     housing: Float!
   }
 
+  type Action {
+    id: ID
+    actionId: String
+    name: String
+    description: String
+    category: Category
+  }
+
   type Query {
     categories: [Category]
     questionnaire: [Questionnaire]
@@ -71,6 +79,7 @@ const typeDefs = gql`
     getPosts: [Post]
     getPost(postId: ID!): Post
     singleUser(id: ID!): User
+    singleAction(actionId: String!): Action
   }
 
   type Mutation {

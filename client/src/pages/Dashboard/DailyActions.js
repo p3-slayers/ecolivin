@@ -17,31 +17,31 @@ const DailyActions = () => {
         <h3>Daily Actions</h3>
 
 
-        <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example" className="mb-3">
+        <Tabs defaultActiveKey="profile" className="mb-3">
           <Tab eventKey="home" title="Food">
             <Container>
             
             <Row className="mb-4">            
               <Col md={4}>
-                  <ActionCard title="food action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="f1" title="food action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
               </Col>
               <Col md={4}>
-                  <ActionCard title="food action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="f2" title="food action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
               </Col>
               <Col md={4}>
-                  <ActionCard title="food action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="f3" title="food action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
               </Col>
             </Row>
 
             <Row>            
               <Col md={4}>
-                  <ActionCard title="food action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="f4" title="food action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
               </Col>
               <Col md={4}>
-                  <ActionCard title="food action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="f5" title="food action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
               </Col>
               <Col md={4}>
-                  <ActionCard title="food action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="f6" title="food action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
               </Col>
             </Row>
 
@@ -53,25 +53,25 @@ const DailyActions = () => {
 
             <Row className="mb-4">            
               <Col md={4}>
-                  <ActionCard title="lifestyle action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="l1" title="lifestyle action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
               </Col>
               <Col md={4}>
-                  <ActionCard title="lifestyle action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="l2" title="lifestyle action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
               </Col>
               <Col md={4}>
-                  <ActionCard title="lifestyle action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="l3" title="lifestyle action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
               </Col>
             </Row>
 
             <Row>            
               <Col md={4}>
-                  <ActionCard title="lifestyle action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="l4" title="lifestyle action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
               </Col>
               <Col md={4}>
-                  <ActionCard title="lifestyle action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="l5" title="lifestyle action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
               </Col>
               <Col md={4}>
-                  <ActionCard title="lifestyle action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="l6" title="lifestyle action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
               </Col>
             </Row>
 
