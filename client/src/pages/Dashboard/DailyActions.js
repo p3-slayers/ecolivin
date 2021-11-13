@@ -18,7 +18,7 @@ const DailyActions = () => {
 
 
         <Tabs defaultActiveKey="profile" className="mb-3">
-          <Tab eventKey="home" title="Food">
+          <Tab eventKey="food" title="Food">
             <Container>
             <Row className="mb-4">            
               <Col md={4}>
@@ -46,7 +46,7 @@ const DailyActions = () => {
             </Container>
           </Tab>
 
-          <Tab eventKey="profile" title="Lifestyle">
+          <Tab eventKey="lifestyle" title="Lifestyle">
           <Container>
             <Row className="mb-4">            
               <Col md={4}>
@@ -74,7 +74,7 @@ const DailyActions = () => {
             </Container>
           </Tab>
           
-          <Tab eventKey="profile" title="Transportation">
+          <Tab eventKey="transportation" title="Transportation">
           <Container> 
             <Row className="mb-4">            
               <Col md={4}>
@@ -103,7 +103,7 @@ const DailyActions = () => {
 
             </Container>
           </Tab>
-          <Tab eventKey="profile" title="Waste">
+          <Tab eventKey="waste" title="Waste">
           <Container>
             <Row className="mb-4">            
               <Col md={4}>
@@ -132,7 +132,7 @@ const DailyActions = () => {
 
             </Container>
           </Tab>
-          <Tab eventKey="profile" title="Housing">
+          <Tab eventKey="housing" title="Housing">
           <Container>
             
 
