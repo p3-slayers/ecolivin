@@ -70,7 +70,7 @@ function Signup(props) {
       <Link to="/" style={{ textDecoration: 'none' }}>
           <img src={logo} alt="logo spinner" height="65px" />
           </Link>
-      <h2 className="text-center my-4">Signup</h2>
+      <h2 className="text-center mynpm-4">Signup</h2>
         <div className="flex-row space-between my-2 align-items-center ">
           <label htmlFor="firstName">First Name</label>
           <input
