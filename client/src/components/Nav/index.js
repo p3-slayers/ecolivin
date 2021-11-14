@@ -3,7 +3,7 @@ import Auth from '../../utils/auth';
 import { Link } from 'react-router-dom';
 import { Nav, Navbar, NavbarBrand, NavLink } from 'react-bootstrap';
 //replace the spinner w our logo
-import spinner from '../../assets/spinner.gif';
+import logo from '../../assets/ecolivin.png'
 import NavbarToggle from 'react-bootstrap/esm/NavbarToggle';
 import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse';
 
@@ -14,7 +14,7 @@ function Navigation() {
       //ADD LINEHEIGHT when logo is picked
       return (
         <Link to="/dashboard" style={{ textDecoration: 'none' }}>
-          <span style={{ color: 'green' }}>ECO</span>Livin
+          <img src={logo} alt="logo spinner" height="65px" />
         </Link>
       );
     } else {
@@ -24,8 +24,7 @@ function Navigation() {
           style={{ textDecoration: 'none', color: 'black', fontSize: '32px' }}
         >
           {' '}
-          <span style={{ color: 'green', textDecoration: 'none' }}>ECO</span>
-          Livin
+          <img src={logo} alt="logo spinner" height="65px" />
         </Link>
       );
     }
@@ -86,8 +85,8 @@ function Navigation() {
 
   return (
     <Navbar style={{backgroundColor:"#DFD4D1"}} expand="lg" expanded={expanded}>
-      <NavbarBrand>
-        <img src={spinner} alt="logo spinner" height="32px" />
+      <NavbarBrand className="mx-3">
+        
         {homepageLink()}
       </NavbarBrand>
       <NavbarToggle
