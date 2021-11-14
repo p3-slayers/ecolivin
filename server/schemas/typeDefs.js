@@ -91,10 +91,6 @@ const typeDefs = gql`
       profileImage: String
     ): Auth
 
-    updateUser2(
-      _id: ID!  
-    ): User
-
     updateUser(
       _id: ID!
       firstName: String

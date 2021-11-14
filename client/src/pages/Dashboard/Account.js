@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Sidebar from '../../components/Sidebar/index';
 
 import { useMutation } from '@apollo/client';
-import Auth from '../../utils/auth';
 import { UPDATE_USER } from '../../utils/mutations';
 import { useHistory } from 'react-router-dom';
 import { useGlobalUserContext } from '../../utils/GlobalState';
