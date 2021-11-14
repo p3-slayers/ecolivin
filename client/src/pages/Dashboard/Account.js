@@ -9,11 +9,11 @@ import { SET_USER_DATA } from '../../utils/actions';
 import { Button } from "react-bootstrap";
 
 const Account = () => {
-  const [formState, setFormState] = useState({ email: '', password: '' });
-  const [updateUser] = useMutation(UPDATE_USER);
-
   // for setting global state
   const [state, dispatch] = useGlobalUserContext();
+
+  const [formState, setFormState] = useState({ email: state.email, firstName: state.firstName, lastName: state.lastName });
+  const [updateUser] = useMutation(UPDATE_USER);
 
   // for redirecting page
   const history = useHistory();
@@ -23,9 +23,9 @@ const Account = () => {
     event.preventDefault();
     const mutationResponse = await updateUser({
       variables: {
-        id: state._id,
+        _id: state._id,
         email: formState.email,
-        password: formState.password,
+        // password: formState.password,
         firstName: formState.firstName,
         lastName: formState.lastName,
       },
@@ -42,6 +42,7 @@ const Account = () => {
     console.log(state);
 
     history.push('/dashboard');
+    window.location.reload();
   };
 
   const handleChange = (event) => {
@@ -90,7 +91,7 @@ const Account = () => {
             onChange={handleChange}
             />
           </div>
-          <div className="flex-row space-between my-2">
+          {/* <div className="flex-row space-between my-2">
             <label htmlFor="pwd">Password:</label>
             <input
               placeholder="******"
@@ -99,7 +100,7 @@ const Account = () => {
               id="pwd"
             onChange={handleChange}
             />
-          </div>
+          </div> */}
           <div className="flex-row flex-end">
             <Button type="submit">Update Account</Button>
           </div>
