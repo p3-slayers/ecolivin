@@ -47,6 +47,7 @@ const HabitTracker = () => {
       )
      
     );
+    window.location.reload();
   }
 
   return (
