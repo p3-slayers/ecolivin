@@ -2,10 +2,12 @@ import React from 'react';
 import bag from '../assets/bag.jpg'; //change it to what you need
 import hands from '../assets/hands.jpg'; 
 import categories from '../assets/categories.png'
+import Nav from '../components/Nav/index'
 
 function About() {
   return (
     <>
+    <Nav />
       <div className="container mt-5">
         <h2 className="text-center">About</h2>
 

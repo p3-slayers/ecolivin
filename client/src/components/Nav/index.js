@@ -14,7 +14,7 @@ function Navigation() {
       //ADD LINEHEIGHT when logo is picked
       return (
         <Link to="/dashboard" style={{ textDecoration: 'none' }}>
-          <img src={logo} alt="logo spinner" height="60px" />
+          <img src={logo} alt="logo spinner" height="65px" />
         </Link>
       );
     } else {
@@ -24,7 +24,7 @@ function Navigation() {
           style={{ textDecoration: 'none', color: 'black', fontSize: '32px' }}
         >
           {' '}
-          <img src={logo} alt="logo spinner" height="60px" />
+          <img src={logo} alt="logo spinner" height="65px" />
         </Link>
       );
     }

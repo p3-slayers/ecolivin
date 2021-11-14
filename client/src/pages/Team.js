@@ -1,10 +1,13 @@
 import React from 'react';
 import { teamMembers } from '../assets/data';
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+import Nav from '../components/Nav/index';
 
 
 const Team = () => {
   return (
+    <>
+    <Nav />
     <div className="container">
       <h1 className="text-center mt-5">Our Team</h1>
           {teamMembers.map((member) => (
@@ -29,8 +32,8 @@ const Team = () => {
               </div>
               </div>
           ))}
-
     </div>
+    </>
   );
 };
 
