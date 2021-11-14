@@ -28,7 +28,7 @@ const Dashboard = () => {
 
       <div className="px-5 flex-grow-1" style={{marginLeft:'30px'}}>
 
-      <h2>Hello, {state.firstName}!</h2>
+      <h1 className="display-5">Hello, {state.firstName}!</h1>
 
       <Row className="mt-5 mb-5 align-items-center">
         <Col>
