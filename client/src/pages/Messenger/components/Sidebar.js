@@ -39,7 +39,7 @@ export default function Sidebar({ id }) {
           </Tab.Pane>
         </Tab.Content>
         <div className="p-2 border-top border-end small">
-          Your Id: <span className="text-muted">{id}</span>
+          Your Email: <span className="text-muted">{id}</span>
         </div>
         <Button onClick={() => setModalOpen(true)} className="rounded-0">
           New {conversationOpen ? 'Conversation' : 'Contact'}
