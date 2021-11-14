@@ -9,6 +9,11 @@ function Results() {
   const lifestyle = localStorage.getItem('lifestyle');
   const housing = localStorage.getItem('housing');
  
+
+  function goToDashboard(){
+    window.location.assign("/dashboard");
+  }
+
   return (
     <>
       {/* add information about the project */}
@@ -19,8 +24,9 @@ function Results() {
       <h4>Lifestyle: {lifestyle}</h4>
       <h4>Housing: {housing}</h4>
 
-      <Link to="/dashboard"><Button variant="primary">GO to DASHBOARD</Button>{' '}</Link>
-    </>
+      {/* <Link to="/dashboard"><Button variant="primary">GO to DASHBOARD</Button>{' '}</Link> */}
+      <Button variant="primary" onClick={goToDashboard}>GO to DASHBOARD</Button>
+      </>
   );
 }
 

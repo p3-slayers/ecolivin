@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 :root {
   --primary: #232f3e;
@@ -213,15 +215,52 @@ input:focus {
   opacity: 95%;
 }
 
+.signup {
+  position: relative;
+  background: url('../src/assets/signup.jpg') no-repeat center center/cover;
+  height: 100vh;
+  opacity: 95%;
+}
+
+.login {
+  position: relative;
+  background: url('../src/assets/login.jpg') no-repeat center center/cover;
+  height: 100vh;
+  opacity: 95%;
+}
+
 .btn-primary {
   color: #fff;
   background-color: #703043;
   border-color: #703043;
 }
-
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:disabled {
+  background-color: #883d53;
+  border-color: #883d53;
+}
 .btn-primary:hover {
   background-color: #703043;
   border-color: #703043;
+}
+
+.text-success {
+  color: #308875 !important;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Jost', sans-serif;
+}
+.list-group-item {
+  border: none;
+}
+p,
+a {
+  font-family: 'Open Sans', sans-serif;
 }
 
 .logo {

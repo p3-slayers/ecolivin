@@ -1,18 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ListGroup, ListGroupItem, Row, Col } from "react-bootstrap";
-import Button from "@restart/ui/esm/Button";
+import { Button } from "react-bootstrap";
 
 function Sidebar() {
   return (
     <Row>
       <Col xs={6} md={3} lg={3} style={{ width: "auto" }}>
         <ListGroup style={{ textAlign: "center", textDecoration: "none" }}>
-          <ListGroupItem>Quick Links</ListGroupItem>
           <ListGroupItem>
             <Button style={{ width: "100%"}}>
               <Link
-                style={{ textDecoration: "none", color: "black" }}
+                style={{ textDecoration: "none", color: "white" }}
                 to="/account"
               >
                 Account
@@ -22,7 +21,7 @@ function Sidebar() {
           <ListGroupItem>
             <Button style={{ width: "100%" }}>
               <Link
-                style={{ textDecoration: "none", color: "black" }}
+                style={{ textDecoration: "none", color: "white" }}
                 to="/dailyactions"
               >
                 {" "}
@@ -33,7 +32,7 @@ function Sidebar() {
           <ListGroupItem>
             <Button style={{ width: "100%" }}>
               <Link
-                style={{ textDecoration: "none", color: "black" }}
+                style={{ textDecoration: "none", color: "white" }}
                 to="/habittracker"
               >
                 Habit Tracker
@@ -43,7 +42,7 @@ function Sidebar() {
           <ListGroupItem>
             <Button style={{ width: "100%" }}>
               <Link
-                style={{ textDecoration: "none", color: "black" }}
+                style={{ textDecoration: "none", color: "white" }}
                 to="/resources"
               >
                 Resources

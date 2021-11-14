@@ -1,9 +1,12 @@
 import Button from 'react-bootstrap/Button';
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from "react-router-dom";
+import Nav from '../components/Nav/index'
 
 const Home = () => {
   return (
+    <>
+      <Nav />
     <div className="landing" style={{backgroundColor:"#DFD4D1"}}>
       {/* will inserts information/summary about the website */}
       <div className="text-center container text-light h-100 d-flex flex-row align-items-center" style={{maxWidth:"800px"}}>
@@ -25,6 +28,8 @@ const Home = () => {
 
       </div>
     </div>
+    </>
+
   );
 };
 

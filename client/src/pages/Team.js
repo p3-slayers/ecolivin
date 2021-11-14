@@ -1,21 +1,26 @@
 import React from 'react';
 import { teamMembers } from '../assets/data';
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+import Nav from '../components/Nav/index';
+
 
 const Team = () => {
   return (
+    <>
+    <Nav />
     <div className="container">
-      <h1>Our Team</h1>
-          {teamMembers.map((member) => (
-            <div className="container">
-              <div className="row">
-                <div className="col">
+      <h1 className="text-center mt-5">OUR TEAM</h1>
+          {teamMembers.sort( () => .5 - Math.random() ).map((member) => (
+            <div className="container mt-3 p-4">
+              <div className="row align-items-center">
+                <div className="col-4 px-4">
                 <img
+                  className="rounded-circle shadow"
                   alt="profile"
-                  src={member.image}
+                  src= {require(`../assets/${member.image}`).default} 
                 />
                 </div>
-                <div className="col">
+                <div className="col-8">
                 <h3> {member.name} </h3>
                 <p> {member.bio} </p>
                 <a href={member.linkedin} target="_blank" rel="noreferrer">
@@ -28,8 +33,8 @@ const Team = () => {
               </div>
               </div>
           ))}
-
     </div>
+    </>
   );
 };
 

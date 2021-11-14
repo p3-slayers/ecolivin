@@ -1,8 +1,10 @@
 import React from 'react';
 import Sidebar from '../../components/Sidebar/index';
 import { useQuery } from '@apollo/client';
-
+import {Row, Col} from 'react-bootstrap';
+import HabitTrackerAction from '../../components/HabitTrackerAction/index'
 import { QUERY_SINGLE_ACTION } from '../../utils/queries';
+import { Button } from "react-bootstrap";
 
 
 function getAddedActions(){
@@ -22,7 +24,7 @@ function getAddedActions(){
         variables: { id:id },
       });
       console.log("actondb", loading, error, data);
-      added[id] = "empty now";
+      added[id] = JSON.parse(localStorage.getItem(id));
     }
   });
 
@@ -30,21 +32,53 @@ function getAddedActions(){
 }
 
 
+
+
 const HabitTracker = () => {
   const addedActions = getAddedActions();
   console.log("myAddedActions", addedActions);
+
+
+  function reset(){
+    Object.entries(addedActions).map( ([key, value]) => 
+  
+      ["mon", "tue", "wed", "thu", "fri", "sat", "sun"].map((day) => 
+        localStorage.setItem(`${day}-${value["actionId"]}-checkbox`, false)
+      )
+     
+    );
+    window.location.reload();
+  }
 
   return (
     <div className="d-flex mt-5">
       {/* will inserts information/summary about the User */}
       <Sidebar />
-      <div className="p-2 flex-grow-1">
-        <h3>ht</h3>
+      <div className="px-5 flex-grow-1">
+        <h2>Habit Tracker</h2>
+        <hr/>
 
+        <Row className="mb-3">
+            <Col md={4}>  
+            <Button style={{ width: "60%"}} onClick={reset}>
+                Reset Week
+            </Button>
+            </Col>
+            <Col><p>Mon</p></Col>
+            <Col><p>Tue</p></Col>
+            <Col><p>Wed</p></Col>
+            <Col><p>Thu</p></Col>
+            <Col><p>Fri</p></Col>
+            <Col><p>Sat</p></Col>
+            <Col><p>Sun</p></Col>
+        </Row>
+        <hr/>
         {
-          Object.keys(addedActions).map(function(key, index) {
-            <p>{key} {index}</p>
-        })}      
+
+          Object.entries(addedActions).map( ([key, value]) => 
+            <HabitTrackerAction text={value["actionTitle"]} actionText={value["actionText"]} actionId={value["actionId"]}/>
+           ) 
+        }
 
 
 

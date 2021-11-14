@@ -15,9 +15,12 @@ import BeginQuestionnaire from '../Questionnaire/BeginQuestionnaire';
 import Questionnaire from '../Questionnaire/Questionnaire';
 import Results from '../Questionnaire/Results';
 import { Container } from 'react-bootstrap';
+import Nav from '../../components/Nav/index'
 
 const DashboardRoutes = () => {
   return (
+    <>
+    <Nav />
     <Container style={{ margin: '30px auto' }}>
       <Switch>
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
@@ -29,16 +32,13 @@ const DashboardRoutes = () => {
         <PrivateRoute exact path="/dailyactions" component={DailyActions} />
         <PrivateRoute exact path="/habittracker" component={HabitTracker} />
         <PrivateRoute exact path="/resources" component={Resources} />
-        <PrivateRoute
-          exact
-          path="/beginquestionnaire"
-          component={BeginQuestionnaire}
-        />
+        <PrivateRoute exact path="/beginquestionnaire" component={BeginQuestionnaire}/>
         <PrivateRoute exact path="/questionnaire" component={Questionnaire} />
         <PrivateRoute exact path="/results" component={Results} />
         <PrivateRoute exact path="/messenger" component={Messenger} />
       </Switch>
     </Container>
+    </>
   );
 };
 

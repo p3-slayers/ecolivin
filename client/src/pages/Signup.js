@@ -3,10 +3,13 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
+import logo from '../assets/ecolivin.png'
 
 import { useHistory } from 'react-router-dom';
 import { useGlobalUserContext } from '../utils/GlobalState';
 import { SET_USER_DATA } from '../utils/actions';
+import { Row, Col, Button } from "react-bootstrap";
+
 
 function Signup(props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -59,11 +62,17 @@ function Signup(props) {
   };
 
   return (
-    <div className="container my-1">
-      <h2>Signup</h2>
-      <form onSubmit={handleFormSubmit}>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="firstName">First Name:</label>
+    <div className="signup">
+    <Row>
+      <Col className="offset-md-4 mt-5 pt-5" xs={6} md={4} lg={4}>
+      <div className="d-flex flex-row my-1 justify-content-center shadow-lg p-5 bg-light">
+      <form onSubmit={handleFormSubmit} className="mb-3 w-75 text-center">
+      <Link to="/" style={{ textDecoration: 'none' }}>
+          <img src={logo} alt="logo spinner" height="65px" />
+          </Link>
+      {/* <h2 className="text-center mynpm-4">Signup</h2> */}
+        <div className="flex-row space-between mb-2 mt-4 align-items-center ">
+          <label htmlFor="firstName">First Name</label>
           <input
             placeholder="First"
             name="firstName"
@@ -72,8 +81,8 @@ function Signup(props) {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="lastName">Last Name:</label>
+        <div className="flex-row space-between my-2 align-items-center">
+          <label htmlFor="lastName">Last Name</label>
           <input
             placeholder="Last"
             name="lastName"
@@ -82,8 +91,8 @@ function Signup(props) {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="email">Email:</label>
+        <div className="flex-row space-between my-2 align-items-center">
+          <label htmlFor="email">Email</label>
           <input
             placeholder="youremail@test.com"
             name="email"
@@ -92,8 +101,8 @@ function Signup(props) {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="pwd">Password:</label>
+        <div className="flex-row space-between my-2 align-items-center">
+          <label htmlFor="pwd">Password</label>
           <input
             placeholder="******"
             name="password"
@@ -102,11 +111,14 @@ function Signup(props) {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row flex-end">
-          <button type="submit">Submit</button>
+        <div className="flex-row flex-end justify-content-center my-4">
+          <Button type="submit">SIGN UP</Button>
         </div>
       </form>
-      <Link to="/login">Already have an account?Go to Login!</Link>
+      <Link className="text-success text-decoration-none" to="/login">Already have an account? Login NOW!</Link>
+    </div>
+    </Col>
+    </Row>
     </div>
   );
 }

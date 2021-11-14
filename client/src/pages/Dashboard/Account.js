@@ -6,6 +6,7 @@ import { UPDATE_USER } from '../../utils/mutations';
 import { useHistory } from 'react-router-dom';
 import { useGlobalUserContext } from '../../utils/GlobalState';
 import { SET_USER_DATA } from '../../utils/actions';
+import { Button } from "react-bootstrap";
 
 const Account = () => {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -53,11 +54,11 @@ const Account = () => {
   };
 
   return (
-    <div className="d-flex">
+    <div className="d-flex mt-5">
       {/* will inserts information/summary about the User */}
       <Sidebar />
-      <div className="p-2 flex-grow-1">
-        <h3 className>Edit Profile</h3>
+      <div className="px-5 flex-grow-1">
+        <h2 className>Edit Profile</h2>
         <form onSubmit={handleFormSubmit}>
           <div className="flex-row space-between my-2">
             <label htmlFor="firstName">First Name:</label>
@@ -100,7 +101,7 @@ const Account = () => {
             />
           </div>
           <div className="flex-row flex-end">
-            <button type="submit">Update Account</button>
+            <Button type="submit">Update Account</Button>
           </div>
         </form>
       </div>
