@@ -5,17 +5,17 @@ import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 const Team = () => {
   return (
     <div className="container">
-      <h1>Our Team</h1>
+      <h1 className="text-center mt-5">Our Team</h1>
           {teamMembers.map((member) => (
-            <div className="container">
+            <div className="container mt-5">
               <div className="row">
-                <div className="col">
+                <div className="col-4 mt-3 px-4">
                 <img
                   alt="profile"
                   src={member.image}
                 />
                 </div>
-                <div className="col">
+                <div className="col-8">
                 <h3> {member.name} </h3>
                 <p> {member.bio} </p>
                 <a href={member.linkedin} target="_blank" rel="noreferrer">

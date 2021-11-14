@@ -1,8 +1,9 @@
+
 export const teamMembers = [
     {
         name: "Valbona Bajrami",
         bio: "Healthcare professional with a passion for tech.",
-        image: "https://via.placeholder.com/150",
+        image:'./ValbonaBajrami.jpg',
         linkedin: "https://www.linkedin.com/in/valbona-bajrami/",
         github: "https://github.com/valbona1992",
     },

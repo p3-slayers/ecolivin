@@ -24,6 +24,7 @@ function HabitTrackerAction(input) {
 
   function remove(){
       localStorage.removeItem(actionId);
+      window.location.reload();
   }
 
   return (
