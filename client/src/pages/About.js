@@ -1,16 +1,23 @@
 import React from 'react';
 import bag from '../assets/bag.jpg'; //change it to what you need
 import hands from '../assets/hands.jpg'; 
+import categories from '../assets/categories.png'
+import Nav from '../components/Nav/index'
 
 function About() {
   return (
     <>
-      <div className="container">
+    <Nav />
+      <div className="container mt-5">
         <h2 className="text-center">About</h2>
 
-        <p>This app was designed to help users track and improve their sustainable living goals. After creating an account users will be provided a questionnaire. Their answers will determine their sustainability scores in five categories: Transportation, Food, Waste, Housing, and Lifestyle.</p>
-
+        <p className="text-center px-5 my-3" >This app is designed to help users track and improve their sustainable living goals. After creating an account users will be provided a questionnaire that will help determine their sustainability scores in five categories.</p>
         <div className="row">
+          <div className="col-12 text-center">
+        <img alt="Categories" src={categories} style={{width:"65%"}}/>
+        </div></div>
+        <hr/>
+        <div className="row px-4 mt-5">
           <div className="col">
             <h2 className="text-center">Personal Goals</h2>
             <p>Users will have access to a dashboard where they can view their current scores and a graph comparing their scores to the average scores of all other users. On the dashboard users will also be able to track personal goals that can be monitored and updated weekly as well as information on different areas of improvement based on each category.</p>
@@ -20,9 +27,9 @@ function About() {
           </div>
         </div>
 
-        <div className="row">
+        <div className="row mt-4 px-4">
           <div className="col">
-            <img alt="Social Network" src={hands} style={{width:"80%"}}/>
+            <img alt="Social Network" src={hands} style={{width:"70%"}}/>
           </div>
           <div className="col">
             <h2 className="text-center">Social Network</h2>
