@@ -3,7 +3,7 @@ import { useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
 import { LOGIN } from '../utils/mutations';
 import Auth from '../utils/auth';
-
+import logo from '../assets/ecolivin.png'
 import { useHistory } from 'react-router-dom';
 import { useGlobalUserContext } from '../utils/GlobalState';
 import { SET_USER_DATA } from '../utils/actions';
@@ -70,8 +70,11 @@ function Login(props) {
         <Row>
           <Col className="offset-md-4 mt-5 pt-5" xs={6} md={4} lg={4}>
           <div className="d-flex flex-row my-1 justify-content-center shadow-lg p-5 bg-light">
-          <form onSubmit={handleFormSubmit} className="mb-3 w-75">
-          <h2 className="text-center mb-4">Login</h2>
+          <form onSubmit={handleFormSubmit} className="mb-3 w-75 text-center">
+          <Link to="/" style={{ textDecoration: 'none' }}>
+          <img src={logo} alt="logo spinner" height="65px" />
+          </Link>
+          <h2 className="text-center my-4">Login</h2>
             <div className="flex-row space-between my-2 align-items-center ">
                 <label htmlFor="email">Email:</label>
               <input
