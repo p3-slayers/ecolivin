@@ -92,7 +92,7 @@ const typeDefs = gql`
     ): Auth
 
     updateUser(
-      id: ID
+      _id: ID!
       firstName: String
       lastName: String
       email: String

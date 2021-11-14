@@ -124,14 +124,10 @@ const resolvers = {
 
     //   throw new AuthenticationError('Not logged in');
     // },
-    updateUser: async (parent, args, context) => {
-      if (context.user) {
-        return User.findByIdAndUpdate(context.user.id, args, {
-          new: true,
-        });
-      }
-
-      throw new AuthenticationError('Not logged in');
+    updateUser: async (parent, args) => {
+      return User.findByIdAndUpdate(args._id, args, {
+        new: true,
+      });
     },
     // updateProduct: async (parent, { id, quantity }) => {
     //   const decrement = Math.abs(quantity) * -1;
