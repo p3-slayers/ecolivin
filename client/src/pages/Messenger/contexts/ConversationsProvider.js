@@ -14,6 +14,7 @@ export function useConversationsContext() {
 
 // actual functional component
 export function ConversationsProvider({ id, children }) {
+  // const userConversations = await useQuery(getUserConversations)
   const [conversations, setConversations] = useLocalStorage(
     `conversations`,
     []
@@ -23,6 +24,7 @@ export function ConversationsProvider({ id, children }) {
   const socket = useSocketContext();
 
   function createConversation(recipients) {
+    // useMutation(NewConversation)
     setConversations((prevConversations) => {
       return [...prevConversations, { recipients, messages: [] }];
     });
@@ -33,6 +35,8 @@ export function ConversationsProvider({ id, children }) {
   const addMessageToConversation = useCallback(
     ({ recipients, text, sender }) => {
       console.log(`addMessageToConversation fired`);
+      // useMutation(addMessageToConversation)
+
       // all we have is an array of recipients- so we need to figure out which conversation to add the message to, OR if we need to create a brand new conversation.
       setConversations((prevConversations) => {
         let madeChange = false;
@@ -67,6 +71,8 @@ export function ConversationsProvider({ id, children }) {
     if (socket == null) return;
 
     socket.on(`receive-message`, addMessageToConversation);
+    // useMutation(addMessageToConversation)
+
 
     // cleanup to remove the event listener... the return statement for useEffect is returned to close connections, prevent memory leaks, etc. and is executed subsequently after the callback passed to useEffect is executed.
     return () => socket.off('receive-message');
@@ -74,6 +80,7 @@ export function ConversationsProvider({ id, children }) {
 
   function sendMessage(recipients, text) {
     socket.emit(`send-message`, { recipients, text });
+    // useMutation(addMessageToConversation)
 
     addMessageToConversation({ recipients, text, sender: id });
   }
