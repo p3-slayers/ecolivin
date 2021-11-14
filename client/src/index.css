@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 :root {
   --primary: #232f3e;
@@ -244,6 +246,17 @@ input:focus {
 
 .text-success {
   color: #308875 !important;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Jost', sans-serif;
+}
+
+p,
+a {
+  font-family: 'Open Sans', sans-serif;
 }
 
 .logo {
