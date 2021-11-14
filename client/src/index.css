@@ -235,7 +235,8 @@ input:focus {
   border-color: #703043;
 }
 .btn-primary:focus,
-.btn-primary:active {
+.btn-primary:active,
+.btn-primary:disabled {
   background-color: #883d53;
   border-color: #883d53;
 }
