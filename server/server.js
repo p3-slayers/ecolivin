@@ -1,13 +1,12 @@
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
-require('dotenv').config();
-const stripe = require('stripe')(process.env.STRIPE_SECRET_PRODUCTION);
 
 const cors = require('cors');
 const { typeDefs, resolvers } = require('./schemas');
 const { authMiddleware } = require('./utils/auth');
 const db = require('./config/connection');
+const routes = require('./api')
 
 const PORT = process.env.PORT || 3001;
 
@@ -58,15 +57,11 @@ const apolloServer = new ApolloServer({
 
 apolloServer.applyMiddleware({ app });
 
-//not sure if this is necessary, tested w out it payments still work.
-app.use(
-  cors({
-    origin: 'http://localhost:3000',
-  })
-);
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(routes);
+
 
 // Serve up static assets
 app.use('/images', express.static(path.join(__dirname, '../client/images')));
@@ -80,37 +75,6 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
-app.post('/create-checkout-session', async (req, res) => {
-  try {
-    const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
-      line_items: req.body.items.map(({ id, quantity }) => {
-        const storeItem = storeItems.get(id);
-        return {
-          price_data: {
-            currency: 'usd',
-            product_data: {
-              name: storeItem.name,
-            },
-            unit_amount: storeItem.priceInCents,
-          },
-          quantity: quantity,
-        };
-      }),
-      mode: 'payment',
-      success_url: 'http://localhost:3000/',
-      cancel_url: 'http://localhost:3000/donate',
-    });
-    res.json({ url: session.url });
-  } catch (e) {
-    res.status(500).json({ error: e.message });
-  }
-});
-
-const storeItems = new Map([
-  [1, { priceInCents: 10000, name: 'Learn React Today' }],
-  [2, { priceInCents: 15000, name: 'Learn CSS Today' }],
-]);
 
 db.once('open', () => {
   // changed this so the app with call listen on the httpServer instead of directly on the app because the DB connection is rolled into App, and app is rolled into httpServer which also has socket.io. app still handles routing and initializing apollo, and socket.io will handle websocket traffic for chat- all 3 functions are contained within httpServer.
