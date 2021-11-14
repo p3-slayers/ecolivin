@@ -16,7 +16,11 @@ function ActionCard(input) {
     console.log(`handleFormSubmit fired`);
     event.preventDefault();
 
-    localStorage.setItem(actionId, true);
+    localStorage.setItem(actionId, JSON.stringify({
+      actionTitle: text,
+      actionId: actionId,
+      actionText: actionText
+    }));
     setDisable(true);
 
   };

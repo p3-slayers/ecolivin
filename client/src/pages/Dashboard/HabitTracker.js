@@ -1,8 +1,10 @@
 import React from 'react';
 import Sidebar from '../../components/Sidebar/index';
 import { useQuery } from '@apollo/client';
-
+import {Row, Col} from 'react-bootstrap';
+import HabitTrackerAction from '../../components/HabitTrackerAction/index'
 import { QUERY_SINGLE_ACTION } from '../../utils/queries';
+import Button from "@restart/ui/esm/Button";
 
 
 function getAddedActions(){
@@ -22,7 +24,7 @@ function getAddedActions(){
         variables: { id:id },
       });
       console.log("actondb", loading, error, data);
-      added[id] = "empty now";
+      added[id] = JSON.parse(localStorage.getItem(id));
     }
   });
 
@@ -30,21 +32,53 @@ function getAddedActions(){
 }
 
 
+
+
 const HabitTracker = () => {
   const addedActions = getAddedActions();
   console.log("myAddedActions", addedActions);
+
+
+  function reset(){
+    Object.entries(addedActions).map( ([key, value]) => 
+  
+      ["mon", "tue", "wed", "thu", "fri", "sat", "sun"].map((day) => 
+        localStorage.setItem(`${day}-${value["actionId"]}-checkbox`, false)
+      )
+     
+    );
+    window.location.reload();
+  }
 
   return (
     <div className="d-flex mt-5">
       {/* will inserts information/summary about the User */}
       <Sidebar />
       <div className="p-2 flex-grow-1">
-        <h3>ht</h3>
+        <h3>Habit Tracker</h3>
+        <hr/>
 
+        <Row className="mb-3">
+            <Col md={4}>  
+            <Button style={{ width: "60%"}} onClick={reset}>
+                Reset Week
+            </Button>
+            </Col>
+            <Col>Mon</Col>
+            <Col>Tue</Col>
+            <Col>Wed</Col>
+            <Col>Thu</Col>
+            <Col>Fri</Col>
+            <Col>Sat</Col>
+            <Col>Sun</Col>
+        </Row>
+        <hr/>
         {
-          Object.keys(addedActions).map(function(key, index) {
-            <p>{key} {index}</p>
-        })}      
+
+          Object.entries(addedActions).map( ([key, value]) => 
+            <HabitTrackerAction text={value["actionTitle"]} actionText={value["actionText"]} actionId={value["actionId"]}/>
+           ) 
+        }
 
 
 
