@@ -9,12 +9,13 @@ const Team = () => {
     <>
     <Nav />
     <div className="container">
-      <h1 className="text-center mt-5">Our Team</h1>
-          {teamMembers.map((member) => (
-            <div className="container mt-5">
-              <div className="row">
-                <div className="col-4 mt-3 px-4">
+      <h1 className="text-center mt-5">OUR TEAM</h1>
+          {teamMembers.sort( () => .5 - Math.random() ).map((member) => (
+            <div className="container mt-3 p-4">
+              <div className="row align-items-center">
+                <div className="col-4 px-4">
                 <img
+                  className="rounded-circle shadow"
                   alt="profile"
                   src= {require(`../assets/${member.image}`).default} 
                 />
