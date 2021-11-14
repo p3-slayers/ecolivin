@@ -13,7 +13,7 @@ const DailyActions = () => {
       {/* will inserts information/summary about the User */}
       <Sidebar />
       <div className="px-5 flex-grow-1">
-        <h2>Daily Actions</h2>
+        <h2 className="mb-4">Daily Actions</h2>
 
 
         <Tabs defaultActiveKey="profile" className="mb-3">

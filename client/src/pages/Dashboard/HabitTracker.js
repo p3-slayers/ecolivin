@@ -55,10 +55,9 @@ const HabitTracker = () => {
       {/* will inserts information/summary about the User */}
       <Sidebar />
       <div className="px-5 flex-grow-1">
-        <h2>Habit Tracker</h2>
-        <hr/>
+        <h2 className="mb-5">Habit Tracker</h2>
 
-        <Row className="mb-3">
+        <Row className="mb-3 bg-light p-3">
             <Col md={4}>  
             <Button style={{ width: "60%"}} onClick={reset}>
                 Reset Week
