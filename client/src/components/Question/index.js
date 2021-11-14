@@ -11,8 +11,8 @@ function Question(input) {
 
   return (
     <Row className="mb-2">
-    <Col md={6}>{text}</Col>
-    <Col md={{ span: 4, offset: 2 }}>
+    <Col md={7}><p>{text}</p></Col>
+    <Col md={{ span: 4, offset: 1 }} className="text-center">
         <ToggleButtonGroup type="radio" name={id}>
           <ToggleButton value={1} id={"1-"+id} onChange={onChange} className="mx-2">1</ToggleButton>
           <ToggleButton value={2} id={"2-"+id} onChange={onChange} className="mx-2">2</ToggleButton>

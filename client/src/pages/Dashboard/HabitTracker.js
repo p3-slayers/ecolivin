@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/client';
 import {Row, Col} from 'react-bootstrap';
 import HabitTrackerAction from '../../components/HabitTrackerAction/index'
 import { QUERY_SINGLE_ACTION } from '../../utils/queries';
-import Button from "@restart/ui/esm/Button";
+import { Button } from "react-bootstrap";
 
 
 function getAddedActions(){
@@ -54,8 +54,8 @@ const HabitTracker = () => {
     <div className="d-flex mt-5">
       {/* will inserts information/summary about the User */}
       <Sidebar />
-      <div className="p-2 flex-grow-1">
-        <h3>Habit Tracker</h3>
+      <div className="px-5 flex-grow-1">
+        <h2>Habit Tracker</h2>
         <hr/>
 
         <Row className="mb-3">
@@ -64,13 +64,13 @@ const HabitTracker = () => {
                 Reset Week
             </Button>
             </Col>
-            <Col>Mon</Col>
-            <Col>Tue</Col>
-            <Col>Wed</Col>
-            <Col>Thu</Col>
-            <Col>Fri</Col>
-            <Col>Sat</Col>
-            <Col>Sun</Col>
+            <Col><p>Mon</p></Col>
+            <Col><p>Tue</p></Col>
+            <Col><p>Wed</p></Col>
+            <Col><p>Thu</p></Col>
+            <Col><p>Fri</p></Col>
+            <Col><p>Sat</p></Col>
+            <Col><p>Sun</p></Col>
         </Row>
         <hr/>
         {

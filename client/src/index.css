@@ -250,10 +250,13 @@ input:focus {
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
   font-family: 'Jost', sans-serif;
 }
-
+.list-group-item {
+  border: none;
+}
 p,
 a {
   font-family: 'Open Sans', sans-serif;

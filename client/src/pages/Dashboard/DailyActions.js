@@ -2,7 +2,6 @@ import React from 'react';
 import Sidebar from '../../components/Sidebar/index';
 import { Link } from "react-router-dom";
 import { Container, ListGroup, ListGroupItem, Row, Col } from "react-bootstrap";
-import Button from "@restart/ui/esm/Button";
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import Card from 'react-bootstrap/Card';
@@ -13,8 +12,8 @@ const DailyActions = () => {
     <div className="d-flex mt-5">
       {/* will inserts information/summary about the User */}
       <Sidebar />
-      <div className="p-2 flex-grow-1">
-        <h3>Daily Actions</h3>
+      <div className="px-5 flex-grow-1">
+        <h2>Daily Actions</h2>
 
 
         <Tabs defaultActiveKey="profile" className="mb-3">

@@ -29,7 +29,7 @@ function Step3(props) {
         <Question text={"I use a fan instead of an air conditioner. "} id="c3q5" onChange={props.handleChange} />
         <Question text={"I buy products with less packaging. "} id="c3q6" onChange={props.handleChange} />
         <Question text={"I avoid disposable or single-use products."} id="c3q7" onChange={props.handleChange} />
-        <Question text={"I mean plan to avoid extra waste. "} id="c3q8" onChange={props.handleChange} />
+        <Question text={"I meal plan to avoid extra waste. "} id="c3q8" onChange={props.handleChange} />
 
 
         

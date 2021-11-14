@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Sidebar from '../../components/Sidebar/index';
 import { useGlobalUserContext } from '../../utils/GlobalState';
 import BarChart from '../../components/ChartJs';
-import Button from "@restart/ui/esm/Button";
+import { Button } from "react-bootstrap";
 
 const Dashboard = () => {
   // console.log(auth.loggedIn())
@@ -24,17 +24,18 @@ const Dashboard = () => {
 
       {/* will inserts information/summary about the User */}
       <Sidebar />
-      <div className="p-2 flex-grow-1" style={{marginLeft:'30px'}}>
-        <h1>Hello, {state.firstName}</h1>
+      <div className="px-5 flex-grow-1" style={{marginLeft:'30px'}}>
+        <h2>Hello, {state.firstName}</h2>
         {/* <h3>Profile page/ dashboard content</h3>    
         <h1>Hello, {state.email}</h1> */}
-        <Button style={{ width: "50%"}}>
-              <Link
-                style={{ textDecoration: "none", color: "black" }}
+        <Link
+                style={{ textDecoration: "none", color: "white" }}
                 to="/beginquestionnaire"
-              > Retake Questionnaire
-              </Link>
+              > 
+          <Button style={{ width: "50%"}}>
+              Retake Questionnaire
             </Button>
+            </Link>
          <BarChart/>
       </div>
     </div>

@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 // import { Link } from "react-router-dom";
 import Card from 'react-bootstrap/Card'
+import { Button } from "react-bootstrap";
 
 function ActionCard(input) {
   const text = input.title;
@@ -27,20 +28,20 @@ function ActionCard(input) {
 
   function submitButton(){
     if(isAdded){
-      return (<button type="submit" disabled={true}>Added</button>);
+      return (<Button type="submit" disabled={true}>Added</Button>);
     }else {
-      return (<button type="submit" disabled={disable}>Add</button>);
+      return (<Button type="submit" disabled={disable}>Add</Button>);
     }
   };
   
   return (
 
-    <Card style={{ width: '13rem' }}>
+    <Card style={{ width: '15rem' }} className="border-0">
     <Card.Body>
-        <Card.Title>{text}</Card.Title>
-        <Card.Text>
-        {actionText}
-        <form onSubmit={handleFormSubmit}>
+        <Card.Title className="text-center"><h4>{text}</h4></Card.Title>
+        <Card.Text className="d-flex flex-row card-text justify-content-center">
+        <p className="small">{actionText}</p>
+        <form className="text-center "onSubmit={handleFormSubmit}>
           <div className="flex-row flex-end">
             {submitButton()}
           </div>
