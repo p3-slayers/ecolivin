@@ -2,6 +2,7 @@ import React from 'react';
 import { teamMembers } from '../assets/data';
 import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 
+
 const Team = () => {
   return (
     <div className="container">
@@ -12,7 +13,7 @@ const Team = () => {
                 <div className="col-4 mt-3 px-4">
                 <img
                   alt="profile"
-                  src={member.image}
+                  src= {require(`../assets/${member.image}`).default} 
                 />
                 </div>
                 <div className="col-8">
