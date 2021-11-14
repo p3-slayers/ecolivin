@@ -8,7 +8,7 @@ import logo from '../assets/ecolivin.png'
 import { useHistory } from 'react-router-dom';
 import { useGlobalUserContext } from '../utils/GlobalState';
 import { SET_USER_DATA } from '../utils/actions';
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 
 
 function Signup(props) {
@@ -70,8 +70,8 @@ function Signup(props) {
       <Link to="/" style={{ textDecoration: 'none' }}>
           <img src={logo} alt="logo spinner" height="65px" />
           </Link>
-      <h2 className="text-center mynpm-4">Signup</h2>
-        <div className="flex-row space-between my-2 align-items-center ">
+      {/* <h2 className="text-center mynpm-4">Signup</h2> */}
+        <div className="flex-row space-between mb-2 mt-4 align-items-center ">
           <label htmlFor="firstName">First Name</label>
           <input
             placeholder="First"
@@ -112,10 +112,10 @@ function Signup(props) {
           />
         </div>
         <div className="flex-row flex-end justify-content-center my-4">
-          <button type="submit">Submit</button>
+          <Button type="submit">SIGN UP</Button>
         </div>
       </form>
-      <Link to="/login">Already have an account? Go to Login!</Link>
+      <Link className="text-success text-decoration-none" to="/login">Already have an account? Login NOW!</Link>
     </div>
     </Col>
     </Row>

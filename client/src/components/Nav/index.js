@@ -34,26 +34,26 @@ function Navigation() {
     if (Auth.loggedIn()) {
       return (
         <Nav onClick={() => setExpanded(false)}>
-          <NavLink as={Link} to="/dashboard">
+          <NavLink className="text-dark" as={Link} to="/dashboard">
             Dashboard
           </NavLink>
-          <NavLink as={Link} to="/feed">
+          <NavLink className="text-dark" as={Link} to="/feed">
             Feed
           </NavLink>
-          <NavLink as={Link} to="/challenges">
+          <NavLink className="text-dark" as={Link} to="/challenges">
             Challenges
           </NavLink>
-          <NavLink as={Link} to="/events">
+          <NavLink className="text-dark" as={Link} to="/events">
             Events
           </NavLink>
-          <NavLink as={Link} to="/messenger">
+          <NavLink className="text-dark" as={Link} to="/messenger">
             Messenger
           </NavLink>
-          <NavLink as={Link} to="/donate">
+          <NavLink className="text-dark" as={Link} to="/donate">
             Donate
           </NavLink>
           {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-          <NavLink href="/" onClick={() => Auth.logout()}>
+          <NavLink className="text-dark" href="/" onClick={() => Auth.logout()}>
             Logout
           </NavLink>
         </Nav>

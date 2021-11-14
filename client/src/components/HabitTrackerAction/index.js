@@ -25,16 +25,17 @@ function HabitTrackerAction(input) {
   function remove(){
       localStorage.removeItem(actionId);
       window.location.reload();
+
   }
 
   return (
 
     <Row className="mb-3">
-        <Col md={4}>        
+        <Col md={4} className="px-4">        
         
             {text} 
         
-        <Button variant="light" size="sm" onClick={remove}>
+        <Button className="mx-2 text-decoration-none" variant="link" size="sm" onClick={remove}>
             🗑️
         </Button>
 

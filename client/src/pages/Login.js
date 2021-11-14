@@ -7,7 +7,7 @@ import logo from '../assets/ecolivin.png'
 import { useHistory } from 'react-router-dom';
 import { useGlobalUserContext } from '../utils/GlobalState';
 import { SET_USER_DATA } from '../utils/actions';
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 
 function Login(props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -74,8 +74,7 @@ function Login(props) {
           <Link to="/" style={{ textDecoration: 'none' }}>
           <img src={logo} alt="logo spinner" height="65px" />
           </Link>
-          <h2 className="text-center my-4">Login</h2>
-            <div className="flex-row space-between my-2 align-items-center ">
+            <div className="flex-row space-between mb-2 mt-4 align-items-center ">
                 <label htmlFor="email">Email:</label>
               <input
                 placeholder="youremail@test.com"
@@ -97,15 +96,15 @@ function Login(props) {
               />
             </div>
             {error ? (
-              <div>
-                <p className="error-text">The provided credentials are incorrect</p>
+              <div className="mt-3">
+                <p className="text-muted small">The provided credentials are incorrect</p>
               </div>
             ) : null}
             <div className="flex-row flex-end justify-content-center my-4">
-              <button type="submit">Submit</button>
+              <Button type="submit">LOGIN</Button>
             </div>
           </form>
-          <Link to="/signup">← Go to Signup</Link>
+          <Link className="text-success text-decoration-none" to="/signup">Don't have an account? Signup NOW!</Link>
         </div>
         </Col>
         </Row>
