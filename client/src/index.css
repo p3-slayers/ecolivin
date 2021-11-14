@@ -232,10 +232,18 @@ input:focus {
   background-color: #703043;
   border-color: #703043;
 }
-
+.btn-primary:focus,
+.btn-primary:active {
+  background-color: #883d53;
+  border-color: #883d53;
+}
 .btn-primary:hover {
   background-color: #703043;
   border-color: #703043;
+}
+
+.text-success {
+  color: #308875 !important;
 }
 
 .logo {
