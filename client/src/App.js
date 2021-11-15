@@ -68,7 +68,7 @@ function App({ apolloClient }) {
     let userData = queryUserData(loggedInUserId);
     console.log(userData);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  });
 
   return (
     <Router>
