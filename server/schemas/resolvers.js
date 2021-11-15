@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Questionnaire, Category, Post, Result, Action } = require('../models');
+const { User, Questionnaire, Category, Post, Result, Action, Contact, Conversation, Message } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -31,7 +31,7 @@ const resolvers = {
 
     singleUser: async (parent, { id }) => {
       console.log(id);
-      const user = await User.findById(id).populate('answers');
+      const user = await User.findById(id).populate('answers').populate(`contacts`).populate(`conversations`);
       console.log(user);
       return user;
       // if (context.user) {
@@ -153,8 +153,10 @@ const resolvers = {
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
-        // answers: user.answers,
-        // actionAnswers: user.actionAnswers
+        conversations: user.conversations,
+        contacts: user.contacts,
+        answers: user.answers,
+        actionAnswers: user.actionAnswers
       };
 
       console.log(userWithoutPassword);
