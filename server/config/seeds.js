@@ -351,10 +351,19 @@ db.once('open', async () => {
     password: 'password12345',
     profileImage: 'insertimage.png',
     conversations: [
-
+      {
+        messages: [
+          {sender: "pamela@testmail.com", text: "hello world"},
+          {sender: "testID2", text: "hello world2"}
+        ],
+        recipients: ["testID", "testID2"]
+      }
     ],
     contacts: [
-
+      {
+        id: "testId",
+        name: "testName"
+      }
     ],
     answers: [
       {
@@ -395,7 +404,7 @@ db.once('open', async () => {
       },
     ],
   });
-  console.log(elijah);
+  console.log(pamela);
 
   console.log('users seeded');
 
