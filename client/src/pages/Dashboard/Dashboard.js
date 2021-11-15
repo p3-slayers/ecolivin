@@ -6,6 +6,34 @@ import Sidebar from '../../components/Sidebar/index';
 import { useGlobalUserContext } from '../../utils/GlobalState';
 import BarChart from '../../components/ChartJs';
 import { Button, Row, Col } from "react-bootstrap";
+import { useQuery } from '@apollo/client';
+
+import { QUERY_ALL_RESULTS } from '../../utils/queries';
+
+function computeAverages(others){
+  console.log(others);
+  let allPercentages = {
+   "food": [],
+   "housing": [],
+   "transportation": [],
+   "waste": [],
+   "lifestyle": []
+  }
+
+  const cats = ["food", "housing", "transportation", "waste", "lifestyle"];
+  cats.map(function(category) {
+    others.map(function(other){
+      allPercentages[category].push(other[category])
+    });
+  });
+
+  cats.map(function(category) {
+    const total = allPercentages[category].reduce((a, b) => a + b, 0)
+    allPercentages[category] = (total) / allPercentages[category].length;
+  });
+
+  return allPercentages;
+}
 
 const Dashboard = () => {
   // console.log(auth.loggedIn())
@@ -14,8 +42,18 @@ const Dashboard = () => {
   console.log("mystate", state);
   // useEffect(console.log(state), []);
 
+  const qResults = useQuery(QUERY_ALL_RESULTS);
+  const otherResults = qResults.data?.getResults || [];
+  const otherPercentages = computeAverages(otherResults);
 
 
+  const food = localStorage.getItem('food');
+  const transportation = localStorage.getItem('transportation');
+  const waste = localStorage.getItem('waste');
+  const lifestyle = localStorage.getItem('lifestyle');
+  const housing = localStorage.getItem('housing');
+
+  
   //on the container that wraps around these pages add margin 30px auto
   return (
 
@@ -61,7 +99,7 @@ const Dashboard = () => {
 
       <Row className="mt-4 align-items-center">
         <Col style={{height: "500px;"}}>
-            <BarChart/>
+            <BarChart lifestyle={lifestyle} housing={housing} waste={waste} food={food} transportation={transportation} otherPercentages={otherPercentages}/>
 
           </Col>
           <Col className="px-5">

@@ -63,10 +63,8 @@ function Results() {
 
       </div>
 
-
-
-      {/* <Link to="/dashboard"><Button variant="primary">GO to DASHBOARD</Button>{' '}</Link> */}
-      <Button variant="primary" className="text-center" onClick={goToDashboard} size="lg">GO to DASHBOARD</Button>
+      <Link to="/dashboard"><Button variant="primary" className="text-center" onClick={goToDashboard} size="lg">GO to DASHBOARD</Button></Link>
+      
       </div>
   );
 }
