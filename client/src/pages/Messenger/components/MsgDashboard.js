@@ -6,7 +6,7 @@ import Sidebar from './Sidebar';
 export default function Dashboard({ id }) {
   const { selectedConversation } = useConversationsContext();
   return (
-    <div className="d-flex" style={{ height: '100vh' }}>
+    <div className="d-flex" style={{ height: '80vh' }}>
       <Sidebar id={id} />
       {/* if selectedConversation, render the <OpenConversation> */}
       {selectedConversation && <OpenConversation />}

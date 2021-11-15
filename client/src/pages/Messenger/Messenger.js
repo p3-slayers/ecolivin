@@ -9,16 +9,16 @@ import { useGlobalUserContext } from '../../utils/GlobalState';
 const Messenger = () => {
   const [state] = useGlobalUserContext();
 
-  const id = state._id;
+  const email = state.email;
 
   console.log(`STATE IS AS FOLLOWS`);
   console.log(state);
-  console.log(id);
+  console.log(email);
   return (
-    <SocketProvider id={id}>
+    <SocketProvider id={email}>
       <ContactsProvider>
-        <ConversationsProvider id={id}>
-          <MsgDashboard id={id} />
+        <ConversationsProvider id={email}>
+          <MsgDashboard id={email} />
         </ConversationsProvider>
       </ContactsProvider>
     </SocketProvider>
