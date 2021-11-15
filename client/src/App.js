@@ -50,6 +50,8 @@ function App({ apolloClient }) {
     const queryUserData = async (id) => {
       console.log(`queryUserData fired`);
       try {
+        if (loggedInUserId) {
+          console.log(`FIRING GRAPHQL QUERY`)
         const user = await apolloClient.query({
           query: QUERY_SINGLE_USER,
           variables: { id: id },
@@ -61,13 +63,15 @@ function App({ apolloClient }) {
           type: SET_USER_DATA,
           payload: userData,
         });
+       } else {
+         console.log(`no logged in user found, graphQL query skipped`)
+       }
       } catch (err) {
         console.log(err);
       }
     };
     let userData = queryUserData(loggedInUserId);
     console.log(userData);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   });
 
   return (
