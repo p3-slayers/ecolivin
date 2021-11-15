@@ -9,20 +9,14 @@ function PostCard(input) {
 
   return (
 
-    <div className="post bg-white p-1 my-1">
-        <div className="card mb-3" >
-        <div className="row g-0">
-            <div className="col-md-4">
-            <img src="..." className={"img-fluid rounded-start"} alt="..."/>
-            </div>
-            <div className="col-md-8">
-            <div className="card-body">
-                <h5 class="card-title">{post.user._id}</h5>
-                <p className="card-text text-muted">post text: {post.post}</p>
-                <p className="card-text"><small className="text-muted">Posted on <Moment unix>{post.date/1000}</Moment></small></p>
-            </div>
-            </div>
+
+    <div className="card text-dark bg-light mb-4 mx-5">
+        <div className="card-header"><h4>👤 {post.user.firstName} {post.user.lastName}</h4>
+        <p className="text-muted small m-0 p-0">Posted on <Moment unix>{post.date/1000}</Moment></p>
+
         </div>
+        <div className="card-body bg-white">
+        <p className="card-text">{post.post}</p>
         </div>
     </div>
     
