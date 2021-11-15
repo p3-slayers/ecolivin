@@ -20,7 +20,7 @@ const stripe= require('stripe')(process.env.STRIPE_SECRET_PRODUCTION)
         };
       }),
       mode: 'payment',
-      success_url: 'http://localhost:3000/',
+      success_url: 'http://localhost:3000/success',
       cancel_url: 'http://localhost:3000/donate',
     });
     res.json({ url: session.url });
