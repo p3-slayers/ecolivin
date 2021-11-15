@@ -13,7 +13,7 @@ export function useConversationsContext() {
 }
 
 // actual functional component
-export function ConversationsProvider({ id, children }) {
+export function ConversationsProvider({ email, children }) {
   // const userConversations = await useQuery(getUserConversations)
   const [conversations, setConversations] = useLocalStorage(
     `conversations`,
@@ -82,31 +82,31 @@ export function ConversationsProvider({ id, children }) {
     socket.emit(`send-message`, { recipients, text });
     // useMutation(addMessageToConversation)
 
-    addMessageToConversation({ recipients, text, sender: id });
+    addMessageToConversation({ recipients, text, sender: email });
   }
 
   const formattedConversations = conversations.map((conversation, index) => {
     // adds/ sets up the name property for each recipient
-    const recipients = conversation.recipients.map((recipientId) => {
+    const recipients = conversation.recipients.map((recipientEmail) => {
       // for each contact (recipient) in a conversation, do the following:
       const contact = contacts.find((contact) => {
-        return contact.id === recipientId;
+        return contact.email === recipientEmail;
       });
-      // if there is a contact, return the contact.name, otherwise if there is not a contact, return the recipientId
-      const name = (contact && contact.name) || recipientId;
-      return { id: recipientId, name };
+      // if there is a contact, return the contact.name, otherwise if there is not a contact, return the recipientEmail
+      const name = (contact && contact.name) || recipientEmail;
+      return { email: recipientEmail, name };
     });
 
     // adds/ sets up the senderName, as well as the fromMe property in each message
     const messages = conversation.messages.map((message) => {
       const contact = contacts.find((contact) => {
-        return contact.id === message.sender;
+        return contact.email === message.sender;
       });
-      // if contact, set name equal to the contact name, or default to the sender ID if sender not in contacts.
+      // if contact, set name equal to the contact name, or default to the sender Email if sender not in contacts.
       const name = (contact && contact.name) || message.sender;
 
-      // if the sender ID matched the logged in users ID, set fromMe variable to true.
-      const fromMe = id === message.sender;
+      // if the sender Email matched the logged in users Email, set fromMe variable to true.
+      const fromMe = email === message.sender;
       return { ...message, senderName: name, fromMe };
     });
 
