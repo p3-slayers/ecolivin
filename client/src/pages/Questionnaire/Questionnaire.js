@@ -47,7 +47,7 @@ const Navigation = (props) => {
     }
 
     return (
-        <div>
+        <div className="text-center">
           {showNavButtons(props)}
           {/* <Button type="primary" onClick={props.prev} style={{ marginRight: 10 }}>
             Previous

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Container } from "react-bootstrap";
 import { Bar } from "react-chartjs-2";
 
@@ -46,10 +46,10 @@ const options = {
 
 const VerticalBar = () => (
     //found that putting the graph in a container and changing container width to change size of bar graph easiest..
-  <Container style={{ width: "70%", margin: "0 auto" }}>
-    <h6 className="title">Results of Questionnaire</h6>
+  <Fragment style={{ width: "70%", margin: "0 auto" }}>
+    <h4 className="title text-center mb-3">Check how you compare to others!</h4>
     <Bar data={data} options={options} />
-  </Container>
+  </Fragment>
 );
 
 export default VerticalBar;

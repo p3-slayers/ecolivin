@@ -245,6 +245,22 @@ input:focus {
   border-color: #703043;
 }
 
+.btn-success {
+  color: #fff;
+  background-color: #308875;
+  border-color: #308875;
+}
+.btn-success:focus,
+.btn-success:active,
+.btn-success:disabled {
+  background-color: #38a38c;
+  border-color: #38a38c;
+}
+.btn-success:hover {
+  background-color: #308875;
+  border-color: #308875;
+}
+
 .text-success {
   color: #308875 !important;
 }
@@ -252,7 +268,8 @@ input:focus {
 h1,
 h2,
 h3,
-h4 {
+h4,
+h5 {
   font-family: 'Jost', sans-serif;
 }
 .list-group-item {
