@@ -134,7 +134,7 @@ query getAllPosts{
 
 
 export const QUERY_ALL_RESULTS = gql`
-  {
+query getAllResults {
     getResults {
       id
       food
