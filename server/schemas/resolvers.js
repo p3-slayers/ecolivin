@@ -53,7 +53,7 @@ const resolvers = {
     },
     
     getPosts: async () => { 
-      const posts = Post.find().sort({date: -1});
+      const posts = Post.find().populate(`user`).sort({date: -1});
        return posts;  
       },
     
