@@ -1,6 +1,12 @@
 
 import {
   SET_USER_DATA,
+  // eslint-disable-next-line no-unused-vars
+  CREATE_NEW_CONTACT,
+    // eslint-disable-next-line no-unused-vars
+  CREATE_NEW_CONVERSATION,
+    // eslint-disable-next-line no-unused-vars
+  SEND_NEW_MESSAGE,
 } from './actions';
 
 export const reducer = (state, action) => {
@@ -10,17 +16,14 @@ export const reducer = (state, action) => {
       console.log(userData);
       return userData;
     }
-    // case UPDATE_PRODUCTS:
-    //   return {
-    //     ...state,
-    //     products: [...action.products],
-    //   };
+
+    case CREATE_NEW_CONTACT: {
+      console.log(action.payload)
+      break;
+    }
 
     default:
       return state;
   }
 };
 
-// export function useUserReducer(initialState) {
-//   return useReducer(reducer, initialState);
-// }
