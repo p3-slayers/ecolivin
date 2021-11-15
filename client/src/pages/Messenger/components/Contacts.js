@@ -11,7 +11,7 @@ export default function Contacts() {
     <hr />
     <ListGroup variant="flush">
       {contacts.map((contact) => {
-        return <ListGroup.Item key={contact.id}>{contact.name}</ListGroup.Item>;
+        return <ListGroup.Item key={contact.email}>{contact.name}</ListGroup.Item>;
       })}
     </ListGroup>
     </>

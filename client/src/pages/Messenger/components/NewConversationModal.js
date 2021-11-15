@@ -5,26 +5,26 @@ import { useContactsContext } from '../contexts/ContactsProvider';
 import { useConversationsContext } from '../contexts/ConversationsProvider';
 
 export default function NewConversationModal({ closeModal }) {
-  const [selectedContactIds, setSelectedContactIds] = useState([]);
+  const [selectedContactEmails, setSelectedContactEmails] = useState([]);
   const { contacts } = useContactsContext();
   const { createConversation } = useConversationsContext();
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    createConversation(selectedContactIds);
+    createConversation(selectedContactEmails);
     closeModal();
   }
 
-  function handleCheckBoxChange(contactId) {
-    setSelectedContactIds((previousSelectedContactIds) => {
-      if (previousSelectedContactIds.includes(contactId)) {
-        return previousSelectedContactIds.filter((prevId) => {
-          // removes from the previous selected ID list the one that is equal to the id that was toggled off
-          return contactId !== prevId;
+  function handleCheckBoxChange(contactEmail) {
+    setSelectedContactEmails((previousSelectedContactEmails) => {
+      if (previousSelectedContactEmails.includes(contactEmail)) {
+        return previousSelectedContactEmails.filter((prevEmail) => {
+          // removes from the previous selected Email list the one that is equal to the email that was toggled off
+          return contactEmail !== prevEmail;
         });
       } else {
-        return [...previousSelectedContactIds, contactId];
+        return [...previousSelectedContactEmails, contactEmail];
       }
     });
   }
@@ -35,12 +35,12 @@ export default function NewConversationModal({ closeModal }) {
       <Modal.Body>
         <Form onSubmit={handleSubmit}>
           {contacts.map((contact) => (
-            <Form.Group controlId={contact.id} key={contact.id}>
+            <Form.Group controlId={contact.email} key={contact.email}>
               <Form.Check
                 type="checkbox"
-                value={selectedContactIds.includes(contact.id)}
+                value={selectedContactEmails.includes(contact.email)}
                 label={contact.name}
-                onChange={() => handleCheckBoxChange(contact.id)}
+                onChange={() => handleCheckBoxChange(contact.email)}
               />
             </Form.Group>
           ))}

@@ -17,7 +17,7 @@ export default function OpenConversation() {
     e.preventDefault();
 
     sendMessage(
-      selectedConversation.recipients.map((recipient) => recipient.id),
+      selectedConversation.recipients.map((recipient) => recipient.email),
       text
     );
 
