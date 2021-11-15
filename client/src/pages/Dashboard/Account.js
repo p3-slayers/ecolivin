@@ -2,18 +2,18 @@ import React, { useState } from 'react';
 import Sidebar from '../../components/Sidebar/index';
 
 import { useMutation } from '@apollo/client';
-import Auth from '../../utils/auth';
 import { UPDATE_USER } from '../../utils/mutations';
 import { useHistory } from 'react-router-dom';
 import { useGlobalUserContext } from '../../utils/GlobalState';
 import { SET_USER_DATA } from '../../utils/actions';
+import { Button } from "react-bootstrap";
 
 const Account = () => {
-  const [formState, setFormState] = useState({ email: '', password: '' });
-  const [updateUser] = useMutation(UPDATE_USER);
-
   // for setting global state
   const [state, dispatch] = useGlobalUserContext();
+
+  const [formState, setFormState] = useState({ email: state.email, firstName: state.firstName, lastName: state.lastName });
+  const [updateUser] = useMutation(UPDATE_USER);
 
   // for redirecting page
   const history = useHistory();
@@ -23,17 +23,13 @@ const Account = () => {
     event.preventDefault();
     const mutationResponse = await updateUser({
       variables: {
-        id: state._id,
+        _id: state._id,
         email: formState.email,
-        password: formState.password,
+        // password: formState.password,
         firstName: formState.firstName,
         lastName: formState.lastName,
       },
     });
-    // isolate token from mutationResponse so it can be set to localStorage via Auth.login
-    const token = mutationResponse.data.updateUser.token;
-    // set the JWT to localStorage
-    Auth.login(token);
 
     // isolate userData from the mutationResponse so it can be set to the global state
     const userData = { ...mutationResponse.data.updateUser.user };
@@ -44,9 +40,9 @@ const Account = () => {
     });
 
     console.log(state);
-    console.log(token);
 
     history.push('/dashboard');
+    window.location.reload();
   };
 
   const handleChange = (event) => {
@@ -59,11 +55,11 @@ const Account = () => {
   };
 
   return (
-    <div className="d-flex">
+    <div className="d-flex mt-5">
       {/* will inserts information/summary about the User */}
       <Sidebar />
-      <div className="p-2 flex-grow-1">
-        <h3 className>Edit Profile</h3>
+      <div className="px-5 flex-grow-1">
+        <h2 className>Edit Profile</h2>
         <form onSubmit={handleFormSubmit}>
           <div className="flex-row space-between my-2">
             <label htmlFor="firstName">First Name:</label>
@@ -95,7 +91,7 @@ const Account = () => {
             onChange={handleChange}
             />
           </div>
-          <div className="flex-row space-between my-2">
+          {/* <div className="flex-row space-between my-2">
             <label htmlFor="pwd">Password:</label>
             <input
               placeholder="******"
@@ -104,9 +100,9 @@ const Account = () => {
               id="pwd"
             onChange={handleChange}
             />
-          </div>
+          </div> */}
           <div className="flex-row flex-end">
-            <button type="submit">Update Account</button>
+            <Button type="submit">Update Account</Button>
           </div>
         </form>
       </div>

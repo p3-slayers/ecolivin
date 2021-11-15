@@ -109,3 +109,5 @@ dist
 
 .vscode
 notes.txt
+messengerNotes.txt
+MongoTests.js

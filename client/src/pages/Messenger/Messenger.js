@@ -7,18 +7,21 @@ import { SocketProvider } from './contexts/SocketProvider';
 import { useGlobalUserContext } from '../../utils/GlobalState';
 
 const Messenger = () => {
-  const [state] = useGlobalUserContext();
+  const [user] = useGlobalUserContext();
 
-  const id = state._id;
+  const email = user.email;
 
-  console.log(`STATE IS AS FOLLOWS`);
-  console.log(state);
-  console.log(id);
+  // console.log(`STATE FROM MESSENGER IS AS FOLLOWS`);
+  // console.log(user);
+  // console.log(user.conversations[0].messages);
+  // console.log(user.conversations[0].recipients);
+  // console.log(user.contacts);
+  // console.log(email);
   return (
-    <SocketProvider id={id}>
+    <SocketProvider email={user.email}>
       <ContactsProvider>
-        <ConversationsProvider id={id}>
-          <MsgDashboard id={id} />
+        <ConversationsProvider email={user.email}>
+          <MsgDashboard email={user.email} />
         </ConversationsProvider>
       </ContactsProvider>
     </SocketProvider>

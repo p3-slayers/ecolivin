@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Questionnaire, Category, Post, Result, Action } = require('../models');
+const { User, Questionnaire, Category, Post, Result, Action, Contact, Conversation, Message } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -31,7 +31,7 @@ const resolvers = {
 
     singleUser: async (parent, { id }) => {
       console.log(id);
-      const user = await User.findById(id).populate('answers');
+      const user = await User.findById(id).populate('answers').populate(`contacts`).populate(`conversations`);
       console.log(user);
       return user;
       // if (context.user) {
@@ -53,7 +53,7 @@ const resolvers = {
     },
     
     getPosts: async () => { 
-      const posts = Post.find().sort({date: -1});
+      const posts = Post.find().populate(`user`).sort({date: -1});
        return posts;  
       },
     
@@ -124,14 +124,10 @@ const resolvers = {
 
     //   throw new AuthenticationError('Not logged in');
     // },
-    updateUser: async (parent, args, context) => {
-      if (context.user) {
-        return User.findByIdAndUpdate(context.user.id, args, {
-          new: true,
-        });
-      }
-
-      throw new AuthenticationError('Not logged in');
+    updateUser: async (parent, args) => {
+      return User.findByIdAndUpdate(args._id, args, {
+        new: true,
+      });
     },
     // updateProduct: async (parent, { id, quantity }) => {
     //   const decrement = Math.abs(quantity) * -1;
@@ -157,8 +153,10 @@ const resolvers = {
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
-        // answers: user.answers,
-        // actionAnswers: user.actionAnswers
+        conversations: user.conversations,
+        contacts: user.contacts,
+        answers: user.answers,
+        actionAnswers: user.actionAnswers
       };
 
       console.log(userWithoutPassword);

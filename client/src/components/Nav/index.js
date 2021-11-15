@@ -3,7 +3,7 @@ import Auth from '../../utils/auth';
 import { Link } from 'react-router-dom';
 import { Nav, Navbar, NavbarBrand, NavLink } from 'react-bootstrap';
 //replace the spinner w our logo
-import spinner from '../../assets/spinner.gif';
+import logo from '../../assets/ecolivin.png'
 import NavbarToggle from 'react-bootstrap/esm/NavbarToggle';
 import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse';
 
@@ -14,7 +14,7 @@ function Navigation() {
       //ADD LINEHEIGHT when logo is picked
       return (
         <Link to="/dashboard" style={{ textDecoration: 'none' }}>
-          <span style={{ color: 'green' }}>ECO</span>Livin
+          <img src={logo} alt="EcoLivin logo" height="65px" />
         </Link>
       );
     } else {
@@ -24,8 +24,7 @@ function Navigation() {
           style={{ textDecoration: 'none', color: 'black', fontSize: '32px' }}
         >
           {' '}
-          <span style={{ color: 'green', textDecoration: 'none' }}>ECO</span>
-          Livin
+          <img src={logo} alt="logo spinner" height="65px" />
         </Link>
       );
     }
@@ -34,34 +33,34 @@ function Navigation() {
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-        <Nav onClick={() => setExpanded(false)}>
-          <NavLink as={Link} to="/dashboard">
+        <Nav className='align-items-center' onClick={() => setExpanded(false)}>
+          <NavLink className="text-dark" as={Link} to="/dashboard">
             Dashboard
           </NavLink>
-          <NavLink as={Link} to="/feed">
+          <NavLink className="text-dark" as={Link} to="/feed">
             Feed
           </NavLink>
-          <NavLink as={Link} to="/challenges">
+          <NavLink className="text-dark" as={Link} to="/challenges">
             Challenges
           </NavLink>
-          <NavLink as={Link} to="/events">
+          <NavLink className="text-dark" as={Link} to="/events">
             Events
           </NavLink>
-          <NavLink as={Link} to="/messenger">
+          <NavLink className="text-dark" as={Link} to="/messenger">
             Messenger
           </NavLink>
-          <NavLink as={Link} to="/donate">
+          <NavLink className="text-dark" as={Link} to="/donate">
             Donate
           </NavLink>
           {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-          <NavLink href="/" onClick={() => Auth.logout()}>
+          <NavLink className="text-dark" href="/" onClick={() => Auth.logout()}>
             Logout
           </NavLink>
         </Nav>
       );
     } else {
       return (
-        <Nav onClick={() => setExpanded(false)}>
+        <Nav className="align-items-center"  onClick={() => setExpanded(false)}>
           <NavLink className="text-dark" as={Link} to="/">
             {' '}
             Home
@@ -86,8 +85,8 @@ function Navigation() {
 
   return (
     <Navbar style={{backgroundColor:"#DFD4D1"}} expand="lg" expanded={expanded}>
-      <NavbarBrand>
-        <img src={spinner} alt="logo spinner" height="32px" />
+      <NavbarBrand className="mx-3">
+        
         {homepageLink()}
       </NavbarBrand>
       <NavbarToggle
@@ -95,7 +94,8 @@ function Navigation() {
       />
       <NavbarCollapse
         className="justify-content-center"
-        style={{ paddingRight: '145px' }}
+        //with this commented in, it throws off the centering of nav items when toggled
+        // style={{ paddingRight: '145px' }}
       >
         {showNavigation()}
       </NavbarCollapse>

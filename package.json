@@ -24,6 +24,7 @@
     "moment": "^2.29.1",
     "react-chartjs-2": "^3.3.0",
     "react-icons": "^4.3.1",
-    "react-moment": "^1.1.1"
+    "react-moment": "^1.1.1",
+    "requirejs": "^2.3.6"
   }
 }

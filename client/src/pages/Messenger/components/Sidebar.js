@@ -8,7 +8,7 @@ import NewConversationModal from './NewConversationModal';
 const CONVERSATIONS_KEY = 'conversations';
 const CONTACTS_KEY = 'contacts';
 
-export default function Sidebar({ id }) {
+export default function Sidebar({ email }) {
   const [activeKey, setActiveKey] = useState(CONVERSATIONS_KEY);
   const [modalOpen, setModalOpen] = useState(false);
   const conversationOpen = activeKey === CONVERSATIONS_KEY;
@@ -39,7 +39,7 @@ export default function Sidebar({ id }) {
           </Tab.Pane>
         </Tab.Content>
         <div className="p-2 border-top border-end small">
-          Your Id: <span className="text-muted">{id}</span>
+          Your Email: <span className="text-muted">{email}</span>
         </div>
         <Button onClick={() => setModalOpen(true)} className="rounded-0">
           New {conversationOpen ? 'Conversation' : 'Contact'}

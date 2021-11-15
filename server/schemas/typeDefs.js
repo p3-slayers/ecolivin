@@ -18,12 +18,32 @@ const typeDefs = gql`
     questions: [Questionnaire]
   }
 
+  type Contact {
+    _id: ID
+    id: String
+    name: String
+  }
+
+  type Message {
+    _id: ID
+    sender: String
+    text: String
+  }
+
+  type Conversation {
+    _id: ID
+    messages: [Message]
+    recipients: [String]
+  }
+
   type User {
     _id: ID
     firstName: String
     lastName: String
     email: String
     profileImage: String
+    contacts: [Contact]
+    conversations: [Conversation]
     answers: [Answer]
   }
 
@@ -92,7 +112,7 @@ const typeDefs = gql`
     ): Auth
 
     updateUser(
-      id: ID
+      _id: ID!
       firstName: String
       lastName: String
       email: String

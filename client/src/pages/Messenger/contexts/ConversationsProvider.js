@@ -13,7 +13,8 @@ export function useConversationsContext() {
 }
 
 // actual functional component
-export function ConversationsProvider({ id, children }) {
+export function ConversationsProvider({ email, children }) {
+  // const userConversations = await useQuery(getUserConversations)
   const [conversations, setConversations] = useLocalStorage(
     `conversations`,
     []
@@ -23,6 +24,7 @@ export function ConversationsProvider({ id, children }) {
   const socket = useSocketContext();
 
   function createConversation(recipients) {
+    // useMutation(NewConversation)
     setConversations((prevConversations) => {
       return [...prevConversations, { recipients, messages: [] }];
     });
@@ -32,7 +34,10 @@ export function ConversationsProvider({ id, children }) {
   // wrapping in useCallBack hook with a dependency on setConversations so that this wont fire infinitely when a message is received-> only once when setConversations is called. And because this is only called within the callback, on rerender it wont be changed.
   const addMessageToConversation = useCallback(
     ({ recipients, text, sender }) => {
+      console.log(`MESSAGE RECEIVED`)
       console.log(`addMessageToConversation fired`);
+      // useMutation(addMessageToConversation)
+
       // all we have is an array of recipients- so we need to figure out which conversation to add the message to, OR if we need to create a brand new conversation.
       setConversations((prevConversations) => {
         let madeChange = false;
@@ -67,6 +72,8 @@ export function ConversationsProvider({ id, children }) {
     if (socket == null) return;
 
     socket.on(`receive-message`, addMessageToConversation);
+    // useMutation(addMessageToConversation)
+
 
     // cleanup to remove the event listener... the return statement for useEffect is returned to close connections, prevent memory leaks, etc. and is executed subsequently after the callback passed to useEffect is executed.
     return () => socket.off('receive-message');
@@ -74,32 +81,33 @@ export function ConversationsProvider({ id, children }) {
 
   function sendMessage(recipients, text) {
     socket.emit(`send-message`, { recipients, text });
+    // useMutation(addMessageToConversation)
 
-    addMessageToConversation({ recipients, text, sender: id });
+    addMessageToConversation({ recipients, text, sender: email });
   }
 
   const formattedConversations = conversations.map((conversation, index) => {
     // adds/ sets up the name property for each recipient
-    const recipients = conversation.recipients.map((recipientId) => {
+    const recipients = conversation.recipients.map((recipientEmail) => {
       // for each contact (recipient) in a conversation, do the following:
       const contact = contacts.find((contact) => {
-        return contact.id === recipientId;
+        return contact.email === recipientEmail;
       });
-      // if there is a contact, return the contact.name, otherwise if there is not a contact, return the recipientId
-      const name = (contact && contact.name) || recipientId;
-      return { id: recipientId, name };
+      // if there is a contact, return the contact.name, otherwise if there is not a contact, return the recipientEmail
+      const name = (contact && contact.name) || recipientEmail;
+      return { email: recipientEmail, name };
     });
 
     // adds/ sets up the senderName, as well as the fromMe property in each message
     const messages = conversation.messages.map((message) => {
       const contact = contacts.find((contact) => {
-        return contact.id === message.sender;
+        return contact.email === message.sender;
       });
-      // if contact, set name equal to the contact name, or default to the sender ID if sender not in contacts.
+      // if contact, set name equal to the contact name, or default to the sender Email if sender not in contacts.
       const name = (contact && contact.name) || message.sender;
 
-      // if the sender ID matched the logged in users ID, set fromMe variable to true.
-      const fromMe = id === message.sender;
+      // if the sender Email matched the logged in users Email, set fromMe variable to true.
+      const fromMe = email === message.sender;
       return { ...message, senderName: name, fromMe };
     });
 

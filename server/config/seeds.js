@@ -350,6 +350,21 @@ db.once('open', async () => {
     email: 'pamela@testmail.com',
     password: 'password12345',
     profileImage: 'insertimage.png',
+    conversations: [
+      {
+        messages: [
+          {sender: "pamela@testmail.com", text: "hello world"},
+          {sender: "testID2", text: "hello world2"}
+        ],
+        recipients: ["testID", "testID2"]
+      }
+    ],
+    contacts: [
+      {
+        id: "testId",
+        name: "testName"
+      }
+    ],
     answers: [
       {
         answer: 1,
@@ -364,14 +379,32 @@ db.once('open', async () => {
     ],
   });
 
-  const exampleUser = await User.create({
+  const elijah = await User.create({
     firstName: 'Elijah',
     lastName: 'Holt',
     email: 'eholt@testmail.com',
     password: 'password12345',
     profileImage: 'insertimage.png',
+    conversations: [
+      
+    ],
+    contacts: [
+
+    ],
+    answers: [
+      {
+        answer: 1,
+        questions: [Questionnaire[0]],
+      },
+    ],
+    actionAnswer: [
+      {
+        mondayAnswer: 10,
+        action: [Action[0]],
+      },
+    ],
   });
-  console.log(exampleUser);
+  console.log(pamela);
 
   console.log('users seeded');
 

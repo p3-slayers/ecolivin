@@ -6,8 +6,8 @@ const Resources = () => {
     <div className="d-flex mt-5">
       {/* will inserts information/summary about the User */}
       <Sidebar />
-      <div className="p-2 flex-grow-1">
-        <h3>r</h3>
+      <div className="px-5 flex-grow-1">
+        <h2>Resources</h2>
       </div>
     </div>
   );

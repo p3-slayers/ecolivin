@@ -91,12 +91,11 @@ function FinalStep(props) {
   
 
   return (
-    <div>
-      <h5>You are done. Please submit to calculate.</h5>
-      <form onSubmit={handleFormSubmit}>
-        <p>submit the percentages</p>
-        <div className="flex-row flex-end">
-          <button type="submit">Submit</button>
+    <div className="text-center justify-content-center mt-5 pt-5">
+      <h1 className="my-5">You are done! Please submit to calculate.</h1>
+      <form onSubmit={handleFormSubmit} className="mx-auto">
+        <div className="mb-3">
+          <Button type="submit" size="lg">Submit</Button>
         </div>
       </form>
       {/* need to get those answers saved in the database */}

@@ -72,27 +72,25 @@ export const ADD_RESULT = gql`
 
 export const UPDATE_USER = gql`
   mutation updateUser(
-    $id: ID!
+  	$_id: ID!
     $firstName: String
     $lastName: String
     $email: String
     $password: String
+  	$profileImage: String
   ) {
     updateUser(
-      id: $id
+      _id: $_id
       firstName: $firstName
       lastName: $lastName
       email: $email
       password: $password
-    ) {
-      token
-      user {
-        _id
-        firstName
-        lastName
-        email
-        profileImage
-      }
+      profileImage: $profileImage
+    ){
+      _id
+    	firstName
+    	lastName
+    	email
     }
   }
 `;
