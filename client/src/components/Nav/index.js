@@ -14,7 +14,7 @@ function Navigation() {
       //ADD LINEHEIGHT when logo is picked
       return (
         <Link to="/dashboard" style={{ textDecoration: 'none' }}>
-          <img src={logo} alt="logo spinner" height="65px" />
+          <img src={logo} alt="EcoLivin logo" height="65px" />
         </Link>
       );
     } else {
@@ -33,7 +33,7 @@ function Navigation() {
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-        <Nav onClick={() => setExpanded(false)}>
+        <Nav className='align-items-center' onClick={() => setExpanded(false)}>
           <NavLink className="text-dark" as={Link} to="/dashboard">
             Dashboard
           </NavLink>
@@ -60,7 +60,7 @@ function Navigation() {
       );
     } else {
       return (
-        <Nav onClick={() => setExpanded(false)}>
+        <Nav className="align-items-center"  onClick={() => setExpanded(false)}>
           <NavLink className="text-dark" as={Link} to="/">
             {' '}
             Home
@@ -94,7 +94,8 @@ function Navigation() {
       />
       <NavbarCollapse
         className="justify-content-center"
-        style={{ paddingRight: '145px' }}
+        //with this commented in, it throws off the centering of nav items when toggled
+        // style={{ paddingRight: '145px' }}
       >
         {showNavigation()}
       </NavbarCollapse>
