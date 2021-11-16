@@ -101,6 +101,7 @@ const resolvers = {
       console.log(token)
       return { token, user: userWithoutPassword };
     },
+
     addResult: async (parent, args) => {
       console.log(args, 'test');
       // args includes all fields submitted from signup
@@ -110,34 +111,39 @@ const resolvers = {
 
       return result;
     },
-    // addOrder: async (parent, { products }, context) => {
-    //   console.log(context);
-    //   if (context.user) {
-    //     const order = new Order({ products });
 
-    //     await User.findByIdAndUpdate(context.user.id, {
-    //       $push: { orders: order },
-    //     });
-
-    //     return order;
-    //   }
-
-    //   throw new AuthenticationError('Not logged in');
-    // },
     updateUser: async (parent, args) => {
       return User.findByIdAndUpdate(args._id, args, {
         new: true,
-      });
+      }).populate('answers').populate(`contacts`).populate(`conversations`);
     },
-    // updateProduct: async (parent, { id, quantity }) => {
-    //   const decrement = Math.abs(quantity) * -1;
 
-    //   return Product.findByIdAndUpdate(
-    //     id,
-    //     { $inc: { quantity: decrement } },
-    //     { new: true }
-    //   );
-    // },
+    addNewContact: async (parent, args) => {
+      console.log(`addNewContact SLAPPED`)
+      console.log(args)
+      try {
+        const userWithAddedContact = await User.findByIdAndUpdate(args._id, {
+          $push :{
+            contacts: 
+              {email: args.email, name: args.name}
+            }
+        }, {
+          new: true,
+        }).populate('answers').populate(`contacts`).populate(`conversations`);
+        console.log(userWithAddedContact)
+        return userWithAddedContact
+    
+      } catch (err) {
+        console.log(err)
+      }
+    },
+
+    // type Contact {
+    //   _id: ID
+    //   email: String
+    //   name: String
+    // }
+
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) {

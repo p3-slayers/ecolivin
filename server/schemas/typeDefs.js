@@ -20,7 +20,7 @@ const typeDefs = gql`
 
   type Contact {
     _id: ID
-    id: String
+    email: String
     name: String
   }
 
@@ -118,6 +118,12 @@ const typeDefs = gql`
       email: String
       password: String
       profileImage: String
+    ): User
+
+    addNewContact(
+      _id: ID!
+      email: String!
+      name: String!
     ): User
 
     addResult(

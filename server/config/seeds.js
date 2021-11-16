@@ -353,16 +353,16 @@ db.once('open', async () => {
     conversations: [
       {
         messages: [
-          {sender: "pamela@testmail.com", text: "hello world"},
-          {sender: "testID2", text: "hello world2"}
+          {sender: "pamela@testmail.com", text: "Hello from Pamela Washington"},
+          {sender: "eholt@testmail.com", text: "Hello from Elijah Holt"}
         ],
-        recipients: ["testID", "testID2"]
+        recipients: ["eholt@testmail.com"]
       }
     ],
     contacts: [
       {
-        id: "testId",
-        name: "testName"
+        email: "eholt@testmail.com",
+        name: "Elijah Holt"
       }
     ],
     answers: [
@@ -386,10 +386,19 @@ db.once('open', async () => {
     password: 'password12345',
     profileImage: 'insertimage.png',
     conversations: [
-      
+        {
+          messages: [
+            {sender: "pamela@testmail.com", text: "Hello from Pamela Washington"},
+            {sender: "eholt@testmail.com", text: "Hello from Elijah Holt"}
+          ],
+          recipients: ["pamela@testmail.com"]
+        },
     ],
     contacts: [
-
+      {
+        email: "pamela@testmail.com",
+        name: "Pamela Washington"
+      }
     ],
     answers: [
       {

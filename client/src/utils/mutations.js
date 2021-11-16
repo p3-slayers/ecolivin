@@ -95,6 +95,25 @@ export const UPDATE_USER = gql`
   }
 `;
 
+export const ADD_NEW_CONTACT = gql`
+mutation addNewContact(
+  $_id: ID!
+  $email: String!
+  $name: String!
+) {
+  addNewContact(
+    _id:$_id
+    email:$email
+    name:$name
+  ) {
+    contacts {
+      email
+      name
+    }
+  }
+}
+`;
+
 export const ADD_POST = gql`
 mutation addPost(
   $post: String!
