@@ -12,10 +12,10 @@ function Step2(props) {
 
 <Row className="mb-3">
             <Col md={4}>        <h2>Transportation</h2>    </Col>
-            <Col md={{ span: 2, offset: 4 }}>
+            <Col md={{ span: 1, offset: 4 }}>
                Strongly disagree
             </Col>
-            <Col md={{ span: 1, offset:1 }}>
+            <Col md={{ span: 1, offset:2 }}>
                Strongly Agree
             
             </Col>
