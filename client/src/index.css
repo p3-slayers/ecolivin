@@ -307,3 +307,11 @@ a {
 .links {
   color: #308875;
 }
+
+.navbar-nav {
+  margin-right: 120px;
+}
+
+.btn-secondary {
+  color: #308875 !important;
+}
