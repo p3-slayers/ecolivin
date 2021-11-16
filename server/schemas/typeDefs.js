@@ -120,6 +120,10 @@ const typeDefs = gql`
       profileImage: String
     ): User
 
+    deleteUser(
+      _id: ID!
+    ): User
+
     addResult(
       waste: Float!
       transportation: Float!

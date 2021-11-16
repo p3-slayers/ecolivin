@@ -129,6 +129,9 @@ const resolvers = {
         new: true,
       });
     },
+    deleteUser: async (parent, args)=>{
+      return User.findByIdAndDelete(args._id)
+    },
     // updateProduct: async (parent, { id, quantity }) => {
     //   const decrement = Math.abs(quantity) * -1;
 
