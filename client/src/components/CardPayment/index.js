@@ -41,9 +41,9 @@ function Card() {
     if (!elements || !stripe) {
       return;
     }
-
+//       "http://localhost:3000/create-checkout-session
     const response = await fetch(
-      "http://localhost:3000/create-checkout-session" || "https://project3-players.herokuapp.com/",
+      "https://project3-players.herokuapp.com/create-checkout-session",
       {
         method: "POST",
         headers: {

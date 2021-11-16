@@ -11,11 +11,11 @@ const routes = require('./api')
 const PORT = process.env.PORT || 3001;
 
 const app = express();
-app.use(
-  cors({
-    origin: 'http://localhost:3000',
-  })
-);
+// app.use(
+//   cors({
+//     origin: 'http://localhost:3000',
+//   })
+// );
 // Socket.io Stuff
 const httpServer = require('http').createServer(app);
 const options = {
