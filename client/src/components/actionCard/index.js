@@ -40,7 +40,7 @@ function ActionCard(input) {
     <Card.Body>
         <Card.Title className="text-center"><h4>{text}</h4></Card.Title>
         <Card.Text className="d-flex flex-row card-text justify-content-center">
-        <p className="small">{actionText}</p>
+        <p className="small text-center">{actionText}</p>
         <form className="text-center "onSubmit={handleFormSubmit}>
           <div className="flex-row flex-end">
             {submitButton()}

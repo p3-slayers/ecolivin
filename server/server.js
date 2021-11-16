@@ -20,7 +20,7 @@ const app = express();
 const httpServer = require('http').createServer(app);
 const options = {
   cors: {
-    origin: 'http://localhost:3000',
+    origin: '*',
     methods: ['GET', 'POST'],
   },
 };
@@ -33,6 +33,7 @@ io.on('connection', (socket) => {
     socket.join(email);
   
     socket.on('send-message', ({ recipients, text }) => {
+      console.log(`MESSAGE RECEIVED FOR FORWARDING`)
       recipients.forEach((currentIterationrecipient) => {
         // need to change the recipients, because when I send a message, the recipient is you, but when YOU send a message, the recipient is me. So we need to swap out the recipients.
         // removes the current recipient from the list of recipients, and appends the email of the sender, so that when a message is sent, the list of recipients will match the conversation on the receivers side.
