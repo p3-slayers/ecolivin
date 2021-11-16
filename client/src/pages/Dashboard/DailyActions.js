@@ -7,6 +7,7 @@ import Tab from 'react-bootstrap/Tab';
 import Card from 'react-bootstrap/Card';
 import ActionCard from '../../components/actionCard/index'
 
+
 const DailyActions = () => {
   return (
     <div className="d-flex mt-5">
@@ -32,13 +33,13 @@ const DailyActions = () => {
             </Row>
             <Row>            
               <Col md={4}>
-                  <ActionCard actionId="f4" title="food action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="f4" title="Garden" link="nolinkfornow" actionText="Begin or mantain garden"/>
               </Col>
               <Col md={4}>
-                  <ActionCard actionId="f5" title="food action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="f5" title="Local foods" link="nolinkfornow" actionText=" Buy locally grown food"/>
               </Col>
               <Col md={4}>
-                  <ActionCard actionId="f6" title="food action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="f6" title="Homecooked Meal" link="nolinkfornow" actionText="Eat homecooked meals when possible"/>
               </Col>
             </Row>
 
@@ -55,19 +56,19 @@ const DailyActions = () => {
                   <ActionCard actionId="l2" title="Education" link="nolinkfornow" actionText="Listen to a podcast or watch a documentary regarding sustainability."/>
               </Col>
               <Col md={4}>
-                  <ActionCard actionId="l3" title="lifestyle action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="l3" title="Gifts" link="nolinkfornow" actionText="Make homemade gifts for loved ones."/>
               </Col>
             </Row>
 
             <Row>            
               <Col md={4}>
-                  <ActionCard actionId="l4" title="lifestyle action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="l4" title="Communication" link="nolinkfornow" actionText="Share knowledge with friends on how to live sustainably."/>
               </Col>
               <Col md={4}>
-                  <ActionCard actionId="l5" title="lifestyle action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="l5" title="New Purchases" link="nolinkfornow" actionText="Make purchases from companies who promote sustainability."/>
               </Col>
               <Col md={4}>
-                  <ActionCard actionId="l6" title="lifestyle action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="l6" title="Zero waste kit" link="nolinkfornow" actionText="Create and carry a zero waste kit when going out to reduce waste."/>
               </Col>
             </Row>
             </Container>
@@ -89,13 +90,13 @@ const DailyActions = () => {
 
             <Row>            
               <Col md={4}>
-                  <ActionCard actionId="t4" title="transportation action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="t4" title="Electric bike/scooter" link="nolinkfornow" actionText="Swap out your car for an electric bike/scooter"/>
               </Col>
               <Col md={4}>
-                  <ActionCard actionId="t5" title="transportation action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="t5" title="Stairs" link="nolinkfornow" actionText="Take stairs over elevator"/>
               </Col>
               <Col md={4}>
-                  <ActionCard actionId="t6" title="transportation action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="t6" title="Car-free" link="nolinkfornow" actionText="Embrace days of car-free living"/>
               </Col>
             </Row>
 
@@ -124,7 +125,7 @@ const DailyActions = () => {
                   <ActionCard actionId="w5" title="No more single packages" link="nolinkfornow" actionText="Refrain from purchasing single packages items or plastic wrapped produce"/>
               </Col>
               <Col md={4}>
-                  <ActionCard actionId="w6" title="waste action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="w6" title="Reusable bags" link="nolinkfornow" actionText="Carry reusable bags to reduce plastic bags"/>
               </Col>
             </Row>
 
