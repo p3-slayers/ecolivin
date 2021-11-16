@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import { ListGroup, ListGroupItem, Row, Col, Container } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { useGlobalUserContext } from '../../utils/GlobalState';
-
+import DeleteUser from '../deleteUserBtn/index.js'
 
 function Sidebar() {
   const [state, dispatch] = useGlobalUserContext();
   console.log("mystate", state);
   return (
-    <div style={{border:'1px solid black' ,height:'60vh'}}>
+    <div style={{border:'1px solid black' ,height:'70vh'}}>
     <Row>
       <Col xs={6} md={3} lg={3} style={{ width: "auto" }}>
         <ListGroup style={{ textAlign: "center", textDecoration: "none" }}>
@@ -66,6 +66,11 @@ function Sidebar() {
               >
                Dashboard
               </Link>
+            </Button>
+          </ListGroupItem>
+          <ListGroupItem>
+            <Button style={{ width: "100%" }}>
+               <DeleteUser/>
             </Button>
           </ListGroupItem>
         </ListGroup>

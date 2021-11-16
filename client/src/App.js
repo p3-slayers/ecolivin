@@ -8,6 +8,7 @@ import About from './pages/About';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Nav from './components/Nav';
+import Success from './pages/SuccessfulDonation';
 import Donate from './pages/Donate';
 import DashboardRoutes from './pages/Dashboard/DashboardRoutes';
 import PrivateRoute from './pages/PrivateRoutes';
@@ -83,6 +84,7 @@ function App({ apolloClient }) {
         <Route exact path="/donate" component={Donate} />
         <Route exact path="/team" component={Team} />
         <Route exact path="/about" component={About} />
+        <Route exact path="/success" component={Success} />
         <PrivateRoute component={DashboardRoutes} />
       </Switch>
     </Router>
