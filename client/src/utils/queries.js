@@ -9,15 +9,8 @@ export const QUERY_SINGLE_USER = gql`
       email
       profileImage
     	contacts {
-        id
+        email
         name
-      }
-			conversations {
-        messages {
-          sender
-          text
-        }
-        recipients
       }
     
       answers {

@@ -15,24 +15,6 @@ export const LOGIN = gql`
   }
 `;
 
-export const ADD_ORDER = gql`
-  mutation addOrder($products: [ID]!) {
-    addOrder(products: $products) {
-      purchaseDate
-      products {
-        _id
-        name
-        description
-        price
-        quantity
-        category {
-          name
-        }
-      }
-    }
-  }
-`;
-
 export const ADD_USER = gql`
   mutation addUser(
     $firstName: String!
@@ -53,6 +35,10 @@ export const ADD_USER = gql`
         lastName
         email
         profileImage
+        contacts {
+          email
+          name
+        }
       }
     }
   }
@@ -95,13 +81,32 @@ export const UPDATE_USER = gql`
   }
 `;
 
-export const DELETE_USER= gql`
-mutation deleteUser($_id:ID!){
-  deleteUser(_id:$_id){
-  _id
+export const ADD_NEW_CONTACT = gql`
+  mutation addNewContact(
+    $_id: ID!
+    $email: String!
+    $name: String!
+  ) {
+    addNewContact(
+      _id:$_id
+      email:$email
+      name:$name
+    ) {
+      contacts {
+        email
+        name
+      }
+    }
   }
-}
-`;
+  `;
+
+export const DELETE_USER= gql`
+  mutation deleteUser($_id:ID!){
+    deleteUser(_id:$_id){
+    _id
+    }
+  }
+  `;
 
 export const ADD_POST = gql`
 mutation addPost(
