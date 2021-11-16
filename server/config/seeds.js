@@ -350,15 +350,6 @@ db.once('open', async () => {
     email: 'pamela@testmail.com',
     password: 'password12345',
     profileImage: 'insertimage.png',
-    // conversations: [
-    //   {
-    //     messages: [
-    //       {sender: "pamela@testmail.com", text: "Hello from Pamela Washington"},
-    //       {sender: "eholt@testmail.com", text: "Hello from Elijah Holt"}
-    //     ],
-    //     recipients: ["eholt@testmail.com"]
-    //   }
-    // ],
     contacts: [
       {
         email: "eholt@testmail.com",
@@ -389,15 +380,6 @@ db.once('open', async () => {
     email: 'eholt@testmail.com',
     password: 'password12345',
     profileImage: 'insertimage.png',
-    // conversations: [
-    //     {
-    //       messages: [
-    //         {sender: "pamela@testmail.com", text: "Hello from Pamela Washington"},
-    //         {sender: "eholt@testmail.com", text: "Hello from Elijah Holt"}
-    //       ],
-    //       recipients: ["pamela@testmail.com"]
-    //     },
-    // ],
     contacts: [
       {
         email: "pamela@testmail.com",
@@ -438,6 +420,18 @@ db.once('open', async () => {
         name: "Elijah Holt"
       }
     ],
+    // answers: [
+    //   {
+    //     answer: 1,
+    //     questions: [Questionnaire[0]],
+    //   },
+    // ],
+    // actionAnswer: [
+    //   {
+    //     mondayAnswer: 10,
+    //     action: [Action[0]],
+    //   },
+    // ],
   });
   console.log(pamela);
 
