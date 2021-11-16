@@ -144,6 +144,18 @@ const resolvers = {
     //   name: String
     // }
 
+    deleteUser: async (parent, args)=>{
+      return User.findByIdAndDelete(args._id)
+    },
+    // updateProduct: async (parent, { id, quantity }) => {
+    //   const decrement = Math.abs(quantity) * -1;
+
+    //   return Product.findByIdAndUpdate(
+    //     id,
+    //     { $inc: { quantity: decrement } },
+    //     { new: true }
+    //   );
+    // },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) {

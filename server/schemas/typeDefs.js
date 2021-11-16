@@ -126,6 +126,10 @@ const typeDefs = gql`
       name: String!
     ): User
 
+    deleteUser(
+      _id: ID!
+    ): User
+
     addResult(
       waste: Float!
       transportation: Float!

@@ -96,23 +96,31 @@ export const UPDATE_USER = gql`
 `;
 
 export const ADD_NEW_CONTACT = gql`
-mutation addNewContact(
-  $_id: ID!
-  $email: String!
-  $name: String!
-) {
-  addNewContact(
-    _id:$_id
-    email:$email
-    name:$name
+  mutation addNewContact(
+    $_id: ID!
+    $email: String!
+    $name: String!
   ) {
-    contacts {
-      email
-      name
+    addNewContact(
+      _id:$_id
+      email:$email
+      name:$name
+    ) {
+      contacts {
+        email
+        name
+      }
     }
   }
-}
-`;
+  `;
+
+export const DELETE_USER= gql`
+  mutation deleteUser($_id:ID!){
+    deleteUser(_id:$_id){
+    _id
+    }
+  }
+  `;
 
 export const ADD_POST = gql`
 mutation addPost(
@@ -127,4 +135,5 @@ mutation addPost(
   }
 }
 `;
+
 
