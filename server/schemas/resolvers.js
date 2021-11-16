@@ -129,6 +129,16 @@ const resolvers = {
         new: true,
       });
     },
+    updatePassword: async (parent, args) => {
+      const user = await User.findById(args._id);
+      const correctPw = await user.isCorrectPassword(args.oldPassword);
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+      return User.findByIdAndUpdate(args._id, args, {
+        new: true,
+      });
+    },
     deleteUser: async (parent, args)=>{
       return User.findByIdAndDelete(args._id)
     },

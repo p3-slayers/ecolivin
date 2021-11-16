@@ -120,6 +120,12 @@ const typeDefs = gql`
       profileImage: String
     ): User
 
+    updatePassword(
+      _id: ID!
+      password: String!
+      oldPassword: String!
+    ): User
+
     deleteUser(
       _id: ID!
     ): User

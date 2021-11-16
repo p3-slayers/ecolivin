@@ -95,6 +95,25 @@ export const UPDATE_USER = gql`
   }
 `;
 
+export const UPDATE_PASSWORD = gql`
+mutation updatePassword(
+  	$_id: ID!
+    $password: String!
+  	$oldPassword: String!
+  ) {
+    updatePassword(
+      _id: $_id
+      password: $password
+      oldPassword: $oldPassword
+    ){
+      _id
+    	firstName
+    	lastName
+    	email
+    }
+  }
+  `;
+
 export const DELETE_USER= gql`
 mutation deleteUser($_id:ID!){
   deleteUser(_id:$_id){
