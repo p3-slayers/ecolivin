@@ -9,7 +9,7 @@ function Sidebar() {
   const [state, dispatch] = useGlobalUserContext();
   console.log("mystate", state);
   return (
-    <div style={{border:'1px solid black' ,height:'60vh'}}>
+    <div style={{border:'1px solid black' ,height:'70vh'}}>
     <Row>
       <Col xs={6} md={3} lg={3} style={{ width: "auto" }}>
         <ListGroup style={{ textAlign: "center", textDecoration: "none" }}>
