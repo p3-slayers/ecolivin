@@ -94,3 +94,18 @@ export const UPDATE_USER = gql`
     }
   }
 `;
+
+export const ADD_POST = gql`
+mutation addPost(
+  $post: String!
+  $userid: String!
+) {
+  addPost(
+    post: $post
+    userid: $userid
+  ) {
+    post
+  }
+}
+`;
+

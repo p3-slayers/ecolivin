@@ -129,7 +129,10 @@ const typeDefs = gql`
     ):Result
 
     login(email: String!, password: String!): Auth
-    createPost(body: String!): Post!
+    addPost(
+      post: String!
+      userid: String!
+      ): Post!
     deletePost(postId: ID!): String!
     createComment(postId: String!, body: String!): Post!
     deleteComment(postId: ID!, commentId: ID!): Post!
