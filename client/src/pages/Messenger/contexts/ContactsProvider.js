@@ -1,5 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import useLocalStorage from '../hooks/useLocalStorage';
+import { useGlobalUserContext } from '../../../utils/GlobalState';
+import { useMutation } from '@apollo/client';
+import { ADD_NEW_CONTACT } from '../../../utils/mutations';
 
 const ContactsContext = React.createContext();
 
@@ -12,12 +15,33 @@ export function useContactsContext() {
 
 // actual functional component
 export function ContactsProvider({ children }) {
-  const [contacts, setContacts] = useLocalStorage(`contacts`, []);
 
-  function createContact(email, name) {
-    setContacts((prevContacts) => {
-      return [...prevContacts, { email, name }];
-    });
+  // access global user state to get contacts
+  const [state] = useGlobalUserContext();
+
+  // set up value and setter for contacts
+  const [contacts, setContacts] = useState(state.contacts)
+
+  // for adding contacts via GraphQL 
+  const [addContactToDB] = useMutation(ADD_NEW_CONTACT);
+  
+  async function createContact(email, name) {
+    console.log(`createContact fired`)
+    try {
+      let updatedContact = await addContactToDB({
+        variables: {
+          _id: state._id, 
+          email: email, 
+          name: name
+        }
+      } );
+      console.log(updatedContact)
+      setContacts((prevContacts) => {
+        return [...prevContacts, { email, name }];
+      });
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   return (

@@ -20,7 +20,7 @@ const typeDefs = gql`
 
   type Contact {
     _id: ID
-    id: String
+    email: String
     name: String
   }
 
@@ -43,7 +43,6 @@ const typeDefs = gql`
     email: String
     profileImage: String
     contacts: [Contact]
-    conversations: [Conversation]
     answers: [Answer]
   }
 
@@ -95,6 +94,7 @@ const typeDefs = gql`
     questionnaire: [Questionnaire]
     question(_id: ID!): Questionnaire
     user: User
+    getUserConversations(email: String!): [Conversation]
     getResults: [Result]
     getPosts: [Post]
     getPost(postId: ID!): Post
@@ -125,6 +125,22 @@ const typeDefs = gql`
       password: String!
       oldPassword: String!
     ): User
+
+    addNewContact(
+      _id: ID!
+      email: String!
+      name: String!
+    ): User
+
+    addNewConversation(
+      recipients: [String]!
+    ): Conversation
+
+    addMessageToConversation(
+      recipients: [String]!
+      sender: String!
+      text: String
+    ): Conversation
 
     deleteUser(
       _id: ID!

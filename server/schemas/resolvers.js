@@ -21,30 +21,29 @@ const resolvers = {
     question: async (parent, { id }) =>
       Questionnaire.findById(id).populate('category'),
 
-    // user: async (parent, args, context) => {
-    //   if (context.user) {
-    //     const user = await User.findById(context.user.id).populate();
-    //     return user;
-    //   }
-    //   throw new AuthenticationError('Not logged in');
-    // },
 
     singleUser: async (parent, { id }) => {
       console.log(id);
       const user = await User.findById(id).populate('answers').populate(`contacts`).populate(`conversations`);
       console.log(user);
       return user;
-      // if (context.user) {
-      //   const user = await User.findById(context.user.id).populate();
-      //   return user;
-      // }
-      // throw new AuthenticationError('Not logged in');
     },
 
     singleAction: async (parent, { actionId }) => {
       console.log(actionId);
       const action = await Action.findOne({actionId:actionId})
       return action;
+    },
+
+    getUserConversations: async (parent, { email }) => {
+      try {
+        const conversationsByUser = await Conversation.find({ recipients: {$all: [ email ]} })
+  
+        return conversationsByUser
+        
+      } catch (err) {
+        console.log(err)
+      }
     },
 
     getResults: async () => { 
@@ -65,21 +64,8 @@ const resolvers = {
         throw new Error('Post not found');
       }
     }
-    // order: async (parent, { id }, context) => {
-    //   if (context.user) {
-    //     const user = await User.findById(context.user.id).populate({
-    //       path: 'orders.products',
-    //       populate: 'category',
-    //     });
-
-    //     return user.orders.id(id);
-    //   }
-
-    //   throw new AuthenticationError('Not logged in');
-    // },
-
-
   },
+  
   Mutation: {
     addUser: async (parent, args) => {
       console.log("AddUser", args, 'test');
@@ -101,6 +87,7 @@ const resolvers = {
       console.log(token)
       return { token, user: userWithoutPassword };
     },
+
     addResult: async (parent, args) => {
       console.log(args, 'test');
       // args includes all fields submitted from signup
@@ -110,25 +97,13 @@ const resolvers = {
 
       return result;
     },
-    // addOrder: async (parent, { products }, context) => {
-    //   console.log(context);
-    //   if (context.user) {
-    //     const order = new Order({ products });
 
-    //     await User.findByIdAndUpdate(context.user.id, {
-    //       $push: { orders: order },
-    //     });
-
-    //     return order;
-    //   }
-
-    //   throw new AuthenticationError('Not logged in');
-    // },
     updateUser: async (parent, args) => {
       return User.findByIdAndUpdate(args._id, args, {
         new: true,
-      });
+      }).populate('answers').populate(`contacts`).populate(`conversations`);
     },
+    
     updatePassword: async (parent, args) => {
       const user = await User.findById(args._id);
       const correctPw = await user.isCorrectPassword(args.oldPassword);
@@ -139,6 +114,68 @@ const resolvers = {
         new: true,
       });
     },
+
+    addNewContact: async (parent, args) => {
+      console.log(`addNewContact SLAPPED`)
+      console.log(args)
+      try {
+        const userWithAddedContact = await User.findByIdAndUpdate(args._id, {
+          $push :{
+            contacts: 
+              {email: args.email, name: args.name}
+            }
+        }, {
+          new: true,
+        }).populate('answers').populate(`contacts`).populate(`conversations`);
+        console.log(userWithAddedContact)
+        return userWithAddedContact
+    
+      } catch (err) {
+        console.log(err)
+      }
+    },
+
+    addNewConversation: async (parent, args) => {
+      try {
+        const newConversation = await Conversation.create({
+          messages: [],
+          recipients: args.recipients
+        })
+        console.log(newConversation)
+        
+        return newConversation;
+        
+      } catch (err) {
+        console.log(err);
+      }
+    },
+
+    addMessageToConversation: async (parent, args) => {
+      try {
+        const updatedConversation = await Conversation.findOneAndUpdate(
+          { recipients: { $all: args.recipients } },
+          {
+            $push : {
+              messages:
+              {
+                sender: args.sender,
+                text: args.text
+              }
+            }
+          }, 
+          {
+            new: true
+          })
+          console.log(updatedConversation)
+          console.log(updatedConversation.messages[updatedConversation.messages.length - 1])
+          
+          return updatedConversation;
+          
+        } catch (err) {
+          console.log(err)
+        }
+    },
+
     deleteUser: async (parent, args)=>{
       return User.findByIdAndDelete(args._id)
     },
