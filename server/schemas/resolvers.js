@@ -166,20 +166,20 @@ const resolvers = {
       return { token, user: userWithoutPassword };
     },
 
-    createPost: async (parent, { text }, context) => {
-      const user = checkAuth(context);
-      if (text.trim() === '') {
-        throw new Error('Post must not be empty');
-      }
+    addPost: async (parent, args) => {
+      // const user = Auth(context);
+      // if (text.trim() === '') {
+        // throw new Error('Post must not be empty');
+      // }
+      const user = await User.findById(args.userid);
 
-      const newPost = new Post({
-        text,
-        user: user.firstName + user.lastName,
-        date: new Date().toISOString()
+      const newPost =  Post.create({
+        post: args.post,
+        user: user,
+        date: new Date()
       });
 
-      const post = await newPost.save();
-      return post;
+      return newPost;
     },
     deletePost: async (parent, { postId }, context) => {
       const user = checkAuth(context);
