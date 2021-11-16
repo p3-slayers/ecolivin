@@ -1,1 +1,2 @@
-# project-3
+# ECOLIVIN
+An App built to inspire and improve sustainable living goals. 
