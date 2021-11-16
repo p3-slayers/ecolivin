@@ -34,6 +34,7 @@ export function ConversationsProvider({ email, children }) {
   // wrapping in useCallBack hook with a dependency on setConversations so that this wont fire infinitely when a message is received-> only once when setConversations is called. And because this is only called within the callback, on rerender it wont be changed.
   const addMessageToConversation = useCallback(
     ({ recipients, text, sender }) => {
+      console.log(`MESSAGE RECEIVED`)
       console.log(`addMessageToConversation fired`);
       // useMutation(addMessageToConversation)
 

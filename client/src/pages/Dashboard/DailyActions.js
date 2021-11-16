@@ -21,13 +21,13 @@ const DailyActions = () => {
             <Container>
             <Row className="mb-4">            
               <Col md={4}>
-                  <ActionCard actionId="f1" title="food action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="f1" title="Plant-based" link="nolinkfornow" actionText="Eat 100% plant-based for the day"/>
               </Col>
               <Col md={4}>
-                  <ActionCard actionId="f2" title="food action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="f2" title="Veggie Scraps" link="nolinkfornow" actionText="Reuse veggie scraps and make broths or freeze for new recipes"/>
               </Col>
               <Col md={4}>
-                  <ActionCard actionId="f3" title="food action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="f3" title="Compost" link="nolinkfornow" actionText="Begin composting any food waste"/>
               </Col>
             </Row>
             <Row>            
@@ -49,10 +49,10 @@ const DailyActions = () => {
           <Container>
             <Row className="mb-4">            
               <Col md={4}>
-                  <ActionCard actionId="l1" title="lifestyle action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="l1" title="Used Items" link="nolinkfornow" actionText="Buy mostly used stuff and shop at second-hand stores"/>
               </Col>
               <Col md={4}>
-                  <ActionCard actionId="l2" title="lifestyle action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="l2" title="Education" link="nolinkfornow" actionText="Listen to a podcast or watch a documentary regarding sustainability."/>
               </Col>
               <Col md={4}>
                   <ActionCard actionId="l3" title="lifestyle action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
@@ -77,13 +77,13 @@ const DailyActions = () => {
           <Container> 
             <Row className="mb-4">            
               <Col md={4}>
-                  <ActionCard actionId="t1" title="transportation action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="t1" title="Carpool" link="nolinkfornow" actionText="Carpool to work/school or any event with a friend"/>
               </Col>
               <Col md={4}>
-                  <ActionCard actionId="t2" title="transportation action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="t2" title="Public Transit" link="nolinkfornow" actionText="Take public transit to work/school or etc"/>
               </Col>
               <Col md={4}>
-                  <ActionCard actionId="t3" title="transportation action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="t3" title="Bike" link="nolinkfornow" actionText="Bike to work/school"/>
               </Col>
             </Row>
 
@@ -106,22 +106,22 @@ const DailyActions = () => {
           <Container>
             <Row className="mb-4">            
               <Col md={4}>
-                  <ActionCard actionId="w1" title="waste action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="w1" title="Recycle" link="nolinkfornow" actionText="Recycle products correctly, following your city/location guidelines"/>
               </Col>
               <Col md={4}>
-                  <ActionCard actionId="w2" title="waste action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="w2" title="Water Bottle" link="nolinkfornow" actionText="Carry a refillable water bottle to reduce plastic bottles."/>
               </Col>
               <Col md={4}>
-                  <ActionCard actionId="w3" title="waste action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="w3" title="Reusable cups" link="nolinkfornow" actionText="Bring a reusable cup to a coffee/tea shop to reduce waste"/>
               </Col>
             </Row>
 
             <Row>            
               <Col md={4}>
-                  <ActionCard actionId="w4" title="waste action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="w4" title="Towels and Napkins" link="nolinkfornow" actionText="Switch from single use paper towels and napkins to cloth towels and handkerchief'"/>
               </Col>
               <Col md={4}>
-                  <ActionCard actionId="w5" title="waste action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="w5" title="No more single packages" link="nolinkfornow" actionText="Refrain from purchasing single packages items or plastic wrapped produce"/>
               </Col>
               <Col md={4}>
                   <ActionCard actionId="w6" title="waste action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
@@ -137,25 +137,25 @@ const DailyActions = () => {
 
             <Row className="mb-4">            
               <Col md={4}>
-                  <ActionCard actionId="h1" title="housing action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="h1" title="Shower" link="nolinkfornow" actionText="Decrease shower time to 5 minutes, and switch from taking baths"/>
               </Col>
               <Col md={4}>
-                  <ActionCard actionId="h2" title="housing action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="h2" title="Washer" link="nolinkfornow" actionText="Wash clothing on cold cycle insead of hot"/>
               </Col>
               <Col md={4}>
-                  <ActionCard actionId="h3" title="housing action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="h3" title="Air-dry" link="nolinkfornow" actionText="Air-dry clothing after washing instead of usering the drying machine"/>
               </Col>
             </Row>
 
             <Row>            
               <Col md={4}>
-                  <ActionCard actionId="h4" title="housing action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="h4" title="Lighting" link="nolinkfornow" actionText="Turn off lights when not in use"/>
               </Col>
               <Col md={4}>
-                  <ActionCard actionId="h5" title="housing action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="h5" title="Unplug Electronics" link="nolinkfornow" actionText="Unplug electronics when not in use."/>
               </Col>
               <Col md={4}>
-                  <ActionCard actionId="h6" title="housing action1" link="nolinkfornow" actionText="in this action you will eat healthy"/>
+                  <ActionCard actionId="h6" title="Thermostat" link="nolinkfornow" actionText="Keep your home at lower temperature (2-3 degrees lower)"/>
               </Col>
             </Row>
 

@@ -24,10 +24,10 @@ const Team = () => {
                 <h3> {member.name} </h3>
                 <p> {member.bio} </p>
                 <a href={member.linkedin} target="_blank" rel="noreferrer">
-                    <FaLinkedinIn size={36} />
+                    <FaLinkedinIn className="links m-1"size={36} />
                 </a>
                 <a href={member.github} target="_blank" rel="noreferrer">
-                    <FaGithub size={36} />
+                    <FaGithub className="links m-1"size={36} />
                 </a>
                 </div>
               </div>
