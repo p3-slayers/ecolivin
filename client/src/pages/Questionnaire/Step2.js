@@ -26,9 +26,9 @@ function Step2(props) {
         <Question text={"When possible, I walk to nearby locations instead of driving."} id="c2q3" onChange={props.handleChange} />
         <Question text={"I ride my bike to get to a given destination as much as possible."} id="c2q4" onChange={props.handleChange} />
         <Question text={"When travelling, I take a train or bus instead of airplane if possible."} id="c2q5" onChange={props.handleChange} />
-        <Question text={"NEED QUESTION"} id="c2q6" onChange={props.handleChange} />
-        <Question text={"NEED QUESTION"} id="c2q7" onChange={props.handleChange} />
-        <Question text={"NEED QUESTION"} id="c2q8" onChange={props.handleChange} />
+        <Question text={"When on vacation, I travel to destinations close to home."} id="c2q6" onChange={props.handleChange} />
+        <Question text={"I live a mostly car-free lifestyle"} id="c2q7" onChange={props.handleChange} />
+        <Question text={"I carpool often to get to my destinations"} id="c2q8" onChange={props.handleChange} />
         
         
        

@@ -35,7 +35,7 @@ function HabitTrackerAction(input) {
         
             {text} 
         
-        <Button className="mx-2 text-decoration-none" variant="link" size="sm" onClick={remove}>
+        <Button className="mx-2 text-decoration-none btn-secondary" variant="link" size="sm" onClick={remove}>
             🗑️
         </Button>
 
