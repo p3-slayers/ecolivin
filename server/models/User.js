@@ -32,7 +32,6 @@ const userSchema = new Schema({
   profileImage: {
     type: String,
   },
-  conversations: [Conversation.schema],
   contacts: [Contact.schema],
   // these are the answers from the questionnaire
   answers: [Answer.schema],
