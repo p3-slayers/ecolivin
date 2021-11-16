@@ -1,18 +1,23 @@
-import React, { useState } from 'react';
-import Sidebar from '../../components/Sidebar/index';
+import React, { useState } from "react";
+import Sidebar from "../../components/Sidebar/index";
+import DeleteUser from "../../components/deleteUserBtn/index.js";
 
-import { useMutation } from '@apollo/client';
-import { UPDATE_USER } from '../../utils/mutations';
-import { useHistory } from 'react-router-dom';
-import { useGlobalUserContext } from '../../utils/GlobalState';
-import { SET_USER_DATA } from '../../utils/actions';
-import { Button } from "react-bootstrap";
+import { useMutation } from "@apollo/client";
+import { UPDATE_USER } from "../../utils/mutations";
+import { useHistory } from "react-router-dom";
+import { useGlobalUserContext } from "../../utils/GlobalState";
+import { SET_USER_DATA } from "../../utils/actions";
+import { Button, Container } from "react-bootstrap";
 
 const Account = () => {
   // for setting global state
   const [state, dispatch] = useGlobalUserContext();
 
-  const [formState, setFormState] = useState({ email: state.email, firstName: state.firstName, lastName: state.lastName });
+  const [formState, setFormState] = useState({
+    email: state.email,
+    firstName: state.firstName,
+    lastName: state.lastName,
+  });
   const [updateUser] = useMutation(UPDATE_USER);
 
   // for redirecting page
@@ -41,7 +46,7 @@ const Account = () => {
 
     console.log(state);
 
-    history.push('/dashboard');
+    history.push("/dashboard");
     window.location.reload();
   };
 
@@ -58,6 +63,7 @@ const Account = () => {
     <div className="d-flex mt-5">
       {/* will inserts information/summary about the User */}
       <Sidebar />
+      {/* <Container style={{display:'flex', flexDirection:'column', width:'auto'}}> */}
       <div className="px-5 flex-grow-1">
         <h2 className>Edit Profile</h2>
         <form onSubmit={handleFormSubmit}>
@@ -68,7 +74,7 @@ const Account = () => {
               name="firstName"
               type="firstName"
               id="firstName"
-            onChange={handleChange}
+              onChange={handleChange}
             />
           </div>
           <div className="flex-row space-between my-2">
@@ -78,7 +84,7 @@ const Account = () => {
               name="lastName"
               type="lastName"
               id="lastName"
-            onChange={handleChange}
+              onChange={handleChange}
             />
           </div>
           <div className="flex-row space-between my-2">
@@ -88,7 +94,7 @@ const Account = () => {
               name="email"
               type="email"
               id="email"
-            onChange={handleChange}
+              onChange={handleChange}
             />
           </div>
           {/* <div className="flex-row space-between my-2">
@@ -101,8 +107,19 @@ const Account = () => {
             onChange={handleChange}
             />
           </div> */}
-          <div className="flex-row flex-end">
+          <div
+            className="flex-row"
+            style={{ marginTop: "30px", justifyContent: "center" }}
+          >
             <Button type="submit">Update Account</Button>
+          </div>
+          <div
+            className="flex-row"
+            style={{ marginTop: "30px", justifyContent: "center" }}
+          >
+            <Button>
+              <DeleteUser />
+            </Button>
           </div>
         </form>
       </div>

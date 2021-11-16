@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { ListGroup, ListGroupItem, Row, Col, Container } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { useGlobalUserContext } from '../../utils/GlobalState';
-import DeleteUser from '../deleteUserBtn/index.js'
 
 function Sidebar() {
   const [state, dispatch] = useGlobalUserContext();
@@ -66,11 +65,6 @@ function Sidebar() {
               >
                Dashboard
               </Link>
-            </Button>
-          </ListGroupItem>
-          <ListGroupItem>
-            <Button style={{ width: "100%" }}>
-               <DeleteUser/>
             </Button>
           </ListGroupItem>
         </ListGroup>
