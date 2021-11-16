@@ -24,7 +24,7 @@ const Resources = () => {
       </Row>
       <Row>
         <Col>
-        <div className="rounded-circle bg-success transportation mb-3 pt-5 text-center" style={{width:"100px", height:"100px"}}> 
+        <div className="rounded-circle bg-success transportation mb-3 pt-4 text-center" style={{width:"100px", height:"100px"}}> 
             <h5 className="p-0 small">Transportation</h5>
           </div> 
         </Col>
