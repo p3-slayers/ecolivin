@@ -20,13 +20,22 @@ export function ConversationsProvider({ email, children }) {
     []
   );
   const [selectedConversationIndex, setSelectedConversationIndex] = useState(0);
-  const { contacts } = useContactsContext();
+  let { contacts } = useContactsContext();
+
+  if (!contacts){
+    contacts = [];
+  }
+
   const socket = useSocketContext();
 
   function createConversation(recipients) {
     // useMutation(NewConversation)
     setConversations((prevConversations) => {
-      return [...prevConversations, { recipients, messages: [] }];
+      if (prevConversations.length > 0) {
+        return [...prevConversations, { recipients, messages: [] }] 
+      } else {
+        return [{ recipients, messages: [] }]
+      }
     });
   }
 

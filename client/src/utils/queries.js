@@ -12,13 +12,6 @@ export const QUERY_SINGLE_USER = gql`
         email
         name
       }
-			conversations {
-        messages {
-          sender
-          text
-        }
-        recipients
-      }
     
       answers {
         answers
