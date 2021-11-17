@@ -84,8 +84,20 @@ const Account = () => {
     console.log(`handlePictureUpload Fired!`)
     event.preventDefault();
 
+    const formData = new FormData();
+    formData.append('userID', state._id)
+    formData.append('file', file)
+
     console.log(file)
     console.log(fileName)
+    console.log(formData.getAll(`file`))
+    console.log(formData.getAll(`userID`))
+
+    try {
+      
+    } catch (error) {
+      
+    }
 
   }
 
