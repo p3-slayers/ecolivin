@@ -130,14 +130,6 @@ const Account = () => {
           <div className="col-sm-10">
             <Button type="submit">Update Account</Button>
           </div>
-          <div
-            className="flex-row"
-            style={{ marginTop: "30px", justifyContent: "center" }}
-          >
-            <Button>
-              <DeleteUser />
-            </Button>
-          </div>
         </form>
         <br></br>
         <form onSubmit={handlePasswordUpdate}>
@@ -180,6 +172,14 @@ const Account = () => {
             <Button type="submit">Update Password</Button>
           </div>
         </form>
+        <div
+            className="flex-row"
+            style={{ marginTop: "30px", justifyContent: "center" }}
+          >
+            <Button>
+              <DeleteUser />
+            </Button>
+          </div>
       </div>
     </div>
   );
