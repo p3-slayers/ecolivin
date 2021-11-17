@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 function HabitTrackerAction(input) {
-  const text = input.text;
+    const text = input.text;
   const actionText = input.actionText;
   const actionId = input.actionId;
   const element = <FontAwesomeIcon icon={faTrash} />
@@ -35,7 +35,7 @@ function HabitTrackerAction(input) {
     <Row className="mb-3">
         <Col md={4} className="px-4">        
         
-            {text} 
+           {text} 
             
         <Button className="mx-2 text-decoration-none btn-light p-2" variant="link" size="sm" onClick={remove}>
              {element}

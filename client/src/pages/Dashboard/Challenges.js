@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from '@apollo/client';
-import ChallengeCard from '../../components/challengeCard';
+import ChallengeCard from '../../components/ChallengeCard';
 
 
 

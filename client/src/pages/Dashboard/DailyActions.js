@@ -5,25 +5,26 @@ import { Container, ListGroup, ListGroupItem, Row, Col } from "react-bootstrap";
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import Card from 'react-bootstrap/Card';
-import ActionCard from '../../components/actionCard/index'
-
+import ActionCard from '../../components/ActionCard/index'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 
 const DailyActions = () => {
+
+  const element = <FontAwesomeIcon icon={faTrash} />
+
   return (
     <div className="d-flex mt-5">
-      {/* will inserts information/summary about the User */}
       <Sidebar />
       <div className="px-5 flex-grow-1">
         <h2 className="mb-4">Daily Actions</h2>
-
-
         <Tabs defaultActiveKey="profile" className="mb-3">
           <Tab eventKey="food" title="Food">
             <Container>
             <Row className="mb-4">            
               <Col md={4}>
-                  <ActionCard actionId="f1" title="Plant-based" link="nolinkfornow" actionText="Eat 100% plant-based for the day"/>
+                  <ActionCard actionId="f1" title="Plant-based Food" icon= {element} link="nolinkfornow" actionText="Eat 100% plant-based for the day"/>
               </Col>
               <Col md={4}>
                   <ActionCard actionId="f2" title="Veggie Scraps" link="nolinkfornow" actionText="Reuse veggie scraps and make broths or freeze for new recipes"/>
@@ -43,7 +44,6 @@ const DailyActions = () => {
                   <ActionCard actionId="f6" title="Homecooked Meal" link="nolinkfornow" actionText="Eat homecooked meals when possible"/>
               </Col>
             </Row>
-
             </Container>
           </Tab>
 
