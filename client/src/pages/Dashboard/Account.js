@@ -7,7 +7,7 @@ import { UPDATE_USER, UPDATE_PASSWORD } from '../../utils/mutations';
 import { useHistory } from 'react-router-dom';
 import { useGlobalUserContext } from '../../utils/GlobalState';
 import { SET_USER_DATA } from '../../utils/actions';
-import { Button } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
 
 const Account = () => {
   // for setting global state
@@ -69,6 +69,13 @@ const Account = () => {
     console.log(e);
   }
   };
+
+  const handlePictureUpload = async (event) => {
+    console.log(`handlePictureUpload Fired!`)
+    event.preventDefault();
+
+
+  }
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -173,6 +180,32 @@ const Account = () => {
           <div className="col-sm-10">
             <Button type="submit">Update Password</Button>
           </div>
+          <br></br>
+        </form>
+        <form onSubmit={handlePictureUpload}>
+          <div className="form-group row">
+            <label htmlFor="profilePicture" className="col-sm-2 col-form-label">Upload profile picture:</label>
+            <div class="col-sm-4">
+              <input
+                className="form-control"
+                placeholder="******"
+                name="profilePicture"
+                type="file"
+                id="profilePicture"
+                onChange={handleChange}
+              />
+            </div>
+            {/* {error ? (
+              <div className="mt-3">
+                <p className="text-muted small">The password is incorrect</p>
+              </div>
+            ) : null} */}
+          </div>
+          <br></br>
+          <div className="col-sm-10">
+            <Button type="submit">Upload Photo</Button>
+          </div>
+          <br></br>
         </form>
         <div
             className="flex-row"
