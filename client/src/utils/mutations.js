@@ -106,7 +106,45 @@ export const DELETE_USER= gql`
     _id
     }
   }
+`;
+
+export const ADD_NEW_CONVERSATION = gql`
+  mutation addNewConversation(
+    $recipients: [String]!
+  ) {
+    addNewContact(
+      recipients: $recipients
+    ) {
+      _id
+      recipients 
+      messages {
+        sender
+        text
+      }
+    }
+  }
   `;
+
+export const ADD_MESSAGE_TO_CONVERSATION = gql`
+  mutation addMessageToConversation(
+    $recipients: [String]!
+    $sender: String!
+    $text: String
+  ) {
+    addMessageToConversation(
+      recipients: $recipients
+      sender: $sender
+      text: $text
+    ) {
+      _id
+      recipients 
+      messages {
+        sender
+        text
+      }
+    }
+  }
+`
 
 export const ADD_POST = gql`
 mutation addPost(

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import useLocalStorage from '../hooks/useLocalStorage';
 import { useGlobalUserContext } from '../../../utils/GlobalState';
 import { useMutation } from '@apollo/client';
@@ -42,7 +42,11 @@ export function ContactsProvider({ children }) {
     } catch (err) {
       console.log(err)
     }
-  }
+  };
+
+  useEffect(() => {
+    setContacts(state.contacts)
+  }, [contacts, state])
 
   return (
     <ContactsContext.Provider value={{ contacts, createContact }}>

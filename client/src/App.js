@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import auth from './utils/auth';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -23,6 +23,7 @@ function App({ apolloClient }) {
   console.log(apolloClient);
   // eslint-disable-next-line no-unused-vars
   const [state, dispatch] = useGlobalUserContext();
+  const [isLoading, setIsLoading] = useState(true);
 
   const get_id = () => {
     console.log(`get_id Fired!`);
@@ -71,9 +72,12 @@ function App({ apolloClient }) {
         console.log(err);
       }
     };
-    let userData = queryUserData(loggedInUserId);
+    let userData = queryUserData(loggedInUserId)
+     .then(() => {
+       setIsLoading(false);
+     })
     console.log(userData);
-  });
+  }, [isLoading, apolloClient, dispatch] );
 
   return (
     <Router>
