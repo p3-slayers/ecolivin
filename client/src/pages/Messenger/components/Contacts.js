@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ListGroup } from 'react-bootstrap';
 import { useContactsContext } from '../contexts/ContactsProvider';
 
 export default function Contacts() {
   let { contacts } = useContactsContext();
+
+  useEffect(() => {console.log(`Conversation.js MOUNTED`)
+  return console.log(`Conversation.js UNMOUNTED`)
+  }, [])
 
   // inserts an empty array so the map function below does not crash the app on inital render if the session gets refreshed.
   if (!contacts) {

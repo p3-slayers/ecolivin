@@ -48,6 +48,7 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
+
 const link = ApolloLink.from([errorLink, authLink.concat(httpLink)]);
 
 const client = new ApolloClient({

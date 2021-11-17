@@ -88,6 +88,10 @@ export function ConversationsProvider({ email, children }) {
     return () => socket.off('receive-message');
   }, [socket, addMessageToConversation]);
 
+  useEffect(() => {console.log(`ConversationsProvider.js MOUNTED`)
+  return console.log(`ConversationsProvider.js UNMOUNTED`)
+  }, [])
+
   function sendMessage(recipients, text) {
     socket.emit(`send-message`, { recipients, text });
     // useMutation(addMessageToConversation)

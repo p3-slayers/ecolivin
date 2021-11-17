@@ -1,9 +1,14 @@
 import Button from 'react-bootstrap/Button';
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import Nav from '../components/Nav/index'
 
 const Home = () => {
+
+  useEffect(() => {console.log(`Home.js MOUNTED`)
+    return console.log(`Home.js UNMOUNTED`)
+    }, [])
+
   return (
     <>
       <Nav />
