@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Questionnaire, Category, Post, Result, Action, Contact, Conversation, Message } = require('../models');
+const { User, Questionnaire, Category, Post, Result, Action, Contact, Conversation, Message, Challenge } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -63,7 +63,26 @@ const resolvers = {
       } else {
         throw new Error('Post not found');
       }
-    }
+    },
+
+    getChallenges: async () => { 
+      const challenges = Challenge.find().populate(`user`).sort({date: -1});
+       return challenges;  
+      },
+    // order: async (parent, { id }, context) => {
+    //   if (context.user) {
+    //     const user = await User.findById(context.user.id).populate({
+    //       path: 'orders.products',
+    //       populate: 'category',
+    //     });
+
+    //     return user.orders.id(id);
+    //   }
+
+    //   throw new AuthenticationError('Not logged in');
+    // },
+
+
   },
   
   Mutation: {
@@ -102,6 +121,17 @@ const resolvers = {
       return User.findByIdAndUpdate(args._id, args, {
         new: true,
       }).populate('answers').populate(`contacts`).populate(`conversations`);
+    },
+    
+    updatePassword: async (parent, args) => {
+      const user = await User.findById(args._id);
+      const correctPw = await user.isCorrectPassword(args.oldPassword);
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+      return User.findByIdAndUpdate(args._id, args, {
+        new: true,
+      });
     },
 
     addNewContact: async (parent, args) => {
@@ -206,10 +236,7 @@ const resolvers = {
     },
 
     addPost: async (parent, args) => {
-      // const user = Auth(context);
-      // if (text.trim() === '') {
-        // throw new Error('Post must not be empty');
-      // }
+    
       const user = await User.findById(args.userid);
 
       const newPost =  Post.create({
@@ -220,38 +247,8 @@ const resolvers = {
 
       return newPost;
     },
-    deletePost: async (parent, { postId }, context) => {
-      const user = checkAuth(context);
-      try {
-        const post = await Post.findById(postId);
-        if (user.id === post.user.id) {
-          await post.delete();
-          return 'Post deleted successfully';
-        } else {
-          throw new AuthenticationError('Action not allowed');
-        }
-      } catch (err) {
-        throw new Error(err);
-      }
-    },
-    likePost: async (parent, { postId }, context) => {
-      const user = checkAuth(context);
-
-      const post = await Post.findById(postId);
-      if (post) {
-        if (post.likes.find((like) => like.user.id === user.id)) {
-          // Post already likes, unlike it
-          post.likes = post.likes.filter((like) => like.user.id !== user.id);
-        } else {
-          // Not liked, like post
-          post.likes.push(user.id);
-        }
-
-        await post.save();
-        return post;
-      } else throw new UserInputError('Post not found');
-    }
-  },
+   
+}
 };
 
 module.exports = resolvers;

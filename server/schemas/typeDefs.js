@@ -51,21 +51,18 @@ const typeDefs = gql`
     post: String
     date: String
     user: User
-    comments: [Comment]
-    likes: [Like]
   }
 
-  type Comment {
-    id: ID
-    date: String
+  type Challenge {
+    challengeId: String
+    title: String
+    challenge: String
+    dateStart: String
+    dateEnd: String
     user: User
-    text: String!
   }
 
-  type Like {
-    id: ID
-    user: User
-  }
+
 
   type Auth {
     token: ID
@@ -100,6 +97,7 @@ const typeDefs = gql`
     getPost(postId: ID!): Post
     singleUser(id: ID!): User
     singleAction(actionId: String!): Action
+    getChallenges: [Challenge]
   }
 
   type Mutation {
@@ -118,6 +116,12 @@ const typeDefs = gql`
       email: String
       password: String
       profileImage: String
+    ): User
+
+    updatePassword(
+      _id: ID!
+      password: String!
+      oldPassword: String!
     ): User
 
     addNewContact(
@@ -153,10 +157,6 @@ const typeDefs = gql`
       post: String!
       userid: String!
       ): Post!
-    deletePost(postId: ID!): String!
-    createComment(postId: String!, body: String!): Post!
-    deleteComment(postId: ID!, commentId: ID!): Post!
-    likePost(postId: ID!): Post!
   }
 `;
 

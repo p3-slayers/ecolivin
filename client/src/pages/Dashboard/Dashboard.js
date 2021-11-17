@@ -56,7 +56,7 @@ const Dashboard = () => {
   return (
     <>
       <div className="d-flex mt-5">
-        {/* will inserts information/summary about the User */}
+      
         <Sidebar />
 
         <div className="px-5 flex-grow-1" style={{ marginLeft: "30px" }}>
