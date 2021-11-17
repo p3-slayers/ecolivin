@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Questionnaire, Category, Post, Result, Action, Contact, Conversation, Message } = require('../models');
+const { User, Questionnaire, Category, Post, Result, Action, Contact, Conversation, Message, Challenge } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -63,6 +63,15 @@ const resolvers = {
         return post;
       } else {
         throw new Error('Post not found');
+      }
+    }
+
+    getChallenge: async (parent, {challengeId} ) => {
+      const challenge = await Challenge.findById(challengeId);
+      if (challenge) {
+        return challenge;
+      } else {
+        throw new Error('Not found');
       }
     }
     // order: async (parent, { id }, context) => {
@@ -167,10 +176,7 @@ const resolvers = {
     },
 
     addPost: async (parent, args) => {
-      // const user = Auth(context);
-      // if (text.trim() === '') {
-        // throw new Error('Post must not be empty');
-      // }
+    
       const user = await User.findById(args.userid);
 
       const newPost =  Post.create({
@@ -181,38 +187,7 @@ const resolvers = {
 
       return newPost;
     },
-    deletePost: async (parent, { postId }, context) => {
-      const user = checkAuth(context);
-      try {
-        const post = await Post.findById(postId);
-        if (user.id === post.user.id) {
-          await post.delete();
-          return 'Post deleted successfully';
-        } else {
-          throw new AuthenticationError('Action not allowed');
-        }
-      } catch (err) {
-        throw new Error(err);
-      }
-    },
-    likePost: async (parent, { postId }, context) => {
-      const user = checkAuth(context);
-
-      const post = await Post.findById(postId);
-      if (post) {
-        if (post.likes.find((like) => like.user.id === user.id)) {
-          // Post already likes, unlike it
-          post.likes = post.likes.filter((like) => like.user.id !== user.id);
-        } else {
-          // Not liked, like post
-          post.likes.push(user.id);
-        }
-
-        await post.save();
-        return post;
-      } else throw new UserInputError('Post not found');
-    }
-  },
+   
 };
 
 module.exports = resolvers;

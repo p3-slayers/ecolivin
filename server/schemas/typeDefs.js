@@ -52,21 +52,17 @@ const typeDefs = gql`
     post: String
     date: String
     user: User
-    comments: [Comment]
-    likes: [Like]
   }
 
-  type Comment {
-    id: ID
-    date: String
+  type Challenge {
+    challengeId: String
+    challenge: String
+    dateStart: String
+    dateEnd: String
     user: User
-    text: String!
   }
 
-  type Like {
-    id: ID
-    user: User
-  }
+
 
   type Auth {
     token: ID
@@ -100,6 +96,7 @@ const typeDefs = gql`
     getPost(postId: ID!): Post
     singleUser(id: ID!): User
     singleAction(actionId: String!): Action
+    getChallenge: [Challenge]
   }
 
   type Mutation {

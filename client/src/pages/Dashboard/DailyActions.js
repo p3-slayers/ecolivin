@@ -8,6 +8,7 @@ import Card from 'react-bootstrap/Card';
 import ActionCard from '../../components/actionCard/index'
 
 
+
 const DailyActions = () => {
   return (
     <div className="d-flex mt-5">
@@ -84,7 +85,7 @@ const DailyActions = () => {
                   <ActionCard actionId="t2" title="Public Transit" link="nolinkfornow" actionText="Take public transit to work/school or etc"/>
               </Col>
               <Col md={4}>
-                  <ActionCard actionId="t3" title="Bike" link="nolinkfornow" actionText="Bike to work/school"/>
+                  <ActionCard actionId="t3" title="Bike" link="nolinkfornow" actionText="Bike to work/school or other destinations"/>
               </Col>
             </Row>
 

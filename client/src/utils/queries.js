@@ -42,25 +42,25 @@ export const QUERY_SINGLE_ACTION = gql`
 `;
 
 
-export const QUERY_ALL_POSTS = gql`
-  {
-    getPosts {
-      id
-      post
-      date
-      user
-      likes {
-        user
-      }
-      comments {
-        id
-        user
-        date
-        text
-      }
-    }
-  }
-`;
+// export const QUERY_ALL_POSTS = gql`
+//   {
+//     getPosts {
+//       id
+//       post
+//       date
+//       user
+//       likes {
+//         user
+//       }
+//       comments {
+//         id
+//         user
+//         date
+//         text
+//       }
+//     }
+//   }
+// `;
 
 
 export const getAllPosts = gql`
@@ -74,20 +74,8 @@ query getAllPosts{
       firstName
       lastName
     }
-    likes {
-      user{
-      firstName
-      lastName
-    }
-    }
-    comments {
-      id
-      user{
-      firstName
-    }
       date
       text
-    }
   }
 }
 `;
@@ -104,4 +92,20 @@ query getAllResults {
       housing
     }
   }
+`;
+
+export const QUERY_ALL_CHALLENGES = gql`
+query getChallenge{
+  getChallenge {
+    challengeId
+    challenge
+    dateStart
+    dateEnd
+    user{
+      _id
+      firstName
+      lastName
+    }
+  }
+}
 `;

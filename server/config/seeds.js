@@ -10,7 +10,8 @@ const {
   Contact,
   Conversation,
   Message,
-  Result
+  Result,
+  Challenge
 } = require('../models');
 
 db.once('open', async () => {
@@ -448,6 +449,21 @@ db.once('open', async () => {
   ]);
 
   console.log('results seeded');
+
+
+  // seed challenges
+
+  await Challenge.deleteMany();
+
+  const challenge = await Challenge.insertMany([
+    {
+      challengeId: "bikeWork",
+      challenge: "In this challenge you will bike to work everyday for the rest of your life",
+      user: pamela._id,
+      dateStart: + new Date('August 19, 1975 23:15:30'),
+      dateEnd: + new Date('August 22, 1975 23:15:30')
+    }
+  ]);
 
 
   process.exit();
