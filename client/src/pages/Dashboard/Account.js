@@ -3,7 +3,7 @@ import Sidebar from "../../components/Sidebar/index";
 import DeleteUser from "../../components/deleteUserBtn/index.js";
 
 import { useMutation } from '@apollo/client';
-import { UPDATE_USER, UPDATE_PASSWORD } from '../../utils/mutations';
+import { UPDATE_USER, UPDATE_PASSWORD, UPLOAD_PROFILE_PIC } from '../../utils/mutations';
 import { useHistory } from 'react-router-dom';
 import { useGlobalUserContext } from '../../utils/GlobalState';
 import { SET_USER_DATA } from '../../utils/actions';
@@ -22,8 +22,12 @@ const Account = () => {
   const [updateUser] = useMutation(UPDATE_USER);
   const [updatePassword, { error }] = useMutation(UPDATE_PASSWORD);
 
-  const [file, setFile] = useState('')
+  // picture upload stuff
+  const [file, setFile] = useState()
   const [fileName, setFileName] = useState('')
+  const [uploadPicture] = useMutation(UPLOAD_PROFILE_PIC, {
+    onCompleted: data => console.log(data)
+  })
 
   // for redirecting page
   const history = useHistory();
@@ -75,29 +79,41 @@ const Account = () => {
 
   const handlePictureUploadChange = event => {
     console.log(`handlePictureUploadChange Fired!`)
-    setFile(event.target.files[0])
-    setFileName(event.target.files[0].name)
+    if ( !event.target.files[0] ) return;
+
+      console.log(event.target.files[0])
+      setFile(event.target.files[0])
+      setFileName(event.target.files[0].name)
 
   }
 
   const handlePictureUploadSubmit = async (event) => {
     console.log(`handlePictureUpload Fired!`)
     event.preventDefault();
-
-    const formData = new FormData();
-    formData.append('userID', state._id)
-    formData.append('file', file)
-
     console.log(file)
-    console.log(fileName)
-    console.log(formData.getAll(`file`))
-    console.log(formData.getAll(`userID`))
+    if (!file) console.log(`No File present`);
+    if (!file) return;
 
     try {
-      
+      const response = await uploadPicture({
+        variables: {
+          file
+        }
+      });
     } catch (error) {
-      
+      console.log(error)
     }
+
+
+    // const formData = new FormData();
+    // formData.append('userID', state._id)
+    // formData.append('file', file)
+
+    // console.log(file)
+    // console.log(fileName)
+    // console.log(formData.getAll(`file`))
+    // console.log(formData.getAll(`userID`))
+
 
   }
 
@@ -117,7 +133,7 @@ const Account = () => {
       <div className="px-5 flex-grow-1">
         <h2>Edit Profile</h2>
         <br></br>
-        <form onSubmit={handleFormSubmit}>
+        <form onSubmit={handleFormSubmit} className="p-2 border border-dark rounded">
           <div className="form-group row">
             <label htmlFor="firstName" className="col-sm-2 col-form-label">First Name:</label>
             <div class="col-sm-4">
@@ -165,7 +181,7 @@ const Account = () => {
           </div>
         </form>
         <br></br>
-        <form onSubmit={handlePasswordUpdate}>
+        <form onSubmit={handlePasswordUpdate} className="p-2 border border-dark rounded">
           <div className="form-group row">
             <label htmlFor="oldPassword" className="col-sm-2 col-form-label">Old Password:</label>
             <div class="col-sm-4">
@@ -204,9 +220,9 @@ const Account = () => {
           <div className="col-sm-10">
             <Button type="submit">Update Password</Button>
           </div>
-          <br></br>
         </form>
-        <form onSubmit={handlePictureUploadSubmit}>
+          <br></br>
+        <form onSubmit={handlePictureUploadSubmit} className="p-2 border border-dark rounded">
           <div className="form-group row">
             <label htmlFor="profilePicture" className="col-sm-2 col-form-label">Upload profile picture:</label>
             <div class="col-sm-4">

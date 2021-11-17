@@ -203,6 +203,7 @@ const resolvers = {
     },
 
     uploadPicture: async (parent, { file }) => {
+      console.log(`uploadPicture Fired!`)
       const { createReadStream, filename, mimetype, encoding } = await file;
 
       const stream = createReadStream()
@@ -210,6 +211,9 @@ const resolvers = {
 
       await stream.pipe(fs.createWriteStream(pathName))
       return {
+        filename,
+        mimetype,
+        encoding,
         url: `http://localhost:4000/images/${filename}`
       }
     },

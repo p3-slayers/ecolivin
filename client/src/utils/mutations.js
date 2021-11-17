@@ -119,6 +119,17 @@ export const ADD_NEW_CONTACT = gql`
   }
   `;
 
+export const UPLOAD_PROFILE_PIC = gql`
+  mutation uploadPicture($file: Upload!){
+    uploadPicture(file: $file){
+      filename
+      mimetype
+      encoding
+      url
+    }
+  }
+`
+
 export const DELETE_USER= gql`
   mutation deleteUser($_id:ID!){
     deleteUser(_id:$_id){
