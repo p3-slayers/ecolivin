@@ -208,6 +208,9 @@ const resolvers = {
       console.log(`uploadPicture Fired!`)
       const { createReadStream, filename, mimetype, encoding } = await file;
 
+      console.log(file)
+      console.log(__dirname)
+
       const stream = createReadStream()
       const pathName = path.join(__dirname, `/public/testUploadPics/${filename}`);
 

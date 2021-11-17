@@ -1,6 +1,8 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
+  scalar Upload
+
   type Category {
     _id: ID
     name: String
@@ -86,11 +88,12 @@ const typeDefs = gql`
     category: Category
   }
 
+
   type File {
     filename: String!
     mimetype: String!
     encoding: String!
-    url: String!
+    url: String
   }
 
   type Query {

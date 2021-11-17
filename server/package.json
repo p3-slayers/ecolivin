@@ -14,7 +14,7 @@
   "dependencies": {
     "@stripe/react-stripe-js": "^1.6.0",
     "@stripe/stripe-js": "^1.21.1",
-    "apollo-server-express": "^2.11.0",
+    "apollo-server-express": "^2.2.3",
     "bcrypt": "^4.0.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",

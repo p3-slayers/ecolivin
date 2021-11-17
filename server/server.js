@@ -53,11 +53,12 @@ io.on('connection', (socket) => {
   });
 });
 
+app.use(graphqlUploadExpress({ maxFileSize: 1000000000, maxFiles: 1}));
 // apollo (graphql) stuff
 // Setting uploads to false because the bundled file handler in Apollo Server is broken in node v14. So we tell ApolloServer not to use the bundled uploader, and then apply the middleware for apollo uploads manually below by calling "graphqlUploadExpress" imported from graphql-upload above, which is the latest version.
 console.log(`just before apollo server`)
 const apolloServer = new ApolloServer({
-  // uploads: false,
+  uploads: false,
   typeDefs,
   resolvers,
   context: authMiddleware,
@@ -66,7 +67,6 @@ const apolloServer = new ApolloServer({
 console.log(`after apollo server`)
 
 // MUST BE CALLED BEFORE applyMiddleware
-app.use(graphqlUploadExpress({ maxFileSize: 1000000000, maxFiles: 1}));
 
 apolloServer.applyMiddleware({ app });
 
