@@ -2,6 +2,9 @@ const { AuthenticationError } = require('apollo-server-express');
 const { User, Questionnaire, Category, Post, Result, Action, Contact, Conversation, Message, Challenge } = require('../models');
 const { signToken } = require('../utils/auth');
 
+const path = require(`path`);
+const fs = require(`fs`);
+
 const resolvers = {
   Query: {
     categories: async () => Category.find(),
@@ -198,15 +201,19 @@ const resolvers = {
     deleteUser: async (parent, args)=>{
       return User.findByIdAndDelete(args._id)
     },
-    // updateProduct: async (parent, { id, quantity }) => {
-    //   const decrement = Math.abs(quantity) * -1;
 
-    //   return Product.findByIdAndUpdate(
-    //     id,
-    //     { $inc: { quantity: decrement } },
-    //     { new: true }
-    //   );
-    // },
+    uploadPicture: async (parent, { file }) => {
+      const { createReadStream, filename, mimetype, encoding } = await file;
+
+      const stream = createReadStream()
+      const pathName = path.join(__dirname, `/public/testUploadPics/${filename}`);
+
+      await stream.pipe(fs.createWriteStream(pathName))
+      return {
+        url: `http://localhost:4000/images/${filename}`
+      }
+    },
+
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) {

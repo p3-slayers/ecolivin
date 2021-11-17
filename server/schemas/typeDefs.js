@@ -86,6 +86,13 @@ const typeDefs = gql`
     category: Category
   }
 
+  type File {
+    filename: String!
+    mimetype: String!
+    encoding: String!
+    url: String!
+  }
+
   type Query {
     categories: [Category]
     questionnaire: [Questionnaire]
@@ -151,6 +158,8 @@ const typeDefs = gql`
       lifestyle: Float!
       housing: Float!
     ):Result
+
+    uploadPicture(file: Upload!): File!
 
     login(email: String!, password: String!): Auth
     addPost(
