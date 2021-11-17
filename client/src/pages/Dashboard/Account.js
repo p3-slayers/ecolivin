@@ -97,7 +97,7 @@ const Account = () => {
     try {
       const response = await uploadPicture({
         variables: {
-          file
+          file: file
         }
       });
     } catch (error) {

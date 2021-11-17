@@ -5,6 +5,8 @@ const { signToken } = require('../utils/auth');
 const path = require(`path`);
 const fs = require(`fs`);
 
+const { GraphQLUpload } = require('graphql-upload')
+
 const resolvers = {
   Query: {
     categories: async () => Category.find(),
@@ -214,7 +216,7 @@ const resolvers = {
         filename,
         mimetype,
         encoding,
-        url: `http://localhost:4000/images/${filename}`
+        // url: `http://localhost:4000/images/${filename}`
       }
     },
 
@@ -259,7 +261,10 @@ const resolvers = {
       return newPost;
     },
    
-}
+},
+
+  Upload: GraphQLUpload
+
 };
 
 module.exports = resolvers;

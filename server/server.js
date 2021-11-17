@@ -12,17 +12,9 @@ const PORT = process.env.PORT || 3001;
 
 const app = express();
 
-// app.use(
-//   cors({
-//     origin: 'http://localhost:3000',
-//   })
-// );
+// file upload stuff 
 
-// app.use(
-//   cors({
-//     origin: 'http://localhost:3000',
-//   })
-// );
+const { graphqlUploadExpress } = require(`graphql-upload`);
 
 // Socket.io Stuff
 const httpServer = require('http').createServer(app);
@@ -62,17 +54,26 @@ io.on('connection', (socket) => {
 });
 
 // apollo (graphql) stuff
+// Setting uploads to false because the bundled file handler in Apollo Server is broken in node v14. So we tell ApolloServer not to use the bundled uploader, and then apply the middleware for apollo uploads manually below by calling "graphqlUploadExpress" imported from graphql-upload above, which is the latest version.
+console.log(`just before apollo server`)
 const apolloServer = new ApolloServer({
+  // uploads: false,
   typeDefs,
   resolvers,
   context: authMiddleware,
 });
+
+console.log(`after apollo server`)
+
+// MUST BE CALLED BEFORE applyMiddleware
+app.use(graphqlUploadExpress({ maxFileSize: 1000000000, maxFiles: 1}));
 
 apolloServer.applyMiddleware({ app });
 
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
 app.use(routes);
 
 
