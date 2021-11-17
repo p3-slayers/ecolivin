@@ -72,7 +72,26 @@ export const UPDATE_USER = gql`
       email: $email
       password: $password
       profileImage: $profileImage
-    ){
+    ) {
+      _id
+    	firstName
+    	lastName
+    	email
+    }
+  }
+`;
+
+export const UPDATE_PASSWORD = gql`
+  mutation updatePassword(
+  	$_id: ID!
+    $password: String!
+  	$oldPassword: String!
+  ) {
+    updatePassword(
+      _id: $_id
+      password: $password
+      oldPassword: $oldPassword
+    ) {
       _id
     	firstName
     	lastName

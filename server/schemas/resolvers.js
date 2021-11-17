@@ -103,6 +103,17 @@ const resolvers = {
         new: true,
       }).populate('answers').populate(`contacts`).populate(`conversations`);
     },
+    
+    updatePassword: async (parent, args) => {
+      const user = await User.findById(args._id);
+      const correctPw = await user.isCorrectPassword(args.oldPassword);
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+      return User.findByIdAndUpdate(args._id, args, {
+        new: true,
+      });
+    },
 
     addNewContact: async (parent, args) => {
       console.log(`addNewContact SLAPPED`)
