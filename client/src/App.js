@@ -77,7 +77,7 @@ function App({ apolloClient }) {
        setIsLoading(false);
      })
     console.log(userData);
-  }, [isLoading, apolloClient, dispatch] );
+  }, [isLoading, apolloClient, dispatch, state] );
 
   return (
     <Router>

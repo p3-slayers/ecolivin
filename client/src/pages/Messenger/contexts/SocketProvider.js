@@ -12,6 +12,11 @@ export function useSocketContext() {
 export function SocketProvider({ email, children }) {
   const [socket, setSocket] = useState();
   console.log(`SOCKET PROVIDER FIRED`)
+
+  useEffect(() => {console.log(`SocketProvider.js MOUNTED`)
+  return console.log(`SocketProvider.js UNMOUNTED`)
+  }, [])
+
   useEffect(() => {
     try {
       console.log(`CONNECTING TO ${window.location.origin} with user email ${email}`)

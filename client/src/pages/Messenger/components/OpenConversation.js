@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { Form, InputGroup, Button } from 'react-bootstrap';
 import { useConversationsContext } from '../contexts/ConversationsProvider';
 
@@ -23,6 +23,10 @@ export default function OpenConversation() {
 
     setText('');
   }
+
+  useEffect(() => {console.log(`OpenConversation.js MOUNTED`)
+  return console.log(`OpenConversation.js UNMOUNTED`)
+  }, [])
 
   return (
     <div className="d-flex flex-column flex-grow-1">

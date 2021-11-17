@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ListGroup } from 'react-bootstrap';
 import { useConversationsContext } from '../contexts/ConversationsProvider';
 
 export default function Conversations() {
   const { conversations, selectConversationIndex } = useConversationsContext();
+
+  useEffect(() => {console.log(`Conversation.js MOUNTED`)
+  return console.log(`Conversation.js UNMOUNTED`)
+  }, [])
+
   return (
     <>
     <small className="m-1 pb-1 border-left text-muted">Select a conversation to continue from the list below, or click "New Conversation" at the bottom to start a new one!</small>

@@ -20,7 +20,12 @@ export function ContactsProvider({ children }) {
   const [state] = useGlobalUserContext();
 
   // set up value and setter for contacts
-  const [contacts, setContacts] = useState(state.contacts)
+  const [contacts, setContacts] = useState(() => {
+    if (typeof state.contacts === 'object') {
+      return [...state.contacts]
+    }
+    return [];
+  })
 
   // for adding contacts via GraphQL 
   const [addContactToDB] = useMutation(ADD_NEW_CONTACT);
@@ -35,7 +40,11 @@ export function ContactsProvider({ children }) {
           name: name
         }
       } );
-      console.log(updatedContact)
+
+      const newContactArray = updatedContact.data.addNewContact.contacts
+
+      console.log(newContactArray)
+
       setContacts((prevContacts) => {
         return [...prevContacts, { email, name }];
       });
@@ -46,7 +55,16 @@ export function ContactsProvider({ children }) {
 
   useEffect(() => {
     setContacts(state.contacts)
+  }, [state.contacts])
+
+  useEffect(() => {
+    // setContacts(state.contacts)
+    console.log(`contacts or state updated`)
   }, [contacts, state])
+
+  useEffect(() => {console.log(`ContactsProvider.js MOUNTED`)
+  return console.log(`ContactsProvider.js UNMOUNTED`)
+  }, [])
 
   return (
     <ContactsContext.Provider value={{ contacts, createContact }}>

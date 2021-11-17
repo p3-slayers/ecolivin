@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Tab, Nav, Button, Modal } from 'react-bootstrap';
 import Conversations from './Conversations';
 import Contacts from './Contacts';
@@ -16,6 +16,10 @@ export default function Sidebar({ email }) {
   function closeModal() {
     setModalOpen(false);
   }
+
+  useEffect(() => {console.log(`MsgDashboard.js MOUNTED`)
+  return console.log(`MsgDashboard.js UNMOUNTED`)
+  }, [])
 
   return (
     <div style={{ width: '250px' }} className="d-flex flex-column">
