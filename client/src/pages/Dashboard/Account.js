@@ -48,6 +48,8 @@ const Account = () => {
     console.log(state);
 
     history.push('/dashboard');
+
+    window.location.reload();
   };
 
   const handlePasswordUpdate = async (event) => {
