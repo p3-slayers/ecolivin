@@ -64,16 +64,12 @@ const resolvers = {
       } else {
         throw new Error('Post not found');
       }
-    }
+    },
 
-    getChallenge: async (parent, {challengeId} ) => {
-      const challenge = await Challenge.findById(challengeId);
-      if (challenge) {
-        return challenge;
-      } else {
-        throw new Error('Not found');
-      }
-    }
+    getChallenges: async () => { 
+      const challenges = Challenge.find().populate(`user`).sort({date: -1});
+       return challenges;  
+      },
     // order: async (parent, { id }, context) => {
     //   if (context.user) {
     //     const user = await User.findById(context.user.id).populate({
@@ -188,6 +184,7 @@ const resolvers = {
       return newPost;
     },
    
+}
 };
 
 module.exports = resolvers;

@@ -56,6 +56,7 @@ const typeDefs = gql`
 
   type Challenge {
     challengeId: String
+    title: String
     challenge: String
     dateStart: String
     dateEnd: String
@@ -96,7 +97,7 @@ const typeDefs = gql`
     getPost(postId: ID!): Post
     singleUser(id: ID!): User
     singleAction(actionId: String!): Action
-    getChallenge: [Challenge]
+    getChallenges: [Challenge]
   }
 
   type Mutation {

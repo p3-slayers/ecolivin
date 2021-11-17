@@ -95,9 +95,10 @@ query getAllResults {
 `;
 
 export const QUERY_ALL_CHALLENGES = gql`
-query getChallenge{
-  getChallenge {
+query getChallenges{
+  getChallenges {
     challengeId
+    title
     challenge
     dateStart
     dateEnd

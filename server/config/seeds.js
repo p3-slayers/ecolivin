@@ -458,6 +458,7 @@ db.once('open', async () => {
   const challenge = await Challenge.insertMany([
     {
       challengeId: "bikeWork",
+      title: 'Bike forever',
       challenge: "In this challenge you will bike to work everyday for the rest of your life",
       user: pamela._id,
       dateStart: + new Date('August 19, 1975 23:15:30'),
