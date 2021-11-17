@@ -22,6 +22,9 @@ const Account = () => {
   const [updateUser] = useMutation(UPDATE_USER);
   const [updatePassword, { error }] = useMutation(UPDATE_PASSWORD);
 
+  const [file, setFile] = useState('')
+  const [fileName, setFileName] = useState('')
+
   // for redirecting page
   const history = useHistory();
 
@@ -70,10 +73,19 @@ const Account = () => {
   }
   };
 
-  const handlePictureUpload = async (event) => {
+  const handlePictureUploadChange = event => {
+    console.log(`handlePictureUploadChange Fired!`)
+    setFile(event.target.files[0])
+    setFileName(event.target.files[0].name)
+
+  }
+
+  const handlePictureUploadSubmit = async (event) => {
     console.log(`handlePictureUpload Fired!`)
     event.preventDefault();
 
+    console.log(file)
+    console.log(fileName)
 
   }
 
@@ -182,7 +194,7 @@ const Account = () => {
           </div>
           <br></br>
         </form>
-        <form onSubmit={handlePictureUpload}>
+        <form onSubmit={handlePictureUploadSubmit}>
           <div className="form-group row">
             <label htmlFor="profilePicture" className="col-sm-2 col-form-label">Upload profile picture:</label>
             <div class="col-sm-4">
@@ -192,7 +204,7 @@ const Account = () => {
                 name="profilePicture"
                 type="file"
                 id="profilePicture"
-                onChange={handleChange}
+                onChange={handlePictureUploadChange}
               />
             </div>
             {/* {error ? (
