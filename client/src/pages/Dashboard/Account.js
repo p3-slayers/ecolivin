@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import Sidebar from '../../components/Sidebar/index';
+import React, { useState } from "react";
+import Sidebar from "../../components/Sidebar/index";
+import DeleteUser from "../../components/deleteUserBtn/index.js";
 
 import { useMutation } from '@apollo/client';
 import { UPDATE_USER, UPDATE_PASSWORD } from '../../utils/mutations';
@@ -12,7 +13,12 @@ const Account = () => {
   // for setting global state
   const [state, dispatch] = useGlobalUserContext();
 
-  const [formState, setFormState] = useState({ email: state.email, firstName: state.firstName, lastName: state.lastName, password: '', oldPassword: '' });
+  const [formState, setFormState] = useState({
+    email: state.email,
+    firstName: state.firstName,
+    lastName: state.lastName,
+    password: '',
+    oldPassword: '' });
   const [updateUser] = useMutation(UPDATE_USER);
   const [updatePassword, { error }] = useMutation(UPDATE_PASSWORD);
 
@@ -74,6 +80,7 @@ const Account = () => {
   return (
     <div className="d-flex mt-5">
       <Sidebar />
+      {/* <Container style={{display:'flex', flexDirection:'column', width:'auto'}}> */}
       <div className="px-5 flex-grow-1">
         <h2>Edit Profile</h2>
         <br></br>
@@ -122,6 +129,14 @@ const Account = () => {
           <br></br>
           <div className="col-sm-10">
             <Button type="submit">Update Account</Button>
+          </div>
+          <div
+            className="flex-row"
+            style={{ marginTop: "30px", justifyContent: "center" }}
+          >
+            <Button>
+              <DeleteUser />
+            </Button>
           </div>
         </form>
         <br></br>
