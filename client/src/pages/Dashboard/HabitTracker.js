@@ -31,28 +31,21 @@ function getAddedActions(){
   return added;
 }
 
-
-
-
 const HabitTracker = () => {
   const addedActions = getAddedActions();
   console.log("myAddedActions", addedActions);
-
-
   function reset(){
     Object.entries(addedActions).map( ([key, value]) => 
   
       ["mon", "tue", "wed", "thu", "fri", "sat", "sun"].map((day) => 
         localStorage.setItem(`${day}-${value["actionId"]}-checkbox`, false)
       )
-     
     );
     window.location.reload();
   }
 
   return (
     <div className="d-flex mt-5">
-      {/* will inserts information/summary about the User */}
       <Sidebar />
       <div className="px-5 flex-grow-1">
         <h2 className="mb-5">Habit Tracker</h2>
@@ -78,8 +71,6 @@ const HabitTracker = () => {
             <HabitTrackerAction text={value["actionTitle"]} actionText={value["actionText"]} actionId={value["actionId"]}/>
            ) 
         }
-
-
 
       </div>
     </div>

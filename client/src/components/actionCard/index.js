@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card'
 import { Button } from "react-bootstrap";
 
 function ActionCard(input) {
+
   const text = input.title;
   // const link = input.link;
   const actionText = input.actionText;
@@ -20,7 +21,7 @@ function ActionCard(input) {
     localStorage.setItem(actionId, JSON.stringify({
       actionTitle: text,
       actionId: actionId,
-      actionText: actionText
+      actionText: actionText,
     }));
     setDisable(true);
 

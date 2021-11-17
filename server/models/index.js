@@ -5,7 +5,8 @@ const Answer = require('./Answer');
 const Action = require('./Action');
 const ActionAnswer = require('./ActionAnswer');
 const Post = require('./Post');
-const Result = require('./Result')
+const Result = require('./Result');
+const Challenge = require('./Challenge');
 
 const { Contact, Conversation, Message } = require(`./messengerSchemas`);
 
@@ -20,5 +21,6 @@ module.exports = {
   Contact,
   Conversation,
   Message,
-  Result
+  Result,
+  Challenge
 };
