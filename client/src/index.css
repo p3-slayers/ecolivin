@@ -80,7 +80,7 @@ header a {
   color: var(--light);
 } */
 
-button {
+/* button {
   font-size: 1rem;
   text-decoration: none;
   padding: 0.25rem 1rem;
@@ -90,7 +90,7 @@ button {
   cursor: pointer;
   margin: 0 1px;
   background-color: var(--secondary);
-}
+} */
 
 button:hover {
   opacity: 0.8;
@@ -302,7 +302,7 @@ a {
 }
 
 .btn-light {
-  color: #b6d6cf !important;
+  color: #703043 !important;
 }
 
 @media only screen and (min-device-width: 668px) and (max-device-width: 991.98px) {
