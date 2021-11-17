@@ -351,19 +351,14 @@ db.once('open', async () => {
     email: 'pamela@testmail.com',
     password: 'password12345',
     profileImage: 'insertimage.png',
-    conversations: [
-      {
-        messages: [
-          {sender: "pamela@testmail.com", text: "hello world"},
-          {sender: "testID2", text: "hello world2"}
-        ],
-        recipients: ["testID", "testID2"]
-      }
-    ],
     contacts: [
       {
-        id: "testId",
-        name: "testName"
+        email: "eholt@testmail.com",
+        name: "Elijah Holt"
+      },
+      {
+        email: "brian@testmail.com",
+        name: "Brian James"
       }
     ],
     // answers: [
@@ -386,11 +381,45 @@ db.once('open', async () => {
     email: 'eholt@testmail.com',
     password: 'password12345',
     profileImage: 'insertimage.png',
-    conversations: [
-      
-    ],
     contacts: [
+      {
+        email: "pamela@testmail.com",
+        name: "Pamela Washington"
+      },
+      {
+        email: "brian@testmail.com",
+        name: "Brian James"
+      }
+    ],
+    // answers: [
+    //   {
+    //     answer: 1,
+    //     questions: [Questionnaire[0]],
+    //   },
+    // ],
+    // actionAnswer: [
+    //   {
+    //     mondayAnswer: 10,
+    //     action: [Action[0]],
+    //   },
+    // ],
+  });
 
+  const brian = await User.create({
+    firstName: 'Brian',
+    lastName: 'James',
+    email: 'brian@testmail.com',
+    password: 'password12345',
+    profileImage: 'insertimage.png',
+    contacts: [
+      {
+        email: "pamela@testmail.com",
+        name: "Pamela Washington"
+      },
+      {
+        email: "eholt@testmail.com",
+        name: "Elijah Holt"
+      }
     ],
     // answers: [
     //   {
@@ -409,6 +438,33 @@ db.once('open', async () => {
 
   console.log('users seeded');
 
+  await Conversation.deleteMany();
+
+  const conversations = await Conversation.insertMany([
+        {
+          messages: [
+            {sender: "pamela@testmail.com", text: "Hello from Pamela Washington"},
+            {sender: "eholt@testmail.com", text: "Hello from Elijah Holt"}
+          ],
+          recipients: ["pamela@testmail.com", "eholt@testmail.com"]
+        },
+        {
+          messages: [
+            {sender: "brian@testmail.com", text: "Hello from Brian James"},
+            {sender: "eholt@testmail.com", text: "Hello from Elijah Holt"}
+          ],
+          recipients: ["brian@testmail.com", "eholt@testmail.com"]
+        },
+        {
+          messages: [
+            {sender: "brian@testmail.com", text: "Hello from Brian James"},
+            {sender: "pamela@testmail.com", text: "Hello from Pamela Washington"}
+          ],
+          recipients: ["pamela@testmail.com", "brian@testmail.com"]
+        }
+  ]);
+
+  console.log(`conversations seeded`)
   // seeds for comments
 
   // seeds for like

@@ -3,7 +3,7 @@ const router = require('express').Router();
 
 const stripe= require('stripe')(process.env.STRIPE_SECRET_PRODUCTION)
 
- router.post('/create-checkout-session', async (req, res) => {
+ router.post('/create-checkout-session',  async (req, res) => {
   try {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
@@ -20,8 +20,8 @@ const stripe= require('stripe')(process.env.STRIPE_SECRET_PRODUCTION)
         };
       }),
       mode: 'payment',
-      success_url: 'http://localhost:3000/',
-      cancel_url: 'http://localhost:3000/donate',
+        success_url:'https://ecolivin.herokuapp.com/success',
+         cancel_url:'https://ecolivin.herokuapp.com/donate'
     });
     res.json({ url: session.url });
   } catch (e) {

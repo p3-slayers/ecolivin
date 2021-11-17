@@ -41,9 +41,8 @@ function Card() {
     if (!elements || !stripe) {
       return;
     }
-
     const response = await fetch(
-      "http://localhost:3000/create-checkout-session",
+      "https://ecolivin.herokuapp.com/create-checkout-session",
       {
         method: "POST",
         headers: {
@@ -92,7 +91,8 @@ function Card() {
           </ButtonGroup>
           <input
             style={{margin:'0 auto', marginBottom:'5px'}}
-            type="text"
+            type="number"
+            min="1"
             placeholder="Other Amount"
             onChange={handleDonationAmt}
           ></input>

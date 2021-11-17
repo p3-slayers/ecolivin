@@ -9,15 +9,8 @@ export const QUERY_SINGLE_USER = gql`
       email
       profileImage
     	contacts {
-        id
+        email
         name
-      }
-			conversations {
-        messages {
-          sender
-          text
-        }
-        recipients
       }
     
       answers {
@@ -31,6 +24,20 @@ export const QUERY_SINGLE_USER = gql`
       }
     }
   }`;
+
+export const QUERY_USER_CONVERSATIONS = gql`
+  query getUserConversations($email: String!) {
+    getUserConversations(email: $email) {
+      _id
+      recipients
+      messages {
+        _id
+        sender
+        text
+      }
+    }
+  }
+`
 
 export const QUERY_SINGLE_ACTION = gql`
   query singleAction($actionId: String){

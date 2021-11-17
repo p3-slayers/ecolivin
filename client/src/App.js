@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import auth from './utils/auth';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -8,6 +8,7 @@ import About from './pages/About';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Nav from './components/Nav';
+import Success from './pages/SuccessfulDonation';
 import Donate from './pages/Donate';
 import DashboardRoutes from './pages/Dashboard/DashboardRoutes';
 import PrivateRoute from './pages/PrivateRoutes';
@@ -22,6 +23,7 @@ function App({ apolloClient }) {
   console.log(apolloClient);
   // eslint-disable-next-line no-unused-vars
   const [state, dispatch] = useGlobalUserContext();
+  const [isLoading, setIsLoading] = useState(true);
 
   const get_id = () => {
     console.log(`get_id Fired!`);
@@ -50,6 +52,8 @@ function App({ apolloClient }) {
     const queryUserData = async (id) => {
       console.log(`queryUserData fired`);
       try {
+        if (loggedInUserId) {
+          console.log(`FIRING GRAPHQL QUERY`)
         const user = await apolloClient.query({
           query: QUERY_SINGLE_USER,
           variables: { id: id },
@@ -61,14 +65,19 @@ function App({ apolloClient }) {
           type: SET_USER_DATA,
           payload: userData,
         });
+       } else {
+         console.log(`no logged in user found, graphQL query skipped`)
+       }
       } catch (err) {
         console.log(err);
       }
     };
-    let userData = queryUserData(loggedInUserId);
+    let userData = queryUserData(loggedInUserId)
+     .then(() => {
+       setIsLoading(false);
+     })
     console.log(userData);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  });
+  }, [isLoading, apolloClient, dispatch] );
 
   return (
     <Router>
@@ -79,6 +88,7 @@ function App({ apolloClient }) {
         <Route exact path="/donate" component={Donate} />
         <Route exact path="/team" component={Team} />
         <Route exact path="/about" component={About} />
+        <Route exact path="/success" component={Success} />
         <PrivateRoute component={DashboardRoutes} />
       </Switch>
     </Router>
