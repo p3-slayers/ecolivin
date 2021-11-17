@@ -212,9 +212,13 @@ const resolvers = {
       console.log(__dirname)
 
       const stream = createReadStream()
-      const pathName = path.join(__dirname, `/public/testUploadPics/${filename}`);
+      const pathName = path.join(__dirname, `../testImages/${filename}`);
 
       await stream.pipe(fs.createWriteStream(pathName))
+
+      // upload to aws
+      // set the MongoDB profilePic field for the user to the AWS address
+      // return the updated userObject to be dispatched to state
       return {
         filename,
         mimetype,
