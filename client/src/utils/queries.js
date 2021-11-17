@@ -50,7 +50,7 @@ export const QUERY_SINGLE_ACTION = gql`
 
 
 
-export const getAllPosts = gql`
+export const QUERY_ALL_POSTS = gql`
 query getAllPosts{
   getPosts {
     id
@@ -62,7 +62,6 @@ query getAllPosts{
       lastName
     }
       date
-      text
   }
 }
 `;
