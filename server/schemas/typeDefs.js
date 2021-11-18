@@ -1,6 +1,8 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
+  scalar Upload
+
   type Category {
     _id: ID
     name: String
@@ -86,6 +88,15 @@ const typeDefs = gql`
     category: Category
   }
 
+
+  type File {
+    filename: String!
+    mimetype: String!
+    encoding: String!
+    url: String
+    user: User
+  }
+
   type Query {
     categories: [Category]
     questionnaire: [Questionnaire]
@@ -151,6 +162,11 @@ const typeDefs = gql`
       lifestyle: Float!
       housing: Float!
     ):Result
+
+    uploadPicture(
+      file: Upload!
+      id: String!
+    ): File!
 
     login(email: String!, password: String!): Auth
     addPost(

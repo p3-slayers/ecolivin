@@ -1,6 +1,30 @@
+require(`dotenv`).config();
+
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Questionnaire, Category, Post, Result, Action, Contact, Conversation, Message, Challenge } = require('../models');
 const { signToken } = require('../utils/auth');
+
+const path = require(`path`);
+const fs = require(`fs`);
+const aws = require(`aws-sdk`)
+
+const { GraphQLUpload } = require('graphql-upload')
+
+const bucketName = process.env.AWS_BUCKET_NAME;
+const region = process.env.AWS_BUCKET_REGION;
+const accessKeyId = process.env.AWS_ACCESS_KEY;
+const secretAccessKey = process.env.AWS_SECRET_KEY;
+
+console.log(bucketName)
+console.log(region)
+console.log(accessKeyId)
+console.log(secretAccessKey)
+
+const s3 = new aws.S3({
+  region,
+  accessKeyId,
+  secretAccessKey
+})
 
 const resolvers = {
   Query: {
@@ -198,15 +222,38 @@ const resolvers = {
     deleteUser: async (parent, args)=>{
       return User.findByIdAndDelete(args._id)
     },
-    // updateProduct: async (parent, { id, quantity }) => {
-    //   const decrement = Math.abs(quantity) * -1;
 
-    //   return Product.findByIdAndUpdate(
-    //     id,
-    //     { $inc: { quantity: decrement } },
-    //     { new: true }
-    //   );
-    // },
+    uploadPicture: async (parent, { file, id }) => {
+      console.log(`uploadPicture Fired!`)
+      const { createReadStream, filename, mimetype, encoding } = await file;
+
+      console.log(file)
+      console.log(`\n\n*********ID IS AS FOLLOWS********\n\n${id}\n\n`)
+
+      // upload to aws
+      const { Location } = await s3.upload({
+          Bucket: bucketName,
+          Body: createReadStream(),
+          Key: `${Date.now()}-${filename}`,
+          ContentType: mimetype
+      }).promise()  
+
+      console.log(Location)
+
+      // Set Location as User profileImage attribute
+      const user = await User.findByIdAndUpdate(id, {
+        profileImage: Location
+      }, { new: true })
+      
+      return {
+        filename,
+        mimetype,
+        encoding,
+        url: Location,
+        user: user
+      }
+    },
+
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) {
@@ -248,7 +295,10 @@ const resolvers = {
       return newPost;
     },
    
-}
+},
+
+  Upload: GraphQLUpload
+
 };
 
 module.exports = resolvers;
