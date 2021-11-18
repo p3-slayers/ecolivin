@@ -128,12 +128,12 @@ db.once('open', async () => {
   for (let i = 0; i <= numberOfResultEntries; i++) {
     resultData.push(
       {
-        // messed with the math a bit to make it seem more reasonable?
-        food: Math.floor(Math.random() * 80 + 10),
-        housing: Math.floor(Math.random() * 80 + 10),
-        transportation: Math.floor(Math.random() * 80 + 10),
-        waste: Math.floor(Math.random() * 80 + 10),
-        lifestyle: Math.floor(Math.random() * 80 + 10),
+        // messed with the math to make it seem less uniform
+        food: Math.floor(Math.random() * 100),
+        housing: Math.floor(Math.random() * 60),
+        transportation: Math.floor(Math.random() * 80),
+        waste: Math.floor(Math.random() * 30),
+        lifestyle: Math.floor(Math.random() * 70),
       }
     )
   }
