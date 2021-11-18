@@ -10,6 +10,7 @@ import HabitTracker from './HabitTracker';
 import DailyActions from './DailyActions';
 import Resources from './Resources';
 import Messenger from '../Messenger/Messenger';
+import JoinedChallenges from '../Dashboard/JoinedChallenges'
 
 import BeginQuestionnaire from '../Questionnaire/BeginQuestionnaire';
 import Questionnaire from '../Questionnaire/Questionnaire';
@@ -29,6 +30,7 @@ const DashboardRoutes = () => {
         <PrivateRoute exact path="/events" component={Events} />
         <PrivateRoute exact path="/account" component={Account} />
         <PrivateRoute exact path="/challenges" component={Challenges} />
+        <PrivateRoute exact path="/joinedchallenges" component={JoinedChallenges} />
         <PrivateRoute exact path="/dailyactions" component={DailyActions} />
         <PrivateRoute exact path="/habittracker" component={HabitTracker} />
         <PrivateRoute exact path="/resources" component={Resources} />
