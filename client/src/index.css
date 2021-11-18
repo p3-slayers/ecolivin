@@ -80,7 +80,7 @@ header a {
   color: var(--light);
 } */
 
-/* button {
+button {
   font-size: 1rem;
   text-decoration: none;
   padding: 0.25rem 1rem;
@@ -90,7 +90,7 @@ header a {
   cursor: pointer;
   margin: 0 1px;
   background-color: var(--secondary);
-} */
+}
 
 button:hover {
   opacity: 0.8;
@@ -191,11 +191,11 @@ input:focus {
   color: var(--error);
 }
 
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
   .card {
     width: 100%;
   }
-}
+} */
 
 .landing {
   position: relative;
@@ -304,15 +304,64 @@ a {
 .btn-light {
   color: #703043 !important;
 }
+li{
+  list-style-type: none;
+}
 
-@media only screen and (min-device-width: 668px) and (max-device-width: 991.98px) {
+/* @media only screen and (min-device-width: 668px) and (max-device-width: 991.98px) {
   p {
     padding: 0 !important;
   }
-}
+  .sideBarToggle{
+    position: fixed;
+    top: 100px;
+  }
+  .sideBarNavStlye{
+    border: 0px solid !important;
+    align-items: baseline;
+  }
+} */
 
-@media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+@media only screen and (min-device-width: 360px) and (max-device-width: 782px) {
   p {
+    text-align: center !important;
+  }
+  .px-5 {
     padding: 0 !important;
+  }
+
+  .sideBarToggle {
+    position: fixed;
+    top: 100px;
+
+/*   .sideBarToggle{ */
+     /* position: relative;
+    top: -30px;
+     */
+/*  position: fixed;
+    top: 100px;  */
+
+  }
+  .sideBarNavStlye {
+    border: 0px solid !important;
+    align-items: baseline;
+  }
+
+  .navbar-nav {
+    margin: auto !important;
+  }
+  .col {
+    flex: auto !important;
+  }
+
+  .container {
+    display: block !important;
+  }
+
+  .members {
+    text-align: center !important;
+  }
+  .home {
+    margin-top: 0px !important;
   }
 } ;
