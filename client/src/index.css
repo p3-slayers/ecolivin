@@ -220,8 +220,8 @@ input:focus {
 
 .btn-primary {
   color: #fff;
-  background-color: #703043;
-  border-color: #703043;
+  background-color: #703043 !important;
+  border-color: #703043!important;
 }
 .btn-primary:focus,
 .btn-primary:active,
@@ -308,6 +308,7 @@ li{
   list-style-type: none;
 }
 
+
 /* @media only screen and (min-device-width: 668px) and (max-device-width: 991.98px) {
   p {
     padding: 0 !important;
@@ -329,39 +330,56 @@ li{
   .px-5 {
     padding: 0 !important;
   }
-
+  
   .sideBarToggle {
     position: fixed;
     top: 100px;
+    
+    /*   .sideBarToggle{ */
+      /* position: relative;
+      top: -30px;
+      */
+      /*  position: fixed;
+      top: 100px;  */
+      
+    }
+    .sideBarNavStlye {
+      border: 0px solid !important;
+      align-items: baseline;
+    }
+    
+    .navbar-nav {
+      margin: auto !important;
+    }
+    .col {
+      flex: auto !important;
+    }
+    
+    .container {
+      display: block !important;
+    }
+    
+    .members {
+      text-align: center !important;
+    }
+    .home {
+      margin-top: 0px !important;
+    }
+  } ;
+  
+  /* #bg-green {
+    background-color: rgb(170,200,170) !important
+  } */
 
-/*   .sideBarToggle{ */
-     /* position: relative;
-    top: -30px;
-     */
-/*  position: fixed;
-    top: 100px;  */
-
+  #profileImage {
+    width: 200px; /* You can set the dimensions to whatever you want */
+    height: 200px;
+    object-fit: cover;
   }
-  .sideBarNavStlye {
-    border: 0px solid !important;
-    align-items: baseline;
+  
+  #imgIcon {
+    object-fit: cover;
+    width: 80px;
+    height: 80px;
   }
-
-  .navbar-nav {
-    margin: auto !important;
-  }
-  .col {
-    flex: auto !important;
-  }
-
-  .container {
-    display: block !important;
-  }
-
-  .members {
-    text-align: center !important;
-  }
-  .home {
-    margin-top: 0px !important;
-  }
-} ;
+  

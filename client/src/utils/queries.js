@@ -60,6 +60,7 @@ query getAllPosts{
       _id
       firstName
       lastName
+      profileImage
     }
       date
   }

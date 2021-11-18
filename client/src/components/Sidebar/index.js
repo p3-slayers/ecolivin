@@ -1,4 +1,6 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React, {useState} from "react";
+
 import { Link } from "react-router-dom";
 import {
   ListGroup,
@@ -19,18 +21,37 @@ function Sidebar() {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <Navbar className="sideBarNavStlye" style={{ border: "1px solid black", height: "70vh" }} expand="lg" expanded={expanded}>
+    <Navbar className="sideBarNavStlye" style={{ height: "70vh", minWidth: "20%" }} expand="lg" expanded={expanded}>
     <NavbarToggle className="sideBarToggle" onClick={() => setExpanded(expanded ? false : 'expanded')} />
         <NavbarCollapse >
-      <Row>
+      <Row className="mx-auto py-2 border border-dark rounded" style={{backgroundColor: "rgb(170,200,170)"}}>
         <Col xs={6} md={3} lg={3} style={{ width: "auto" }}>
           <ListGroup style={{ textAlign: "center", textDecoration: "none" }}>
-            <ListGroupItem>
-              <img src={state.profileImage} alt='User Profile Photo'/>
-              <h5>
+            <ListGroupItem style={{backgroundColor: "rgb(170,200,170)"}}>
+              <img 
+              src={state.profileImage} 
+              alt='User Profile Photo' 
+              className="img-fluid img-thumbnail rounded-circle" id="profileImage"
+              style={{
+                objectFit: "cover",
+                width: "200px",
+                height: "200px"
+                }}/>
+              <h5 className="mt-2">
                 {state.firstName} {state.lastName}
               </h5>
             </ListGroupItem>
+            <NavLink as={Link} to="/dashboard">
+              <Button
+                style={{
+                  width: "100%",
+                  textDecoration: "none",
+                  color: "white",
+                }}
+              >
+                Dashboard
+              </Button>
+            </NavLink>
             <NavLink as={Link} to="/account">
               <Button
                 style={{
@@ -73,17 +94,6 @@ function Sidebar() {
                 }}
               >
                 Resources
-              </Button>
-            </NavLink>
-            <NavLink as={Link} to="/dashboard">
-              <Button
-                style={{
-                  width: "100%",
-                  textDecoration: "none",
-                  color: "white",
-                }}
-              >
-                Dashboard
               </Button>
             </NavLink>
           </ListGroup>

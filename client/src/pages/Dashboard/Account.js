@@ -136,7 +136,7 @@ const Account = () => {
       <div className="px-5 flex-grow-1">
         <h2>Edit Profile</h2>
         <br></br>
-        <form onSubmit={handleFormSubmit} className="p-2 border border-dark rounded">
+        <form onSubmit={handleFormSubmit} className="p-2 border border-dark rounded" style={{backgroundColor: "rgb(170,200,170)", fontWeight: "bold"}}>
           <div className="form-group row">
             <label htmlFor="firstName" className="col-sm-2 col-form-label">First Name:</label>
             <div class="col-sm-4">
@@ -184,7 +184,7 @@ const Account = () => {
           </div>
         </form>
         <br></br>
-        <form onSubmit={handlePasswordUpdate} className="p-2 border border-dark rounded">
+        <form onSubmit={handlePasswordUpdate} className="p-2 border border-dark rounded" style={{backgroundColor: "rgb(170,200,170)", fontWeight: "bold"}}>
           <div className="form-group row">
             <label htmlFor="oldPassword" className="col-sm-2 col-form-label">Old Password:</label>
             <div class="col-sm-4">
@@ -225,7 +225,7 @@ const Account = () => {
           </div>
         </form>
           <br></br>
-        <form onSubmit={handlePictureUploadSubmit} className="p-2 border border-dark rounded">
+        <form onSubmit={handlePictureUploadSubmit} className="p-2 border border-dark rounded" style={{backgroundColor: "rgb(170,200,170)", fontWeight: "bold"}}>
           <div className="form-group row">
             <label htmlFor="profilePicture" className="col-sm-2 col-form-label">Upload profile picture:</label>
             <div class="col-sm-4">
