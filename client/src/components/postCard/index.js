@@ -1,11 +1,17 @@
 import React from "react";
+import { useGlobalUserContext } from '../../utils/GlobalState';
 // import { Link } from "react-router-dom";
 // import Card from 'react-bootstrap/Card'
 import Moment from 'react-moment';
 Moment.globalFormat = 'D/MM/YYYY H:MM';
 
+
 function PostCard(input) {
   const post = input.post;
+
+  const [state] = useGlobalUserContext();
+
+  const { profileImage } = state;
 
   return (
 

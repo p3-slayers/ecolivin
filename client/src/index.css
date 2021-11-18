@@ -308,6 +308,12 @@ li{
   list-style-type: none;
 }
 
+#profileImage {
+  width: 200px; /* You can set the dimensions to whatever you want */
+  height: 200px;
+  object-fit: cover;
+}
+
 /* @media only screen and (min-device-width: 668px) and (max-device-width: 991.98px) {
   p {
     padding: 0 !important;
@@ -365,3 +371,7 @@ li{
     margin-top: 0px !important;
   }
 } ;
+
+#bg-green {
+  background-color: rgb(170,200,170) !important
+}
