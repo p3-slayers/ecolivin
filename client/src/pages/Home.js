@@ -1,9 +1,14 @@
 import Button from 'react-bootstrap/Button';
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import Nav from '../components/Nav/index'
 
 const Home = () => {
+
+  useEffect(() => {console.log(`Home.js MOUNTED`)
+    return console.log(`Home.js UNMOUNTED`)
+    }, [])
+
   return (
     <>
       <Nav />
@@ -11,10 +16,10 @@ const Home = () => {
       {/* will inserts information/summary about the website */}
       <div className="text-center container text-light h-100 d-flex flex-row align-items-center" style={{maxWidth:"800px"}}>
         <div style={{marginBottom:"300px"}}>
-        <h1 className="display-3 mb-4 logo">Welcome to ecoLIVIN</h1>
-          <p>
-          Lorem ipsum dolor sit amet, ad movet cetero iuvaret eam. Eos wisi errem ut, urbanitas necessitatibus cu sea. At vix aeterno praesent argumentum. No has nusquam argumentum. Mea nostrum omittam ne, in eos meliore principes. Partem dissentias sit te, pri tritani repudiandae at. Populo mollis ius ne, at antiopam euripidis mnesarchum has.
-          </p>
+        <h1 className="display-4 mb-4 mt-5 p-4 home">Be The Difference</h1>
+          <h4 className="mt-5 mb-4">
+          Begin learning new ways to live a more sustainable lifestyle and create a social network along the journey.
+          </h4>
           <Button className="mt-5" variant="primary" size="lg">
             <Link
                 style={{ textDecoration: "none", color: "white"}}

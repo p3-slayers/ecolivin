@@ -1,6 +1,30 @@
+require(`dotenv`).config();
+
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Questionnaire, Category, Post, Result, Action, Contact, Conversation, Message } = require('../models');
+const { User, Questionnaire, Category, Post, Result, Action, Contact, Conversation, Message, Challenge } = require('../models');
 const { signToken } = require('../utils/auth');
+
+const path = require(`path`);
+const fs = require(`fs`);
+const aws = require(`aws-sdk`)
+
+const { GraphQLUpload } = require('graphql-upload')
+
+const bucketName = process.env.AWS_BUCKET_NAME;
+const region = process.env.AWS_BUCKET_REGION;
+const accessKeyId = process.env.AWS_ACCESS_KEY;
+const secretAccessKey = process.env.AWS_SECRET_KEY;
+
+console.log(bucketName)
+console.log(region)
+console.log(accessKeyId)
+console.log(secretAccessKey)
+
+const s3 = new aws.S3({
+  region,
+  accessKeyId,
+  secretAccessKey
+})
 
 const resolvers = {
   Query: {
@@ -21,30 +45,29 @@ const resolvers = {
     question: async (parent, { id }) =>
       Questionnaire.findById(id).populate('category'),
 
-    // user: async (parent, args, context) => {
-    //   if (context.user) {
-    //     const user = await User.findById(context.user.id).populate();
-    //     return user;
-    //   }
-    //   throw new AuthenticationError('Not logged in');
-    // },
 
     singleUser: async (parent, { id }) => {
       console.log(id);
       const user = await User.findById(id).populate('answers').populate(`contacts`).populate(`conversations`);
       console.log(user);
       return user;
-      // if (context.user) {
-      //   const user = await User.findById(context.user.id).populate();
-      //   return user;
-      // }
-      // throw new AuthenticationError('Not logged in');
     },
 
     singleAction: async (parent, { actionId }) => {
       console.log(actionId);
       const action = await Action.findOne({actionId:actionId})
       return action;
+    },
+
+    getUserConversations: async (parent, { email }) => {
+      try {
+        const conversationsByUser = await Conversation.find({ recipients: {$all: [ email ]} })
+  
+        return conversationsByUser
+        
+      } catch (err) {
+        console.log(err)
+      }
     },
 
     getResults: async () => { 
@@ -64,22 +87,14 @@ const resolvers = {
       } else {
         throw new Error('Post not found');
       }
-    }
-    // order: async (parent, { id }, context) => {
-    //   if (context.user) {
-    //     const user = await User.findById(context.user.id).populate({
-    //       path: 'orders.products',
-    //       populate: 'category',
-    //     });
+    },
 
-    //     return user.orders.id(id);
-    //   }
-
-    //   throw new AuthenticationError('Not logged in');
-    // },
-
-
+    getChallenges: async () => { 
+      const challenges = Challenge.find().populate(`user`).sort({date: -1});
+       return challenges;  
+      },
   },
+  
   Mutation: {
     addUser: async (parent, args) => {
       console.log("AddUser", args, 'test');
@@ -91,8 +106,6 @@ const resolvers = {
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
-        // answers: user.answers,
-        // actionAnswers: user.actionAnswers
       };
 
       console.log("UserWithoutPassword", userWithoutPassword);
@@ -101,6 +114,7 @@ const resolvers = {
       console.log(token)
       return { token, user: userWithoutPassword };
     },
+
     addResult: async (parent, args) => {
       console.log(args, 'test');
       // args includes all fields submitted from signup
@@ -110,37 +124,120 @@ const resolvers = {
 
       return result;
     },
-    // addOrder: async (parent, { products }, context) => {
-    //   console.log(context);
-    //   if (context.user) {
-    //     const order = new Order({ products });
 
-    //     await User.findByIdAndUpdate(context.user.id, {
-    //       $push: { orders: order },
-    //     });
-
-    //     return order;
-    //   }
-
-    //   throw new AuthenticationError('Not logged in');
-    // },
     updateUser: async (parent, args) => {
+      return User.findByIdAndUpdate(args._id, args, {
+        new: true,
+      }).populate('answers').populate(`contacts`).populate(`conversations`);
+    },
+    
+    updatePassword: async (parent, args) => {
+      const user = await User.findById(args._id);
+      const correctPw = await user.isCorrectPassword(args.oldPassword);
+      if (!correctPw) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
       return User.findByIdAndUpdate(args._id, args, {
         new: true,
       });
     },
+
+    addNewContact: async (parent, args) => {
+      console.log(`addNewContact SLAPPED`)
+      console.log(args)
+      try {
+        const userWithAddedContact = await User.findByIdAndUpdate(args._id, {
+          $push :{
+            contacts: 
+              {email: args.email, name: args.name}
+            }
+        }, {
+          new: true,
+        }).populate('answers').populate(`contacts`).populate(`conversations`);
+        console.log(userWithAddedContact)
+        return userWithAddedContact
+    
+      } catch (err) {
+        console.log(err)
+      }
+    },
+
+    addNewConversation: async (parent, args) => {
+      try {
+        const newConversation = await Conversation.create({
+          messages: [],
+          recipients: args.recipients
+        })
+        console.log(newConversation)
+        
+        return newConversation;
+        
+      } catch (err) {
+        console.log(err);
+      }
+    },
+
+    addMessageToConversation: async (parent, args) => {
+      try {
+        const updatedConversation = await Conversation.findOneAndUpdate(
+          { recipients: { $all: args.recipients } },
+          {
+            $push : {
+              messages:
+              {
+                sender: args.sender,
+                text: args.text
+              }
+            }
+          }, 
+          {
+            new: true
+          })
+          console.log(updatedConversation)
+          console.log(updatedConversation.messages[updatedConversation.messages.length - 1])
+          
+          return updatedConversation;
+          
+        } catch (err) {
+          console.log(err)
+        }
+    },
+
     deleteUser: async (parent, args)=>{
       return User.findByIdAndDelete(args._id)
     },
-    // updateProduct: async (parent, { id, quantity }) => {
-    //   const decrement = Math.abs(quantity) * -1;
 
-    //   return Product.findByIdAndUpdate(
-    //     id,
-    //     { $inc: { quantity: decrement } },
-    //     { new: true }
-    //   );
-    // },
+    uploadPicture: async (parent, { file, id }) => {
+      console.log(`uploadPicture Fired!`)
+      const { createReadStream, filename, mimetype, encoding } = await file;
+
+      console.log(file)
+      console.log(`\n\n*********ID IS AS FOLLOWS********\n\n${id}\n\n`)
+
+      // upload to aws
+      const { Location } = await s3.upload({
+          Bucket: bucketName,
+          Body: createReadStream(),
+          Key: `${Date.now()}-${filename}`,
+          ContentType: mimetype
+      }).promise()  
+
+      console.log(Location)
+
+      // Set Location as User profileImage attribute
+      const user = await User.findByIdAndUpdate(id, {
+        profileImage: Location
+      }, { new: true })
+      
+      return {
+        filename,
+        mimetype,
+        encoding,
+        url: Location,
+        user: user
+      }
+    },
+
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) {
@@ -170,10 +267,7 @@ const resolvers = {
     },
 
     addPost: async (parent, args) => {
-      // const user = Auth(context);
-      // if (text.trim() === '') {
-        // throw new Error('Post must not be empty');
-      // }
+    
       const user = await User.findById(args.userid);
 
       const newPost =  Post.create({
@@ -184,38 +278,11 @@ const resolvers = {
 
       return newPost;
     },
-    deletePost: async (parent, { postId }, context) => {
-      const user = checkAuth(context);
-      try {
-        const post = await Post.findById(postId);
-        if (user.id === post.user.id) {
-          await post.delete();
-          return 'Post deleted successfully';
-        } else {
-          throw new AuthenticationError('Action not allowed');
-        }
-      } catch (err) {
-        throw new Error(err);
-      }
-    },
-    likePost: async (parent, { postId }, context) => {
-      const user = checkAuth(context);
+   
+},
 
-      const post = await Post.findById(postId);
-      if (post) {
-        if (post.likes.find((like) => like.user.id === user.id)) {
-          // Post already likes, unlike it
-          post.likes = post.likes.filter((like) => like.user.id !== user.id);
-        } else {
-          // Not liked, like post
-          post.likes.push(user.id);
-        }
+  Upload: GraphQLUpload
 
-        await post.save();
-        return post;
-      } else throw new UserInputError('Post not found');
-    }
-  },
 };
 
 module.exports = resolvers;

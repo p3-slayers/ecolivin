@@ -4,12 +4,14 @@ import React, { useState } from "react";
 import Card from 'react-bootstrap/Card'
 import HabitTracker from "../../pages/Dashboard/HabitTracker";
 import {Row, Col, Form, Button} from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 function HabitTrackerAction(input) {
-  const text = input.text;
+    const text = input.text;
   const actionText = input.actionText;
   const actionId = input.actionId;
-
+  const element = <FontAwesomeIcon icon={faTrash} />
   
   const handleFormChange = (id) => (e) => {
     localStorage.setItem(id, e.target.checked);
@@ -33,10 +35,10 @@ function HabitTrackerAction(input) {
     <Row className="mb-3">
         <Col md={4} className="px-4">        
         
-            {text} 
-        
-        <Button className="mx-2 text-decoration-none" variant="link" size="sm" onClick={remove}>
-            🗑️
+           {text} 
+            
+        <Button className="mx-2 text-decoration-none btn-light p-2" variant="link" size="sm" onClick={remove}>
+             {element}
         </Button>
 
         </Col>

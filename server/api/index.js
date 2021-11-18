@@ -20,10 +20,8 @@ const stripe= require('stripe')(process.env.STRIPE_SECRET_PRODUCTION)
         };
       }),
       mode: 'payment',
-        success_url:'https://project3-players.herokuapp.com/success',
-         cancel_url:'https://project3-players.herokuapp.com/donate'
-      // success_url: 'http://localhost:3000/success',
-      // cancel_url: 'http://localhost:3000/donate',
+        success_url:'https://ecolivin.herokuapp.com/success',
+         cancel_url:'https://ecolivin.herokuapp.com/donate'
     });
     res.json({ url: session.url });
   } catch (e) {

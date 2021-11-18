@@ -1,9 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ListGroup } from 'react-bootstrap';
 import { useContactsContext } from '../contexts/ContactsProvider';
 
 export default function Contacts() {
-  const { contacts } = useContactsContext();
+  let { contacts } = useContactsContext();
+
+  useEffect(() => {console.log(`Conversation.js MOUNTED`)
+  return console.log(`Conversation.js UNMOUNTED`)
+  }, [])
+
+  // inserts an empty array so the map function below does not crash the app on inital render if the session gets refreshed.
+  if (!contacts) {
+    contacts = [];
+    console.log(typeof contacts)
+  }
 
   return (
     <>
@@ -11,7 +21,7 @@ export default function Contacts() {
     <hr />
     <ListGroup variant="flush">
       {contacts.map((contact) => {
-        return <ListGroup.Item key={contact.email}>{contact.name}</ListGroup.Item>;
+        return <ListGroup.Item key={contact.email}>{contact.name}</ListGroup.Item>
       })}
     </ListGroup>
     </>

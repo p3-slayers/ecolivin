@@ -1,6 +1,8 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
+  scalar Upload
+
   type Category {
     _id: ID
     name: String
@@ -20,7 +22,7 @@ const typeDefs = gql`
 
   type Contact {
     _id: ID
-    id: String
+    email: String
     name: String
   }
 
@@ -43,7 +45,6 @@ const typeDefs = gql`
     email: String
     profileImage: String
     contacts: [Contact]
-    conversations: [Conversation]
     answers: [Answer]
   }
 
@@ -52,21 +53,18 @@ const typeDefs = gql`
     post: String
     date: String
     user: User
-    comments: [Comment]
-    likes: [Like]
   }
 
-  type Comment {
-    id: ID
-    date: String
+  type Challenge {
+    challengeId: String
+    title: String
+    challenge: String
+    dateStart: String
+    dateEnd: String
     user: User
-    text: String!
   }
 
-  type Like {
-    id: ID
-    user: User
-  }
+
 
   type Auth {
     token: ID
@@ -90,16 +88,27 @@ const typeDefs = gql`
     category: Category
   }
 
+
+  type File {
+    filename: String!
+    mimetype: String!
+    encoding: String!
+    url: String
+    user: User
+  }
+
   type Query {
     categories: [Category]
     questionnaire: [Questionnaire]
     question(_id: ID!): Questionnaire
     user: User
+    getUserConversations(email: String!): [Conversation]
     getResults: [Result]
     getPosts: [Post]
     getPost(postId: ID!): Post
     singleUser(id: ID!): User
     singleAction(actionId: String!): Action
+    getChallenges: [Challenge]
   }
 
   type Mutation {
@@ -120,6 +129,28 @@ const typeDefs = gql`
       profileImage: String
     ): User
 
+    updatePassword(
+      _id: ID!
+      password: String!
+      oldPassword: String!
+    ): User
+
+    addNewContact(
+      _id: ID!
+      email: String!
+      name: String!
+    ): User
+
+    addNewConversation(
+      recipients: [String]!
+    ): Conversation
+
+    addMessageToConversation(
+      recipients: [String]!
+      sender: String!
+      text: String
+    ): Conversation
+
     deleteUser(
       _id: ID!
     ): User
@@ -132,15 +163,16 @@ const typeDefs = gql`
       housing: Float!
     ):Result
 
+    uploadPicture(
+      file: Upload!
+      id: String!
+    ): File!
+
     login(email: String!, password: String!): Auth
     addPost(
       post: String!
       userid: String!
       ): Post!
-    deletePost(postId: ID!): String!
-    createComment(postId: String!, body: String!): Post!
-    deleteComment(postId: ID!, commentId: ID!): Post!
-    likePost(postId: ID!): Post!
   }
 `;
 

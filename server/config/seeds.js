@@ -10,7 +10,8 @@ const {
   Contact,
   Conversation,
   Message,
-  Result
+  Result,
+  Challenge
 } = require('../models');
 
 db.once('open', async () => {
@@ -26,320 +27,320 @@ db.once('open', async () => {
 
   console.log('categories seeded');
 
-  await Questionnaire.deleteMany();
+  // await Questionnaire.deleteMany();
 
-  const questions = await Questionnaire.insertMany([
-    // Transportation
-    {
-      name: 'name',
-      text: 'I take public transit regularly to get to work/school.',
-      category: categories[0]._id,
-    },
-    {
-      name: 'name',
-      text: 'I own a hybrid or electric car.',
-      category: categories[0]._id,
-    },
-    {
-      name: 'name',
-      text: 'I ride my bike to get to a given destination as much as possible. ',
-      category: categories[0]._id,
-    },
-    {
-      name: 'name',
-      text: 'When travelling, I take a train or bus instead of airplane if possible.',
-      category: categories[0]._id,
-    },
-    {
-      name: 'name',
-      text: 'When possible, I walk to nearby locations instead of driving.',
-      category: categories[0]._id,
-    },
+  // const questions = await Questionnaire.insertMany([
+  //   // Transportation
+  //   {
+  //     name: 'name',
+  //     text: 'I take public transit regularly to get to work/school.',
+  //     category: categories[0]._id,
+  //   },
+  //   {
+  //     name: 'name',
+  //     text: 'I own a hybrid or electric car.',
+  //     category: categories[0]._id,
+  //   },
+  //   {
+  //     name: 'name',
+  //     text: 'I ride my bike to get to a given destination as much as possible. ',
+  //     category: categories[0]._id,
+  //   },
+  //   {
+  //     name: 'name',
+  //     text: 'When travelling, I take a train or bus instead of airplane if possible.',
+  //     category: categories[0]._id,
+  //   },
+  //   {
+  //     name: 'name',
+  //     text: 'When possible, I walk to nearby locations instead of driving.',
+  //     category: categories[0]._id,
+  //   },
 
-    //  Food
-    {
-      name: 'name',
-      text: 'I eat an entirely plant-based diet.',
-      category: categories[1]._id,
-    },
-    {
-      name: 'name',
-      text: 'I eat meat or seafood 1-2 days per week. ',
-      category: categories[1]._id,
-    },
-    {
-      name: 'name',
-      text: 'I eat locally sourced food as much as possible. ',
-      category: categories[1]._id,
-    },
-    {
-      name: 'name',
-      text: 'I grow more than 50% of my own food. ',
-      category: categories[1]._id,
-    },
-    {
-      name: 'name',
-      text: 'I rarely eat dairy products.',
-      category: categories[1]._id,
-    },
-    {
-      name: 'name',
-      text: 'I try to minimize my food waste. ',
-      category: categories[1]._id,
-    },
-    {
-      name: 'name',
-      text: 'More than 50% of my food comes from regenerative resources. ',
-      category: categories[1]._id,
-    },
-    {
-      name: 'name',
-      text: 'I eat seasonally as much as possible.',
-      category: categories[1]._id,
-    },
+  //   //  Food
+  //   {
+  //     name: 'name',
+  //     text: 'I eat an entirely plant-based diet.',
+  //     category: categories[1]._id,
+  //   },
+  //   {
+  //     name: 'name',
+  //     text: 'I eat meat or seafood 1-2 days per week. ',
+  //     category: categories[1]._id,
+  //   },
+  //   {
+  //     name: 'name',
+  //     text: 'I eat locally sourced food as much as possible. ',
+  //     category: categories[1]._id,
+  //   },
+  //   {
+  //     name: 'name',
+  //     text: 'I grow more than 50% of my own food. ',
+  //     category: categories[1]._id,
+  //   },
+  //   {
+  //     name: 'name',
+  //     text: 'I rarely eat dairy products.',
+  //     category: categories[1]._id,
+  //   },
+  //   {
+  //     name: 'name',
+  //     text: 'I try to minimize my food waste. ',
+  //     category: categories[1]._id,
+  //   },
+  //   {
+  //     name: 'name',
+  //     text: 'More than 50% of my food comes from regenerative resources. ',
+  //     category: categories[1]._id,
+  //   },
+  //   {
+  //     name: 'name',
+  //     text: 'I eat seasonally as much as possible.',
+  //     category: categories[1]._id,
+  //   },
 
-    // Waste
-    {
-      name: 'name',
-      text: 'I recycle often.',
-      category: categories[2]._id,
-    },
-    {
-      name: 'name',
-      text: 'I compost most food and paper waste.',
-      category: categories[2]._id,
-    },
-    {
-      name: 'name',
-      text: 'I repurpose other people’s waste.',
-      category: categories[2]._id,
-    },
-    {
-      name: 'name',
-      text: 'I switched to e-billing and removed mail subscriptions.',
-      category: categories[2]._id,
-    },
-    {
-      name: 'name',
-      text: 'I use a fan instead of an air conditioner.',
-      category: categories[2]._id,
-    },
-    {
-      name: 'name',
-      text: 'I buy products with less packaging. ',
-      category: categories[2]._id,
-    },
-    {
-      name: 'name',
-      text: 'I avoid disposable or single-use products.',
-      category: categories[2]._id,
-    },
-    {
-      name: 'name',
-      text: 'I mean plan to avoid extra waste. ',
-      category: categories[2]._id,
-    },
+  //   // Waste
+  //   {
+  //     name: 'name',
+  //     text: 'I recycle often.',
+  //     category: categories[2]._id,
+  //   },
+  //   {
+  //     name: 'name',
+  //     text: 'I compost most food and paper waste.',
+  //     category: categories[2]._id,
+  //   },
+  //   {
+  //     name: 'name',
+  //     text: 'I repurpose other people’s waste.',
+  //     category: categories[2]._id,
+  //   },
+  //   {
+  //     name: 'name',
+  //     text: 'I switched to e-billing and removed mail subscriptions.',
+  //     category: categories[2]._id,
+  //   },
+  //   {
+  //     name: 'name',
+  //     text: 'I use a fan instead of an air conditioner.',
+  //     category: categories[2]._id,
+  //   },
+  //   {
+  //     name: 'name',
+  //     text: 'I buy products with less packaging. ',
+  //     category: categories[2]._id,
+  //   },
+  //   {
+  //     name: 'name',
+  //     text: 'I avoid disposable or single-use products.',
+  //     category: categories[2]._id,
+  //   },
+  //   {
+  //     name: 'name',
+  //     text: 'I mean plan to avoid extra waste. ',
+  //     category: categories[2]._id,
+  //   },
 
-    //  Housing
-    {
-      name: 'name',
-      text: 'I use a smart thermostat in my home. ',
-      category: categories[3]._id,
-    },
-    {
-      name: 'name',
-      text: 'More than 75% of my home is powered by clean energy.',
-      category: categories[3]._id,
-    },
-    {
-      name: 'name',
-      text: 'I use LED lightbulbs in my home.',
-      category: categories[3]._id,
-    },
-    {
-      name: 'name',
-      text: 'I air-dry clothes instead of using a dryer.',
-      category: categories[3]._id,
-    },
-    {
-      name: 'name',
-      text: 'I turn lights off when not in use at home.',
-      category: categories[3]._id,
-    },
-    {
-      name: 'name',
-      text: 'I unplug all electronics not being used.',
-      category: categories[3]._id,
-    },
-    {
-      name: 'name',
-      text: 'I take short showers instead of baths.',
-      category: categories[3]._id,
-    },
-    {
-      name: 'name',
-      text: 'I have low flush toilets in my home.',
-      category: categories[3]._id,
-    },
-    // Lifestyle
-    {
-      name: 'name',
-      text: 'I buy new items once a month. ',
-      category: categories[4]._id,
-    },
-    {
-      name: 'name',
-      text: 'I mostly second-hand shop. ',
-      category: categories[4]._id,
-    },
-    {
-      name: 'name',
-      text: 'I use reusable water bottles and coffee cups daily. ',
-      category: categories[4]._id,
-    },
-    {
-      name: 'name',
-      text: 'I bring reusable bags to grocery stores.',
-      category: categories[4]._id,
-    },
-    {
-      name: 'name',
-      text: 'I purchase hygiene products packaged in biodegradable or compostable material.',
-      category: categories[4]._id,
-    },
-    {
-      name: 'name',
-      text: 'I make homemade gifts for people. ',
-      category: categories[4]._id,
-    },
-    {
-      name: 'name',
-      text: 'I donate used goods. ',
-      category: categories[4]._id,
-    },
-    {
-      name: 'name',
-      text: 'I attend talks or events on sustainability. ',
-      category: categories[4]._id,
-    },
-  ]);
+  //   //  Housing
+  //   {
+  //     name: 'name',
+  //     text: 'I use a smart thermostat in my home. ',
+  //     category: categories[3]._id,
+  //   },
+  //   {
+  //     name: 'name',
+  //     text: 'More than 75% of my home is powered by clean energy.',
+  //     category: categories[3]._id,
+  //   },
+  //   {
+  //     name: 'name',
+  //     text: 'I use LED lightbulbs in my home.',
+  //     category: categories[3]._id,
+  //   },
+  //   {
+  //     name: 'name',
+  //     text: 'I air-dry clothes instead of using a dryer.',
+  //     category: categories[3]._id,
+  //   },
+  //   {
+  //     name: 'name',
+  //     text: 'I turn lights off when not in use at home.',
+  //     category: categories[3]._id,
+  //   },
+  //   {
+  //     name: 'name',
+  //     text: 'I unplug all electronics not being used.',
+  //     category: categories[3]._id,
+  //   },
+  //   {
+  //     name: 'name',
+  //     text: 'I take short showers instead of baths.',
+  //     category: categories[3]._id,
+  //   },
+  //   {
+  //     name: 'name',
+  //     text: 'I have low flush toilets in my home.',
+  //     category: categories[3]._id,
+  //   },
+  //   // Lifestyle
+  //   {
+  //     name: 'name',
+  //     text: 'I buy new items once a month. ',
+  //     category: categories[4]._id,
+  //   },
+  //   {
+  //     name: 'name',
+  //     text: 'I mostly second-hand shop. ',
+  //     category: categories[4]._id,
+  //   },
+  //   {
+  //     name: 'name',
+  //     text: 'I use reusable water bottles and coffee cups daily. ',
+  //     category: categories[4]._id,
+  //   },
+  //   {
+  //     name: 'name',
+  //     text: 'I bring reusable bags to grocery stores.',
+  //     category: categories[4]._id,
+  //   },
+  //   {
+  //     name: 'name',
+  //     text: 'I purchase hygiene products packaged in biodegradable or compostable material.',
+  //     category: categories[4]._id,
+  //   },
+  //   {
+  //     name: 'name',
+  //     text: 'I make homemade gifts for people. ',
+  //     category: categories[4]._id,
+  //   },
+  //   {
+  //     name: 'name',
+  //     text: 'I donate used goods. ',
+  //     category: categories[4]._id,
+  //   },
+  //   {
+  //     name: 'name',
+  //     text: 'I attend talks or events on sustainability. ',
+  //     category: categories[4]._id,
+  //   },
+  // ]);
 
-  console.log('questions seeded');
+  // console.log('questions seeded');
 
-  await Action.deleteMany();
+  // await Action.deleteMany();
 
-  const actions = await Action.insertMany([
-    {
-      actionId: 't1',
-      name: 'Carpool',
-      description: 'Carpool to work/school or any event with a friend',
-      category: categories[0]._id,
-    },
-    {
-      actionId: 't1',
-      name: 'Public Transit',
-      description: 'Take public transit to work or school when possible',
-      category: categories[0]._id,
-    },
-    {
-      actionId: 't1',
-      name: 'Bike',
-      description: 'Bike to a given destination instead of driving',
-      category: categories[0]._id,
-    },
-    {
-      actionId: 't1',
-      name: 'Plant-based Diet',
-      description:
-        'Switch to a 100% plant-based diet on a give day of the week.',
-      category: categories[1]._id,
-    },
-    {
-      actionId: 't1',
-      name: 'Compost',
-      description: 'Begin composting any food waste',
-      category: categories[1]._id,
-    },
-    {
-      actionId: 't1',
-      name: 'Veggie Scraps',
-      description:
-        'Reuse veggie scraps and make broths or freeze for new recipes',
-      category: categories[1]._id,
-    },
-    {
-      actionId: 't1',
-      name: 'Recycle',
-      description:
-        'Recycle products correctly, following your city/location guidelines',
-      category: categories[2]._id,
-    },
-    {
-      actionId: 't1',
-      name: 'Water Bottle',
-      description: 'Use a refillable water bottle instead of plastic bottles',
-      category: categories[2]._id,
-    },
-    {
-      actionId: 't1',
-      name: 'Reusable cups',
-      description: 'Bring a reusable cup to a coffee/tea shop to reduce waste',
-      category: categories[2]._id,
-    },
-    {
-      actionId: 't1',
-      name: 'Shower',
-      description:
-        'Decrease shower time to 5 minutes, and switch from taking baths',
-      category: categories[3]._id,
-    },
-    {
-      actionId: 't1',
-      name: 'Washer',
-      description: 'Wash clothing on cold cycle insead of hot',
-      category: categories[3]._id,
-    },
-    {
-      actionId: 't1',
-      name: 'Air-dry',
-      description:
-        'Air-dry clothing after washing instead of usering the drying machine',
-      category: categories[3]._id,
-    },
-    {
-      actionId: 't1',
-      name: 'Lighting',
-      description: 'Turn off lights when not in use',
-      category: categories[3]._id,
-    },
-    {
-      actionId: 't1',
-      name: 'Unplug Electronics',
-      description: 'Unplug electronics when not in use.',
-      category: categories[3]._id,
-    },
-    {
-      actionId: 't1',
-      name: 'Lighting',
-      description: 'Turn off lights when not in use',
-      category: categories[3]._id,
-    },
-    {
-      actionId: 't1',
-      name: 'Used Items',
-      description: 'But mostly used stuff and shop at second-hand stpres',
-      category: categories[4]._id,
-    },
-    {
-      actionId: 't1',
-      name: 'Towels and Napkins',
-      description:
-        'Switch from single use paper towels and napkins to cloth towels and handkerchief',
-      category: categories[4]._id,
-    },
-  ]);
+  // const actions = await Action.insertMany([
+  //   {
+  //     actionId: 't1',
+  //     name: 'Carpool',
+  //     description: 'Carpool to work/school or any event with a friend',
+  //     category: categories[0]._id,
+  //   },
+  //   {
+  //     actionId: 't1',
+  //     name: 'Public Transit',
+  //     description: 'Take public transit to work or school when possible',
+  //     category: categories[0]._id,
+  //   },
+  //   {
+  //     actionId: 't1',
+  //     name: 'Bike',
+  //     description: 'Bike to a given destination instead of driving',
+  //     category: categories[0]._id,
+  //   },
+  //   {
+  //     actionId: 't1',
+  //     name: 'Plant-based Diet',
+  //     description:
+  //       'Switch to a 100% plant-based diet on a give day of the week.',
+  //     category: categories[1]._id,
+  //   },
+  //   {
+  //     actionId: 't1',
+  //     name: 'Compost',
+  //     description: 'Begin composting any food waste',
+  //     category: categories[1]._id,
+  //   },
+  //   {
+  //     actionId: 't1',
+  //     name: 'Veggie Scraps',
+  //     description:
+  //       'Reuse veggie scraps and make broths or freeze for new recipes',
+  //     category: categories[1]._id,
+  //   },
+  //   {
+  //     actionId: 't1',
+  //     name: 'Recycle',
+  //     description:
+  //       'Recycle products correctly, following your city/location guidelines',
+  //     category: categories[2]._id,
+  //   },
+  //   {
+  //     actionId: 't1',
+  //     name: 'Water Bottle',
+  //     description: 'Use a refillable water bottle instead of plastic bottles',
+  //     category: categories[2]._id,
+  //   },
+  //   {
+  //     actionId: 't1',
+  //     name: 'Reusable cups',
+  //     description: 'Bring a reusable cup to a coffee/tea shop to reduce waste',
+  //     category: categories[2]._id,
+  //   },
+  //   {
+  //     actionId: 't1',
+  //     name: 'Shower',
+  //     description:
+  //       'Decrease shower time to 5 minutes, and switch from taking baths',
+  //     category: categories[3]._id,
+  //   },
+  //   {
+  //     actionId: 't1',
+  //     name: 'Washer',
+  //     description: 'Wash clothing on cold cycle insead of hot',
+  //     category: categories[3]._id,
+  //   },
+  //   {
+  //     actionId: 't1',
+  //     name: 'Air-dry',
+  //     description:
+  //       'Air-dry clothing after washing instead of usering the drying machine',
+  //     category: categories[3]._id,
+  //   },
+  //   {
+  //     actionId: 't1',
+  //     name: 'Lighting',
+  //     description: 'Turn off lights when not in use',
+  //     category: categories[3]._id,
+  //   },
+  //   {
+  //     actionId: 't1',
+  //     name: 'Unplug Electronics',
+  //     description: 'Unplug electronics when not in use.',
+  //     category: categories[3]._id,
+  //   },
+  //   {
+  //     actionId: 't1',
+  //     name: 'Lighting',
+  //     description: 'Turn off lights when not in use',
+  //     category: categories[3]._id,
+  //   },
+  //   {
+  //     actionId: 't1',
+  //     name: 'Used Items',
+  //     description: 'But mostly used stuff and shop at second-hand stpres',
+  //     category: categories[4]._id,
+  //   },
+  //   {
+  //     actionId: 't1',
+  //     name: 'Towels and Napkins',
+  //     description:
+  //       'Switch from single use paper towels and napkins to cloth towels and handkerchief',
+  //     category: categories[4]._id,
+  //   },
+  // ]);
 
-  console.log('action seeded');
+  // console.log('action seeded');
 
   // Seeds for Users
   await User.deleteMany();
@@ -350,33 +351,28 @@ db.once('open', async () => {
     email: 'pamela@testmail.com',
     password: 'password12345',
     profileImage: 'insertimage.png',
-    conversations: [
-      {
-        messages: [
-          {sender: "pamela@testmail.com", text: "hello world"},
-          {sender: "testID2", text: "hello world2"}
-        ],
-        recipients: ["testID", "testID2"]
-      }
-    ],
     contacts: [
       {
-        id: "testId",
-        name: "testName"
+        email: "eholt@testmail.com",
+        name: "Elijah Holt"
+      },
+      {
+        email: "brian@testmail.com",
+        name: "Brian James"
       }
     ],
-    answers: [
-      {
-        answer: 1,
-        questions: [Questionnaire[0]],
-      },
-    ],
-    actionAnswer: [
-      {
-        mondayAnswer: 10,
-        action: [Action[0]],
-      },
-    ],
+    // answers: [
+    //   {
+    //     answer: 1,
+    //     questions: [Questionnaire[0]],
+    //   },
+    // ],
+    // actionAnswer: [
+    //   {
+    //     mondayAnswer: 10,
+    //     action: [Action[0]],
+    //   },
+    // ],
   });
 
   const elijah = await User.create({
@@ -385,29 +381,90 @@ db.once('open', async () => {
     email: 'eholt@testmail.com',
     password: 'password12345',
     profileImage: 'insertimage.png',
-    conversations: [
-      
-    ],
     contacts: [
+      {
+        email: "pamela@testmail.com",
+        name: "Pamela Washington"
+      },
+      {
+        email: "brian@testmail.com",
+        name: "Brian James"
+      }
+    ],
+    // answers: [
+    //   {
+    //     answer: 1,
+    //     questions: [Questionnaire[0]],
+    //   },
+    // ],
+    // actionAnswer: [
+    //   {
+    //     mondayAnswer: 10,
+    //     action: [Action[0]],
+    //   },
+    // ],
+  });
 
-    ],
-    answers: [
+  const brian = await User.create({
+    firstName: 'Brian',
+    lastName: 'James',
+    email: 'brian@testmail.com',
+    password: 'password12345',
+    profileImage: 'insertimage.png',
+    contacts: [
       {
-        answer: 1,
-        questions: [Questionnaire[0]],
+        email: "pamela@testmail.com",
+        name: "Pamela Washington"
       },
-    ],
-    actionAnswer: [
       {
-        mondayAnswer: 10,
-        action: [Action[0]],
-      },
+        email: "eholt@testmail.com",
+        name: "Elijah Holt"
+      }
     ],
+    // answers: [
+    //   {
+    //     answer: 1,
+    //     questions: [Questionnaire[0]],
+    //   },
+    // ],
+    // actionAnswer: [
+    //   {
+    //     mondayAnswer: 10,
+    //     action: [Action[0]],
+    //   },
+    // ],
   });
   console.log(pamela);
 
   console.log('users seeded');
 
+  await Conversation.deleteMany();
+
+  const conversations = await Conversation.insertMany([
+        {
+          messages: [
+            {sender: "pamela@testmail.com", text: "Hello from Pamela Washington"},
+            {sender: "eholt@testmail.com", text: "Hello from Elijah Holt"}
+          ],
+          recipients: ["pamela@testmail.com", "eholt@testmail.com"]
+        },
+        {
+          messages: [
+            {sender: "brian@testmail.com", text: "Hello from Brian James"},
+            {sender: "eholt@testmail.com", text: "Hello from Elijah Holt"}
+          ],
+          recipients: ["brian@testmail.com", "eholt@testmail.com"]
+        },
+        {
+          messages: [
+            {sender: "brian@testmail.com", text: "Hello from Brian James"},
+            {sender: "pamela@testmail.com", text: "Hello from Pamela Washington"}
+          ],
+          recipients: ["pamela@testmail.com", "brian@testmail.com"]
+        }
+  ]);
+
+  console.log(`conversations seeded`)
   // seeds for comments
 
   // seeds for like
@@ -448,6 +505,38 @@ db.once('open', async () => {
   ]);
 
   console.log('results seeded');
+
+
+  // seed challenges
+
+  await Challenge.deleteMany();
+
+  const challenge = await Challenge.insertMany([
+    {
+      challengeId: "bikeWork",
+      title: 'Bike forever',
+      challenge: "In this challenge you will bike to work everyday for the rest of your life",
+      user: pamela._id,
+      dateStart: + new Date('August 19, 1975 23:15:30'),
+      dateEnd: + new Date('August 22, 1975 23:15:30')
+    },
+    {
+      challengeId: "bikeWork2",
+      title: 'Bike forever2',
+      challenge: "In this challenge you will bike to work everyday for the rest of your life",
+      user: pamela._id,
+      dateStart: + new Date('August 19, 1975 23:15:30'),
+      dateEnd: + new Date('August 22, 1975 23:15:30')
+    },
+    {
+      challengeId: "bikeWork3",
+      title: 'Bike forever3',
+      challenge: "In this challenge you will bike to work everyday for the rest of your life",
+      user: pamela._id,
+      dateStart: + new Date('August 19, 1975 23:15:30'),
+      dateEnd: + new Date('August 22, 1975 23:15:30')
+    }
+  ]);
 
 
   process.exit();

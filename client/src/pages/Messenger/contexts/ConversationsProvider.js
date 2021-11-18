@@ -20,13 +20,22 @@ export function ConversationsProvider({ email, children }) {
     []
   );
   const [selectedConversationIndex, setSelectedConversationIndex] = useState(0);
-  const { contacts } = useContactsContext();
+  let { contacts } = useContactsContext();
+
+  if (!contacts){
+    contacts = [];
+  }
+
   const socket = useSocketContext();
 
   function createConversation(recipients) {
     // useMutation(NewConversation)
     setConversations((prevConversations) => {
-      return [...prevConversations, { recipients, messages: [] }];
+      if (prevConversations.length > 0) {
+        return [...prevConversations, { recipients, messages: [] }] 
+      } else {
+        return [{ recipients, messages: [] }]
+      }
     });
   }
 
@@ -78,6 +87,10 @@ export function ConversationsProvider({ email, children }) {
     // cleanup to remove the event listener... the return statement for useEffect is returned to close connections, prevent memory leaks, etc. and is executed subsequently after the callback passed to useEffect is executed.
     return () => socket.off('receive-message');
   }, [socket, addMessageToConversation]);
+
+  useEffect(() => {console.log(`ConversationsProvider.js MOUNTED`)
+  return console.log(`ConversationsProvider.js UNMOUNTED`)
+  }, [])
 
   function sendMessage(recipients, text) {
     socket.emit(`send-message`, { recipients, text });

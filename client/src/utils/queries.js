@@ -9,15 +9,8 @@ export const QUERY_SINGLE_USER = gql`
       email
       profileImage
     	contacts {
-        id
+        email
         name
-      }
-			conversations {
-        messages {
-          sender
-          text
-        }
-        recipients
       }
     
       answers {
@@ -32,6 +25,20 @@ export const QUERY_SINGLE_USER = gql`
     }
   }`;
 
+export const QUERY_USER_CONVERSATIONS = gql`
+  query getUserConversations($email: String!) {
+    getUserConversations(email: $email) {
+      _id
+      recipients
+      messages {
+        _id
+        sender
+        text
+      }
+    }
+  }
+`
+
 export const QUERY_SINGLE_ACTION = gql`
   query singleAction($actionId: String){
     singleAction(actionId: $actionId){
@@ -42,28 +49,8 @@ export const QUERY_SINGLE_ACTION = gql`
 `;
 
 
+
 export const QUERY_ALL_POSTS = gql`
-  {
-    getPosts {
-      id
-      post
-      date
-      user
-      likes {
-        user
-      }
-      comments {
-        id
-        user
-        date
-        text
-      }
-    }
-  }
-`;
-
-
-export const getAllPosts = gql`
 query getAllPosts{
   getPosts {
     id
@@ -74,20 +61,7 @@ query getAllPosts{
       firstName
       lastName
     }
-    likes {
-      user{
-      firstName
-      lastName
-    }
-    }
-    comments {
-      id
-      user{
-      firstName
-    }
       date
-      text
-    }
   }
 }
 `;
@@ -104,4 +78,21 @@ query getAllResults {
       housing
     }
   }
+`;
+
+export const QUERY_ALL_CHALLENGES = gql`
+query getChallenges{
+  getChallenges {
+    challengeId
+    title
+    challenge
+    dateStart
+    dateEnd
+    user{
+      _id
+      firstName
+      lastName
+    }
+  }
+}
 `;

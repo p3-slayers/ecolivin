@@ -8,7 +8,7 @@ const PostForm = () => {
     const [state, dispatch] = useGlobalUserContext();
     const [addPost] = useMutation(ADD_POST);
 
-    console.log("stattee", state)
+    console.log("state", state)
     const handleFormSubmit = async (e) => {
         e.preventDefault();
 
