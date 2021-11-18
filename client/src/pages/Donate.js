@@ -15,6 +15,7 @@ function Donate() {
           <img
             style={{ margin: "0 auto", display: "block", borderRadius: "75px" }}
             src={logo}
+            alt='EcoLivin Logo'
             height="150px"
           ></img>
           <p className="py-3">
