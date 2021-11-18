@@ -43,9 +43,6 @@ function Navigation() {
           <NavLink className="text-dark" as={Link} to="/challenges">
             Challenges
           </NavLink>
-          <NavLink className="text-dark" as={Link} to="/events">
-            Events
-          </NavLink>
           <NavLink className="text-dark" as={Link} to="/messenger">
             Messenger
           </NavLink>

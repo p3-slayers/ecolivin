@@ -93,20 +93,6 @@ const resolvers = {
       const challenges = Challenge.find().populate(`user`).sort({date: -1});
        return challenges;  
       },
-    // order: async (parent, { id }, context) => {
-    //   if (context.user) {
-    //     const user = await User.findById(context.user.id).populate({
-    //       path: 'orders.products',
-    //       populate: 'category',
-    //     });
-
-    //     return user.orders.id(id);
-    //   }
-
-    //   throw new AuthenticationError('Not logged in');
-    // },
-
-
   },
   
   Mutation: {
@@ -120,8 +106,6 @@ const resolvers = {
         firstName: user.firstName,
         lastName: user.lastName,
         email: user.email,
-        // answers: user.answers,
-        // actionAnswers: user.actionAnswers
       };
 
       console.log("UserWithoutPassword", userWithoutPassword);
