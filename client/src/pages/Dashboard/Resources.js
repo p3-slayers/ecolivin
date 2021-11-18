@@ -18,7 +18,7 @@ const Resources = () => {
           <Row className="mt-4">
             <Col>
               <div
-                className="rounded-circle bg-primary small food mb-3 pt-4 text-center"
+                className="rounded-circle bg-primary small food d-flex justify-content-center align-items-center"
                 style={{ width: "100px", height: "100px" }}
               >
                 <h5 className="p-0">Food</h5>
@@ -54,7 +54,7 @@ const Resources = () => {
           <Row>
             <Col>
               <div
-                className="rounded-circle bg-success transportation mb-3 pt-4 text-center"
+                className="rounded-circle bg-success transportation d-flex justify-content-center align-items-center"
                 style={{ width: "100px", height: "100px" }}
               >
                 <h5 className="p-0 small">Transportation</h5>
@@ -96,7 +96,7 @@ const Resources = () => {
           <Row>
             <Col>
               <div
-                className="rounded-circle bg-success waste pt-4 mb-3 text-center"
+                className="rounded-circle bg-success waste d-flex justify-content-center align-items-center"
                 style={{ width: "100px", height: "100px" }}
               >
                 <h5 className="p-0">Waste</h5>
@@ -143,7 +143,7 @@ const Resources = () => {
           <Row>
             <Col>
               <div
-                className="rounded-circle bg-success pt-4 mb-3 lifestyle text-center"
+                className="rounded-circle bg-success lifestyle d-flex justify-content-center align-items-center"
                 style={{ width: "100px", height: "100px" }}
               >
                 <h5 className="p-0">Lifestyle</h5>
@@ -183,7 +183,7 @@ const Resources = () => {
           <Row>
             <Col>
               <div
-                className="rounded-circle bg-success housing pt-4 text-center"
+                className="rounded-circle bg-success housing d-flex justify-content-center align-items-center"
                 style={{ width: "100px", height: "100px" }}
               >
                 <h5 className="p-0">Housing</h5>
