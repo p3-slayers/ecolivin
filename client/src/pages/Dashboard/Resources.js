@@ -31,7 +31,7 @@ const Resources = () => {
                     A community forum that discuss subjects that range from
                     transportation to food,{" "}
                     <span style={{ fontWeight: "bold" }}>
-                      <a href="https://ecofriend.com/" target="_blank">
+                      <a href="https://ecofriend.com/" target="_blank" rel="noreferrer">
                         here.
                       </a>
                     </span>
@@ -42,7 +42,7 @@ const Resources = () => {
                     Signing up for this newsletter will get you off to a good
                     start,{" "}
                     <span style={{ fontWeight: "bold" }}>
-                      <a href="https://www.treehugger.com/" target="_blank">
+                      <a href="https://www.treehugger.com/" target="_blank" rel="noreferrer">
                         here.
                       </a>
                     </span>
@@ -69,7 +69,7 @@ const Resources = () => {
                     <span style={{ fontWeight: "bold" }}>
                       <a
                         href="https://www.transit.dot.gov/regulations-and-programs/environmental-programs/transit-and-sustainability"
-                        target="_blank"
+                        target="_blank" rel="noreferrer"
                       >
                         here.
                       </a>
@@ -83,7 +83,7 @@ const Resources = () => {
                     <span style={{ fontWeight: "bold" }}>
                       <a
                         href="https://www.nytimes.com/guides/travel/how-to-travel-sustainably"
-                        target="_blank"
+                        target="_blank" rel="noreferrer"
                       >
                         here.
                       </a>
@@ -109,7 +109,7 @@ const Resources = () => {
                     Items that can help you transition to a minimum waste
                     lifestyle,{" "}
                     <span style={{ fontWeight: "bold" }}>
-                      <a href="https://zerowastemvmt.com/" target="_blank">
+                      <a href="https://zerowastemvmt.com/" target="_blank" rel="noreferrer">
                         here.
                       </a>
                     </span>
@@ -120,7 +120,7 @@ const Resources = () => {
                     A place where you can read blogs, get green tips, and engage
                     with a community forum,{" "}
                     <span style={{ fontWeight: "bold" }}>
-                      <a href="https://earth911.com/" target="_blank">
+                      <a href="https://earth911.com/" target="_blank" rel="noreferrer">
                         here.
                       </a>
                     </span>
@@ -131,7 +131,7 @@ const Resources = () => {
                     Learn tricks and tips to become sustainable all while living
                     on a budget,{" "}
                     <span style={{ fontWeight: "bold" }}>
-                      <a href="https://www.getgreenbewell.com/" target="_blank">
+                      <a href="https://www.getgreenbewell.com/" target="_blank" rel="noreferrer">
                         here.
                       </a>
                     </span>
@@ -157,7 +157,7 @@ const Resources = () => {
                     <span style={{ fontWeight: "bold" }}>
                       <a
                         target="_blank"
-                        href="https://www.conserve-energy-future.com/15-ideas-for-sustainable-living.php"
+                        href="https://www.conserve-energy-future.com/15-ideas-for-sustainable-living.php" rel="noreferrer"
                       >
                         here.
                       </a>
@@ -170,7 +170,7 @@ const Resources = () => {
                     <span style={{ fontWeight: "bold" }}>
                       <a
                         target="_blank"
-                        href=" https://theminimalistvegan.com/live-a-more-sustainable-lifestyle/"
+                        href=" https://theminimalistvegan.com/live-a-more-sustainable-lifestyle/" rel="noreferrer"
                       >
                         here.
                       </a>
@@ -195,7 +195,7 @@ const Resources = () => {
                   <p>
                     Tips on maintaining a zero waste home,{" "}
                     <span style={{ fontWeight: "bold" }}>
-                      <a href="https://zerowastehome.com/" target="_blank">
+                      <a href="https://zerowastehome.com/" target="_blank" rel="noreferrer">
                         here.
                       </a>
                     </span>
@@ -205,7 +205,7 @@ const Resources = () => {
                   <p>
                     Great tips for learning how to garden sustainably,{" "}
                     <span style={{ fontWeight: "bold" }}>
-                      <a href="https://eartheasy.com/" target="_blank">
+                      <a href="https://eartheasy.com/" target="_blank" rel="noreferrer">
                         here.
                       </a>
                     </span>

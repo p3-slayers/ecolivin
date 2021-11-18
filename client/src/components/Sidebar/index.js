@@ -26,7 +26,7 @@ function Sidebar() {
         <Col xs={6} md={3} lg={3} style={{ width: "auto" }}>
           <ListGroup style={{ textAlign: "center", textDecoration: "none" }}>
             <ListGroupItem>
-              <img src={state.profileImage} />
+              <img src={state.profileImage} alt='User Profile Photo'/>
               <h5>
                 {state.firstName} {state.lastName}
               </h5>
