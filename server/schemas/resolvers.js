@@ -223,27 +223,34 @@ const resolvers = {
       return User.findByIdAndDelete(args._id)
     },
 
-    uploadPicture: async (parent, { file }) => {
+    uploadPicture: async (parent, { file, id }) => {
       console.log(`uploadPicture Fired!`)
       const { createReadStream, filename, mimetype, encoding } = await file;
 
       console.log(file)
+      console.log(`\n\n*********ID IS AS FOLLOWS********\n\n${id}\n\n`)
 
       // upload to aws
       const { Location } = await s3.upload({
           Bucket: bucketName,
           Body: createReadStream(),
-          Key: `${Date.now()}-${file.filename}`,
+          Key: `${Date.now()}-${filename}`,
           ContentType: mimetype
       }).promise()  
 
       console.log(Location)
+
+      // Set Location as User profileImage attribute
+      const user = await User.findByIdAndUpdate(id, {
+        profileImage: Location
+      }, { new: true })
       
       return {
         filename,
         mimetype,
         encoding,
-        url: Location
+        url: Location,
+        user: user
       }
     },
 

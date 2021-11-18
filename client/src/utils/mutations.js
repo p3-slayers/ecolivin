@@ -120,12 +120,38 @@ export const ADD_NEW_CONTACT = gql`
   `;
 
 export const UPLOAD_PROFILE_PIC = gql`
-  mutation uploadPicture($file: Upload!){
-    uploadPicture(file: $file){
+  mutation uploadPicture(
+  $file: Upload!
+  $id: String!
+  ) {
+    uploadPicture(
+      file: $file
+      id: $id
+  ) {
       filename
       mimetype
       encoding
       url
+      user {
+        _id
+        firstName
+        lastName
+        email
+        profileImage
+        contacts {
+          email
+          name
+        }
+        answers {
+          answers
+          questions {
+            text
+            category {
+              name
+            }
+          }
+        }
+      }
     }
   }
 `

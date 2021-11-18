@@ -97,12 +97,21 @@ const Account = () => {
     try {
       const response = await uploadPicture({
         variables: {
-          file: file
+          file: file,
+          id: state._id
         }
       });
 
+      const updatedUserData = response.data.uploadPicture.user
       // set the MongoDB profilePic field for the user to the AWS address
       // return the updated userObject to be dispatched to state
+      console.log(`UPDATED USER DATA AS FOLLOWS:`)
+      console.log(updatedUserData)
+
+      dispatch({
+        type: SET_USER_DATA,
+        payload: updatedUserData,
+      });
 
       console.log(response)
     } catch (error) {

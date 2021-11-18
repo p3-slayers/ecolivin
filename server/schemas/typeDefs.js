@@ -94,6 +94,7 @@ const typeDefs = gql`
     mimetype: String!
     encoding: String!
     url: String
+    user: User
   }
 
   type Query {
@@ -162,7 +163,10 @@ const typeDefs = gql`
       housing: Float!
     ):Result
 
-    uploadPicture(file: Upload!): File!
+    uploadPicture(
+      file: Upload!
+      id: String!
+    ): File!
 
     login(email: String!, password: String!): Auth
     addPost(
