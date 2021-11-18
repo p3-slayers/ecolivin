@@ -319,13 +319,17 @@ a {
   }
 } */
 
-@media only screen and (min-device-width: 360px) and (max-device-width: 991.98px) {
+@media only screen and (min-device-width: 360px) and (max-device-width: 782px) {
   p {
     padding: 0 !important;
   }
   .sideBarToggle{
-    position: fixed;
-    top: 100px;
+     /* position: relative;
+    top: -30px;
+     */
+ position: fixed;
+    top: 100px; 
+    
   }
   .sideBarNavStlye{
     border: 0px solid !important;
