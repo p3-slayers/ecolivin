@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 import ChallengeCard from '../../components/challengeCard';
 import { Link } from "react-router-dom";
-import { Button, Row, Col } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 import {QUERY_ALL_CHALLENGES } from '../../utils/queries';
 

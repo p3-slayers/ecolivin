@@ -7,7 +7,7 @@ import { UPDATE_USER, UPDATE_PASSWORD, UPLOAD_PROFILE_PIC } from '../../utils/mu
 import { useHistory } from 'react-router-dom';
 import { useGlobalUserContext } from '../../utils/GlobalState';
 import { SET_USER_DATA } from '../../utils/actions';
-import { Button, Form } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 const Account = () => {
   // for setting global state

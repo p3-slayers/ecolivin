@@ -1,7 +1,5 @@
-import React, { useEffect, useState, useContext } from "react";
-import { Container } from "react-bootstrap";
+import React from "react";
 import { Link } from "react-router-dom";
-// import auth from '../../utils/auth';
 import Sidebar from "../../components/Sidebar/index";
 import { useGlobalUserContext } from "../../utils/GlobalState";
 import BarChart from "../../components/ChartJs";
