@@ -37,7 +37,7 @@ const Resources = () => {
                     </span>
                   </p>
                 </li>
-                <li style={{borderBottom:'1px solid black'}}>
+                <li style={{ borderBottom: "1px solid black" }}>
                   <p>
                     Signing up for this newsletter will get you off to a good
                     start,{" "}
@@ -76,7 +76,7 @@ const Resources = () => {
                     </span>
                   </p>
                 </li>
-                <li style={{borderBottom:'1px solid black'}}>
+                <li style={{ borderBottom: "1px solid black" }}>
                   <p>
                     They NY Times wrote up a great article on how to travel more
                     sustainably,{" "}
@@ -126,7 +126,7 @@ const Resources = () => {
                     </span>
                   </p>
                 </li>
-                <li style={{borderBottom:'1px solid black'}}>
+                <li style={{ borderBottom: "1px solid black" }}>
                   <p>
                     Learn tricks and tips to become sustainable all while living
                     on a budget,{" "}
@@ -164,7 +164,7 @@ const Resources = () => {
                     </span>
                   </p>
                 </li>
-                <li style={{borderBottom:'1px solid black'}}>
+                <li style={{ borderBottom: "1px solid black" }}>
                   <p>
                     Tips to take small steps to learning how to be sustainable,{" "}
                     <span style={{ fontWeight: "bold" }}>
@@ -201,7 +201,7 @@ const Resources = () => {
                     </span>
                   </p>
                 </li>
-                <li style={{borderBottom:'1px solid black'}}>
+                <li>
                   <p>
                     Great tips for learning how to garden sustainably,{" "}
                     <span style={{ fontWeight: "bold" }}>
