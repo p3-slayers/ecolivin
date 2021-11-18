@@ -151,7 +151,7 @@ db.once('open', async () => {
     lastName: 'Washington',
     email: 'pamela@testmail.com',
     password: 'password12345',
-    profileImage: 'insertimage.png',
+    profileImage: 'https://fullstacknomadimages.s3.us-east-2.amazonaws.com/shannonMcGee.jpg-1632424486826.jpg',
     contacts: [
       {
         email: "eholt@testmail.com",
@@ -181,7 +181,7 @@ db.once('open', async () => {
     lastName: 'Holt',
     email: 'eholt@testmail.com',
     password: 'password12345',
-    profileImage: 'insertimage.png',
+    profileImage: 'https://fullstacknomadimages.s3.us-east-2.amazonaws.com/davidRosenkrantz.jpg-1632424420623.jpg',
     contacts: [
       {
         email: "pamela@testmail.com",
