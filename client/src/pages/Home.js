@@ -16,7 +16,7 @@ const Home = () => {
       {/* will inserts information/summary about the website */}
       <div className="text-center container text-light h-100 d-flex flex-row align-items-center" style={{maxWidth:"800px"}}>
         <div style={{marginBottom:"300px"}}>
-        <h1 className="display-4 mb-4 mt-5 p-4 logo">Be The Difference</h1>
+        <h1 className="display-4 mb-4 mt-5 p-4 home">Be The Difference</h1>
           <h4 className="mt-5 mb-4">
           Begin learning new ways to live a more sustainable lifestyle and create a social network along the journey.
           </h4>

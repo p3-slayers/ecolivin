@@ -12,15 +12,15 @@ const Team = () => {
       <h1 className="text-center mt-5">OUR TEAM</h1>
           {teamMembers.sort( () => .5 - Math.random() ).map((member) => (
             <div className="container mt-3 p-4">
-              <div className="row align-items-center">
-                <div className="col-4 px-4">
+              <div className="row align-items-center members">
+                <div className="col-md-4 col-12 px-4">
                 <img
                   className="rounded-circle shadow"
                   alt="profile"
                   src= {require(`../assets/${member.image}`).default} 
                 />
                 </div>
-                <div className="col-8">
+                <div className="col-md-8 col-12">
                 <h3> {member.name} </h3>
                 <p> {member.bio} </p>
                 <a href={member.linkedin} target="_blank" rel="noreferrer">
