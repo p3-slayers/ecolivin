@@ -4,7 +4,7 @@ module.exports = [
     lastName: 'Washington',
     email: 'pamela@testmail.com',
     password: 'password12345',
-    profileImage: 'https://fullstacknomadimages.s3.us-east-2.amazonaws.com/shannonMcGee.jpg-1632424486826.jpg',
+    profileImage: 'https://fullstacknomadimages.s3.us-east-2.amazonaws.com/taylorDavies.jpg-1632424503228.jpg',
     contacts: [
       {
         email: "eholt@testmail.com",
@@ -106,7 +106,7 @@ module.exports = [
     lastName: 'Davies',
     email: 'taylor@testmail.com',
     password: 'password12345',
-    profileImage: 'https://fullstacknomadimages.s3.us-east-2.amazonaws.com/taylorDavies.jpg-1632424503228.jpg',
+    profileImage: 'https://fullstacknomadimages.s3.us-east-2.amazonaws.com/1637270655888-Stock-Photo-Woman.jpg',
     contacts: [
       {
         email: "pamela@testmail.com",
@@ -119,8 +119,8 @@ module.exports = [
     ],
   },
   {
-    firstName: 'Taylor',
-    lastName: 'Davies',
+    firstName: 'Anatoly',
+    lastName: 'Petrov',
     email: 'anatoly@testmail.com',
     password: 'password12345',
     profileImage: 'https://fullstacknomadimages.s3.us-east-2.amazonaws.com/anatolyPetrov.jpg-1632424519840.jpg',

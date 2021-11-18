@@ -16,8 +16,6 @@ const {
 
 const bcrypt = require('bcrypt');
 
-
-
 db.once('open', async () => {
   await Category.deleteMany();
 
@@ -92,17 +90,17 @@ db.once('open', async () => {
 
     "A small ATM room having two ACs and 4 tubelights, working 24/7, is asking me not to print a receipt to save the environment.",
 
-    "’m tired of people telling me to turn off my lights to save the environment. I tried it once, and nearly killed some bloke on a bike.",
+    "I’m tired of people telling me to turn off my lights to save the environment. I tried it once, and nearly killed some bloke on a bike.",
 
     "We all have to do our part for the environment. And there are many different ways one can save energy. I normally use the couch.",
 
-    "Me: I had a vegan hot dog\nThem: Why do you always mention you're vegan...\nMe next time: I had a hot dog\nThem: WHAT?! I THOUGHT YOU WERE VEGAN?!",
+    "Me: \"I had a vegan hot dog.\" Them: \"Why do you always mention you're vegan...\" Me next time: \"I had a hot dog\" Them: \"WHAT?! I THOUGHT YOU WERE VEGAN?!\"",
 
     "The hardest part about being vegan? \n\nTbh, it's having to wake up at 5AM to milk the almonds.",
 
     "If you meet someone new, start talking about global warming. It’s a real icebreaker.",
 
-    "If Mac users care more about the environment than Windows users, then why do Macs have a trash can and Windows has a recycling bin?."
+    "If Mac users care more about the environment than Windows users, then why do Macs have a trash can and Windows has a recycling bin?"
   ]
 
   users.forEach(async (user, index) => {
@@ -118,37 +116,29 @@ db.once('open', async () => {
     await Post.create(postFormat)
   })
 
-  // const posts = await Post.insertMany([
-  //   {
-  //       post: "hello worlds",
-  //       date: + new Date(),
-  //       user: pamela._id,
-  //       comments: [],
-  //       likes: []
-  //   },
-  //   {
-  //     post: "this is a second post ",
-  //     date: + new Date(),
-  //     user: pamela._id,
-  //     comments: [],
-  //     likes: []
-  // },
-  // ]);
-
   console.log('posts seeded');
 
   // seeds for results
   await Result.deleteMany();
 
-  const results = await Result.insertMany([
-    {
-      food: 100.0,
-      housing: 0.0,
-      transportation: 0.0,
-      waste: 1.1,
-      lifestyle: 1.2
-    },
-  ]);
+  const resultData = []
+
+  const numberOfResultEntries = 100;
+
+  for (let i = 0; i <= numberOfResultEntries; i++) {
+    resultData.push(
+      {
+        // messed with the math a bit to make it seem more reasonable?
+        food: Math.floor(Math.random() * 80 + 10),
+        housing: Math.floor(Math.random() * 80 + 10),
+        transportation: Math.floor(Math.random() * 80 + 10),
+        waste: Math.floor(Math.random() * 80 + 10),
+        lifestyle: Math.floor(Math.random() * 80 + 10),
+      }
+    )
+  }
+
+  const results = await Result.insertMany(resultData);
 
   console.log('results seeded');
 
