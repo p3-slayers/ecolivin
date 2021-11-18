@@ -27,7 +27,7 @@ db.once('open', async () => {
     { name: 'Lifestyle' },
   ]);
 
-  console.log('categories seeded');
+  console.log(`\nCATEGORIES SEEDED!`)
 
   // Seeds for Users
   await User.deleteMany();
@@ -47,9 +47,7 @@ db.once('open', async () => {
   const users = await User.insertMany(usersWithHashedPasswords)
 
 
-  console.log('users seeded');
-  console.log(users)
-
+  console.log(`\nUSERS SEEDED!`)
 
   await Conversation.deleteMany();
 
@@ -77,7 +75,7 @@ db.once('open', async () => {
         }
   ]);
 
-  console.log(`conversations seeded`)
+  console.log(`\nCONVERSATIONS SEEDED!`)
   // seeds for comments
 
   // seeds for like
@@ -116,7 +114,9 @@ db.once('open', async () => {
     await Post.create(postFormat)
   })
 
-  console.log('posts seeded');
+  console.log(`\nPOSTS SEEDED!`)
+
+
 
   // seeds for results
   await Result.deleteMany();
@@ -140,40 +140,86 @@ db.once('open', async () => {
 
   const results = await Result.insertMany(resultData);
 
-  console.log('results seeded');
+  console.log(`\nRESULTS SEEDED!`)
 
-  process.exit();
+
   // seed challenges
 
   await Challenge.deleteMany();
 
-  const challenge = await Challenge.insertMany([
+
+  const returnChallengeEndDate = () => {
+    const minDaysForChallenges = 10;
+    const maxDaysForChallenges = 90 - minDaysForChallenges;
+
+    const challengeDuration = Math.floor(Math.random() * maxDaysForChallenges + minDaysForChallenges)
+
+    let todaysDate = new Date();
+    let challengeEndDate = new Date(todaysDate);
+
+    challengeEndDate.setDate(todaysDate.getDate() + challengeDuration);
+
+    return challengeEndDate;
+  };
+
+  const pickARandomUser = () => users[Math.floor(Math.random() * users.length)]._id;
+
+  const challengeData = [
     {
       challengeId: "bikeWork",
-      title: 'Bike forever',
-      challenge: "In this challenge you will bike to work everyday for the rest of your life",
-      user: pamela._id,
-      dateStart: + new Date('August 19, 1975 23:15:30'),
-      dateEnd: + new Date('August 22, 1975 23:15:30')
+      title: 'Bicycle... rain or shine.',
+      challenge: "In this challenge, you will bike to work everyday with NO EXCEPTIONS!",
+      user: pickARandomUser(),
+      dateStart: new Date(),
+      dateEnd: returnChallengeEndDate()
     },
     {
-      challengeId: "bikeWork2",
-      title: 'Bike forever2',
-      challenge: "In this challenge you will bike to work everyday for the rest of your life",
-      user: pamela._id,
-      dateStart: + new Date('August 19, 1975 23:15:30'),
-      dateEnd: + new Date('August 22, 1975 23:15:30')
+      challengeId: "veganFood",
+      title: 'Eat only vegan food!',
+      challenge: "Show some love to our furry and four-legged friends and try veganism for the entirety of the challenge!",
+      user: pickARandomUser(),
+      dateStart: new Date(),
+      dateEnd: returnChallengeEndDate()
     },
     {
-      challengeId: "bikeWork3",
-      title: 'Bike forever3',
-      challenge: "In this challenge you will bike to work everyday for the rest of your life",
-      user: pamela._id,
-      dateStart: + new Date('August 19, 1975 23:15:30'),
-      dateEnd: + new Date('August 22, 1975 23:15:30')
+      challengeId: "noPlastic",
+      title: 'No single use plastics!',
+      challenge: "Do not consume any product that includes single use plastics until the challenge ends",
+      user: pickARandomUser(),
+      dateStart: new Date(),
+      dateEnd: returnChallengeEndDate()
+    },
+    {
+      challengeId: "cleanNature",
+      title: 'Clean up nature!',
+      challenge: "Volunteer to clean natural areas of garbage for at least 40 hours collectively before the challenge end date.",
+      user: pickARandomUser(),
+      dateStart: new Date(),
+      dateEnd: returnChallengeEndDate()
+    },
+    {
+      challengeId: "compostFood",
+      title: 'Compost all of your food scraps.',
+      challenge: "Start a compost pile and instead of throwing uneaten food in a landfill, turn it into something that helps nature.",
+      user: pickARandomUser(),
+      dateStart: + new Date(),
+      dateEnd: returnChallengeEndDate()
+    },
+    {
+      challengeId: "ultimateChallenge",
+      title: 'Ultimate Challenge',
+      challenge: "Complete every other challenge before their respective end dates.",
+      user: pickARandomUser(),
+      dateStart: new Date(),
+      dateEnd: returnChallengeEndDate()
     }
-  ]);
+  ];
+
+  const challenge = await Challenge.insertMany(challengeData);
+
+  console.log(`\nCHALLENGES SEEDED!`)
 
 
+  console.log(`\n\nDATABASE SUCCESSFULLY SEEDED.\n\n`)
   process.exit();
 });
