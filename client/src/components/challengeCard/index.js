@@ -56,7 +56,7 @@ function ChallengeCard(input) {
         <p className="card-text"></p>
         </div>
         <form className="text-center" onSubmit={handleFormSubmit}>
-          <div className="flex-row flex-end">
+          <div className="flex-row d-flex justify-content-center">
             {submitButton()}
           </div>
         </form>

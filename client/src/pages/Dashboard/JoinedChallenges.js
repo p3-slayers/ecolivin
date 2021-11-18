@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client';
 import ChallengeCard from '../../components/challengeCard';
 import { Link } from "react-router-dom";
 import { Button, Row, Col } from "react-bootstrap";
-import JoinedChallenges from '../Dashboard/JoinedChallenges';
+
 import {QUERY_ALL_CHALLENGES } from '../../utils/queries';
 
 function isJoined(challenge){
@@ -12,11 +12,7 @@ function isJoined(challenge){
   }
 }
 
-function showAll(challenge){
-  return (<ChallengeCard challenge={challenge}/>);
-}
-
-const Challenges = () => {
+const JoinedChallenges = () => {
     const { loading, error, data } = useQuery(QUERY_ALL_CHALLENGES);
     console.log(loading, error, data)
     const challenges = data?.getChallenges || [];
@@ -24,28 +20,28 @@ const Challenges = () => {
     return (
       <div className="container text-center">
         {/* will inserts about the post */}
-        <h1 className="large text-center mb-5">Challenges</h1>
+        <h1 className="large text-center mb-5">Joined Challenges</h1>
         <Link
                 style={{ textDecoration: "none", color: "white" }}
-                to="/joinedchallenges"
+                to="/challenges"
               >
                 <Button
                   variant="success"
                   className="mb-4"
-                  
+                
                 >
-                  View Joined Challenges!
+                  Go to all Challenges!
                 </Button>
               </Link>
         <div className="challenge">
           {challenges.map((challenge) => (
-            showAll(challenge)
+            isJoined(challenge)
           ))}
         </div>
       </div>
     )
 }
 
-export default Challenges;
+export default JoinedChallenges;
 
 
