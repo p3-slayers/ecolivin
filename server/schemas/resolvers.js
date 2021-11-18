@@ -1,11 +1,30 @@
+require(`dotenv`).config();
+
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Questionnaire, Category, Post, Result, Action, Contact, Conversation, Message, Challenge } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const path = require(`path`);
 const fs = require(`fs`);
+const aws = require(`aws-sdk`)
 
 const { GraphQLUpload } = require('graphql-upload')
+
+const bucketName = process.env.AWS_BUCKET_NAME;
+const region = process.env.AWS_BUCKET_REGION;
+const accessKeyId = process.env.AWS_ACCESS_KEY;
+const secretAccessKey = process.env.AWS_SECRET_KEY;
+
+console.log(bucketName)
+console.log(region)
+console.log(accessKeyId)
+console.log(secretAccessKey)
+
+const s3 = new aws.S3({
+  region,
+  accessKeyId,
+  secretAccessKey
+})
 
 const resolvers = {
   Query: {
@@ -209,21 +228,22 @@ const resolvers = {
       const { createReadStream, filename, mimetype, encoding } = await file;
 
       console.log(file)
-      console.log(__dirname)
-
-      const stream = createReadStream()
-      const pathName = path.join(__dirname, `../testImages/${filename}`);
-
-      await stream.pipe(fs.createWriteStream(pathName))
 
       // upload to aws
-      // set the MongoDB profilePic field for the user to the AWS address
-      // return the updated userObject to be dispatched to state
+      const { Location } = await s3.upload({
+          Bucket: bucketName,
+          Body: createReadStream(),
+          Key: `${Date.now()}-${file.filename}`,
+          ContentType: mimetype
+      }).promise()  
+
+      console.log(Location)
+      
       return {
         filename,
         mimetype,
         encoding,
-        // url: `http://localhost:4000/images/${filename}`
+        url: Location
       }
     },
 

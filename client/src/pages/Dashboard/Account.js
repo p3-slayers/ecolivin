@@ -100,6 +100,11 @@ const Account = () => {
           file: file
         }
       });
+
+      // set the MongoDB profilePic field for the user to the AWS address
+      // return the updated userObject to be dispatched to state
+
+      console.log(response)
     } catch (error) {
       console.log(error)
     }
