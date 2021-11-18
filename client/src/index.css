@@ -220,8 +220,8 @@ input:focus {
 
 .btn-primary {
   color: #fff;
-  background-color: #703043;
-  border-color: #703043;
+  background-color: #703043 !important;
+  border-color: #703043!important;
 }
 .btn-primary:focus,
 .btn-primary:active,

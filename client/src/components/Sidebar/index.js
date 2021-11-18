@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React, {useState} from "react";
-import '../../index.css'
+
 import { Link } from "react-router-dom";
 import {
   ListGroup,
@@ -41,6 +41,17 @@ function Sidebar() {
                 {state.firstName} {state.lastName}
               </h5>
             </ListGroupItem>
+            <NavLink as={Link} to="/dashboard">
+              <Button
+                style={{
+                  width: "100%",
+                  textDecoration: "none",
+                  color: "white",
+                }}
+              >
+                Dashboard
+              </Button>
+            </NavLink>
             <NavLink as={Link} to="/account">
               <Button
                 style={{
@@ -83,17 +94,6 @@ function Sidebar() {
                 }}
               >
                 Resources
-              </Button>
-            </NavLink>
-            <NavLink as={Link} to="/dashboard">
-              <Button
-                style={{
-                  width: "100%",
-                  textDecoration: "none",
-                  color: "white",
-                }}
-              >
-                Dashboard
               </Button>
             </NavLink>
           </ListGroup>
