@@ -84,7 +84,7 @@ db.once('open', async () => {
   await Post.deleteMany();
 
   const postTextSeeds = [
-    "Me: \"Do you have vegan options?\"\nWaitress: \"is vegetarian food okay?\"\nMe: \"Is monopoly money okay?\"",
+    "Me: \"Do you have vegan options?\"\nWaitress: \"Is vegetarian food okay?\"\nMe: \"Is monopoly money okay?\"",
 
     "A small ATM room having two ACs and 4 tubelights, working 24/7, is asking me not to print a receipt to save the environment.",
 
