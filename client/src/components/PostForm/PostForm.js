@@ -21,8 +21,6 @@ const PostForm = () => {
         });
 
         console.log(mutationResponse);
-
-        // addPost({ text });
         setText('');
         window.location.reload();
     }

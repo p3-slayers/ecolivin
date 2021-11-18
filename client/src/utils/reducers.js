@@ -2,11 +2,7 @@
 import {
   SET_USER_DATA,
   // eslint-disable-next-line no-unused-vars
-  CREATE_NEW_CONTACT,
-    // eslint-disable-next-line no-unused-vars
-  CREATE_NEW_CONVERSATION,
-    // eslint-disable-next-line no-unused-vars
-  SEND_NEW_MESSAGE,
+  CREATE_NEW_CONTACT
 } from './actions';
 
 export const reducer = (state, action) => {

@@ -15,6 +15,7 @@ function Login(props) {
   const [login, { error }] = useMutation(LOGIN);
 
   // for setting global state
+  // eslint-disable-next-line no-unused-vars
   const [state, dispatch] = useGlobalUserContext();
 
   const history = useHistory();
@@ -43,9 +44,7 @@ function Login(props) {
 
       // persist userData to localstorage to maintain state across sessions
       console.log(userData);
-      // localStorage.setItem('userData', userData);
 
-      // console.log(state);
 
       // render the dashboard page
       history.push('/dashboard');
@@ -107,46 +106,6 @@ function Login(props) {
         </Col>
         </Row>
         </div>
-
-
-
-    // <div className="container my-1">
-    //   <Link to="/signup">← Go to Signup</Link>
-
-    //   <h2>Login</h2>
-    //   <form onSubmit={handleFormSubmit}>
-    //     <div className="flex-row space-between my-2">
-    //       <label htmlFor="email">Email address:</label>
-    //       <input
-    //         placeholder="youremail@test.com"
-    //         name="email"
-    //         type="email"
-    //         id="email"
-    //         onChange={handleChange}
-    //       />
-    //     </div>
-    //     <div className="flex-row space-between my-2">
-    //       <label htmlFor="pwd">Password:</label>
-    //       <input
-    //         placeholder="******"
-    //         name="password"
-    //         type="password"
-    //         id="pwd"
-    //         onChange={handleChange}
-    //       />
-    //     </div>
-    //     {error ? (
-    //       <div>
-    //         <p className="error-text">The provided credentials are incorrect</p>
-    //       </div>
-    //     ) : null}
-    //     <div className="flex-row flex-end">
-    //       {/* <Link to="/dashboard"> */}
-    //       <button type="submit">Submit</button>
-    //       {/* </Link> */}
-    //     </div>
-    //   </form>
-    // </div>
   );
 }
 
