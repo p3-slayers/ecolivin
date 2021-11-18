@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React, {useState} from "react";
+import '../../index.css'
 import { Link } from "react-router-dom";
 import {
   ListGroup,
@@ -27,7 +28,15 @@ function Sidebar() {
         <Col xs={6} md={3} lg={3} style={{ width: "auto" }}>
           <ListGroup style={{ textAlign: "center", textDecoration: "none" }}>
             <ListGroupItem style={{backgroundColor: "rgb(170,200,170)"}}>
-              <img src={state.profileImage} alt='User Profile Photo' className="img-fluid img-thumbnail rounded-circle" id="profileImage"/>
+              <img 
+              src={state.profileImage} 
+              alt='User Profile Photo' 
+              className="img-fluid img-thumbnail rounded-circle" id="profileImage"
+              style={{
+                objectFit: "cover",
+                width: "200px",
+                height: "200px"
+                }}/>
               <h5 className="mt-2">
                 {state.firstName} {state.lastName}
               </h5>
