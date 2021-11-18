@@ -64,7 +64,7 @@ function Signup(props) {
   return (
     <div className="signup">
     <Row>
-      <Col className="offset-md-4 mt-5 pt-5" xs={6} md={4} lg={4}>
+      <Col className="offset-md-4 mt-5 pt-5" xs={12} md={4} lg={4}>
       <div className="d-flex flex-row my-1 justify-content-center shadow-lg p-5 bg-light">
       <form onSubmit={handleFormSubmit} className="mb-3 w-75 text-center">
       <Link to="/" style={{ textDecoration: 'none' }}>

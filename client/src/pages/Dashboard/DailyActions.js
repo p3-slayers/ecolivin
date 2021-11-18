@@ -5,7 +5,7 @@ import { Container, ListGroup, ListGroupItem, Row, Col } from "react-bootstrap";
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import Card from 'react-bootstrap/Card';
-import ActionCard from '../../components/actionCard/index'
+import ActionCard from '../../components/ActionCard/index'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
