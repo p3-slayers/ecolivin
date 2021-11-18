@@ -304,6 +304,9 @@ a {
 .btn-light {
   color: #703043 !important;
 }
+li{
+  list-style-type: none;
+}
 
 /* @media only screen and (min-device-width: 668px) and (max-device-width: 991.98px) {
   p {
