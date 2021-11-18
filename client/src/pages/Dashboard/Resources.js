@@ -16,7 +16,7 @@ const Resources = () => {
             <h2>Resources</h2>
           </Row>
           <Row className="mt-4">
-            <Col>
+            <Col md={3}>
               <div
                 className="rounded-circle bg-primary small food mb-3 pt-4 text-center"
                 style={{ width: "100px", height: "100px" }}
@@ -52,7 +52,7 @@ const Resources = () => {
             </Col>
           </Row>
           <Row>
-            <Col>
+            <Col md={3}>
               <div
                 className="rounded-circle bg-success transportation mb-3 pt-4 text-center"
                 style={{ width: "100px", height: "100px" }}
@@ -94,7 +94,7 @@ const Resources = () => {
             </Col>
           </Row>
           <Row>
-            <Col>
+            <Col md={3}>
               <div
                 className="rounded-circle bg-success waste pt-4 mb-3 text-center"
                 style={{ width: "100px", height: "100px" }}
@@ -141,7 +141,7 @@ const Resources = () => {
             </Col>
           </Row>
           <Row>
-            <Col>
+            <Col md={3}>
               <div
                 className="rounded-circle bg-success pt-4 mb-3 lifestyle text-center"
                 style={{ width: "100px", height: "100px" }}
@@ -181,7 +181,7 @@ const Resources = () => {
             </Col>
           </Row>
           <Row>
-            <Col>
+            <Col md={3}>
               <div
                 className="rounded-circle bg-success housing pt-4 text-center"
                 style={{ width: "100px", height: "100px" }}
