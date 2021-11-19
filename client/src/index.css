@@ -221,7 +221,7 @@ input:focus {
 .btn-primary {
   color: #fff;
   background-color: #703043 !important;
-  border-color: #703043!important;
+  border-color: #703043 !important;
 }
 .btn-primary:focus,
 .btn-primary:active,
@@ -304,17 +304,16 @@ a {
 .btn-light {
   color: #703043 !important;
 }
-li{
+li {
   list-style-type: none;
 }
-.dailyActionsTabs{
+.dailyActionsTabs {
   font-size: 28px;
-  color:#308875;
+  color: #308875;
 }
-.dailyActionsTabs:hover{
-  color:#703043;
+.dailyActionsTabs:hover {
+  color: #703043;
 }
-
 
 /* @media only screen and (min-device-width: 668px) and (max-device-width: 991.98px) {
   p {
@@ -337,56 +336,57 @@ li{
   .px-5 {
     padding: 0 !important;
   }
-  
+
   .sideBarToggle {
     position: fixed;
     top: 100px;
-    
+
     /*   .sideBarToggle{ */
-      /* position: relative;
+    /* position: relative;
       top: -30px;
       */
-      /*  position: fixed;
+    /*  position: fixed;
       top: 100px;  */
-      
-    }
-    .sideBarNavStlye {
-      border: 0px solid !important;
-      align-items: baseline;
-    }
-    
-    .navbar-nav {
-      margin: auto !important;
-    }
-    .col {
-      flex: auto !important;
-    }
-    
-    .container {
-      display: block !important;
-    }
-    
-    .members {
-      text-align: center !important;
-    }
-    .home {
-      margin-top: 0px !important;
-    }
-  } ;
-  
-  /* #bg-green {
+  }
+  .sideBarNavStlye {
+    border: 0px solid !important;
+    align-items: baseline;
+  }
+
+  .navbar-nav {
+    margin: auto !important;
+  }
+  .col {
+    flex: auto !important;
+  }
+
+  .container {
+    display: block !important;
+  }
+
+  .members {
+    text-align: center !important;
+  }
+  .home {
+    margin-top: 0px !important;
+  }
+  .card {
+    width: 100% !important;
+  }
+}
+
+/* #bg-green {
     background-color: rgb(170,200,170) !important
   } */
 
-  #profileImage {
-    width: 200px; /* You can set the dimensions to whatever you want */
-    height: 200px;
-    object-fit: cover;
-  }
-  
-  #imgIcon {
-    object-fit: cover;
-    width: 80px;
-    height: 80px;
-  }
-  
+#profileImage {
+  width: 200px; /* You can set the dimensions to whatever you want */
+  height: 200px;
+  object-fit: cover;
+}
+
+#imgIcon {
+  object-fit: cover;
+  width: 80px;
+  height: 80px;
+}
