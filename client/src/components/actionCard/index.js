@@ -30,13 +30,13 @@ function ActionCard(input) {
   function submitButton() {
     if (isAdded) {
       return (
-        <Button type="submit" disabled={true}>
+        <Button  variant='div' className='btn-primary font-weight-bold'  type="submit" disabled={true}>
           Added 
         </Button>
       );
     } else {
       return (
-        <Button  className='btn-success font-weight-bold'  type="submit" disabled={disable}>
+        <Button  variant='div' className='btn-success font-weight-bold'  type="submit" disabled={disable}>
           Add ➕
         </Button>
       );
