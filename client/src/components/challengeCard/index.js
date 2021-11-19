@@ -46,7 +46,7 @@ function ChallengeCard(props) {
   };
 
   return (
-    <div className="card text-dark bg-light mb-4 mx-5">
+    <div className="card text-dark bg-light mb-5 mx-5" style={{width:"40%"}}>
       <div className="card-header">
         <h2 className="py-2"> {title} </h2>
         <p className="text-muted small m-0 p-0">Beginning <Moment unix>{dateStart/1000}</Moment> - Ending <Moment unix>{dateEnd/1000}</Moment></p>
@@ -54,7 +54,7 @@ function ChallengeCard(props) {
       <div className="card-body bg-white">
         <p className="card-text">{challengeText}</p>
         </div>
-        <form className="text-center" onSubmit={handleFormSubmit}>
+        <form className="text-center bg-white pb-3" onSubmit={handleFormSubmit}>
           <div className="d-grid gap-2 col-3 mx-auto">
             {submitButton()}
           </div>

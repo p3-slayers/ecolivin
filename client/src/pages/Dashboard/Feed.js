@@ -15,7 +15,7 @@ const Feed = () => {
     <div className="container">
       <h1 className="large text-center mb-5">Posts</h1>
         <PostForm/>
-      <div className="posts">
+      <div className="posts d-flex flex-row justify-content-center">
         {posts.map((post) => (
           <PostCard post={post}/>
         ))}

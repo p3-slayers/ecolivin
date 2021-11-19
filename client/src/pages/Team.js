@@ -8,7 +8,7 @@ const Team = () => {
   return (
     <>
     <Nav />
-    <div className="container">
+    <div className="container d-flex flex-row justify-content-center" style={{width:"70%"}}>
       <h1 className="text-center mt-5">OUR TEAM</h1>
           {teamMembers.sort( () => .5 - Math.random() ).map((member) => (
             <div className="container mt-3 p-4">

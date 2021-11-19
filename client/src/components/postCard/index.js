@@ -7,7 +7,7 @@ function PostCard(input) {
   const post = input.post;
 
   return (
-    <div className="card text-dark bg-light mb-4 mx-5">
+    <div className="card text-dark bg-light mb-4 mx-5" style={{width:"70%"}}>
         <div className="card-header d-flex">
           <img 
           src={post.user.profileImage} 
