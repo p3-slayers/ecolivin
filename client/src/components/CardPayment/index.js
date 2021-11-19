@@ -97,13 +97,14 @@ function Card() {
             placeholder="Other Amount"
             onChange={handleDonationAmt}
           ></input>
-          <button
+          <Button
+             variant='div'
             style={{margin:'0 auto', fontWeight:'bold', backgroundColor:'rgb(223, 212, 209)', color:'#703043' }}
             disabled={!elements || !stripe || !selectedDonation.length > 0 || parseInt(selectedDonation) == 0}
             onClick={() => handleSubmit(selectedDonation)}
           >
             Donate 
-          </button>
+          </Button>
         </div>
     </>
   );
