@@ -296,10 +296,10 @@ a {
 .links {
   color: #308875;
 }
-
-.navbar-nav {
+/*this throws off the center alignment of nav items when the navbar toggles
+/* .navbar-nav {
   margin-right: 120px;
-}
+} */
 
 .btn-light {
   color: #703043 !important;
