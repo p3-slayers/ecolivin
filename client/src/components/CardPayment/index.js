@@ -80,7 +80,7 @@ function Card() {
           <ButtonGroup style={{flexWrap:'wrap'}}>
           {donationData.map((item) => (
               <Button
-                style={{padding:'20px', margin:'30px', fontSize:'1.5em', fontWeight:'bold',backgroundColor:'rgb(223, 212, 209)' ,color:'#703043'}}
+                style={{padding:'20px', margin:'30px', fontSize:'1.5em', fontWeight:'bold', backgroundColor:'rgb(223, 212, 209)', color:'#703043'}}
                 key={item.id}
                 value={item.amount}
                 onClick={() => handleSubmit(item.amount)}
@@ -97,7 +97,7 @@ function Card() {
             onChange={handleDonationAmt}
           ></input>
           <Button
-            style={{margin:'0 auto', fontWeight:'bold', backgroundColor:'rgb(223, 212, 209)' ,color:'#703043'}}
+            style={{margin:'0 auto', fontWeight:'bold', backgroundColor:'rgb(223, 212, 209)',color:'#703043'}}
             disabled={!elements || !stripe || !selectedDonation.length > 0}
             onClick={() => handleSubmit(selectedDonation)}
           >
