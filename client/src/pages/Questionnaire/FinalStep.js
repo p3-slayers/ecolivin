@@ -1,6 +1,5 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { ADD_RESULT } from "../../utils/mutations";
 import { useHistory } from 'react-router-dom';

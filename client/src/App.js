@@ -7,7 +7,6 @@ import Team from './pages/Team';
 import About from './pages/About';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import Nav from './components/Nav';
 import Success from './pages/SuccessfulDonation';
 import Donate from './pages/Donate';
 import DashboardRoutes from './pages/Dashboard/DashboardRoutes';
