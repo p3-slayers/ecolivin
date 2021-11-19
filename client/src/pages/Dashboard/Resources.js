@@ -14,7 +14,7 @@ const Resources = () => {
         <h1 className="mb-5 text-center">Resources</h1>
         <div>
           <Row className="mt-4">
-            <Col md={3}>
+            <Col md={3} className="d-flex justify-content-center">
               <CircleLabel
                 label="Food"
                 fontSize="2.9em"
@@ -60,7 +60,7 @@ const Resources = () => {
             </Col>
           </Row>
           <Row>
-            <Col md={3}>
+            <Col md={3} className="d-flex justify-content-center">
               <CircleLabel
                 label="Transportation"
                 fontSize="1.1em"
@@ -106,7 +106,7 @@ const Resources = () => {
             </Col>
           </Row>
           <Row>
-            <Col md={3}>
+            <Col md={3} className="d-flex justify-content-center">
               <CircleLabel
                 label="Waste"
                 fontSize="2.5em"
@@ -167,7 +167,7 @@ const Resources = () => {
             </Col>
           </Row>
           <Row>
-            <Col md={3}>
+            <Col md={3} className="d-flex justify-content-center">
             <CircleLabel label='Lifestyle' bgStyle='lifestyle' fontSize='2em' icon='🏙️'   width='100px'
                 height='100px'/>
             </Col>
@@ -205,7 +205,7 @@ const Resources = () => {
             </Col>
           </Row>
           <Row>
-            <Col md={3}>
+            <Col md={3} className="d-flex justify-content-center">
             <CircleLabel label='Housing' bgStyle='housing' fontSize='1.9em' icon='🏠'   width='100px'
                 height='100px'/>
             </Col>

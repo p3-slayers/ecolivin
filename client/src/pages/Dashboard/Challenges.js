@@ -21,22 +21,27 @@ const Challenges = () => {
     const challenges = data?.getChallenges || [];
     console.log("challenge:", challenges);
     return (
-      <div className="container text-center">
+      <div className="container text-center ">
         {/* will inserts about the post */}
+       
         <h1 className="large text-center mb-5">Challenges</h1>
+        <div className= "d-flex justify-content-center"> 
+        <p className="text-center mb-5 " style={{width: "50%"}}> We have provided challenges that you can join to help create accountability and empowerment as you adapt a more sustainable lifestyle.  </p>
+        </div>
         <Link
                 style={{ textDecoration: "none", color: "white" }}
                 to="/joinedchallenges"
               >
                 <Button
                   variant="success"
-                  className="mb-4"
+                  className="mb-5"
                   
                 >
                   View Joined Challenges!
                 </Button>
               </Link>
-        <div className="challenge">
+              
+        <div className="challenge  d-flex flex-row justify-content-center">
           {challenges.map((challenge) => (
             showAll(challenge)
           ))}
