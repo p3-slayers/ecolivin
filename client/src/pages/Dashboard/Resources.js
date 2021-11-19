@@ -6,14 +6,13 @@ import CircleLabel from "../../components/CircleLabel";
 const Resources = () => {
   return (
     <>
-      <div className="d-flex flex-row mt-5">
-        <div className="p-5">
-          <Sidebar />
-        </div>
+      <div className="d-flex mt-5">
+      <div className='py-5'>
+      <Sidebar />
+      </div>
+      <div className="px-5 flex-grow-1">
+        <h1 className="mb-5 text-center">Resources</h1>
         <div>
-          <Row>
-            <h2>Resources</h2>
-          </Row>
           <Row className="mt-4">
             <Col md={3}>
               <CircleLabel
@@ -243,6 +242,7 @@ const Resources = () => {
               </ul>
             </Col>
           </Row>
+        </div>
         </div>
       </div>
     </>

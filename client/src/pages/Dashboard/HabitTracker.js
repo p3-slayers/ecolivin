@@ -48,11 +48,11 @@ const HabitTracker = () => {
     <div className="d-flex mt-5">
       <Sidebar />
       <div className="px-5 flex-grow-1">
-        <h2 className="mb-5">Habit Tracker</h2>
+        <h1 className="mb-5 text-center">Habit Tracker</h1>
 
         <Row className="mb-3 bg-light p-3">
             <Col md={4}>  
-            <Button style={{ width: "60%"}} onClick={reset}>
+            <Button className='btn-success' style={{ width: "60%", fontSize:'1.1em'}} onClick={reset}>
                 Reset Week
             </Button>
             </Col>

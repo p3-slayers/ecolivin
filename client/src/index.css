@@ -307,6 +307,13 @@ a {
 li{
   list-style-type: none;
 }
+.dailyActionsTabs{
+  font-size: 28px;
+  color:#308875;
+}
+.dailyActionsTabs:hover{
+  color:#703043;
+}
 
 /* @media only screen and (min-device-width: 668px) and (max-device-width: 991.98px) {
   p {

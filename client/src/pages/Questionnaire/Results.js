@@ -27,7 +27,7 @@ function Results() {
               config={{ delay: 1000, duration: 1000 }}
             >
               {(props) => (
-                <animated.div div style={props}>
+                <animated.div style={props}>
                     <CircleLabel
                       label="Food"
                       labeltwo={food}
@@ -69,7 +69,7 @@ function Results() {
               config={{ delay: 1000, duration: 700 }}
             >
               {(props) => (
-                <animated.div div style={props}>
+                <animated.div  style={props}>
                     <CircleLabel
                       label="Waste"
                       labeltwo={waste}
@@ -143,3 +143,82 @@ function Results() {
 }
 
 export default Results;
+
+//all the circle drop down at the same time instead of staggered, comment it in to see if you like it more or less than the current state
+{
+  /* <Spring
+from={{ opacity: 0, marginTop: -1000 }}
+to={{ opacity: 1, marginTop: 0 }}
+config={{ delay: 1000, duration: 1000 }}
+>
+{(props) => (
+  <>
+    <Col>
+      <animated.div div style={props}>
+        <CircleLabel
+          label="Food"
+          labeltwo={food}
+          fontSize="3em"
+          bgStyle="food"
+          icon="🥬"
+          height="170px"
+          width="170px"
+        />
+      </animated.div>
+    </Col>
+    <Col>
+      <animated.div style={props}>
+        <CircleLabel
+          label="Transportation"
+          labeltwo={transportation}
+          fontSize="1.5em"
+          bgStyle="transportation"
+          icon="🚴"
+          height="170px"
+          width="170px"
+        />
+      </animated.div>
+    </Col>
+    <Col>
+      <animated.div  style={props}>
+        <CircleLabel
+          label="Waste"
+          labeltwo={waste}
+          fontSize="3em"
+          bgStyle="waste"
+          icon="🗑️"
+          height="170px"
+          width="170px"
+        />
+      </animated.div>
+    </Col>
+    <Col>
+      <animated.div style={props}>
+        <CircleLabel
+          label="Lifestyle"
+          labeltwo={lifestyle}
+          fontSize="3em"
+          bgStyle="lifestyle"
+          icon="🏙️"
+          height="170px"
+          width="170px"
+        />
+      </animated.div>
+    </Col>
+    <Col>
+      <animated.div  style={props} >
+        <CircleLabel
+          label="Housing"
+          labeltwo={housing}
+          fontSize="2.8em"
+          bgStyle="housing"
+          icon="🏠"
+          height="170px"
+          width="170px"
+        />
+      </animated.div>
+    </Col>
+  </>
+)}
+</Spring> */
+}
