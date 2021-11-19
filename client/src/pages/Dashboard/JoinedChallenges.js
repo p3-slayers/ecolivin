@@ -33,7 +33,7 @@ const JoinedChallenges = () => {
                   Go to all Challenges!
                 </Button>
               </Link>
-        <div className="challenge">
+        <div className="challenge d-flex justify-content-center flex-row">
           {challenges.map((challenge) => (
             isJoined(challenge)
           ))}
