@@ -7,6 +7,7 @@ import { Modal, Button } from "react-bootstrap";
 import { DELETE_USER } from "../../utils/mutations";
 
 function DeleteUser() {
+  // eslint-disable-next-line no-unused-vars
   const [state, dispatch] = useGlobalUserContext();
   const [showModal, setModalShow] = useState(false);
 
@@ -17,6 +18,7 @@ function DeleteUser() {
 
   const handleDeleteUser = async () => {
     console.log(`deleted a user btn clicked`);
+    // eslint-disable-next-line no-unused-vars
     const mutationResponse = await deleteUser({
       variables: {
         _id: state._id,

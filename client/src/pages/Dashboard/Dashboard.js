@@ -34,11 +34,8 @@ function computeAverages(others) {
 }
 
 const Dashboard = () => {
-  // console.log(auth.loggedIn())
-  // console.log(auth.getProfile().data.firstName)
   const [state, dispatch] = useGlobalUserContext();
   console.log("mystate", state);
-  // useEffect(console.log(`DASHBOARD MOUNTED`), []);
 
   const qResults = useQuery(QUERY_ALL_RESULTS);
   const otherResults = qResults.data?.getResults || [];

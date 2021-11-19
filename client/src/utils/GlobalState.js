@@ -1,19 +1,9 @@
 import React, { createContext, useContext, useReducer } from 'react';
 
-// import { useHistory } from 'react-router-dom';
-
 // all this does is remove the need for us to pass a reducer function to the call in UserProvider
 import { reducer } from './reducers';
 
 const GlobalUserContext = createContext();
-// const { Provider } = UserContext;
-
-// const StoreProvider = ({ value = [], ...props }) => {
-//   const [state, dispatch] = useProductReducer({
-//     products: [],
-//     categories: [],
-//     currentCategory: '',
-//   });
 
 const useGlobalUserContext = () => useContext(GlobalUserContext);
 
@@ -28,9 +18,5 @@ const UserContextProvider = ({ children }) => {
     </GlobalUserContext.Provider>
   );
 };
-
-// const useStoreContext = () => {
-//   return useContext(StoreContext);
-// };
 
 export { UserContextProvider, useGlobalUserContext };

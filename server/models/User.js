@@ -31,6 +31,7 @@ const userSchema = new Schema({
   },
   profileImage: {
     type: String,
+    default: "https://fullstacknomadimages.s3.us-east-2.amazonaws.com/1632419515031-defaultProfilePicture.png"
   },
   contacts: [Contact.schema],
   // these are the answers from the questionnaire
@@ -70,3 +71,4 @@ userSchema.methods.isCorrectPassword = async function (password) {
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;
+
