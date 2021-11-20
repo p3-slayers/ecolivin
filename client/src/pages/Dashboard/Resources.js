@@ -9,9 +9,9 @@ const Resources = () => {
   return (
     <>
       <div className="d-flex mt-5">
-        <div className='py-5'>
+        {/* <div className='py-5'> */}
           <Sidebar />
-        </div>
+        {/* </div> */}
         <Spring
           from={{ opacity: 0 }}
           to={{ opacity: 1 }}
