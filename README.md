@@ -1,5 +1,7 @@
 # ECOLIVIN
 
+![ecolivin](https://user-images.githubusercontent.com/84414488/142734116-238c4eb4-c890-47be-b634-5ef8660e621a.png)
+
 ## Description
 An App built to inspire and improve sustainable living goals. 
 
@@ -34,7 +36,7 @@ An App built to inspire and improve sustainable living goals.
 Our app is deployed on heroku, https://ecolivin.herokuapp.com/
 
 ## ScreenShot
-<img width="250" alt="EcoLivin Home Page" src="https://user-images.githubusercontent.com/84414488/142733805-7242152a-ffd6-4a76-b359-e33a9c686038.png">
+<img width="550" alt="EcoLivin Home Page" src="https://user-images.githubusercontent.com/84414488/142733805-7242152a-ffd6-4a76-b359-e33a9c686038.png">
 
 ## Usage
 Upon signing up, a user is immediately taken to the questionnaire where they will answer questions in the categories that include: Transportation, Food, Waste, Housing, Lifestyle.
