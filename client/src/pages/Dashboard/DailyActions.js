@@ -22,7 +22,7 @@ const DailyActions = () => {
         config={{ delay: 0, duration: 200 }}
       >
         {(props) => (
-          <animated.div style={props}>
+          <animated.div style={{ ...props, width: "100%" }}>
             <div className="px-5 flex-grow-1">
               <h1 className="mb-4 text-center">Daily Actions</h1>
               <Tabs className="mb-3">
@@ -90,7 +90,7 @@ const DailyActions = () => {
                       <Col md={4}>
                         <ActionCard
                           actionId="l1"
-                          title="🪢 Used Items"
+                          title="👕 Used Items"
                           link="nolinkfornow"
                           actionText="Buy mostly used stuff and shop at second-hand stores"
                         />
