@@ -1,12 +1,12 @@
-import React, { useEffect, useState, useContext } from "react";
-import { Container } from "react-bootstrap";
+import React from "react";
+
 import { Link } from "react-router-dom";
-// import auth from '../../utils/auth';
 import Sidebar from "../../components/Sidebar/index";
 import { useGlobalUserContext } from "../../utils/GlobalState";
 import BarChart from "../../components/ChartJs";
 import { Button, Row, Col } from "react-bootstrap";
 import { useQuery } from "@apollo/client";
+import { Spring, animated } from "react-spring";
 
 import { QUERY_ALL_RESULTS } from "../../utils/queries";
 
@@ -35,13 +35,10 @@ function computeAverages(others) {
   return allPercentages;
 }
 
-const Dashboard = () => {
-  // console.log(auth.loggedIn())
-  // console.log(auth.getProfile().data.firstName)
+const Dashboard = ({ transition }) => {
   const [state, dispatch] = useGlobalUserContext();
   console.log("mystate", state);
-  // useEffect(console.log(`DASHBOARD MOUNTED`), []);
-
+  console.log(transition)
   const qResults = useQuery(QUERY_ALL_RESULTS);
   const otherResults = qResults.data?.getResults || [];
   const otherPercentages = computeAverages(otherResults);
@@ -55,68 +52,77 @@ const Dashboard = () => {
   //on the container that wraps around these pages add margin 30px auto
   return (
     <>
-      <div className="d-flex mt-5">
-      
-        <Sidebar />
+      <Spring
+        from={transition.from}
+        to={transition.to}
+        config={transition.config}
+      >
+        {(props) => (
+          <animated.div style={props}>
+            <div className="d-flex mt-5">
 
-        <div className="px-5 flex-grow-1" style={{ marginLeft: "30px" }}>
-          <h1 className="display-5">Hello, {state.firstName}!</h1>
+              <Sidebar />
 
-          <Row className="mt-5 mb-5 align-items-center">
-            <Col>
-              <p>
-              Hi {state.firstName}, welcome to EcoLivin. Below, you can see how your answers to the Questionnaire compare to the all other users of EcoLivin. To improve your scores, navigate through the dashboard to learn how to implement actions into your life by adding challenges to your week, viewing resources may help guide you in implementing these practices. Happy living!
-              </p>
-            </Col>
-            <Col className="text-center">
-              <Link
-                style={{ textDecoration: "none", color: "white" }}
-                to="/dailyactions"
-              >
-                <Button
-                  variant="success"
-                  className="mb-4"
-                  style={{ width: "50%" }}
-                >
-                  Add actions now!
-                </Button>
-              </Link>
+              <div className="px-5 flex-grow-1" style={{ marginLeft: "30px" }}>
+                <h1 className="display-5">Hello, {state.firstName}!</h1>
 
-              <Link
-                style={{ textDecoration: "none", color: "white" }}
-                to="/beginquestionnaire"
-              >
-                <Button variant="success" style={{ width: "50%" }}>
-                  Retake Questionnaire
-                </Button>
-              </Link>
-            </Col>
-          </Row>
+                <Row className="mt-5 mb-5 align-items-center">
+                  <Col>
+                    <p>
+                      Hi {state.firstName}, welcome to EcoLivin. Below, you can see how your answers to the Questionnaire compare to the all other users of EcoLivin. To improve your scores, navigate through the dashboard to learn how to implement actions into your life by adding challenges to your week, viewing resources may help guide you in implementing these practices. Happy living!
+                    </p>
+                  </Col>
+                  <Col className="text-center">
+                    <Link
+                      style={{ textDecoration: "none", color: "white" }}
+                      to="/dailyactions"
+                    >
+                      <Button
+                        variant="success"
+                        className="mb-4"
+                        style={{ width: "50%" }}
+                      >
+                        Add actions now!
+                      </Button>
+                    </Link>
 
-          <Row className="mt-4 align-items-center">
-            <Col style={{ height: "500px;" }}>
-              <BarChart
-                lifestyle={lifestyle}
-                housing={housing}
-                waste={waste}
-                food={food}
-                transportation={transportation}
-                otherPercentages={otherPercentages}
-              />
-            </Col>
-            <Col className="px-5">
-              <p>
-                The team at EcoLivin believes that taking the steps to live a
-                more sustainable lifetstyle should start with making small
-                changes to your daily routine. These small steps may eventually
-                lead to a more fulflilling lifestyle that has major implications
-                for yourself, your community, and of course, our planet.
-                <p style={{display:'flex', justifyContent:'end', paddingTop:'5px'}}> The Team at EcoLivin &#128154; </p>
-              </p>
-            </Col>
-          </Row>
-        </div>
-      </div>
+                    <Link
+                      style={{ textDecoration: "none", color: "white" }}
+                      to="/beginquestionnaire"
+                    >
+                      <Button variant="success" style={{ width: "50%" }}>
+                        Retake Questionnaire
+                      </Button>
+                    </Link>
+                  </Col>
+                </Row>
+
+                <Row className="mt-4 align-items-center">
+                  <Col style={{ height: "500px;" }}>
+                    <BarChart
+                      lifestyle={lifestyle}
+                      housing={housing}
+                      waste={waste}
+                      food={food}
+                      transportation={transportation}
+                      otherPercentages={otherPercentages}
+                    />
+                  </Col>
+                  <Col className="px-5">
+                    <p>
+                      The team at EcoLivin believes that taking the steps to live a
+                      more sustainable lifetstyle should start with making small
+                      changes to your daily routine. These small steps may eventually
+                      lead to a more fulflilling lifestyle that has major implications
+                      for yourself, your community, and of course, our planet.
+                      <p style={{ display: 'flex', justifyContent: 'end', paddingTop: '5px' }}> The Team at EcoLivin &#128154; </p>
+                    </p>
+                  </Col>
+                </Row>
+              </div>
+            </div>
+          </animated.div>)}
+      </Spring>
     </>
   );
 };

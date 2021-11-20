@@ -76,11 +76,12 @@ function Card() {
   return (
     <>
         <div className='my-2' style={{display:'flex', flexDirection:'column'}}>
-          <h2 className='text-center' style={{color:'#703043'}}>Donate Today</h2>
+          <h2 className='text-center' style={{color:'#703043', fontWeight:'bold'}}>Donate Today</h2>
           <ButtonGroup style={{flexWrap:'wrap'}}>
           {donationData.map((item) => (
               <Button
-                style={{padding:'20px', margin:'30px', fontSize:'1.5em', fontWeight:'bold',backgroundColor:'rgb(223, 212, 209)' ,color:'#703043'}}
+                variant='div'
+                style={{padding:'20px', margin:'30px', fontSize:'1.5em', fontWeight:'bold',  backgroundColor:'rgb(223, 212, 209)', color:'#703043'}}
                 key={item.id}
                 value={item.amount}
                 onClick={() => handleSubmit(item.amount)}
@@ -97,8 +98,9 @@ function Card() {
             onChange={handleDonationAmt}
           ></input>
           <Button
-            style={{margin:'0 auto', fontWeight:'bold', backgroundColor:'rgb(223, 212, 209)' ,color:'#703043'}}
-            disabled={!elements || !stripe || !selectedDonation.length > 0}
+             variant='div'
+            style={{margin:'0 auto', fontWeight:'bold', backgroundColor:'rgb(223, 212, 209)', color:'#703043' }}
+            disabled={!elements || !stripe || !selectedDonation.length > 0 || parseInt(selectedDonation) == 0}
             onClick={() => handleSubmit(selectedDonation)}
           >
             Donate 

@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 import ChallengeCard from '../../components/challengeCard';
 import { Link } from "react-router-dom";
-import { Button, Row, Col } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 import {QUERY_ALL_CHALLENGES } from '../../utils/queries';
 
@@ -33,7 +33,7 @@ const JoinedChallenges = () => {
                   Go to all Challenges!
                 </Button>
               </Link>
-        <div className="challenge">
+        <div className="challenge d-flex justify-content-center flex-row">
           {challenges.map((challenge) => (
             isJoined(challenge)
           ))}

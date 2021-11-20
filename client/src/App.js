@@ -7,7 +7,6 @@ import Team from './pages/Team';
 import About from './pages/About';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import Nav from './components/Nav';
 import Success from './pages/SuccessfulDonation';
 import Donate from './pages/Donate';
 import DashboardRoutes from './pages/Dashboard/DashboardRoutes';
@@ -18,6 +17,11 @@ import { useGlobalUserContext } from './utils/GlobalState';
 // eslint-disable-next-line no-unused-vars
 import { QUERY_SINGLE_USER, QUERY_SINGLE_ACTION } from './utils/queries';
 import { SET_USER_DATA } from './utils/actions';
+
+
+// THIS CONTROLS THE CONFIGURATION FOR ALL PAGE TRANSITION ANIMATIONS
+import pageTransitions from './utils/pageTransitions';
+
 
 function App({ apolloClient }) {
   console.log(apolloClient);
@@ -54,41 +58,41 @@ function App({ apolloClient }) {
       try {
         if (loggedInUserId) {
           console.log(`FIRING GRAPHQL QUERY`)
-        const user = await apolloClient.query({
-          query: QUERY_SINGLE_USER,
-          variables: { id: id },
-        });
-        const userData = user.data.singleUser;
-        console.log(user);
-        console.log(userData);
-        dispatch({
-          type: SET_USER_DATA,
-          payload: userData,
-        });
-       } else {
-         console.log(`no logged in user found, graphQL query skipped`)
-       }
+          const user = await apolloClient.query({
+            query: QUERY_SINGLE_USER,
+            variables: { id: id },
+          });
+          const userData = user.data.singleUser;
+          console.log(user);
+          console.log(userData);
+          dispatch({
+            type: SET_USER_DATA,
+            payload: userData,
+          });
+        } else {
+          console.log(`no logged in user found, graphQL query skipped`)
+        }
       } catch (err) {
         console.log(err);
       }
     };
     let userData = queryUserData(loggedInUserId)
-     .then(() => {
-       setIsLoading(false);
-     })
+      .then(() => {
+        setIsLoading(false);
+      })
     console.log(userData);
-  }, [isLoading, apolloClient, dispatch, state] );
+  }, [isLoading, apolloClient, dispatch, state]);
 
   return (
     <Router>
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/signup" component={Signup} />
-        <Route exact path="/donate" component={Donate} />
-        <Route exact path="/team" component={Team} />
-        <Route exact path="/about" component={About} />
-        <Route exact path="/success" component={Success} />
+        <Route exact path="/" component={(props) => (<Home transition={pageTransitions} />)} />
+        <Route exact path="/login" component={(props) => (<Login transition={pageTransitions} />)} />
+        <Route exact path="/signup" component={(props) => (<Signup transition={pageTransitions} />)} />
+        <Route exact path="/donate" component={(props) => (<Donate transition={pageTransitions} />)} />
+        <Route exact path="/team" component={(props) => (<Team transition={pageTransitions} />)} />
+        <Route exact path="/about" component={(props) => (<About transition={pageTransitions} />)} />
+        <Route exact path="/success" component={(props) => (<Success transition={pageTransitions} />)} />
         <PrivateRoute component={DashboardRoutes} />
       </Switch>
     </Router>

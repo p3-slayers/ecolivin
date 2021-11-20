@@ -1,6 +1,5 @@
 // Step2.js
 import React from "react";
-import InputGroup from 'react-bootstrap/InputGroup';
 import Question from "../../components/Question";
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'

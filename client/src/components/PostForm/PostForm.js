@@ -21,15 +21,13 @@ const PostForm = () => {
         });
 
         console.log(mutationResponse);
-
-        // addPost({ text });
         setText('');
         window.location.reload();
     }
 
     return (
-
-        <div class="card mx-5 mb-5">
+<div className="d-flex justify-content-center">
+        <div class="card mx-5 mb-5" style={{width: "70%"}}>
           <div className="card-header">
         <h3>Share your thoughts!</h3>
       </div>
@@ -51,6 +49,7 @@ const PostForm = () => {
         </div>
         <input type='submit' className='btn btn-primary m-3' value='Submit' />
       </form>
+    </div>
     </div>
     );
 }
