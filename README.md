@@ -1,4 +1,4 @@
-# ECOLIVIN
+# ecoLIVIN
 
  <img width="300" alt="EcoLivin Logo" src="https://user-images.githubusercontent.com/84414488/142734116-238c4eb4-c890-47be-b634-5ef8660e621a.png">
 
@@ -54,17 +54,22 @@ EcoLivin includes a messaging feature built with Socket.io, users are able to se
 
 ## Credits
 The team that built EcoLivin includes Valbona Bajrami, Elijah Romer, Ron Arceo, Janet Iqal. 
-<br>
+<br><br>
+
 Github: https://github.com/valbona1992 
+<br>
 LinkedIn: https://www.linkedin.com/in/valbona-bajrami/
 
 Github: https://github.com/ElijahRomer 
+<br>
 LinkedIn:https://www.linkedin.com/in/elijahromer/
 
 Github: https://github.com/ronarceo 
+<br>
 LinkedIn:https://www.linkedin.com/in/ronald-arceo/
 
 Github: https://github.com/janetiqal 
+<br>
 LinkedIn: https://www.linkedin.com/in/janetiqal/
 
 ## Questions
