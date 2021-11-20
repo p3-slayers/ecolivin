@@ -54,6 +54,7 @@ EcoLivin includes a messaging feature built with Socket.io, users are able to se
 
 ## Credits
 The team that built EcoLivin includes Valbona Bajrami, Elijah Romer, Ron Arceo, Janet Iqal. 
+<br>
 Github: https://github.com/valbona1992 
 LinkedIn: https://www.linkedin.com/in/valbona-bajrami/
 
