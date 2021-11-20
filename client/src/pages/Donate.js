@@ -15,6 +15,7 @@ function Donate({ transition }) {
       >
         {(props) => (
           <animated.div style={props}>
+           <div style={{marginTop:'100px'}}>
             <div
               className="container mt-5"
               style={{ display: "flex", fontFamily: "Karla sans-serif" }}
@@ -34,6 +35,7 @@ function Donate({ transition }) {
                 <Card />
               </Container>
             </div>
+          </div>
           </animated.div>)}
       </Spring>
     </>
