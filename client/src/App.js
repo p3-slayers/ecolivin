@@ -20,11 +20,8 @@ import { SET_USER_DATA } from './utils/actions';
 
 
 // THIS CONTROLS THE CONFIGURATION FOR ALL PAGE TRANSITION ANIMATIONS
-const pageTransitions = {
-  from: { opacity: 0 },
-  to: { opacity: 1 },
-  config: { delay: 200, duration: 200 },
-};
+import pageTransitions from './utils/pageTransitions';
+
 
 function App({ apolloClient }) {
   console.log(apolloClient);
