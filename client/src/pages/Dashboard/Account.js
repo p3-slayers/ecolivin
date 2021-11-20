@@ -9,6 +9,8 @@ import { useGlobalUserContext } from '../../utils/GlobalState';
 import { SET_USER_DATA } from '../../utils/actions';
 import { Button } from "react-bootstrap";
 
+import { Spring, animated } from "react-spring";
+
 const Account = () => {
   // for setting global state
   const [state, dispatch] = useGlobalUserContext();
@@ -18,7 +20,8 @@ const Account = () => {
     firstName: state.firstName,
     lastName: state.lastName,
     password: '',
-    oldPassword: '' });
+    oldPassword: ''
+  });
   const [updateUser] = useMutation(UPDATE_USER);
   const [updatePassword, { error }] = useMutation(UPDATE_PASSWORD);
 
@@ -63,27 +66,27 @@ const Account = () => {
     console.log(`handlePasswordUpdate fired`);
     event.preventDefault();
     try {
-    await updatePassword({
-      variables: {
-        _id: state._id,
-        password: formState.password,
-        oldPassword: formState.oldPassword,
-      },
-    });
+      await updatePassword({
+        variables: {
+          _id: state._id,
+          password: formState.password,
+          oldPassword: formState.oldPassword,
+        },
+      });
 
-    history.push('/dashboard');
-  } catch (e) {
-    console.log(e);
-  }
+      history.push('/dashboard');
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const handlePictureUploadChange = event => {
     console.log(`handlePictureUploadChange Fired!`)
-    if ( !event.target.files[0] ) return;
+    if (!event.target.files[0]) return;
 
-      console.log(event.target.files[0])
-      setFile(event.target.files[0])
-      setFileName(event.target.files[0].name)
+    console.log(event.target.files[0])
+    setFile(event.target.files[0])
+    setFileName(event.target.files[0].name)
 
   }
 
@@ -133,132 +136,141 @@ const Account = () => {
     <div className="d-flex mt-5">
       <Sidebar />
       {/* <Container style={{display:'flex', flexDirection:'column', width:'auto'}}> */}
-      <div className="px-5 flex-grow-1">
-        <h2>Edit Profile</h2>
-        <br></br>
-        <form onSubmit={handleFormSubmit} className="p-4 border border-dark rounded" style={{backgroundColor: "rgb(170,200,170)", fontWeight: "bold"}}>
-          <div className="form-group row">
-            <label htmlFor="firstName" className="col-sm-2 col-form-label">First Name:</label>
-            <div class="col-sm-4">
-              <input
-                className="form-control"
-                placeholder={state.firstName}
-                name="firstName"
-                type="firstName"
-                id="firstName"
-                onChange={handleChange}
-              />
-            </div>
-          </div>
-          <br></br>
-          <div className="form-group row">
-            <label htmlFor="lastName" className="col-sm-2 col-form-label">Last Name:</label>
-            <div class="col-sm-4">
-              <input
-                className="form-control"
-                placeholder={state.lastName}
-                name="lastName"
-                type="lastName"
-                id="lastName"
-                onChange={handleChange}
-              />
-            </div>
-          </div>
-          <br></br>
-          <div className="form-group row">
-            <label htmlFor="email" className="col-sm-2 col-form-label">Email:</label>
-            <div class="col-sm-4">
-              <input
-                className="form-control"
-                placeholder={state.email}
-                name="email"
-                type="email"
-                id="email"
-                onChange={handleChange}
-              />
-            </div>
-          </div>
-          <br></br>
-          <div className="col-sm-10">
-            <Button type="submit">Update Account</Button>
-          </div>
-        </form>
-        <br></br>
-        <form onSubmit={handlePasswordUpdate} className="p-4 border border-dark rounded" style={{backgroundColor: "rgb(170,200,170)", fontWeight: "bold"}}>
-          <div className="form-group row">
-            <label htmlFor="oldPassword" className="col-sm-2 col-form-label">Old Password:</label>
-            <div class="col-sm-4">
-              <input
-                className="form-control"
-                placeholder="******"
-                name="oldPassword"
-                type="password"
-                id="oldPassword"
-                onChange={handleChange}
-              />
-            </div>
-            {error ? (
-              <div className="mt-3">
-                <p className="text-muted small">The password is incorrect</p>
-              </div>
-            ) : null}
-          </div>
-          <br></br>
-          <div className="form-group row">
-            <label htmlFor="pwd" className="col-sm-2 col-form-label"> New Password:</label>
-            <div class="col-sm-4">
-              <input
-                className="form-control"
-                placeholder="******"
-                name="password"
-                type="password"
-                id="pwd"
-                minlength="5"
-                required
-                onChange={handleChange}
-              />
-            </div>
-          </div>
-          <br></br>
-          <div className="col-sm-10">
-            <Button type="submit">Update Password</Button>
-          </div>
-        </form>
-          <br></br>
-        <form onSubmit={handlePictureUploadSubmit} className="4 p-4 border border-dark rounded" style={{backgroundColor: "rgb(170,200,170)", fontWeight: "bold"}}>
-          <div className="form-group row">
-            <label htmlFor="profilePicture" className="col-sm-2 col-form-label">Upload profile picture:</label>
-            <div class="col-sm-4">
-              <input
-                className="form-control"
-                placeholder="******"
-                name="profilePicture"
-                type="file"
-                id="profilePicture"
-                onChange={handlePictureUploadChange}
-              />
-            </div>
-            {/* {error ? (
+      <Spring
+        from={{ opacity: 0 }}
+        to={{ opacity: 1 }}
+        config={{ delay: 0, duration: 200 }}
+      >
+        {(props) => (
+          <animated.div style={props}>
+            <div className="px-5 flex-grow-1">
+              <h2>Edit Profile</h2>
+              <br></br>
+              <form onSubmit={handleFormSubmit} className="p-4 border border-dark rounded" style={{ backgroundColor: "rgb(170,200,170)", fontWeight: "bold" }}>
+                <div className="form-group row">
+                  <label htmlFor="firstName" className="col-sm-2 col-form-label">First Name:</label>
+                  <div class="col-sm-4">
+                    <input
+                      className="form-control"
+                      placeholder={state.firstName}
+                      name="firstName"
+                      type="firstName"
+                      id="firstName"
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+                <br></br>
+                <div className="form-group row">
+                  <label htmlFor="lastName" className="col-sm-2 col-form-label">Last Name:</label>
+                  <div class="col-sm-4">
+                    <input
+                      className="form-control"
+                      placeholder={state.lastName}
+                      name="lastName"
+                      type="lastName"
+                      id="lastName"
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+                <br></br>
+                <div className="form-group row">
+                  <label htmlFor="email" className="col-sm-2 col-form-label">Email:</label>
+                  <div class="col-sm-4">
+                    <input
+                      className="form-control"
+                      placeholder={state.email}
+                      name="email"
+                      type="email"
+                      id="email"
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+                <br></br>
+                <div className="col-sm-10">
+                  <Button type="submit">Update Account</Button>
+                </div>
+              </form>
+              <br></br>
+              <form onSubmit={handlePasswordUpdate} className="p-4 border border-dark rounded" style={{ backgroundColor: "rgb(170,200,170)", fontWeight: "bold" }}>
+                <div className="form-group row">
+                  <label htmlFor="oldPassword" className="col-sm-2 col-form-label">Old Password:</label>
+                  <div class="col-sm-4">
+                    <input
+                      className="form-control"
+                      placeholder="******"
+                      name="oldPassword"
+                      type="password"
+                      id="oldPassword"
+                      onChange={handleChange}
+                    />
+                  </div>
+                  {error ? (
+                    <div className="mt-3">
+                      <p className="text-muted small">The password is incorrect</p>
+                    </div>
+                  ) : null}
+                </div>
+                <br></br>
+                <div className="form-group row">
+                  <label htmlFor="pwd" className="col-sm-2 col-form-label"> New Password:</label>
+                  <div class="col-sm-4">
+                    <input
+                      className="form-control"
+                      placeholder="******"
+                      name="password"
+                      type="password"
+                      id="pwd"
+                      minlength="5"
+                      required
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+                <br></br>
+                <div className="col-sm-10">
+                  <Button type="submit">Update Password</Button>
+                </div>
+              </form>
+              <br></br>
+              <form onSubmit={handlePictureUploadSubmit} className="4 p-4 border border-dark rounded" style={{ backgroundColor: "rgb(170,200,170)", fontWeight: "bold" }}>
+                <div className="form-group row">
+                  <label htmlFor="profilePicture" className="col-sm-2 col-form-label">Upload profile picture:</label>
+                  <div class="col-sm-4">
+                    <input
+                      className="form-control"
+                      placeholder="******"
+                      name="profilePicture"
+                      type="file"
+                      id="profilePicture"
+                      onChange={handlePictureUploadChange}
+                    />
+                  </div>
+                  {/* {error ? (
               <div className="mt-3">
                 <p className="text-muted small">The password is incorrect</p>
               </div>
             ) : null} */}
-          </div>
-          <br></br>
-          <div className="col-sm-10">
-            <Button type="submit">Upload Photo</Button>
-          </div>
-          <br></br>
-        </form>
-        <div
-            className="flex-row"
-            style={{ marginTop: "30px", justifyContent: "center" }}
-          >
-            <Button>
-              <DeleteUser />
-            </Button>
-          </div>
-      </div>
+                </div>
+                <br></br>
+                <div className="col-sm-10">
+                  <Button type="submit">Upload Photo</Button>
+                </div>
+                <br></br>
+              </form>
+              <div
+                className="flex-row"
+                style={{ marginTop: "30px", justifyContent: "center" }}
+              >
+                <Button>
+                  <DeleteUser />
+                </Button>
+              </div>
+            </div>
+          </animated.div>)}
+      </Spring>
     </div>
   );
 };
