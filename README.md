@@ -1,6 +1,6 @@
 # ECOLIVIN
 
-![ecolivin](https://user-images.githubusercontent.com/84414488/142734116-238c4eb4-c890-47be-b634-5ef8660e621a.png)
+ <img width="300" alt="EcoLivin Logo" src="https://user-images.githubusercontent.com/84414488/142734116-238c4eb4-c890-47be-b634-5ef8660e621a.png">
 
 ## Description
 An App built to inspire and improve sustainable living goals. 
