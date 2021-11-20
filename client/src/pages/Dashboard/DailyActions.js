@@ -228,62 +228,63 @@ const DailyActions = () => {
                       </Col>
                     </Row>
 
-                    <Row>
-                      <Col md={4}>
-                        <ActionCard
-                          actionId="w4"
-                          title="🧺Towels and Napkins"
-                          link="nolinkfornow"
-                          actionText="Switch from single use paper towels and napkins to cloth towels and handkerchief'"
-                        />
-                      </Col>
-                      <Col md={4}>
-                        <ActionCard
-                          actionId="w5"
-                          title="🥡 No more single packages"
-                          link="nolinkfornow"
-                          actionText="Refrain from purchasing single packages items or plastic wrapped produce"
-                        />
-                      </Col>
-                      <Col md={4}>
-                        <ActionCard
-                          actionId="w6"
-                          title="🎒 Reusable bags"
-                          link="nolinkfornow"
-                          actionText="Carry reusable bags to reduce plastic bags"
-                        />
-                      </Col>
-                    </Row>
-                  </Container>
-                </Tab>
-                <Tab eventKey="housing" title="Housing" tabClassName='dailyActionsTabs'>
-                  <Container>
-                    <Row className="mb-4">
-                      <Col md={4}>
-                        <ActionCard
-                          actionId="h1"
-                          title="🧖 Shower"
-                          link="nolinkfornow"
-                          actionText="Decrease shower time to 5 minutes, and switch from taking baths"
-                        />
-                      </Col>
-                      <Col md={4}>
-                        <ActionCard
-                          actionId="h2"
-                          title="🧴 Washer"
-                          link="nolinkfornow"
-                          actionText="Wash clothing on cold cycle insead of hot"
-                        />
-                      </Col>
-                      <Col md={4}>
-                        <ActionCard
-                          actionId="h3"
-                          title="🪟 Air-dry"
-                          link="nolinkfornow"
-                          actionText="Air-dry clothing after washing instead of usering the drying machine"
-                        />
-                      </Col>
-                    </Row>
+              <Row>
+                <Col md={4}>
+                  <ActionCard
+                    actionId="w4"
+                    title="🧺Towels and Napkins"
+                    link="nolinkfornow"
+                    actionText="Switch from single use paper towels and napkins to cloth towels and handkerchief'"
+                  />
+                </Col>
+                <Col md={4}>
+                  <ActionCard
+                    actionId="w5"
+                    title="🥡 No more single packages"
+                    link="nolinkfornow"
+                    actionText="Refrain from purchasing single packages items or plastic wrapped produce"
+                  />
+                </Col>
+                <Col md={4}>
+                  <ActionCard
+                    actionId="w6"
+                    title="🎒 Reusable bags"
+                    link="nolinkfornow"
+                    actionText="Carry reusable bags to reduce plastic bags"
+                  />
+                </Col>
+              </Row>
+            </Container>
+          </Tab>
+          <Tab eventKey="housing" title="Housing" tabClassName='dailyActionsTabs'>
+            <Container>
+              <Row className="mb-4">
+                <Col md={4}>
+                  <ActionCard
+                    actionId="h1"
+                    title="🧖 Shower"
+                    link="nolinkfornow"
+                    actionText="Decrease shower time to 5 minutes, and switch from taking baths"
+                  />
+                </Col>
+                <Col md={4}>
+                  <ActionCard
+                    actionId="h2"
+                    title="🧴 Washer"
+                    link="nolinkfornow"
+                    actionText="Wash clothing on cold cycle insead of hot"
+                  />
+                </Col>
+                <Col md={4}>
+                  <ActionCard
+                    actionId="h3"
+                    title="💨 Air-dry"
+                    link="nolinkfornow"
+                    actionText="Air-dry clothing after washing instead of usering the drying machine"
+                  />
+                </Col>
+              </Row>
+
 
                     <Row>
                       <Col md={4}>

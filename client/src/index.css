@@ -317,7 +317,7 @@ li {
 }
 /* svg */
 #differenceHome {
-  margin-top: -30px !important;
+  margin-top: -50px !important;
   font-size: calc(1.475rem + 2.7vw);
   line-height: 1.2;
   animation: fill 0.5s ease forwards 3.5s;
