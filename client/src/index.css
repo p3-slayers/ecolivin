@@ -220,13 +220,14 @@ input:focus {
 
 .btn-primary {
   color: #fff;
-  background-color: #703043 !important;
-  border-color: #703043 !important;
+  background-color: #703043;
+  border-color: #703043;
 }
 .btn-primary:focus,
 .btn-primary:active,
-.btn-primary:disabled {
-  background-color: #883d53;
+.btn-primary:disabled,
+.btn-check:checked + .btn-primary {
+  background-color: #aa556e;
   border-color: #883d53;
 }
 .btn-primary:hover {
@@ -307,9 +308,8 @@ a {
 li {
   list-style-type: none;
 }
-
 .dailyActionsTabs {
-  font-size: 28px;
+  font-size: 22px;
   color: #308875;
 }
 .dailyActionsTabs:hover {
