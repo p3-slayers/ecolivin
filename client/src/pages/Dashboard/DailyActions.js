@@ -3,7 +3,7 @@ import Sidebar from "../../components/Sidebar/index";
 import { Container, Row, Col } from "react-bootstrap";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
-import ActionCard from "../../components/ActionCard/index";
+import ActionCard from "../../components/actionCard/index";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
@@ -268,7 +268,7 @@ const DailyActions = () => {
                 <Col md={4}>
                   <ActionCard
                     actionId="h3"
-                    title="🪟 Air-dry"
+                    title="💨 Air-dry"
                     link="nolinkfornow"
                     actionText="Air-dry clothing after washing instead of usering the drying machine"
                   />

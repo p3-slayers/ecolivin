@@ -7,6 +7,7 @@ function Donate() {
   return (
     <>
       <Nav />
+      <div style={{marginTop:'100px'}}>
       <div
         className="container mt-5"
         style={{ display: "flex", fontFamily: "Karla sans-serif" }}
@@ -25,6 +26,7 @@ function Donate() {
         <Container style={{ border: "2px solid #703043" }}>
           <Card />
         </Container>
+      </div>
       </div>
     </>
   );
